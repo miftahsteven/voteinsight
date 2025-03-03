@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgLocalConvenienceStore = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgLocalConvenienceStore = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M10 16h4v4h8V7h-3V4H5v3H2v13h8v-4zm-2 0v2H4V9h3V6h10v3h3v9h-4v-4H8v2zm3-5H9v-1h2V7H8v1h2v1H8v3h3zm4 1h1V7h-1v2h-1V7h-1v3h2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgLocalConvenienceStore;
+export default SvgLocalConvenienceStore

@@ -1,21 +1,21 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const Index: NextPage = () => {
 	const BACKGROUND_COLOR = `
@@ -29,7 +29,7 @@ const Index: NextPage = () => {
 <div className='p-3 mb-2 bg-dark text-white'>.bg-dark</div>
 <div className='p-3 mb-2 bg-body text-dark'>.bg-body</div>
 <div className='p-3 mb-2 bg-white text-dark'>.bg-white</div>
-<div className='p-3 mb-2 bg-transparent text-dark'>.bg-transparent</div>`;
+<div className='p-3 mb-2 bg-transparent text-dark'>.bg-transparent</div>`
 
 	const BACKGROUND_COLOR_LIGHT = `
 <div className='row g-2'>
@@ -38,7 +38,7 @@ const Index: NextPage = () => {
 	<div className='col'><div className='p-3 mb-2 bg-l50-primary text-dark'>.bg-l50-primary</div></div>
 	<div className='col'><div className='p-3 mb-2 bg-l75-primary text-white'>.bg-l75-primary</div></div>
 	<div className='col'><div className='p-3 mb-2 bg-l90-primary text-white'>.bg-l90-primary</div></div>
-</div>`;
+</div>`
 
 	const BACKGROUND_COLOR_LIGHT_OPACITY = `
 <div className='row g-2'>
@@ -47,7 +47,7 @@ const Index: NextPage = () => {
 	<div className='col'><div className='p-3 mb-2 bg-lo50-primary text-dark'>.bg-lo50-primary</div></div>
 	<div className='col'><div className='p-3 mb-2 bg-lo75-primary text-white'>.bg-lo75-primary</div></div>
 	<div className='col'><div className='p-3 mb-2 bg-lo90-primary text-white'>.bg-lo90-primary</div></div>
-</div>`;
+</div>`
 
 	const BACKGROUND_COLOR_2 = `
 <div className='p-3 mb-2 bg-primary bg-gradient text-white'>.bg-primary.bg-gradient</div>
@@ -57,7 +57,7 @@ const Index: NextPage = () => {
 <div className='p-3 mb-2 bg-warning bg-gradient text-dark'>.bg-warning.bg-gradient</div>
 <div className='p-3 mb-2 bg-info bg-gradient text-dark'>.bg-info.bg-gradient</div>
 <div className='p-3 mb-2 bg-light bg-gradient text-dark'>.bg-light.bg-gradient</div>
-<div className='p-3 mb-2 bg-dark bg-gradient text-white'>.bg-dark.bg-gradient</div>`;
+<div className='p-3 mb-2 bg-dark bg-gradient text-white'>.bg-dark.bg-gradient</div>`
 
 	const VARIABLES = `
 $primary:       ${process.env.NEXT_PUBLIC_PRIMARY_COLOR};
@@ -67,9 +67,9 @@ $info:          ${process.env.NEXT_PUBLIC_INFO_COLOR};
 $warning:       ${process.env.NEXT_PUBLIC_WARNING_COLOR};
 $danger:        ${process.env.NEXT_PUBLIC_DANGER_COLOR};
 $light:         ${process.env.NEXT_PUBLIC_LIGHT_COLOR};
-$dark:          ${process.env.NEXT_PUBLIC_DARK_COLOR};`;
+$dark:          ${process.env.NEXT_PUBLIC_DARK_COLOR};`
 	const VARIABLES_2 = `
-$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));`;
+$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));`
 	const VARIABLES_3 = `
 $white:    #fff;
 $gray-100: #f8f9fa;
@@ -81,7 +81,7 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
-$black:    #000;`;
+$black:    #000;`
 
 	const MAP = `
 $theme-colors: (
@@ -93,7 +93,7 @@ $theme-colors: (
   	"danger":     $danger,
   	"light":      $light,
   	"dark":       $dark
-);`;
+);`
 	const MAP_2 = `
 $grays: (
 	"100": $gray-100,
@@ -105,7 +105,7 @@ $grays: (
   	"700": $gray-700,
   	"800": $gray-800,
   	"900": $gray-900
-);`;
+);`
 
 	const MIXIN = `
 @mixin gradient-bg($color: null) {
@@ -114,7 +114,7 @@ $grays: (
 	@if $enable-gradients {
 		background-image: var(--#{$prefix}gradient);
 	}
-}`;
+}`
 	const MIXIN_2 = `
 // Horizontal gradient, from left to right
 //
@@ -148,7 +148,7 @@ $grays: (
 
 @mixin gradient-striped($color: rgba($white, .15), $angle: 45deg) {
 	background-image: linear-gradient($angle, $color 25%, transparent 25%, transparent 50%, $color 50%, $color 75%, transparent 75%, transparent);
-}`;
+}`
 
 	const UTILITIES_API = `
 "background-color": (
@@ -162,7 +162,7 @@ $grays: (
           	"transparent": transparent
         )
     )
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -838,14 +838,14 @@ $grays: (
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

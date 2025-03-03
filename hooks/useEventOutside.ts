@@ -1,5 +1,5 @@
-import useEventListener from './useEventListener';
-import React from 'react';
+import useEventListener from './useEventListener'
+import React from 'react'
 
 export default function useEventOutside(
 	ref: React.MutableRefObject<null>,
@@ -9,8 +9,8 @@ export default function useEventOutside(
 	const checkIt = (event: { target: any }) => {
 		// @ts-ignore
 		if (ref.current && !ref.current.contains(event.target)) {
-			handler();
+			handler()
 		}
-	};
-	useEventListener(eventName, checkIt);
+	}
+	useEventListener(eventName, checkIt)
 }

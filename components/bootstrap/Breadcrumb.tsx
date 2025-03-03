@@ -5,20 +5,20 @@ import React, {
 	JSXElementConstructor,
 	ReactElement,
 	ReactNode,
-} from 'react';
-import classNames from 'classnames';
-import Link from 'next/link';
-import TagWrapper from '../TagWrapper';
-import Icon from '../icon/Icon';
+} from 'react'
+import classNames from 'classnames'
+import Link from 'next/link'
+import TagWrapper from '../TagWrapper'
+import Icon from '../icon/Icon'
 
 interface IBreadcrumbItemProps extends Record<string, any> {
-	children: ReactNode;
-	ariaLabel?: string;
-	className?: string;
-	tag?: string;
-	to: string;
-	isActive?: boolean;
-	divider?: ReactElement<any, string | JSXElementConstructor<any>> | string;
+	children: ReactNode
+	ariaLabel?: string
+	className?: string
+	tag?: string
+	to: string
+	isActive?: boolean
+	divider?: ReactElement<any, string | JSXElementConstructor<any>> | string
 }
 export const BreadcrumbItem: FC<IBreadcrumbItemProps> = ({
 	children,
@@ -48,23 +48,23 @@ export const BreadcrumbItem: FC<IBreadcrumbItemProps> = ({
 				</Link>
 			)}
 		</TagWrapper>
-	);
-};
+	)
+}
 
 interface IBreadcrumbProps extends Record<string, any> {
-	children?: ReactElement<IBreadcrumbItemProps> | ReactElement<IBreadcrumbItemProps>[];
+	children?: ReactElement<IBreadcrumbItemProps> | ReactElement<IBreadcrumbItemProps>[]
 	list?: {
-		title: string;
-		to: string;
-		tag?: 'div' | 'li';
-	}[];
-	tag?: 'nav' | 'div' | 'section';
-	listTag?: 'div' | 'ol' | 'ul';
-	itemTag?: 'div' | 'li';
-	ariaLabel?: string | null;
-	autoActive?: boolean;
-	isToHome?: ReactNode;
-	divider?: ReactElement<any, string | JSXElementConstructor<any>> | string;
+		title: string
+		to: string
+		tag?: 'div' | 'li'
+	}[]
+	tag?: 'nav' | 'div' | 'section'
+	listTag?: 'div' | 'ol' | 'ul'
+	itemTag?: 'div' | 'li'
+	ariaLabel?: string | null
+	autoActive?: boolean
+	isToHome?: ReactNode
+	divider?: ReactElement<any, string | JSXElementConstructor<any>> | string
 }
 const Breadcrumb: FC<IBreadcrumbProps> = ({
 	children,
@@ -77,7 +77,7 @@ const Breadcrumb: FC<IBreadcrumbProps> = ({
 	isToHome = <Icon icon='HolidayVillage' />,
 	divider = <Icon icon='ChevronRight' />,
 }) => {
-	const DIVIDER = divider !== 'string' && divider;
+	const DIVIDER = divider !== 'string' && divider
 	return (
 		<TagWrapper
 			tag={tag}
@@ -120,7 +120,7 @@ const Breadcrumb: FC<IBreadcrumbProps> = ({
 						)}
 			</TagWrapper>
 		</TagWrapper>
-	);
-};
+	)
+}
 
-export default Breadcrumb;
+export default Breadcrumb

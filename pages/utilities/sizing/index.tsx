@@ -1,22 +1,22 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import PlaceholderImage from '../../../components/extras/PlaceholderImage';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import PlaceholderImage from '../../../components/extras/PlaceholderImage'
 
 const Index: NextPage = () => {
 	const RELATIVE = `
@@ -24,7 +24,7 @@ const Index: NextPage = () => {
 <div className='w-50 p-3' style={{ backgroundColor: '#eee' }}>Width 50%</div>
 <div className='w-75 p-3' style={{ backgroundColor: '#eee' }}>Width 75%</div>
 <div className='w-100 p-3' style={{ backgroundColor: '#eee' }}>Width 100%</div>
-<div className='w-auto p-3' style={{ backgroundColor: '#eee' }}>Width auto</div>`;
+<div className='w-auto p-3' style={{ backgroundColor: '#eee' }}>Width auto</div>`
 	const RELATIVE_2 = `
 <div style={{ height: 100, backgroundColor: 'rgba(255, 0, 0, 0.1)' }}>
 	<div className='h-25 d-inline-block' style={{ width: 120, backgroundColor: 'rgba(0, 0, 255, .1)' }}>Height 25%</div>
@@ -32,19 +32,19 @@ const Index: NextPage = () => {
 	<div className='h-75 d-inline-block' style={{ width: 120, backgroundColor: 'rgba(0, 0, 255, .1)' }}>Height 75%</div>
 	<div className='h-100 d-inline-block' style={{ width: 120, backgroundColor: 'rgba(0, 0, 255, .1)' }}>Height 100%</div>
 	<div className='h-auto d-inline-block' style={{ width: 120, backgroundColor: 'rgba(0, 0, 255, .1)' }}>Height auto</div>
-</div>`;
-	const RELATIVE_3 = `<img src='...' className='mw-100' alt='...' />`;
+</div>`
+	const RELATIVE_3 = `<img src='...' className='mw-100' alt='...' />`
 	const RELATIVE_4 = `
 <div style={{ height: 100, backgroundColor: 'rgba(255, 0, 0, .1)' }}>
 	<div className='mh-100' style={{ width: 100, height: 200, backgroundColor: 'rgba(0, 0, 255, .1)' }}>
 		Max-height 100%
 	</div>
-</div>`;
+</div>`
 	const RELATIVE_5 = `
 <div className='min-vw-100'>Min-width 100vw</div>
 <div className='min-vh-100'>Min-height 100vh</div>
 <div className='vw-100'>Width 100vw</div>
-<div className='vh-100'>Height 100vh</div>`;
+<div className='vh-100'>Height 100vh</div>`
 
 	const UTILITIES_API = `    
 "width": (
@@ -98,7 +98,7 @@ const Index: NextPage = () => {
   	property: min-height,
   	class: min-vh,
   	values: (100: 100vh)
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -287,14 +287,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import Clock from '../../../../assets/img/clock.jpeg';
-import AlarmClock from '../../../../assets/img/Alarm Clock.svg';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import Clock from '../../../../assets/img/clock.jpeg'
+import AlarmClock from '../../../../assets/img/Alarm Clock.svg'
 
 const RadialBarWithImage = () => {
 	const [state] = useState<IChartOptions>({
@@ -53,7 +53,7 @@ const RadialBarWithImage = () => {
 			},
 			labels: ['Volatility'],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -75,7 +75,7 @@ const RadialBarWithImage = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadialBarWithImage;
+export default RadialBarWithImage

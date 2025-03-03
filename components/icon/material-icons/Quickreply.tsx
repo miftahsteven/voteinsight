@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgQuickreply = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgQuickreply = (props: SVGProps<SVGSVGElement>) => {
 				<path d='M19 23l3.5-7h-2.2l1.7-4h-5v6h2z' />
 			</g>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgQuickreply;
+export default SvgQuickreply

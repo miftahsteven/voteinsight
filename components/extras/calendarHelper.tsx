@@ -1,63 +1,63 @@
-import { Views } from 'react-big-calendar';
-import dayjs from 'dayjs';
-import React, { FC } from 'react';
-import Button, { ButtonGroup } from '../bootstrap/Button';
-import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../bootstrap/Dropdown';
+import { Views } from 'react-big-calendar'
+import dayjs from 'dayjs'
+import React, { FC } from 'react'
+import Button, { ButtonGroup } from '../bootstrap/Button'
+import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../bootstrap/Dropdown'
 
 export const getUnitType = (viewMode: 'month' | 'week' | 'work_week' | 'day' | 'agenda') => {
-	let unitType = null;
+	let unitType = null
 	switch (viewMode) {
 		case Views.WEEK:
 		case Views.WORK_WEEK:
-			unitType = Views.WEEK;
-			break;
+			unitType = Views.WEEK
+			break
 		case Views.MONTH:
 		case Views.AGENDA:
-			unitType = Views.MONTH;
-			break;
+			unitType = Views.MONTH
+			break
 		default:
-			unitType = Views.DAY;
+			unitType = Views.DAY
 	}
-	return unitType;
-};
+	return unitType
+}
 
 export const getLabel = (
 	date: dayjs.ConfigType,
 	viewMode: 'month' | 'week' | 'work_week' | 'day' | 'agenda',
 ) => {
-	if (viewMode === Views.MONTH) return dayjs(date).format('MMMM YYYY');
+	if (viewMode === Views.MONTH) return dayjs(date).format('MMMM YYYY')
 	if (viewMode === Views.WEEK)
 		return `${dayjs(date).startOf('week').format('MMM D')} - ${dayjs(date)
 			.endOf('week')
-			.format('MMM D')}`;
+			.format('MMM D')}`
 	if (viewMode === Views.WORK_WEEK)
 		return `${dayjs(date).startOf('week').add(1, 'day').format('MMM D')} - ${dayjs(date)
 			.endOf('week')
 			.add(-1, 'day')
-			.format('MMM D')}`;
+			.format('MMM D')}`
 	if (viewMode === Views.AGENDA)
-		return `${dayjs(date).format('L')} - ${dayjs(date).add(1, 'month').format('L')}`;
-	return dayjs(date).format('dddd, MMM D');
-};
+		return `${dayjs(date).format('L')} - ${dayjs(date).add(1, 'month').format('L')}`
+	return dayjs(date).format('dddd, MMM D')
+}
 
 export const getTodayButtonLabel = (
 	viewMode: 'month' | 'week' | 'work_week' | 'day' | 'agenda',
 ) => {
-	if (viewMode === Views.MONTH || viewMode === Views.AGENDA) return 'This month';
-	if (viewMode === Views.WEEK || viewMode === Views.WORK_WEEK) return 'This week';
-	return 'Today';
-};
+	if (viewMode === Views.MONTH || viewMode === Views.AGENDA) return 'This month'
+	if (viewMode === Views.WEEK || viewMode === Views.WORK_WEEK) return 'This week'
+	return 'Today'
+}
 
 export const getViews = () => {
 	// @ts-ignore
-	return Object.keys(Views).map((k) => Views[k]);
-};
+	return Object.keys(Views).map((k) => Views[k])
+}
 
 interface ICalendarTodayButtonProps {
-	setDate(...args: unknown[]): unknown;
-	date: object;
-	unitType: string;
-	viewMode: 'month' | 'week' | 'work_week' | 'day' | 'agenda';
+	setDate(...args: unknown[]): unknown
+	date: object
+	unitType: string
+	viewMode: 'month' | 'week' | 'work_week' | 'day' | 'agenda'
 }
 export const CalendarTodayButton: FC<ICalendarTodayButtonProps> = ({
 	setDate,
@@ -88,12 +88,12 @@ export const CalendarTodayButton: FC<ICalendarTodayButtonProps> = ({
 				aria-label='Next'
 			/>
 		</ButtonGroup>
-	);
-};
+	)
+}
 
 interface ICalendarViewModeButtonsProps {
-	viewMode: 'month' | 'week' | 'work_week' | 'day' | 'agenda';
-	setViewMode(...args: unknown[]): unknown;
+	viewMode: 'month' | 'week' | 'work_week' | 'day' | 'agenda'
+	setViewMode(...args: unknown[]): unknown
 }
 export const CalendarViewModeButtons: FC<ICalendarViewModeButtonsProps> = ({
 	viewMode,
@@ -167,5 +167,5 @@ export const CalendarViewModeButtons: FC<ICalendarViewModeButtonsProps> = ({
 				</DropdownItem>
 			</DropdownMenu>
 		</Dropdown>
-	);
-};
+	)
+}

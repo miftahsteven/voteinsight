@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import Instagram from '../../../../assets/img/instagram.svg';
-import Messenger from '../../../../assets/img/messenger.svg';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import Instagram from '../../../../assets/img/instagram.svg'
+import Messenger from '../../../../assets/img/messenger.svg'
 
 const ScatterImageFill = () => {
 	const [state] = useState<IChartOptions>({
@@ -101,16 +101,16 @@ const ScatterImageFill = () => {
 					// @ts-ignore
 					customHTML: [
 						() => {
-							return '';
+							return ''
 						},
 						() => {
-							return '';
+							return ''
 						},
 					],
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -132,7 +132,7 @@ const ScatterImageFill = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default ScatterImageFill;
+export default ScatterImageFill

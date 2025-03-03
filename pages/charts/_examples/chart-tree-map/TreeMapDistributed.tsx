@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const TreeMapDistributed = () => {
 	const [state] = useState<IChartOptions>({
@@ -101,7 +101,7 @@ const TreeMapDistributed = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -123,7 +123,7 @@ const TreeMapDistributed = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default TreeMapDistributed;
+export default TreeMapDistributed

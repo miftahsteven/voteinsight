@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const BarWithNegativeValues = () => {
 	const [state] = useState<IChartOptions>({
@@ -65,12 +65,12 @@ const BarWithNegativeValues = () => {
 				shared: false,
 				x: {
 					formatter(val) {
-						return val.toString();
+						return val.toString()
 					},
 				},
 				y: {
 					formatter(val) {
-						return `${Math.abs(val)}%`;
+						return `${Math.abs(val)}%`
 					},
 				},
 			},
@@ -103,12 +103,12 @@ const BarWithNegativeValues = () => {
 				},
 				labels: {
 					formatter(val) {
-						return `${Math.abs(Math.round(Number(val)))}%`;
+						return `${Math.abs(Math.round(Number(val)))}%`
 					},
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -125,7 +125,7 @@ const BarWithNegativeValues = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default BarWithNegativeValues;
+export default BarWithNegativeValues

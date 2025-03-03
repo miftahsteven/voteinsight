@@ -1,20 +1,20 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import dayjs from 'dayjs';
-import useDarkMode from '../../../hooks/useDarkMode';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Icon from '../../../components/icon/Icon';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
-import CommonUpcomingEvents from '../../../common/partial/CommonUpcomingEvents';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dayjs from 'dayjs'
+import useDarkMode from '../../../hooks/useDarkMode'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Icon from '../../../components/icon/Icon'
+import Button from '../../../components/bootstrap/Button'
+import Page from '../../../layout/Page/Page'
+import CommonUpcomingEvents from '../../../common/partial/CommonUpcomingEvents'
 
 const Index: NextPage = () => {
-	const { themeStatus } = useDarkMode();
+	const { themeStatus } = useDarkMode()
 	return (
 		<PageWrapper>
 			<Head>
@@ -44,14 +44,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

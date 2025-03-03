@@ -1,11 +1,11 @@
-import React from 'react';
-import classNames from 'classnames';
-import Header, { HeaderLeft, HeaderRight } from '../../../layout/Header/Header';
-import CommonHeaderChat from './CommonHeaderChat';
-import useDarkMode from '../../../hooks/useDarkMode';
+import React from 'react'
+import classNames from 'classnames'
+import Header, { HeaderLeft, HeaderRight } from '../../../layout/Header/Header'
+import CommonHeaderChat from './CommonHeaderChat'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 const DashboardBookingHeader = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 	return (
 		<Header>
 			<HeaderLeft>
@@ -26,7 +26,7 @@ const DashboardBookingHeader = () => {
 				<CommonHeaderChat />
 			</HeaderRight>
 		</Header>
-	);
-};
+	)
+}
 
-export default DashboardBookingHeader;
+export default DashboardBookingHeader

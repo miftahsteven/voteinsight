@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,9 +6,9 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn'
 
 const PolarBasic = () => {
 	const [state] = useState<IChartOptions>({
@@ -37,7 +37,7 @@ const PolarBasic = () => {
 				},
 			],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -62,7 +62,7 @@ const PolarBasic = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default PolarBasic;
+export default PolarBasic

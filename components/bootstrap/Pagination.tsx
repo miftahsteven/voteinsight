@@ -1,17 +1,17 @@
-import React, { forwardRef, HTMLAttributes, ReactElement, ReactNode } from 'react';
-import classNames from 'classnames';
-import Icon from '../icon/Icon';
+import React, { forwardRef, HTMLAttributes, ReactElement, ReactNode } from 'react'
+import classNames from 'classnames'
+import Icon from '../icon/Icon'
 
 interface IPaginationItemProps extends HTMLAttributes<HTMLLIElement> {
-	className?: string;
-	isDisabled?: boolean;
-	isActive?: boolean;
-	isPrev?: boolean;
-	isFirst?: boolean;
-	isNext?: boolean;
-	isLast?: boolean;
-	children?: ReactNode;
-	onClick?(...args: unknown[]): unknown | undefined;
+	className?: string
+	isDisabled?: boolean
+	isActive?: boolean
+	isPrev?: boolean
+	isFirst?: boolean
+	isNext?: boolean
+	isLast?: boolean
+	children?: ReactNode
+	onClick?(...args: unknown[]): unknown | undefined
 }
 export const PaginationItem = forwardRef<HTMLLIElement, IPaginationItemProps>(
 	(
@@ -58,20 +58,20 @@ export const PaginationItem = forwardRef<HTMLLIElement, IPaginationItemProps>(
 					{children}
 				</span>
 			</li>
-		);
+		)
 	},
-);
-PaginationItem.displayName = 'PaginationItem';
+)
+PaginationItem.displayName = 'PaginationItem'
 
 interface IPaginationProps extends HTMLAttributes<HTMLElement> {
-	ariaLabel: string;
+	ariaLabel: string
 	children:
 		| ReactElement<IPaginationItemProps>
 		| ReactElement<IPaginationItemProps>[]
 		| ReactNode
-		| ReactNode[];
-	className?: string | undefined;
-	size?: 'sm' | 'lg' | null;
+		| ReactNode[]
+	className?: string | undefined
+	size?: 'sm' | 'lg' | null
 }
 const Pagination = forwardRef<HTMLDivElement, IPaginationProps>(
 	({ ariaLabel, className, children, size, ...props }, ref) => {
@@ -81,9 +81,9 @@ const Pagination = forwardRef<HTMLDivElement, IPaginationProps>(
 					{children}
 				</ul>
 			</nav>
-		);
+		)
 	},
-);
-Pagination.displayName = 'Pagination';
+)
+Pagination.displayName = 'Pagination'
 
-export default Pagination;
+export default Pagination

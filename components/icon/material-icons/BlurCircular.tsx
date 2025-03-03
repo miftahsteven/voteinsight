@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBlurCircular = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgBlurCircular = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={10} cy={14} r={1} />
 			<path d='M10 7.5c.28 0 .5-.22.5-.5s-.22-.5-.5-.5-.5.22-.5.5.22.5.5.5zm4 9c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm3-7c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5zm0 4c-.28 0-.5.22-.5.5s.22.5.5.5.5-.22.5-.5-.22-.5-.5-.5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBlurCircular;
+export default SvgBlurCircular

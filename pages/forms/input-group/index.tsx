@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import Page from '../../../layout/Page/Page';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import Page from '../../../layout/Page/Page'
 import Modal, {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
-} from '../../../components/bootstrap/Modal';
+} from '../../../components/bootstrap/Modal'
 import Card, {
 	CardActions,
 	CardBody,
@@ -27,21 +27,21 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Input from '../../../components/bootstrap/forms/Input';
-import Label from '../../../components/bootstrap/forms/Label';
-import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup';
-import { SELECT_OPTIONS } from '../select';
-import Textarea from '../../../components/bootstrap/forms/Textarea';
-import Checks from '../../../components/bootstrap/forms/Checks';
-import Select from '../../../components/bootstrap/forms/Select';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Input from '../../../components/bootstrap/forms/Input'
+import Label from '../../../components/bootstrap/forms/Label'
+import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup'
+import { SELECT_OPTIONS } from '../select'
+import Textarea from '../../../components/bootstrap/forms/Textarea'
+import Checks from '../../../components/bootstrap/forms/Checks'
+import Select from '../../../components/bootstrap/forms/Select'
 
 const Index: NextPage = () => {
-	const [modalStatus, setModalStatus] = useState(false);
+	const [modalStatus, setModalStatus] = useState(false)
 	const GENERAL_USAGE = `
 <InputGroup
 	ref={ref}
@@ -65,7 +65,7 @@ const Index: NextPage = () => {
 	<DropdownMenu>...</DropdownMenu>
 	...
 	<Input {...props} /> { /* or */} <Textarea {...props} /> { /* etc. */}
-</InputGroup>`;
+</InputGroup>`
 
 	const formik = useFormik({
 		initialValues: {
@@ -80,7 +80,7 @@ const Index: NextPage = () => {
 		onSubmit: () => {
 			// console.log(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	const formikCR = useFormik({
 		initialValues: {
@@ -96,7 +96,7 @@ const Index: NextPage = () => {
 		onSubmit: () => {
 			// console.log(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -894,14 +894,14 @@ const Index: NextPage = () => {
 				</Modal>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

@@ -1,8 +1,8 @@
-import React, { FC } from 'react';
-import Button, { IButtonProps } from '../../../components/bootstrap/Button';
+import React, { FC } from 'react'
+import Button, { IButtonProps } from '../../../components/bootstrap/Button'
 
 interface ICommonStoryBtnProps extends IButtonProps {
-	to: string;
+	to: string
 }
 const CommonStoryBtn: FC<ICommonStoryBtnProps> = ({ to, ...props }) => {
 	return (
@@ -17,7 +17,7 @@ const CommonStoryBtn: FC<ICommonStoryBtnProps> = ({ to, ...props }) => {
 			{...props}>
 			Storybook
 		</Button>
-	);
-};
+	)
+}
 
-export default CommonStoryBtn;
+export default CommonStoryBtn

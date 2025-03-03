@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
+import React, { useState } from 'react'
+import dayjs from 'dayjs'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import Chart, { IChartOptions } from '../../../components/extras/Chart';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import Chart, { IChartOptions } from '../../../components/extras/Chart'
 
 interface ISalePerTab {
-	[key: string]: 'Day' | 'Week' | 'Month';
+	[key: string]: 'Day' | 'Week' | 'Month'
 }
 const CommonSalePerformance = () => {
 	const chartOptions = {
@@ -44,25 +44,25 @@ const CommonSalePerformance = () => {
 				stops: [0, 100],
 			},
 		},
-	};
+	}
 
 	function getDate(day: number) {
-		const arr = [];
+		const arr = []
 		for (let i = 0; i < day; i += 1) {
 			arr.push(
 				dayjs()
 					.add(-1 * i, 'day')
 					.format('ll'),
-			);
+			)
 		}
-		return arr.reverse();
+		return arr.reverse()
 	}
 	function getHours(day: number) {
-		const arr = [];
+		const arr = []
 		for (let i = 0; i < day; i += 1) {
-			arr.push(i);
+			arr.push(i)
 		}
-		return arr;
+		return arr
 	}
 
 	const DUMMY_DATA: { [key: string]: IChartOptions } = {
@@ -135,20 +135,18 @@ const CommonSalePerformance = () => {
 				},
 			},
 		},
-	};
+	}
 	const [state, setState] = useState<IChartOptions>({
 		series: DUMMY_DATA.WEEK.series,
 		options: DUMMY_DATA.WEEK.options,
-	});
+	})
 
 	const SALE_PER_TAB: { [key: string]: ISalePerTab['key'] } = {
 		DAY: 'Day',
 		WEEK: 'Week',
 		MONTH: 'Month',
-	};
-	const [activeSalePerTab, setActiveSalePerTab] = useState<ISalePerTab['key']>(
-		SALE_PER_TAB.MONTH,
-	);
+	}
+	const [activeSalePerTab, setActiveSalePerTab] = useState<ISalePerTab['key']>(SALE_PER_TAB.MONTH)
 
 	return (
 		<Card stretch>
@@ -160,11 +158,11 @@ const CommonSalePerformance = () => {
 					<Button
 						color='info'
 						onClick={() => {
-							setActiveSalePerTab(SALE_PER_TAB.DAY);
+							setActiveSalePerTab(SALE_PER_TAB.DAY)
 							setState({
 								series: DUMMY_DATA.DAY.series,
 								options: DUMMY_DATA.DAY.options,
-							});
+							})
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.DAY}
 						isLight={activeSalePerTab === SALE_PER_TAB.DAY}>
@@ -173,11 +171,11 @@ const CommonSalePerformance = () => {
 					<Button
 						color='info'
 						onClick={() => {
-							setActiveSalePerTab(SALE_PER_TAB.WEEK);
+							setActiveSalePerTab(SALE_PER_TAB.WEEK)
 							setState({
 								series: DUMMY_DATA.WEEK.series,
 								options: DUMMY_DATA.WEEK.options,
-							});
+							})
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.WEEK}
 						isLight={activeSalePerTab === SALE_PER_TAB.WEEK}>
@@ -186,11 +184,11 @@ const CommonSalePerformance = () => {
 					<Button
 						color='info'
 						onClick={() => {
-							setActiveSalePerTab(SALE_PER_TAB.MONTH);
+							setActiveSalePerTab(SALE_PER_TAB.MONTH)
 							setState({
 								series: DUMMY_DATA.MONTH.series,
 								options: DUMMY_DATA.MONTH.options,
-							});
+							})
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.MONTH}
 						isLight={activeSalePerTab === SALE_PER_TAB.MONTH}>
@@ -207,7 +205,7 @@ const CommonSalePerformance = () => {
 				/>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonSalePerformance;
+export default CommonSalePerformance

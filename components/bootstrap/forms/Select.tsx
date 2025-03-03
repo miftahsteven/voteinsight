@@ -1,36 +1,36 @@
-import React, { forwardRef, HTMLAttributes, ReactNode } from 'react';
-import classNames from 'classnames';
-import Option, { IOptionsProps, Options } from '../Option';
-import Validation from './Validation';
+import React, { forwardRef, HTMLAttributes, ReactNode } from 'react'
+import classNames from 'classnames'
+import Option, { IOptionsProps, Options } from '../Option'
+import Validation from './Validation'
 
 interface ISelectProps extends Partial<IOptionsProps>, HTMLAttributes<HTMLSelectElement> {
-	id?: string;
-	className?: string;
-	name?: string;
-	children?: ReactNode;
-	ariaLabel: string;
-	placeholder?: string;
-	size?: 'lg' | 'sm';
-	multiple?: boolean;
-	disabled?: boolean;
-	required?: boolean;
-	ariaDescribedby?: string;
-	ariaLabelledby?: string;
-	title?: string;
-	value?: string | string[];
-	defaultValue?: string | string[];
-	isTouched?: boolean;
-	isValid?: boolean;
-	invalidFeedback?: string;
-	validFeedback?: string;
-	isValidMessage?: boolean;
-	isTooltipFeedback?: boolean;
-	onBlur?(...args: unknown[]): unknown;
-	onChange?(...args: unknown[]): unknown;
-	onFocus?(...args: unknown[]): unknown;
-	onInput?(...args: unknown[]): unknown;
-	onInvalid?(...args: unknown[]): unknown;
-	onSelect?(...args: unknown[]): unknown;
+	id?: string
+	className?: string
+	name?: string
+	children?: ReactNode
+	ariaLabel: string
+	placeholder?: string
+	size?: 'lg' | 'sm'
+	multiple?: boolean
+	disabled?: boolean
+	required?: boolean
+	ariaDescribedby?: string
+	ariaLabelledby?: string
+	title?: string
+	value?: string | string[]
+	defaultValue?: string | string[]
+	isTouched?: boolean
+	isValid?: boolean
+	invalidFeedback?: string
+	validFeedback?: string
+	isValidMessage?: boolean
+	isTooltipFeedback?: boolean
+	onBlur?(...args: unknown[]): unknown
+	onChange?(...args: unknown[]): unknown
+	onFocus?(...args: unknown[]): unknown
+	onInput?(...args: unknown[]): unknown
+	onInvalid?(...args: unknown[]): unknown
+	onSelect?(...args: unknown[]): unknown
 }
 const Select = forwardRef<HTMLSelectElement, ISelectProps>(
 	(
@@ -116,9 +116,9 @@ const Select = forwardRef<HTMLSelectElement, ISelectProps>(
 					/>
 				)}
 			</>
-		);
+		)
 	},
-);
-Select.displayName = 'Select';
+)
+Select.displayName = 'Select'
 
-export default Select;
+export default Select

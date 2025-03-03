@@ -1,26 +1,26 @@
-import React, { FC } from 'react';
-import classNames from 'classnames';
+import React, { FC } from 'react'
+import classNames from 'classnames'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import topSalesData from '../../data/dummySalesData';
-import { getFirstLetter, priceFormat } from '../../../helpers/helpers';
-import useDarkMode from '../../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../../menu';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import topSalesData from '../../data/dummySalesData'
+import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
+import useDarkMode from '../../../hooks/useDarkMode'
+import { demoPagesMenu } from '../../../menu'
 
 interface ITopSalesItemProps {
-	name: string;
-	type: string;
-	price: number;
-	count: number;
+	name: string
+	type: string
+	price: number
+	count: number
 }
 const TopSalesItem: FC<ITopSalesItemProps> = ({ name, type, price, count }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	return (
 		<div className='col-12'>
@@ -58,8 +58,8 @@ const TopSalesItem: FC<ITopSalesItemProps> = ({ name, type, price, count }) => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const CommonTopSales = () => {
 	return (
@@ -88,7 +88,7 @@ const CommonTopSales = () => {
 				</div>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonTopSales;
+export default CommonTopSales

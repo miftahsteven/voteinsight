@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardCodeView,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Checks from '../../../components/bootstrap/forms/Checks';
-import useSelectTable from '../../../hooks/useSelectTable';
-import PaginationButtons, { dataPagination } from '../../../components/PaginationButtons';
-import useSortableData from '../../../hooks/useSortableData';
-import Icon from '../../../components/icon/Icon';
+} from '../../../components/bootstrap/Card'
+import Checks from '../../../components/bootstrap/forms/Checks'
+import useSelectTable from '../../../hooks/useSelectTable'
+import PaginationButtons, { dataPagination } from '../../../components/PaginationButtons'
+import useSortableData from '../../../hooks/useSortableData'
+import Icon from '../../../components/icon/Icon'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -113,7 +113,7 @@ const Foo = () => {
 			/>
 		</Card>
 	);
-}`;
+}`
 
 	const data = [
 		{ id: 1, firstName: 'John', lastName: 'Doe' },
@@ -123,14 +123,14 @@ const Foo = () => {
 		{ id: 5, firstName: 'Jane', lastName: 'Lee' },
 		{ id: 6, firstName: 'Chloe', lastName: 'Walker' },
 		{ id: 7, firstName: 'Ryan', lastName: 'McGrath' },
-	];
+	]
 
-	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(3);
+	const [currentPage, setCurrentPage] = useState(1)
+	const [perPage, setPerPage] = useState(3)
 
-	const { items, requestSort, getClassNamesFor } = useSortableData(data);
-	const onCurrentPageData = dataPagination(items, currentPage, perPage);
-	const { selectTable, SelectAllCheck } = useSelectTable(onCurrentPageData);
+	const { items, requestSort, getClassNamesFor } = useSortableData(data)
+	const onCurrentPageData = dataPagination(items, currentPage, perPage)
+	const { selectTable, SelectAllCheck } = useSelectTable(onCurrentPageData)
 
 	return (
 		<PageWrapper>
@@ -231,14 +231,14 @@ const Foo = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

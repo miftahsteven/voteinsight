@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const RadialBarMultiple = () => {
 	const [state] = useState<IChartOptions>({
@@ -30,7 +30,7 @@ const RadialBarMultiple = () => {
 							label: 'Total',
 							formatter(w) {
 								// By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-								return w.globals.series.reduce((a: any, b: any) => a + b, 0);
+								return w.globals.series.reduce((a: any, b: any) => a + b, 0)
 							},
 						},
 					},
@@ -41,7 +41,7 @@ const RadialBarMultiple = () => {
 				lineCap: 'round',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -63,7 +63,7 @@ const RadialBarMultiple = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadialBarMultiple;
+export default RadialBarMultiple

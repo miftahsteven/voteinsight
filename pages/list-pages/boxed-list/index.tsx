@@ -1,66 +1,63 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import classNames from 'classnames';
-import { Calendar as DatePicker } from 'react-date-range';
-import dayjs from 'dayjs';
-import useTourStep from '../../../hooks/useTourStep';
-import useDarkMode from '../../../hooks/useDarkMode';
-import data from '../../../common/data/dummyProductData';
-import PaginationButtons, {
-	dataPagination,
-	PER_COUNT,
-} from '../../../components/PaginationButtons';
-import useSortableData from '../../../hooks/useSortableData';
-import useSelectTable from '../../../hooks/useSelectTable';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import classNames from 'classnames'
+import { Calendar as DatePicker } from 'react-date-range'
+import dayjs from 'dayjs'
+import useTourStep from '../../../hooks/useTourStep'
+import useDarkMode from '../../../hooks/useDarkMode'
+import data from '../../../common/data/dummyProductData'
+import PaginationButtons, { dataPagination, PER_COUNT } from '../../../components/PaginationButtons'
+import useSortableData from '../../../hooks/useSortableData'
+import useSelectTable from '../../../hooks/useSelectTable'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import { demoPagesMenu } from '../../../menu';
-import Avatar from '../../../components/Avatar';
-import UserImage from '../../../assets/img/wanna/wanna1.png';
-import CommonFilterTag from '../../../common/partial/CommonFilterTag';
+} from '../../../layout/SubHeader/SubHeader'
+import { demoPagesMenu } from '../../../menu'
+import Avatar from '../../../components/Avatar'
+import UserImage from '../../../assets/img/wanna/wanna1.png'
+import CommonFilterTag from '../../../common/partial/CommonFilterTag'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Button from '../../../components/bootstrap/Button';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Label from '../../../components/bootstrap/forms/Label';
-import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup';
-import Input from '../../../components/bootstrap/forms/Input';
-import Select from '../../../components/bootstrap/forms/Select';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
+} from '../../../components/bootstrap/Dropdown'
+import Button from '../../../components/bootstrap/Button'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Label from '../../../components/bootstrap/forms/Label'
+import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup'
+import Input from '../../../components/bootstrap/forms/Input'
+import Select from '../../../components/bootstrap/forms/Select'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Popovers from '../../../components/bootstrap/Popovers';
-import Icon from '../../../components/icon/Icon';
-import CommonTableRow from '../../../common/partial/CommonTableRow';
-import Page from '../../../layout/Page/Page';
+} from '../../../components/bootstrap/Card'
+import Popovers from '../../../components/bootstrap/Popovers'
+import Icon from '../../../components/icon/Icon'
+import CommonTableRow from '../../../common/partial/CommonTableRow'
+import Page from '../../../layout/Page/Page'
 
 const Index: NextPage = () => {
 	/**
 	 * For Tour
 	 */
-	useTourStep(6);
+	useTourStep(6)
 
-	const { themeStatus, darkModeStatus } = useDarkMode();
+	const { themeStatus, darkModeStatus } = useDarkMode()
 
-	const [date, setDate] = useState<Date>(new Date());
+	const [date, setDate] = useState<Date>(new Date())
 
-	const [filterMenu, setFilterMenu] = useState<boolean>(false);
+	const [filterMenu, setFilterMenu] = useState<boolean>(false)
 	const formik = useFormik({
 		initialValues: {
 			minPrice: '',
@@ -72,10 +69,10 @@ const Index: NextPage = () => {
 			companyD: true,
 		},
 		onSubmit: () => {
-			setFilterMenu(false);
+			setFilterMenu(false)
 			// alert(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	const filteredData = data.filter(
 		(f) =>
@@ -89,14 +86,14 @@ const Index: NextPage = () => {
 				(formik.values.companyB ? f.store === 'Company B' : false) ||
 				(formik.values.companyC ? f.store === 'Company C' : false) ||
 				(formik.values.companyD ? f.store === 'Company D' : false)),
-	);
+	)
 
-	const [currentPage, setCurrentPage] = useState<number>(1);
-	const [perPage, setPerPage] = useState<number>(PER_COUNT['10']);
+	const [currentPage, setCurrentPage] = useState<number>(1)
+	const [perPage, setPerPage] = useState<number>(PER_COUNT['10'])
 
-	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData);
-	const onCurrentPageItems = dataPagination(items, currentPage, perPage);
-	const { selectTable, SelectAllCheck } = useSelectTable(onCurrentPageItems);
+	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData)
+	const onCurrentPageItems = dataPagination(items, currentPage, perPage)
+	const { selectTable, SelectAllCheck } = useSelectTable(onCurrentPageItems)
 
 	return (
 		<PageWrapper>
@@ -409,14 +406,14 @@ const Index: NextPage = () => {
 				</Card>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

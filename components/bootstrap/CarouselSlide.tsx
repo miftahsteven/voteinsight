@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react'
 
 interface ICarouselSlideProps {
-	children?: ReactNode;
-	background?: string;
+	children?: ReactNode
+	background?: string
 }
 const CarouselSlide: FC<ICarouselSlideProps> = ({ children, background }) => {
 	return (
@@ -11,7 +11,7 @@ const CarouselSlide: FC<ICarouselSlideProps> = ({ children, background }) => {
 			style={{ backgroundImage: `url(${background})` }}>
 			{children}
 		</div>
-	);
-};
+	)
+}
 
-export default CarouselSlide;
+export default CarouselSlide

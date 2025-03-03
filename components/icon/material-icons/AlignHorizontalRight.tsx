@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgAlignHorizontalRight = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgAlignHorizontalRight = (props: SVGProps<SVGSVGElement>) => {
 			<path fill='none' d='M0 0h24v24H0z' />
 			<path d='M20 2h2v20h-2V2zM2 10h16V7H2v3zm6 7h10v-3H8v3z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgAlignHorizontalRight;
+export default SvgAlignHorizontalRight

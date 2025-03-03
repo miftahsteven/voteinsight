@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const BarCustomLabel = () => {
 	const [state] = useState<IChartOptions>({
@@ -49,7 +49,7 @@ const BarCustomLabel = () => {
 					colors: ['#fff'],
 				},
 				formatter(val, opt) {
-					return `${opt.w.globals.labels[opt.dataPointIndex]}:  ${val}`;
+					return `${opt.w.globals.labels[opt.dataPointIndex]}:  ${val}`
 				},
 				offsetX: 0,
 				dropShadow: {
@@ -96,13 +96,13 @@ const BarCustomLabel = () => {
 				y: {
 					title: {
 						formatter() {
-							return '';
+							return ''
 						},
 					},
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -119,7 +119,7 @@ const BarCustomLabel = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default BarCustomLabel;
+export default BarCustomLabel

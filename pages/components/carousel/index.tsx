@@ -1,13 +1,13 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -16,15 +16,15 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import { TCarouselRounded } from '../../../type/carousel-type';
-import Carousel from '../../../components/bootstrap/Carousel';
-import CarouselCaption from '../../../components/bootstrap/CarouselCaption';
-import showNotification from '../../../components/extras/showNotification';
-import CarouselSlide from '../../../components/bootstrap/CarouselSlide';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import { TCarouselRounded } from '../../../type/carousel-type'
+import Carousel from '../../../components/bootstrap/Carousel'
+import CarouselCaption from '../../../components/bootstrap/CarouselCaption'
+import showNotification from '../../../components/extras/showNotification'
+import CarouselSlide from '../../../components/bootstrap/CarouselSlide'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -48,7 +48,7 @@ const Index: NextPage = () => {
 	rounded={ Number } // 0, 1, 2, 3
 	isFluid={ Boolean }
 	height={ Number }
-/>`;
+/>`
 
 	const GENERAL_USAGE_2 = `
 <Carousel
@@ -80,7 +80,7 @@ const Index: NextPage = () => {
 			className={ String } />
 	</CarouselSlide>
 	...
-</Carousel>`;
+</Carousel>`
 
 	const items = [
 		{
@@ -101,9 +101,9 @@ const Index: NextPage = () => {
 			captionHeader: 'Slide 3 title',
 			captionText: 'Slide 3 text',
 		},
-	];
+	]
 
-	const ROUNDED: (TCarouselRounded | undefined)[] = [undefined, 0, 1, 2, 3];
+	const ROUNDED: (TCarouselRounded | undefined)[] = [undefined, 0, 1, 2, 3]
 
 	return (
 		<PageWrapper>
@@ -312,10 +312,10 @@ const Index: NextPage = () => {
 									items={items}
 									rounded={1}
 									mouseEnter={() => {
-										showNotification('mouseEnter', 'Trigger mouseEnter');
+										showNotification('mouseEnter', 'Trigger mouseEnter')
 									}}
 									mouseLeave={() => {
-										showNotification('mouseLeave', 'Trigger mouseLeave');
+										showNotification('mouseLeave', 'Trigger mouseLeave')
 									}}
 								/>
 							</CardBody>
@@ -567,14 +567,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

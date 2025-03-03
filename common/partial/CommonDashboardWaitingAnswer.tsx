@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,34 +6,34 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
+} from '../../components/bootstrap/Card'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../components/bootstrap/Dropdown';
-import Button from '../../components/bootstrap/Button';
-import useDarkMode from '../../hooks/useDarkMode';
-import { TColor } from '../../type/color-type';
-import Chart, { IChartOptions } from '../../components/extras/Chart';
-import Avatar from '../../components/Avatar';
-import { demoPagesMenu } from '../../menu';
-import classNames from 'classnames';
-import Popovers from '../../components/bootstrap/Popovers';
-import Link from 'next/link';
-import USERS from '../data/userDummyData';
+} from '../../components/bootstrap/Dropdown'
+import Button from '../../components/bootstrap/Button'
+import useDarkMode from '../../hooks/useDarkMode'
+import { TColor } from '../../type/color-type'
+import Chart, { IChartOptions } from '../../components/extras/Chart'
+import Avatar from '../../components/Avatar'
+import { demoPagesMenu } from '../../menu'
+import classNames from 'classnames'
+import Popovers from '../../components/bootstrap/Popovers'
+import Link from 'next/link'
+import USERS from '../data/userDummyData'
 
 interface IAnswerCustomerProps {
-	id: string | number;
-	img: string;
-	name: string;
-	job: string;
-	value: number;
-	color: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
+	id: string | number
+	img: string
+	name: string
+	job: string
+	value: number
+	color: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
 }
 const AnswerCustomer: FC<IAnswerCustomerProps> = (props: IAnswerCustomerProps) => {
-	const { id, img, name, job, value, color } = props;
-	const { darkModeStatus } = useDarkMode();
+	const { id, img, name, job, value, color } = props
+	const { darkModeStatus } = useDarkMode()
 
 	const [state] = useState<IChartOptions>({
 		series: [value],
@@ -75,7 +75,7 @@ const AnswerCustomer: FC<IAnswerCustomerProps> = (props: IAnswerCustomerProps) =
 					(color === 'danger' && String(process.env.NEXT_PUBLIC_DANGER_COLOR)),
 			],
 		},
-	});
+	})
 	return (
 		<div className='col-12'>
 			<div className='row g-2'>
@@ -125,11 +125,11 @@ const AnswerCustomer: FC<IAnswerCustomerProps> = (props: IAnswerCustomerProps) =
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const CommonDashboardWaitingAnswer = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	return (
 		<Card stretch>
@@ -216,7 +216,7 @@ const CommonDashboardWaitingAnswer = () => {
 				</div>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonDashboardWaitingAnswer;
+export default CommonDashboardWaitingAnswer

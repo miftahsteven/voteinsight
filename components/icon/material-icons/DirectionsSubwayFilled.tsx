@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgDirectionsSubwayFilled = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgDirectionsSubwayFilled = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={8.5} cy={14.5} r={1.5} />
 			<circle cx={15.5} cy={14.5} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgDirectionsSubwayFilled;
+export default SvgDirectionsSubwayFilled

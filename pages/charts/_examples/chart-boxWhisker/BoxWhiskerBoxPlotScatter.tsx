@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const BoxWhiskerBoxPlotScatter = () => {
 	const [state] = useState<IChartOptions>({
@@ -82,7 +82,7 @@ const BoxWhiskerBoxPlotScatter = () => {
 				type: 'datetime',
 				tooltip: {
 					formatter(val) {
-						return new Date(val).getFullYear().toString();
+						return new Date(val).getFullYear().toString()
 					},
 				},
 			},
@@ -91,7 +91,7 @@ const BoxWhiskerBoxPlotScatter = () => {
 				intersect: true,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -113,7 +113,7 @@ const BoxWhiskerBoxPlotScatter = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default BoxWhiskerBoxPlotScatter;
+export default BoxWhiskerBoxPlotScatter

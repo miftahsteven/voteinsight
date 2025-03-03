@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgPriorityHigh = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -7,7 +7,7 @@ const SvgPriorityHigh = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={12} cy={19} r={2} />
 			<path d='M10 3h4v12h-4z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgPriorityHigh;
+export default SvgPriorityHigh

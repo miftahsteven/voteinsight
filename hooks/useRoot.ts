@@ -1,17 +1,17 @@
-import { useEffect, useState } from 'react';
-import useMounted from './useMounted';
+import { useEffect, useState } from 'react'
+import useMounted from './useMounted'
 
 const useRoot = () => {
-	const { mounted } = useMounted();
+	const { mounted } = useMounted()
 
-	const [root, setRoot] = useState<any>(null);
+	const [root, setRoot] = useState<any>(null)
 	useEffect(() => {
 		if (mounted) {
-			setRoot(document.documentElement);
+			setRoot(document.documentElement)
 		}
-	}, [mounted]);
+	}, [mounted])
 
-	return root;
-};
+	return root
+}
 
-export default useRoot;
+export default useRoot

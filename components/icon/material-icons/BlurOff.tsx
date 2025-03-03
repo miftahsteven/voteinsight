@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBlurOff = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -18,7 +18,7 @@ const SvgBlurOff = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={6} cy={14} r={1} />
 			<path d='M2.5 5.27L6 8.77l.28.28L6 9c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.03-.19-.06-.28l2.81 2.81c-.71.11-1.25.73-1.25 1.47 0 .83.67 1.5 1.5 1.5.74 0 1.36-.54 1.47-1.25l2.81 2.81A.875.875 0 0014 17c-.55 0-1 .45-1 1s.45 1 1 1 1-.45 1-1c0-.1-.03-.19-.06-.28l3.78 3.78h.01l1.41-1.41L3.91 3.86 2.5 5.27z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBlurOff;
+export default SvgBlurOff

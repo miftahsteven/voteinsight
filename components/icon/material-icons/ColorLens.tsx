@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgColorLens = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -14,7 +14,7 @@ const SvgColorLens = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={14.5} cy={7.5} r={1.5} />
 			<circle cx={17.5} cy={11.5} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgColorLens;
+export default SvgColorLens

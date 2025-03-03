@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,10 +6,10 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateDataHeatMap from '../../../../common/function/generateDataHeatMap';
-import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateDataHeatMap from '../../../../common/function/generateDataHeatMap'
+import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn'
 
 const HeatMapBasic = () => {
 	const [state] = useState<IChartOptions>({
@@ -91,7 +91,7 @@ const HeatMapBasic = () => {
 				text: 'HeatMap Chart (Single color)',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -116,7 +116,7 @@ const HeatMapBasic = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default HeatMapBasic;
+export default HeatMapBasic

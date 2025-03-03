@@ -8,6 +8,6 @@ const PAYMENTS: { [key: string]: { name: string } } = {
 	SWIFT: {
 		name: 'Swift',
 	},
-};
+}
 
-export default PAYMENTS;
+export default PAYMENTS

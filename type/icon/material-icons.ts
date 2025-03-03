@@ -1788,4 +1788,4 @@ export type TMaterialIcons =
 	| 'YoutubeSearchedFor'
 	| 'ZoomIn'
 	| 'ZoomOut'
-	| 'ZoomOutMap';
+	| 'ZoomOutMap'

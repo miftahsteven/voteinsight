@@ -1,13 +1,13 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -17,12 +17,12 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Button, { ButtonGroup } from '../../../components/bootstrap/Button';
-import { AlertLink } from '../../../components/bootstrap/Alert';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Button, { ButtonGroup } from '../../../components/bootstrap/Button'
+import { AlertLink } from '../../../components/bootstrap/Alert'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -36,7 +36,7 @@ const Index: NextPage = () => {
 	<Button {...props}>...</Button>
 	<Button {...props}>...</Button>
 	...
-</ButtonGroup>`;
+</ButtonGroup>`
 
 	const GENERAL_USAGE_2 = `
 <ButtonGroup
@@ -57,7 +57,7 @@ const Index: NextPage = () => {
 		<Button {...props}>...</Button>
 		...
 	</ButtonGroup>
-</ButtonGroup>`;
+</ButtonGroup>`
 
 	return (
 		<PageWrapper>
@@ -270,14 +270,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

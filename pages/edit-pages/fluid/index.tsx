@@ -1,39 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import { Calendar, dayjsLocalizer, View as TView, Views } from 'react-big-calendar';
-import dayjs from 'dayjs';
-import { useFormik } from 'formik';
-import classNames from 'classnames';
-import { Calendar as DatePicker } from 'react-date-range';
-import eventList, { IEvents } from '../../../common/data/events';
-import Icon from '../../../components/icon/Icon';
-import useDarkMode from '../../../hooks/useDarkMode';
-import validate from '../../../common/function/validation/editPagesValidate';
-import showNotification from '../../../components/extras/showNotification';
-import validateAddress from '../../../common/function/validation/editPageAddressValidate';
+import React, { useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import { Calendar, dayjsLocalizer, View as TView, Views } from 'react-big-calendar'
+import dayjs from 'dayjs'
+import { useFormik } from 'formik'
+import classNames from 'classnames'
+import { Calendar as DatePicker } from 'react-date-range'
+import eventList, { IEvents } from '../../../common/data/events'
+import Icon from '../../../components/icon/Icon'
+import useDarkMode from '../../../hooks/useDarkMode'
+import validate from '../../../common/function/validation/editPagesValidate'
+import showNotification from '../../../components/extras/showNotification'
+import validateAddress from '../../../common/function/validation/editPageAddressValidate'
 import {
 	CalendarTodayButton,
 	CalendarViewModeButtons,
 	getLabel,
 	getUnitType,
 	getViews,
-} from '../../../components/extras/calendarHelper';
-import { TColor } from '../../../type/color-type';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import Button, { ButtonGroup } from '../../../components/bootstrap/Button';
+} from '../../../components/extras/calendarHelper'
+import { TColor } from '../../../type/color-type'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import Button, { ButtonGroup } from '../../../components/bootstrap/Button'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Avatar from '../../../components/Avatar';
-import { demoPagesMenu } from '../../../menu';
-import User1Img from '../../../assets/img/wanna/wanna2.png';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Avatar from '../../../components/Avatar'
+import { demoPagesMenu } from '../../../menu'
+import User1Img from '../../../assets/img/wanna/wanna2.png'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -44,27 +44,27 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import { priceFormat } from '../../../helpers/helpers';
-import Input from '../../../components/bootstrap/forms/Input';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import Popovers from '../../../components/bootstrap/Popovers';
+} from '../../../components/bootstrap/Card'
+import { priceFormat } from '../../../helpers/helpers'
+import Input from '../../../components/bootstrap/forms/Input'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import Popovers from '../../../components/bootstrap/Popovers'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas';
-import Select from '../../../components/bootstrap/forms/Select';
-import CommonMyWallet from '../../../common/partial/CommonMyWallet';
-import USERS from '../../../common/data/userDummyData';
-import Checks from '../../../components/bootstrap/forms/Checks';
+} from '../../../components/bootstrap/OffCanvas'
+import Select from '../../../components/bootstrap/forms/Select'
+import CommonMyWallet from '../../../common/partial/CommonMyWallet'
+import USERS from '../../../common/data/userDummyData'
+import Checks from '../../../components/bootstrap/forms/Checks'
 
-const localizer = dayjsLocalizer(dayjs);
-const now = new Date();
+const localizer = dayjsLocalizer(dayjs)
+const now = new Date()
 
 const MyEvent = (data: { event: IEvents }) => {
-	const { event } = data;
+	const { event } = data
 	return (
 		<div className='row g-2'>
 			<div className='col text-truncate'>
@@ -72,11 +72,11 @@ const MyEvent = (data: { event: IEvents }) => {
 				{event.name}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const MyWeekEvent = (data: { event: IEvents }) => {
-	const { event } = data;
+	const { event } = data
 	return (
 		<div className='row g-2'>
 			<div className='col-12 text-truncate'>
@@ -84,26 +84,26 @@ const MyWeekEvent = (data: { event: IEvents }) => {
 				{event.name}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
-type TTabs = 'Account Details' | 'Address' | 'My Wallet' | 'Appointment';
+type TTabs = 'Account Details' | 'Address' | 'My Wallet' | 'Appointment'
 interface ITabs {
-	[key: string]: TTabs;
+	[key: string]: TTabs
 }
 
 const Index: NextPage = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const router = useRouter();
+	const router = useRouter()
 
 	const TABS: ITabs = {
 		ACCOUNT_DETAIL: 'Account Details',
 		ADDRESS: 'Address',
 		MY_WALLET: 'My Wallet',
 		APPOINTMENT: 'Appointment',
-	};
-	const [activeTab, setActiveTab] = useState<TTabs>(TABS.ACCOUNT_DETAIL);
+	}
+	const [activeTab, setActiveTab] = useState<TTabs>(TABS.ACCOUNT_DETAIL)
 
 	const formik = useFormik({
 		initialValues: {
@@ -123,9 +123,9 @@ const Index: NextPage = () => {
 					<span>Updated Successfully</span>
 				</span>,
 				"The user's account details have been successfully updated.",
-			);
+			)
 		},
-	});
+	})
 
 	const formikAddress = useFormik({
 		initialValues: {
@@ -143,35 +143,35 @@ const Index: NextPage = () => {
 					<span>Updated Successfully</span>
 				</span>,
 				"The user's address have been successfully updated.",
-			);
+			)
 		},
-	});
+	})
 
 	//
 	// Events
-	const [events, setEvents] = useState<IEvents[]>(eventList);
+	const [events, setEvents] = useState<IEvents[]>(eventList)
 	// Selected Event
-	const [eventItem, setEventItem] = useState<IEvents | null>(null);
+	const [eventItem, setEventItem] = useState<IEvents | null>(null)
 	// Calendar View Mode
-	const [viewMode, setViewMode] = useState<TView>(Views.MONTH);
+	const [viewMode, setViewMode] = useState<TView>(Views.MONTH)
 	// Calendar Date
-	const [date, setDate] = useState<Date>(new Date());
+	const [date, setDate] = useState<Date>(new Date())
 	// Item edit panel status
-	const [toggleInfoEventCanvas, setToggleInfoEventCanvas] = useState<boolean>(false);
-	const setInfoEvent = () => setToggleInfoEventCanvas(!toggleInfoEventCanvas);
+	const [toggleInfoEventCanvas, setToggleInfoEventCanvas] = useState<boolean>(false)
+	const setInfoEvent = () => setToggleInfoEventCanvas(!toggleInfoEventCanvas)
 	// Calendar Unit Type
-	const unitType = getUnitType(viewMode);
+	const unitType = getUnitType(viewMode)
 	// Calendar Date Label
-	const calendarDateLabel = getLabel(date, viewMode);
+	const calendarDateLabel = getLabel(date, viewMode)
 
 	const eventStyleGetter = (
 		event: { color?: TColor },
 		start: Date,
 		end: Date,
 	): { className: string } => {
-		const isActiveEvent = start <= now && end >= now;
-		const isPastEvent = end < now;
-		const color = isActiveEvent ? 'success' : event.color;
+		const isActiveEvent = start <= now && end >= now
+		const isPastEvent = end < now
+		const color = isActiveEvent ? 'success' : event.color
 
 		return {
 			className: classNames({
@@ -179,20 +179,20 @@ const Index: NextPage = () => {
 				'border border-success': isActiveEvent,
 				'opacity-50': isPastEvent,
 			}),
-		};
-	};
+		}
+	}
 
 	const handleViewMode = (e: dayjs.ConfigType) => {
-		setDate(dayjs(e).toDate());
-		setViewMode(Views.DAY);
-	};
+		setDate(dayjs(e).toDate())
+		setViewMode(Views.DAY)
+	}
 
 	// View modes; Month, Week, Work Week, Day and Agenda
-	const views = getViews();
+	const views = getViews()
 
 	// New Event
 	const handleSelect = ({ start, end }: { start: Date; end: Date }) => {
-		const title = window.prompt('New Event name');
+		const title = window.prompt('New Event name')
 		if (title)
 			setEvents([
 				...events,
@@ -201,8 +201,8 @@ const Index: NextPage = () => {
 					end,
 					title,
 				},
-			]);
-	};
+			])
+	}
 
 	useEffect(() => {
 		if (eventItem)
@@ -215,10 +215,10 @@ const Index: NextPage = () => {
 				eventEnd: dayjs(eventItem.end).format(),
 				eventAllDay: eventItem.allDay,
 				eventEmployee: `${eventItem?.user?.name} ${eventItem?.user?.surname}`,
-			});
-		return () => {};
+			})
+		return () => {}
 		//	eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [eventItem]);
+	}, [eventItem])
 
 	const formikEvent = useFormik({
 		initialValues: {
@@ -233,10 +233,10 @@ const Index: NextPage = () => {
 		},
 		onSubmit: () => {
 			// console.log(JSON.stringify(values, null, 2));
-			setToggleInfoEventCanvas(false);
-			setEventItem(null);
+			setToggleInfoEventCanvas(false)
+			setEventItem(null)
 		},
-	});
+	})
 	return (
 		<PageWrapper>
 			<Head>
@@ -260,7 +260,7 @@ const Index: NextPage = () => {
 						isLight
 						icon='Add'
 						onClick={() => {
-							setActiveTab(TABS.ACCOUNT_DETAIL);
+							setActiveTab(TABS.ACCOUNT_DETAIL)
 							formik.setValues({
 								firstName: '',
 								lastName: '',
@@ -269,14 +269,14 @@ const Index: NextPage = () => {
 								currentPassword: '',
 								newPassword: '',
 								confirmPassword: '',
-							});
+							})
 							formikAddress.setValues({
 								addressLine: '',
 								addressLine2: '',
 								city: '',
 								state: '',
 								zip: '',
-							});
+							})
 						}}>
 						Add New
 					</Button>
@@ -816,8 +816,8 @@ const Index: NextPage = () => {
 										scrollToTime={new Date(1970, 1, 1, 6)}
 										defaultDate={new Date()}
 										onSelectEvent={(event) => {
-											setInfoEvent();
-											setEventItem(event);
+											setInfoEvent()
+											setEventItem(event)
 										}}
 										onSelectSlot={handleSelect}
 										onView={handleViewMode}
@@ -1072,14 +1072,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

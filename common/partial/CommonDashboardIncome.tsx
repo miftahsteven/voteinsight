@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState, useTransition } from 'react';
+import React, { FC, useEffect, useState, useTransition } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,29 +6,29 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
+} from '../../components/bootstrap/Card'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../components/bootstrap/Dropdown';
-import Button from '../../components/bootstrap/Button';
-import classNames from 'classnames';
-import Chart, { IChartOptions } from '../../components/extras/Chart';
-import Icon from '../../components/icon/Icon';
-import { average, priceFormat } from '../../helpers/helpers';
-import PercentComparison from '../../components/extras/PercentComparison';
-import dayjs from 'dayjs';
-import useDarkMode from '../../hooks/useDarkMode';
-import { TABS, TTabs } from '../type/helper';
+} from '../../components/bootstrap/Dropdown'
+import Button from '../../components/bootstrap/Button'
+import classNames from 'classnames'
+import Chart, { IChartOptions } from '../../components/extras/Chart'
+import Icon from '../../components/icon/Icon'
+import { average, priceFormat } from '../../helpers/helpers'
+import PercentComparison from '../../components/extras/PercentComparison'
+import dayjs from 'dayjs'
+import useDarkMode from '../../hooks/useDarkMode'
+import { TABS, TTabs } from '../type/helper'
 
 interface ICommonDashboardIncomeProps {
-	activeTab: TTabs;
+	activeTab: TTabs
 }
 const CommonDashboardIncome: FC<ICommonDashboardIncomeProps> = ({ activeTab }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const [isPending, startTransition] = useTransition();
+	const [isPending, startTransition] = useTransition()
 	const [sales, setSales] = useState<IChartOptions>({
 		series: [
 			{
@@ -57,7 +57,7 @@ const CommonDashboardIncome: FC<ICommonDashboardIncomeProps> = ({ activeTab }) =
 					title: {
 						// eslint-disable-next-line @typescript-eslint/no-unused-vars
 						formatter(seriesName: any) {
-							return '';
+							return ''
 						},
 					},
 				},
@@ -78,7 +78,7 @@ const CommonDashboardIncome: FC<ICommonDashboardIncomeProps> = ({ activeTab }) =
 			price: 2654.2,
 			compare: 2300,
 		},
-	});
+	})
 	useEffect(() => {
 		if (activeTab === TABS.YEARLY) {
 			startTransition(() => {
@@ -100,8 +100,8 @@ const CommonDashboardIncome: FC<ICommonDashboardIncomeProps> = ({ activeTab }) =
 						compare: 2300,
 					},
 					options: sales.options,
-				});
-			});
+				})
+			})
 		}
 		if (activeTab === TABS.MONTHLY) {
 			startTransition(() => {
@@ -123,8 +123,8 @@ const CommonDashboardIncome: FC<ICommonDashboardIncomeProps> = ({ activeTab }) =
 						compare: 120,
 					},
 					options: sales.options,
-				});
-			});
+				})
+			})
 		}
 		if (activeTab === TABS.WEEKLY) {
 			startTransition(() => {
@@ -146,21 +146,21 @@ const CommonDashboardIncome: FC<ICommonDashboardIncomeProps> = ({ activeTab }) =
 						compare: 45,
 					},
 					options: sales.options,
-				});
-			});
+				})
+			})
 		}
-		return () => {};
+		return () => {}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [activeTab]);
+	}, [activeTab])
 
 	function compareLabel(amount = -1, name = false) {
 		if (activeTab === TABS.YEARLY) {
-			return name ? 'year' : dayjs().add(amount, 'year').format('YYYY');
+			return name ? 'year' : dayjs().add(amount, 'year').format('YYYY')
 		}
 		if (activeTab === TABS.MONTHLY) {
-			return name ? 'month' : dayjs().add(amount, 'month').format('MMMM');
+			return name ? 'month' : dayjs().add(amount, 'month').format('MMMM')
 		}
-		return name ? 'week' : dayjs().add(amount, 'week').format('w [th week]');
+		return name ? 'week' : dayjs().add(amount, 'week').format('w [th week]')
 	}
 	return (
 		<Card stretch>
@@ -329,7 +329,7 @@ const CommonDashboardIncome: FC<ICommonDashboardIncomeProps> = ({ activeTab }) =
 				</div>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonDashboardIncome;
+export default CommonDashboardIncome

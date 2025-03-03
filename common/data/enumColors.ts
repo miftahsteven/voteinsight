@@ -1,10 +1,10 @@
-import { TColor } from '../../type/color-type';
+import { TColor } from '../../type/color-type'
 
 export interface IColors {
 	[key: string]: {
-		name: TColor;
-		code: string;
-	};
+		name: TColor
+		code: string
+	}
 }
 const COLORS: IColors = {
 	PRIMARY: {
@@ -39,14 +39,14 @@ const COLORS: IColors = {
 		name: 'light',
 		code: String(process.env.NEXT_PUBLIC_LIGHT_COLOR),
 	},
-};
+}
 
 export function getColorNameWithIndex(index: number) {
 	/*
 	 * The size has been reduced by one so that the LIGHT color does not come out.
 	 */
 	// @ts-ignore
-	return COLORS[Object.keys(COLORS)[index % (Object.keys(COLORS).length - 1)]]?.name;
+	return COLORS[Object.keys(COLORS)[index % (Object.keys(COLORS).length - 1)]]?.name
 }
 
-export default COLORS;
+export default COLORS

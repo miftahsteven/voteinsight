@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSettingsInputSvideo = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -15,7 +15,7 @@ const SvgSettingsInputSvideo = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={6.5} cy={11.5} r={1.5} />
 			<circle cx={8.5} cy={16.5} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSettingsInputSvideo;
+export default SvgSettingsInputSvideo

@@ -1,13 +1,13 @@
-import React, { Fragment } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React, { Fragment } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -16,13 +16,13 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import Button from '../../../components/bootstrap/Button';
-import Spinner from '../../../components/bootstrap/Spinner';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import COLORS from '../../../common/data/colorDummyData';
-import Popovers from '../../../components/bootstrap/Popovers';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import Button from '../../../components/bootstrap/Button'
+import Spinner from '../../../components/bootstrap/Spinner'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import COLORS from '../../../common/data/colorDummyData'
+import Popovers from '../../../components/bootstrap/Popovers'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -34,7 +34,7 @@ const Index: NextPage = () => {
 	size={ Number || String } // Example: 10, '3vh', '5rem' etc.
 	inButton={ Boolean || String} // true || false || 'onlyIcon'
 	className={ String }
-	{...props} />`;
+	{...props} />`
 	return (
 		<PageWrapper>
 			<Head>
@@ -250,14 +250,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

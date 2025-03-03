@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,10 +6,10 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import { series } from '../../../../common/data/chartDummyData';
-import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import { series } from '../../../../common/data/chartDummyData'
+import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn'
 
 const AreaBasic = () => {
 	const [state] = useState<IChartOptions>({
@@ -55,7 +55,7 @@ const AreaBasic = () => {
 				theme: 'dark',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -75,7 +75,7 @@ const AreaBasic = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default AreaBasic;
+export default AreaBasic

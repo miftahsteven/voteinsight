@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const MixedLineColumn = () => {
 	const [state] = useState<IChartOptions>({
@@ -69,14 +69,14 @@ const MixedLineColumn = () => {
 				y: {
 					formatter(y) {
 						if (typeof y !== 'undefined') {
-							return `${y.toFixed(0)} points`;
+							return `${y.toFixed(0)} points`
 						}
-						return y;
+						return y
 					},
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -93,7 +93,7 @@ const MixedLineColumn = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default MixedLineColumn;
+export default MixedLineColumn

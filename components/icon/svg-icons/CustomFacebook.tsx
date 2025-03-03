@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import * as React from 'react';
+import type { SVGProps } from 'react'
+import * as React from 'react'
 
 const SvgCustomFacebook = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -18,5 +18,5 @@ const SvgCustomFacebook = (props: SVGProps<SVGSVGElement>) => (
 			d='M353.5 512V314h66.75l10-77.5H353.5v-49.36c0-22.386 6.215-37.64 38.316-37.64H432.5V80.371c-7.078-.941-31.363-3.047-59.621-3.047-59 0-99.379 36-99.379 102.14V236.5H207V314h66.5v198zm0 0'
 		/>
 	</svg>
-);
-export default SvgCustomFacebook;
+)
+export default SvgCustomFacebook

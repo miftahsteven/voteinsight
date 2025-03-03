@@ -1,14 +1,14 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -21,21 +21,21 @@ import Card, {
 	CardSubTitle,
 	CardTabItem,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Button, { ButtonGroup } from '../../../components/bootstrap/Button';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Button, { ButtonGroup } from '../../../components/bootstrap/Button'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import { TCardBorderSize, TCardShadow, TCardSize } from '../../../type/card-type';
-import Popovers from '../../../components/bootstrap/Popovers';
-import { TColor } from '../../../type/color-type';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import Icon from '../../../components/icon/Icon';
-import Pose from '../../../assets/img/pose.png';
+} from '../../../components/bootstrap/Dropdown'
+import { TCardBorderSize, TCardShadow, TCardSize } from '../../../type/card-type'
+import Popovers from '../../../components/bootstrap/Popovers'
+import { TColor } from '../../../type/color-type'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import Icon from '../../../components/icon/Icon'
+import Pose from '../../../assets/img/pose.png'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -135,10 +135,10 @@ const Index: NextPage = () => {
 		>
 		...
 	</CardTabItem>
-</Card>`;
+</Card>`
 
-	const shadows: TCardShadow[] = [null, 'none', 'sm', 'md', 'lg'];
-	const borders: TCardBorderSize[] = [null, 0, 1, 2, 3, 4, 5];
+	const shadows: TCardShadow[] = [null, 'none', 'sm', 'md', 'lg']
+	const borders: TCardBorderSize[] = [null, 0, 1, 2, 3, 4, 5]
 	const colors: (TColor | null)[] = [
 		null,
 		'primary',
@@ -149,8 +149,8 @@ const Index: NextPage = () => {
 		'danger',
 		'light',
 		'dark',
-	];
-	const size: TCardSize[] = ['sm', null, 'lg'];
+	]
+	const size: TCardSize[] = ['sm', null, 'lg']
 	const sampleIcons = [
 		'Alarm',
 		'DataExploration',
@@ -161,7 +161,7 @@ const Index: NextPage = () => {
 		'StoreMallDirectory',
 		'VerifiedUser',
 		'QrCodeScanner',
-	];
+	]
 
 	return (
 		<PageWrapper>
@@ -1358,14 +1358,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

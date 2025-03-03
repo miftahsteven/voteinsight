@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import * as React from 'react';
+import type { SVGProps } from 'react'
+import * as React from 'react'
 
 const SvgCustomYarn = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -19,5 +19,5 @@ const SvgCustomYarn = (props: SVGProps<SVGSVGElement>) => (
 		/>
 		<path fill='#fff' d='M172 399c8-7 12-32 12-32l11 10s-20 10-10 28l-13-6' />
 	</svg>
-);
-export default SvgCustomYarn;
+)
+export default SvgCustomYarn

@@ -1,16 +1,16 @@
-import React, { FC } from 'react';
-import { Draggable, DraggableProvided, DraggableStateSnapshot } from '@hello-pangea/dnd';
-import Card from '../../../../components/bootstrap/Card';
-import classNames from 'classnames';
-import { getItemStyle } from '../helper/style';
-import { TCard, TCards, TColumnsData } from '../type/types';
-import ColumnCard from './ColumnCard';
+import React, { FC } from 'react'
+import { Draggable, DraggableProvided, DraggableStateSnapshot } from '@hello-pangea/dnd'
+import Card from '../../../../components/bootstrap/Card'
+import classNames from 'classnames'
+import { getItemStyle } from '../helper/style'
+import { TCard, TCards, TColumnsData } from '../type/types'
+import ColumnCard from './ColumnCard'
 
 interface IColumnCardWrapper {
-	columnKey: string;
-	columnsData: TColumnsData;
-	cardsData: TCards;
-	setCardsData(...args: unknown[]): unknown;
+	columnKey: string
+	columnsData: TColumnsData
+	cardsData: TCards
+	setCardsData(...args: unknown[]): unknown
 }
 const ColumnCardWrapper: FC<IColumnCardWrapper> = ({
 	columnKey,
@@ -18,7 +18,7 @@ const ColumnCardWrapper: FC<IColumnCardWrapper> = ({
 	cardsData,
 	setCardsData,
 }) => {
-	const cardsInTheColumn: TCard[] = cardsData[columnKey];
+	const cardsInTheColumn: TCard[] = cardsData[columnKey]
 
 	return (
 		<>
@@ -56,7 +56,7 @@ const ColumnCardWrapper: FC<IColumnCardWrapper> = ({
 				</Draggable>
 			))}
 		</>
-	);
-};
+	)
+}
 
-export default ColumnCardWrapper;
+export default ColumnCardWrapper

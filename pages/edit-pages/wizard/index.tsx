@@ -1,24 +1,24 @@
-import React, { FC, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import { useFormik } from 'formik';
-import showNotification from '../../../components/extras/showNotification';
-import Icon from '../../../components/icon/Icon';
-import editPasswordValidate from '../../../common/function/validation/editPasswordValidate';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
+import React, { FC, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import { useFormik } from 'formik'
+import showNotification from '../../../components/extras/showNotification'
+import Icon from '../../../components/icon/Icon'
+import editPasswordValidate from '../../../common/function/validation/editPasswordValidate'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import User1Img from '../../../assets/img/wanna/wanna2.png';
-import Avatar from '../../../components/Avatar';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Button from '../../../components/bootstrap/Button'
+import User1Img from '../../../assets/img/wanna/wanna2.png'
+import Avatar from '../../../components/Avatar'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardFooter,
@@ -27,18 +27,18 @@ import Card, {
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Wizard, { WizardItem } from '../../../components/Wizard';
-import Input from '../../../components/bootstrap/forms/Input';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Select from '../../../components/bootstrap/forms/Select';
-import Label from '../../../components/bootstrap/forms/Label';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
-import CommonMyWallet from '../../../common/partial/CommonMyWallet';
+} from '../../../components/bootstrap/Card'
+import Wizard, { WizardItem } from '../../../components/Wizard'
+import Input from '../../../components/bootstrap/forms/Input'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Select from '../../../components/bootstrap/forms/Select'
+import Label from '../../../components/bootstrap/forms/Label'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
+import CommonMyWallet from '../../../common/partial/CommonMyWallet'
 
 interface IPreviewItemProps {
-	title: string;
-	value: any | any[];
+	title: string
+	value: any | any[]
 }
 const PreviewItem: FC<IPreviewItemProps> = ({ title, value }) => {
 	return (
@@ -46,25 +46,25 @@ const PreviewItem: FC<IPreviewItemProps> = ({ title, value }) => {
 			<div className='col-3 text-end'>{title}</div>
 			<div className='col-9 fw-bold'>{value || '-'}</div>
 		</>
-	);
-};
+	)
+}
 
 interface IValues {
-	firstName: string;
-	lastName: string;
-	displayName: string;
-	emailAddress: string;
-	addressLine: string;
-	phoneNumber: string;
-	addressLine2: string;
-	city: string;
-	state: string;
-	zip: string;
-	emailNotification: string[];
-	pushNotification: string[];
-	currentPassword?: string;
-	newPassword?: string;
-	confirmPassword?: string;
+	firstName: string
+	lastName: string
+	displayName: string
+	emailAddress: string
+	addressLine: string
+	phoneNumber: string
+	addressLine2: string
+	city: string
+	state: string
+	zip: string
+	emailNotification: string[]
+	pushNotification: string[]
+	currentPassword?: string
+	newPassword?: string
+	confirmPassword?: string
 }
 const validate = (values: IValues) => {
 	const errors: IValues = {
@@ -83,88 +83,88 @@ const validate = (values: IValues) => {
 		zip: '',
 		emailNotification: [],
 		pushNotification: [],
-	};
+	}
 	if (!values.firstName) {
-		errors.firstName = 'Required';
+		errors.firstName = 'Required'
 	} else if (values.firstName.length < 3) {
-		errors.firstName = 'Must be 3 characters or more';
+		errors.firstName = 'Must be 3 characters or more'
 	} else if (values.firstName.length > 20) {
-		errors.firstName = 'Must be 20 characters or less';
+		errors.firstName = 'Must be 20 characters or less'
 	}
 
 	if (!values.lastName) {
-		errors.lastName = 'Required';
+		errors.lastName = 'Required'
 	} else if (values.lastName.length < 3) {
-		errors.lastName = 'Must be 3 characters or more';
+		errors.lastName = 'Must be 3 characters or more'
 	} else if (values.lastName.length > 20) {
-		errors.lastName = 'Must be 20 characters or less';
+		errors.lastName = 'Must be 20 characters or less'
 	}
 
 	if (!values.displayName) {
-		errors.displayName = 'Required';
+		errors.displayName = 'Required'
 	} else if (values.displayName.length > 30) {
-		errors.displayName = 'Must be 20 characters or less';
+		errors.displayName = 'Must be 20 characters or less'
 	}
 
 	if (!values.emailAddress) {
-		errors.emailAddress = 'Required';
+		errors.emailAddress = 'Required'
 	} else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.emailAddress)) {
-		errors.emailAddress = 'Invalid email address';
+		errors.emailAddress = 'Invalid email address'
 	}
 
 	if (values.currentPassword) {
 		if (!values.newPassword) {
-			errors.newPassword = 'Please provide a valid password.';
+			errors.newPassword = 'Please provide a valid password.'
 		} else {
-			errors.newPassword = '';
+			errors.newPassword = ''
 
 			if (values.newPassword.length < 8 || values.newPassword.length > 32) {
 				errors.newPassword +=
-					'The password must be at least 8 characters long, but no more than 32. ';
+					'The password must be at least 8 characters long, but no more than 32. '
 			}
 			if (!/[0-9]/g.test(values.newPassword)) {
 				errors.newPassword +=
-					'Require that at least one digit appear anywhere in the string. ';
+					'Require that at least one digit appear anywhere in the string. '
 			}
 			if (!/[a-z]/g.test(values.newPassword)) {
 				errors.newPassword +=
-					'Require that at least one lowercase letter appear anywhere in the string. ';
+					'Require that at least one lowercase letter appear anywhere in the string. '
 			}
 			if (!/[A-Z]/g.test(values.newPassword)) {
 				errors.newPassword +=
-					'Require that at least one uppercase letter appear anywhere in the string. ';
+					'Require that at least one uppercase letter appear anywhere in the string. '
 			}
 			if (!/[!@#$%^&*)(+=._-]+$/g.test(values.newPassword)) {
 				errors.newPassword +=
-					'Require that at least one special character appear anywhere in the string. ';
+					'Require that at least one special character appear anywhere in the string. '
 			}
 		}
 
 		if (!values.confirmPassword) {
-			errors.confirmPassword = 'Please provide a valid password.';
+			errors.confirmPassword = 'Please provide a valid password.'
 		} else if (values.newPassword !== values.confirmPassword) {
-			errors.confirmPassword = 'Passwords do not match.';
+			errors.confirmPassword = 'Passwords do not match.'
 		}
 	}
 
-	return errors;
-};
+	return errors
+}
 
 const Index: NextPage = () => {
-	const router = useRouter();
+	const router = useRouter()
 
 	const TABS = {
 		ACCOUNT_DETAIL: 'Account Details',
 		PASSWORD: 'Password',
 		MY_WALLET: 'My Wallet',
-	};
-	const [activeTab, setActiveTab] = useState(TABS.ACCOUNT_DETAIL);
+	}
+	const [activeTab, setActiveTab] = useState(TABS.ACCOUNT_DETAIL)
 
 	const notificationTypes = [
 		{ id: 1, name: 'New Order' },
 		{ id: 2, name: 'New Customer' },
 		{ id: 3, name: 'Order Status' },
-	];
+	]
 
 	const formik = useFormik({
 		initialValues: {
@@ -189,9 +189,9 @@ const Index: NextPage = () => {
 					<span>Updated Successfully</span>
 				</span>,
 				"The user's account details have been successfully updated.",
-			);
+			)
 		},
-	});
+	})
 
 	const formikPassword = useFormik({
 		initialValues: {
@@ -207,9 +207,9 @@ const Index: NextPage = () => {
 					<span>Updated Successfully</span>
 				</span>,
 				"The user's password have been successfully updated.",
-			);
+			)
 		},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -234,7 +234,7 @@ const Index: NextPage = () => {
 						isLight
 						icon='Add'
 						onClick={() => {
-							setActiveTab(TABS.ACCOUNT_DETAIL);
+							setActiveTab(TABS.ACCOUNT_DETAIL)
 							formik.setValues({
 								firstName: '',
 								lastName: '',
@@ -248,7 +248,7 @@ const Index: NextPage = () => {
 								zip: '',
 								emailNotification: [''],
 								pushNotification: [''],
-							});
+							})
 						}}>
 						Add New
 					</Button>
@@ -781,14 +781,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgNoSim = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -9,7 +9,7 @@ const SvgNoSim = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M10.84 5L9.36 6.47 17 14.11V5z' opacity={0.3} />
 			<path d='M10.84 5H17v9.11l2 2V5c0-1.1-.9-2-2-2h-6.99L7.95 5.06l1.41 1.41L10.84 5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgNoSim;
+export default SvgNoSim

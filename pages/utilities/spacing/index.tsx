@@ -1,21 +1,21 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const Index: NextPage = () => {
 	const EXAMPLE = `.mt-0 {
@@ -33,23 +33,23 @@ const Index: NextPage = () => {
 
 .p-3 {
   padding: $spacer !important;
-}`;
+}`
 	const HORIZONTAL_CENTERING = `
 <div className='mx-auto' style={{ width: 200, backgroundColor: 'rgba(86, 61, 124, 0.15)' }}>
 	Centered element
-</div>`;
+</div>`
 
 	const NEGATIVE_MARGIN = `
 .mt-n1 {
 	margin-top: -0.25rem !important;
-}`;
+}`
 
 	const GAP = `
 <div className='d-grid gap-3'>
 	<div className='p-2 bg-light border'>Grid item 1</div>
 	<div className='p-2 bg-light border'>Grid item 2</div>
 	<div className='p-2 bg-light border'>Grid item 3</div>
-</div>`;
+</div>`
 
 	const MAP = `
 $spacer: 1rem;
@@ -62,7 +62,7 @@ $spacers: (
   	5: $spacer * 3,
 );
 
-$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);`;
+$negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);`
 	const UTILITIES_API = `
 "margin": (
   	responsive: true,
@@ -191,7 +191,7 @@ $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
   	property: padding-left,
   	class: ps,
   	values: $spacers
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -510,14 +510,14 @@ $negative-spacers: if($enable-negative-margins, negativify-map($spacers), null);
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

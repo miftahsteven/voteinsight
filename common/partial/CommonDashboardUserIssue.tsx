@@ -1,7 +1,7 @@
-import React, { useState } from 'react';
-import { Calendar as DatePicker } from 'react-date-range';
-import dayjs from 'dayjs';
-import { useFormik } from 'formik';
+import React, { useState } from 'react'
+import { Calendar as DatePicker } from 'react-date-range'
+import dayjs from 'dayjs'
+import { useFormik } from 'formik'
 import Card, {
 	CardActions,
 	CardBody,
@@ -9,24 +9,24 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Button from '../../components/bootstrap/Button';
-import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../components/bootstrap/Modal';
-import FormGroup from '../../components/bootstrap/forms/FormGroup';
-import Input from '../../components/bootstrap/forms/Input';
-import Todo, { ITodoListItem } from '../../components/extras/Todo';
-import Label from '../../components/bootstrap/forms/Label';
-import Checks, { ChecksGroup } from '../../components/bootstrap/forms/Checks';
-import Badge from '../../components/bootstrap/Badge';
-import Progress from '../../components/bootstrap/Progress';
-import { TColor } from '../../type/color-type';
+} from '../../components/bootstrap/Card'
+import Button from '../../components/bootstrap/Button'
+import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../components/bootstrap/Modal'
+import FormGroup from '../../components/bootstrap/forms/FormGroup'
+import Input from '../../components/bootstrap/forms/Input'
+import Todo, { ITodoListItem } from '../../components/extras/Todo'
+import Label from '../../components/bootstrap/forms/Label'
+import Checks, { ChecksGroup } from '../../components/bootstrap/forms/Checks'
+import Badge from '../../components/bootstrap/Badge'
+import Progress from '../../components/bootstrap/Progress'
+import { TColor } from '../../type/color-type'
 
 const CommonDashboardUserIssue = () => {
 	const TODO_BADGES: {
 		[key: string]: {
-			text: string;
-			color?: TColor;
-		};
+			text: string
+			color?: TColor
+		}
 	} = {
 		NEW: { text: 'New', color: 'success' },
 		UPDATE: { text: 'Update', color: 'info' },
@@ -35,13 +35,13 @@ const CommonDashboardUserIssue = () => {
 		PRINT: { text: 'Print', color: 'danger' },
 		CONTROL: { text: 'Control', color: 'primary' },
 		MEETING: { text: 'Meeting', color: 'secondary' },
-	};
+	}
 	const getBadgeWithText = (text: string): string => {
 		return TODO_BADGES[
 			// @ts-ignore
 			Object.keys(TODO_BADGES).filter((key) => TODO_BADGES[key].text === text)
-		];
-	};
+		]
+	}
 
 	/**
 	 * To/Do List
@@ -96,14 +96,14 @@ const CommonDashboardUserIssue = () => {
 			date: dayjs().add(32, 'day'),
 			badge: TODO_BADGES.MEETING,
 		},
-	]);
-	const listLength = list.length;
-	const completeTaskLength = list.filter((i) => i.status).length;
+	])
+	const listLength = list.length
+	const completeTaskLength = list.filter((i) => i.status).length
 
 	/**
 	 * Add New Modal Status
 	 */
-	const [modalStatus, setModalStatus] = useState(false);
+	const [modalStatus, setModalStatus] = useState(false)
 
 	/**
 	 * Ann New To/Do func
@@ -113,35 +113,35 @@ const CommonDashboardUserIssue = () => {
 	 */
 	const addTodo = (title: string, date: Date, badge: any) => {
 		const newTodos: {
-			id?: string | number;
-			status?: boolean;
-			title?: string | number;
-			date?: dayjs.ConfigType;
+			id?: string | number
+			status?: boolean
+			title?: string | number
+			date?: dayjs.ConfigType
 			badge?: {
-				text?: string;
-				color?: TColor;
-			};
-		}[] = [{ title, date, badge }, ...list];
-		setList(newTodos);
-	};
+				text?: string
+				color?: TColor
+			}
+		}[] = [{ title, date, badge }, ...list]
+		setList(newTodos)
+	}
 
 	/**
 	 * New To/Do Day
 	 */
-	const [date, setDate] = useState(new Date());
+	const [date, setDate] = useState(new Date())
 
 	const validate = (values: { todoTitle: string; todoBadges: string }) => {
 		const errors: { todoTitle: string } = {
 			todoTitle: '',
-		};
+		}
 		if (!values.todoTitle) {
-			errors.todoTitle = 'Required';
+			errors.todoTitle = 'Required'
 		} else if (values.todoTitle.length > 40) {
-			errors.todoTitle = 'Must be 40 characters or less';
+			errors.todoTitle = 'Must be 40 characters or less'
 		}
 
-		return errors;
-	};
+		return errors
+	}
 	const formik = useFormik({
 		initialValues: {
 			todoTitle: '',
@@ -149,16 +149,16 @@ const CommonDashboardUserIssue = () => {
 		},
 		validate,
 		onSubmit: (values, { resetForm }) => {
-			addTodo(values.todoTitle, date, getBadgeWithText(values.todoBadges));
-			setModalStatus(false);
+			addTodo(values.todoTitle, date, getBadgeWithText(values.todoBadges))
+			setModalStatus(false)
 			resetForm({
 				values: {
 					todoTitle: '',
 					todoBadges: '',
 				},
-			});
+			})
 		},
-	});
+	})
 
 	return (
 		<Card stretch>
@@ -258,7 +258,7 @@ const CommonDashboardUserIssue = () => {
 				<Todo list={list} setList={setList} />
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonDashboardUserIssue;
+export default CommonDashboardUserIssue

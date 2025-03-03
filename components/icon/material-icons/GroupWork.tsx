@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgGroupWork = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgGroupWork = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={12} cy={8} r={2} />
 			<circle cx={16} cy={14} r={2} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgGroupWork;
+export default SvgGroupWork

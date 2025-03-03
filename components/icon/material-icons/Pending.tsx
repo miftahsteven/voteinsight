@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgPending = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgPending = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={12} cy={12} r={1.5} />
 			<circle cx={17} cy={12} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgPending;
+export default SvgPending

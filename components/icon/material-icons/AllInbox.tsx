@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgAllInbox = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgAllInbox = (props: SVGProps<SVGSVGElement>) => {
 				opacity={0.3}
 			/>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgAllInbox;
+export default SvgAllInbox

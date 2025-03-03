@@ -1,9 +1,9 @@
-import React, { cloneElement, forwardRef, HTMLAttributes, ReactElement, ReactNode } from 'react';
-import classNames from 'classnames';
+import React, { cloneElement, forwardRef, HTMLAttributes, ReactElement, ReactNode } from 'react'
+import classNames from 'classnames'
 
 interface INavLinkDropdownProps extends HTMLAttributes<HTMLSpanElement> {
-	children: ReactElement<INavItemProps>[] | ReactNode[] | string;
-	className?: string;
+	children: ReactElement<INavItemProps>[] | ReactNode[] | string
+	className?: string
 }
 export const NavLinkDropdown = forwardRef<HTMLSpanElement, INavLinkDropdownProps>(
 	({ children, className, ...props }, ref) => {
@@ -15,16 +15,16 @@ export const NavLinkDropdown = forwardRef<HTMLSpanElement, INavLinkDropdownProps
 				{...props}>
 				{children}
 			</span>
-		);
+		)
 	},
-);
-NavLinkDropdown.displayName = 'NavLinkDropdown';
+)
+NavLinkDropdown.displayName = 'NavLinkDropdown'
 
 interface INavItemProps extends HTMLAttributes<HTMLLIElement> {
-	children: ReactNode;
-	className?: string;
-	isActive?: boolean;
-	isDisable?: boolean;
+	children: ReactNode
+	className?: string
+	isActive?: boolean
+	isDisable?: boolean
 }
 export const NavItem = forwardRef<HTMLLIElement, INavItemProps>(
 	({ children, className, isActive, isDisable, ...props }, ref) => {
@@ -37,7 +37,7 @@ export const NavItem = forwardRef<HTMLLIElement, INavItemProps>(
 				// @ts-ignore
 
 				className: classNames(children.props.className, 'nav-item'),
-			});
+			})
 		}
 		return (
 			<li ref={ref} className={classNames('nav-item', className)} {...props}>
@@ -54,20 +54,20 @@ export const NavItem = forwardRef<HTMLLIElement, INavItemProps>(
 					})
 				}
 			</li>
-		);
+		)
 	},
-);
-NavItem.displayName = 'NavItem';
+)
+NavItem.displayName = 'NavItem'
 
 interface INavProps extends HTMLAttributes<HTMLElement> {
-	children: ReactElement<INavItemProps>[] | ReactNode[];
-	className?: string;
-	tag?: 'ul' | 'nav';
-	design?: 'tabs' | 'pills';
-	isFill?: boolean;
-	isJustified?: boolean;
-	isVertical?: boolean;
-	verticalBreakpoint?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | null;
+	children: ReactElement<INavItemProps>[] | ReactNode[]
+	className?: string
+	tag?: 'ul' | 'nav'
+	design?: 'tabs' | 'pills'
+	isFill?: boolean
+	isJustified?: boolean
+	isVertical?: boolean
+	verticalBreakpoint?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | null
 }
 const Nav = forwardRef<HTMLUListElement, INavProps>(
 	(
@@ -105,9 +105,9 @@ const Nav = forwardRef<HTMLUListElement, INavProps>(
 				{...props}>
 				{children}
 			</Tag>
-		);
+		)
 	},
-);
-Nav.displayName = 'Nav';
+)
+Nav.displayName = 'Nav'
 
-export default Nav;
+export default Nav

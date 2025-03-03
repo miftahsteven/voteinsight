@@ -1,39 +1,39 @@
-import React, { SetStateAction, useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import dayjs from 'dayjs';
-import USERS, { IUserProps } from '../../../common/data/userDummyData';
-import CHATS, { IMessages } from '../../../common/data/chatDummyData';
-import { demoPagesMenu } from '../../../menu';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+import React, { SetStateAction, useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import dayjs from 'dayjs'
+import USERS, { IUserProps } from '../../../common/data/userDummyData'
+import CHATS, { IMessages } from '../../../common/data/chatDummyData'
+import { demoPagesMenu } from '../../../menu'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Icon from '../../../components/icon/Icon';
-import CommonChatStatus from '../../../common/partial/CommonChatStatus';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Icon from '../../../components/icon/Icon'
+import CommonChatStatus from '../../../common/partial/CommonChatStatus'
+import Button from '../../../components/bootstrap/Button'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Chat, { ChatGroup, ChatHeader, ChatListItem } from '../../../components/Chat';
-import OffCanvas, { OffCanvasBody, OffCanvasHeader } from '../../../components/bootstrap/OffCanvas';
-import InputGroup from '../../../components/bootstrap/forms/InputGroup';
-import Textarea from '../../../components/bootstrap/forms/Textarea';
+} from '../../../components/bootstrap/Card'
+import Chat, { ChatGroup, ChatHeader, ChatListItem } from '../../../components/Chat'
+import OffCanvas, { OffCanvasBody, OffCanvasHeader } from '../../../components/bootstrap/OffCanvas'
+import InputGroup from '../../../components/bootstrap/forms/InputGroup'
+import Textarea from '../../../components/bootstrap/forms/Textarea'
 
 const Index: NextPage = () => {
-	const router = useRouter();
+	const router = useRouter()
 
-	const [canvasStatus, setCanvasStatus] = useState<boolean>(false);
+	const [canvasStatus, setCanvasStatus] = useState<boolean>(false)
 
 	const TABS: { [key: string]: IUserProps } = {
 		CHLOE: USERS.CHLOE,
@@ -42,42 +42,42 @@ const Index: NextPage = () => {
 		RYAN: USERS.RYAN,
 		ELLA: USERS.ELLA,
 		SAM: USERS.SAM,
-	};
-	const [activeTab, setActiveTab] = useState<IUserProps | SetStateAction<null>>(null);
+	}
+	const [activeTab, setActiveTab] = useState<IUserProps | SetStateAction<null>>(null)
 
 	function getMessages(ACTIVE_TAB: IUserProps): IMessages[] | null {
 		if (ACTIVE_TAB === USERS.ELLA) {
-			return CHATS.ELLA_VS_JOHN;
+			return CHATS.ELLA_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.GRACE) {
-			return CHATS.GRACE_VS_JOHN;
+			return CHATS.GRACE_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.JANE) {
-			return CHATS.JANE_VS_JOHN;
+			return CHATS.JANE_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.RYAN) {
-			return CHATS.RYAN_VS_JOHN;
+			return CHATS.RYAN_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.CHLOE) {
-			return CHATS.CHLOE_VS_JOHN;
+			return CHATS.CHLOE_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.SAM) {
-			return CHATS.SAM_VS_JOHN;
+			return CHATS.SAM_VS_JOHN
 		}
-		return null;
+		return null
 	}
 
 	const getListShow = (TAB_NAME: IUserProps | SetStateAction<null>) => {
-		setActiveTab(TAB_NAME);
-		setCanvasStatus(true);
-	};
+		setActiveTab(TAB_NAME)
+		setCanvasStatus(true)
+	}
 
 	useEffect(() => {
 		if (!canvasStatus) {
-			setActiveTab(null);
+			setActiveTab(null)
 		}
-		return () => {};
-	}, [canvasStatus]);
+		return () => {}
+	}, [canvasStatus])
 
 	return (
 		<PageWrapper>
@@ -251,14 +251,14 @@ const Index: NextPage = () => {
 				</OffCanvas>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

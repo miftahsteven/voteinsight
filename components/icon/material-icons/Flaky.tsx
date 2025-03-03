@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFlaky = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -9,7 +9,7 @@ const SvgFlaky = (props: SVGProps<SVGSVGElement>) => {
 				fillRule='evenodd'
 			/>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFlaky;
+export default SvgFlaky

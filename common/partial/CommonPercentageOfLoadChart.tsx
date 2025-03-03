@@ -1,6 +1,6 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import classNames from 'classnames';
+import React from 'react'
+import dayjs from 'dayjs'
+import classNames from 'classnames'
 import Card, {
 	CardActions,
 	CardBody,
@@ -8,15 +8,15 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Icon from '../../components/icon/Icon';
-import Button from '../../components/bootstrap/Button';
-import { demoPagesMenu } from '../../menu';
-import Chart, { IChartOptions } from '../../components/extras/Chart';
-import useDarkMode from '../../hooks/useDarkMode';
+} from '../../components/bootstrap/Card'
+import Icon from '../../components/icon/Icon'
+import Button from '../../components/bootstrap/Button'
+import { demoPagesMenu } from '../../menu'
+import Chart, { IChartOptions } from '../../components/extras/Chart'
+import useDarkMode from '../../hooks/useDarkMode'
 
 const CommonPercentageOfLoadChart = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 	const percentageOfLoad: IChartOptions = {
 		series: [
 			{
@@ -71,7 +71,7 @@ const CommonPercentageOfLoadChart = () => {
 				theme: 'dark',
 				y: {
 					formatter(val: number): string {
-						return `${val} Appointments`;
+						return `${val} Appointments`
 					},
 				},
 			},
@@ -79,7 +79,7 @@ const CommonPercentageOfLoadChart = () => {
 				show: false,
 			},
 		},
-	};
+	}
 	return (
 		<Card
 			className={classNames('shadow-3d-primary', {
@@ -118,7 +118,7 @@ const CommonPercentageOfLoadChart = () => {
 				/>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonPercentageOfLoadChart;
+export default CommonPercentageOfLoadChart

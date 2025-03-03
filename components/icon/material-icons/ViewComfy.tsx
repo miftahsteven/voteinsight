@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgViewComfy = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgViewComfy = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M3 5v14h19V5H3zm4.25 12H5v-2h2.25v2zm0-4H5v-2h2.25v2zm0-4H5V7h2.25v2zm4.25 8H9.25v-2h2.25v2zm0-4H9.25v-2h2.25v2zm0-4H9.25V7h2.25v2zm4.25 8H13.5v-2h2.25v2zm0-4H13.5v-2h2.25v2zm0-4H13.5V7h2.25v2zM20 17h-2.25v-2H20v2zm0-4h-2.25v-2H20v2zm0-4h-2.25V7H20v2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgViewComfy;
+export default SvgViewComfy

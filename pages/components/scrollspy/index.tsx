@@ -1,29 +1,29 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardCodeView,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import ScrollspyNav from '../../../components/bootstrap/ScrollspyNav';
-import Button from '../../../components/bootstrap/Button';
-import Humans from '../../../assets/img/scene1.png';
-import Humans2 from '../../../assets/img/scene2.png';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import ScrollspyNav from '../../../components/bootstrap/ScrollspyNav'
+import Button from '../../../components/bootstrap/Button'
+import Humans from '../../../assets/img/scene1.png'
+import Humans2 from '../../../assets/img/scene2.png'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -52,10 +52,10 @@ const Index: NextPage = () => {
 	>
 	...
 </div>
-...`;
+...`
 
 	const GENERAL_USAGE_2 = `
-const [state, setState] = useState(null);`;
+const [state, setState] = useState(null);`
 	const GENERAL_USAGE3 = `
 <ScrollspyNav
 	items={ Array } // Example: ['first', 'second', 'third']
@@ -86,9 +86,9 @@ const [state, setState] = useState(null);`;
 	>
 	...
 </div>
-...`;
+...`
 
-	const [activeElementId, setActiveElementId] = useState(null);
+	const [activeElementId, setActiveElementId] = useState(null)
 	return (
 		<PageWrapper>
 			<Head>
@@ -208,14 +208,14 @@ const [state, setState] = useState(null);`;
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

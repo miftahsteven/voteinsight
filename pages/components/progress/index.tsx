@@ -1,13 +1,13 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -16,12 +16,12 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Popovers from '../../../components/bootstrap/Popovers';
-import Progress from '../../../components/bootstrap/Progress';
-import COLORS from '../../../common/data/colorDummyData';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Popovers from '../../../components/bootstrap/Popovers'
+import Progress from '../../../components/bootstrap/Progress'
+import COLORS from '../../../common/data/colorDummyData'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -35,14 +35,14 @@ const Index: NextPage = () => {
 	isAutoColor={ Boolean }
 	color={ String } // 'primary' || 'secondary' || 'success' || 'info' || 'warning' || 'danger' || 'light' || 'dark'
 	className={ String }
-	{...props} />`;
+	{...props} />`
 
 	const GENERAL_USAGE_2 = `
 <Progress>
 	<Progress {...props} />
 	<Progress {...props} />
 	...
-</Progress>`;
+</Progress>`
 	return (
 		<PageWrapper>
 			<Head>
@@ -443,14 +443,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

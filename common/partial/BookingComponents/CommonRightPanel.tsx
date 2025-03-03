@@ -1,47 +1,47 @@
-import React, { FC, useState } from 'react';
-import classNames from 'classnames';
-import OffCanvas, { OffCanvasBody } from '../../../components/bootstrap/OffCanvas';
-import Avatar, { AvatarGroup } from '../../../components/Avatar';
-import USERS from '../../data/userDummyData';
+import React, { FC, useState } from 'react'
+import classNames from 'classnames'
+import OffCanvas, { OffCanvasBody } from '../../../components/bootstrap/OffCanvas'
+import Avatar, { AvatarGroup } from '../../../components/Avatar'
+import USERS from '../../data/userDummyData'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Button from '../../../components/bootstrap/Button';
+} from '../../../components/bootstrap/Dropdown'
+import Button from '../../../components/bootstrap/Button'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Icon from '../../../components/icon/Icon';
-import Chart from '../../../components/extras/Chart';
-import { sales } from '../../data/chartDummyData';
-import SERVICES from '../../data/serviceDummyData';
-import useDarkMode from '../../../hooks/useDarkMode';
+} from '../../../components/bootstrap/Card'
+import Icon from '../../../components/icon/Icon'
+import Chart from '../../../components/extras/Chart'
+import { sales } from '../../data/chartDummyData'
+import SERVICES from '../../data/serviceDummyData'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 interface IUserAppointment {
-	[key: string]: 'Approved' | 'Pending' | 'Canceled';
+	[key: string]: 'Approved' | 'Pending' | 'Canceled'
 }
 interface ICommonRightPanel {
-	setOpen(...args: unknown[]): unknown;
-	isOpen: boolean;
+	setOpen(...args: unknown[]): unknown
+	isOpen: boolean
 }
 const CommonRightPanel: FC<ICommonRightPanel> = ({ setOpen, isOpen }) => {
-	const { themeStatus, darkModeStatus } = useDarkMode();
+	const { themeStatus, darkModeStatus } = useDarkMode()
 
 	const USER_APPOINTMENT: IUserAppointment = {
 		APPROVED: 'Approved',
 		PENDING: 'Pending',
 		CANCELED: 'Canceled',
-	};
+	}
 	const [activeUserAppointmentTab, setActiveUserAppointmentTab] = useState<
 		IUserAppointment['key']
-	>(USER_APPOINTMENT.APPROVED);
+	>(USER_APPOINTMENT.APPROVED)
 	const handleActiveUserAppointmentTab = (tabName: IUserAppointment['key']) => {
-		setActiveUserAppointmentTab(tabName);
-	};
+		setActiveUserAppointmentTab(tabName)
+	}
 
 	const dataJohnAppointments = [
 		{
@@ -107,7 +107,7 @@ const CommonRightPanel: FC<ICommonRightPanel> = ({ setOpen, isOpen }) => {
 			...SERVICES.SURFING,
 			status: USER_APPOINTMENT.CANCELED,
 		},
-	];
+	]
 	return (
 		<OffCanvas setOpen={setOpen} isOpen={isOpen} isRightPanel>
 			<OffCanvasBody className='p-4'>
@@ -145,7 +145,7 @@ const CommonRightPanel: FC<ICommonRightPanel> = ({ setOpen, isOpen }) => {
 										color='link'
 										icon='Close'
 										onClick={() => {
-											setOpen(false);
+											setOpen(false)
 										}}>
 										Close
 									</Button>
@@ -308,7 +308,7 @@ const CommonRightPanel: FC<ICommonRightPanel> = ({ setOpen, isOpen }) => {
 				</Card>
 			</OffCanvasBody>
 		</OffCanvas>
-	);
-};
+	)
+}
 
-export default CommonRightPanel;
+export default CommonRightPanel

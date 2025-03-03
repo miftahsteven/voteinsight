@@ -1,13 +1,13 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import { useFormik } from 'formik';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import { useFormik } from 'formik'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -15,11 +15,11 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import { componentPagesMenu } from '../../../menu';
-import MaterialIcons from '../../../components/icon/material-icons/iconList';
-import CommonIconPreview from '../../../common/partial/other/CommonIconPreview';
-import Input from '../../../components/bootstrap/forms/Input';
+} from '../../../components/bootstrap/Card'
+import { componentPagesMenu } from '../../../menu'
+import MaterialIcons from '../../../components/icon/material-icons/iconList'
+import CommonIconPreview from '../../../common/partial/other/CommonIconPreview'
+import Input from '../../../components/bootstrap/forms/Input'
 
 const Index: NextPage = () => {
 	const formik = useFormik({
@@ -27,10 +27,10 @@ const Index: NextPage = () => {
 			filterIcon: '',
 		},
 		onSubmit: () => {},
-	});
+	})
 	const FILTERED_ICONS = MaterialIcons.filter((name) =>
 		name.toLowerCase().includes(formik.values.filterIcon.toLowerCase()),
-	);
+	)
 	return (
 		<PageWrapper>
 			<Head>
@@ -89,14 +89,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgWrongLocation = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgWrongLocation = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={12} cy={11} r={2} />
 			<path d='M22.54 2.88l-1.42-1.42L19 3.59l-2.12-2.13-1.42 1.42L17.59 5l-2.13 2.12 1.42 1.42L19 6.41l2.12 2.13 1.42-1.42L20.41 5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgWrongLocation;
+export default SvgWrongLocation

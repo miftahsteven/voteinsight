@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSpa = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -15,7 +15,7 @@ const SvgSpa = (props: SVGProps<SVGSVGElement>) => {
 				opacity={0.3}
 			/>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSpa;
+export default SvgSpa

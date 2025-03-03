@@ -1,15 +1,15 @@
-import React, { FC, ReactNode, useState } from 'react';
-import classNames from 'classnames';
-import Link from 'next/link';
-import TagWrapper from '../TagWrapper';
-import Icon from '../icon/Icon';
-import { TColor } from '../../type/color-type';
-import { TIcons } from '../../type/icons-type';
+import React, { FC, ReactNode, useState } from 'react'
+import classNames from 'classnames'
+import Link from 'next/link'
+import TagWrapper from '../TagWrapper'
+import Icon from '../icon/Icon'
+import { TColor } from '../../type/color-type'
+import { TIcons } from '../../type/icons-type'
 
 interface IAlertHeadingProps extends Record<string, any> {
-	children: ReactNode;
-	className?: string;
-	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | null;
+	children: ReactNode
+	className?: string
+	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | null
 }
 export const AlertHeading: FC<IAlertHeadingProps> = ({
 	className,
@@ -22,43 +22,43 @@ export const AlertHeading: FC<IAlertHeadingProps> = ({
 		<TagWrapper tag={tag} className={classNames('alert-heading', className)} {...props}>
 			{children}
 		</TagWrapper>
-	);
-};
+	)
+}
 
 interface IAlertLinkProps extends Record<string, any> {
-	className?: string;
-	children: ReactNode;
-	href?: string | undefined;
-	to?: string | null;
+	className?: string
+	children: ReactNode
+	href?: string | undefined
+	to?: string | null
 }
 export const AlertLink: FC<IAlertLinkProps> = ({ className, children, href, to, ...props }) => {
-	const LINK_CLASSES = classNames('alert-link', className);
+	const LINK_CLASSES = classNames('alert-link', className)
 	if (to) {
 		return (
 			// eslint-disable-next-line react/jsx-props-no-spreading
 			<Link href={`../${to}`} className={LINK_CLASSES} {...props}>
 				{children}
 			</Link>
-		);
+		)
 	}
 	return (
 		<a href={href} className={LINK_CLASSES} {...props}>
 			{children}
 		</a>
-	);
-};
+	)
+}
 
 interface IAlertProps extends Record<string, any> {
-	className?: string;
-	children: ReactNode;
-	color?: TColor;
-	isDismissible?: boolean;
-	isOutline?: boolean;
-	isLight?: boolean;
-	shadow?: null | 'sm' | 'md' | 'lg' | '3d';
-	icon?: TIcons;
-	rounded?: null | 'default' | 0 | 1 | 2 | 3 | 'pill';
-	borderWidth?: null | 0 | 1 | 2 | 3 | 4 | 5;
+	className?: string
+	children: ReactNode
+	color?: TColor
+	isDismissible?: boolean
+	isOutline?: boolean
+	isLight?: boolean
+	shadow?: null | 'sm' | 'md' | 'lg' | '3d'
+	icon?: TIcons
+	rounded?: null | 'default' | 0 | 1 | 2 | 3 | 'pill'
+	borderWidth?: null | 0 | 1 | 2 | 3 | 4 | 5
 }
 const Alert: FC<IAlertProps> = ({
 	children,
@@ -73,7 +73,7 @@ const Alert: FC<IAlertProps> = ({
 	borderWidth,
 	...props
 }) => {
-	const [status, setStatus] = useState<boolean>(true);
+	const [status, setStatus] = useState<boolean>(true)
 	if (status) {
 		return (
 			<div
@@ -116,9 +116,9 @@ const Alert: FC<IAlertProps> = ({
 					/>
 				)}
 			</div>
-		);
+		)
 	}
-	return null;
-};
+	return null
+}
 
-export default Alert;
+export default Alert

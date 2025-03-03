@@ -1,14 +1,14 @@
-import React, { FC, ReactNode } from 'react';
-import useMounted from '../hooks/useMounted';
+import React, { FC, ReactNode } from 'react'
+import useMounted from '../hooks/useMounted'
 
 interface IMountedProps {
-	children: ReactNode;
+	children: ReactNode
 }
 const Mounted: FC<IMountedProps> = ({ children }) => {
-	const { mounted } = useMounted();
+	const { mounted } = useMounted()
 
-	if (mounted) return <>{children}</>;
-	return null;
-};
+	if (mounted) return <>{children}</>
+	return null
+}
 
-export default Mounted;
+export default Mounted

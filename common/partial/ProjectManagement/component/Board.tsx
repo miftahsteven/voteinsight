@@ -1,10 +1,10 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react'
 
 interface IBoard {
-	children: ReactNode;
+	children: ReactNode
 }
 const Board: FC<IBoard> = ({ children }) => {
-	return <div className='board row mx-n4 pb-3 px-3'>{children}</div>;
-};
+	return <div className='board row mx-n4 pb-3 px-3'>{children}</div>
+}
 
-export default Board;
+export default Board

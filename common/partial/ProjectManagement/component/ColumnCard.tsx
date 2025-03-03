@@ -1,6 +1,6 @@
-import React, { FC, useState } from 'react';
-import useDarkMode from '../../../../hooks/useDarkMode';
-import { useFormik } from 'formik';
+import React, { FC, useState } from 'react'
+import useDarkMode from '../../../../hooks/useDarkMode'
+import { useFormik } from 'formik'
 import Card, {
 	CardActions,
 	CardBody,
@@ -10,39 +10,39 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import classNames from 'classnames';
-import Avatar from '../../../../components/Avatar';
-import Icon from '../../../../components/icon/Icon';
-import Badge from '../../../../components/bootstrap/Badge';
+} from '../../../../components/bootstrap/Card'
+import classNames from 'classnames'
+import Avatar from '../../../../components/Avatar'
+import Icon from '../../../../components/icon/Icon'
+import Badge from '../../../../components/bootstrap/Badge'
 import Modal, {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
-} from '../../../../components/bootstrap/Modal';
-import FormGroup from '../../../../components/bootstrap/forms/FormGroup';
-import Input from '../../../../components/bootstrap/forms/Input';
-import Textarea from '../../../../components/bootstrap/forms/Textarea';
-import Button from '../../../../components/bootstrap/Button';
-import Checks, { ChecksGroup } from '../../../../components/bootstrap/forms/Checks';
-import Chat, { ChatGroup } from '../../../../components/Chat';
-import CHATS from '../../../../common/data/chatDummyData';
-import InputGroup from '../../../../components/bootstrap/forms/InputGroup';
-import Select from '../../../../components/bootstrap/forms/Select';
-import Option from '../../../../components/bootstrap/Option';
-import USERS from '../../../../common/data/userDummyData';
-import TAGS from '../../../../common/data/boardTagsData';
-import { TCard, TCards, TColumnsData } from '../type/types';
-import { move } from '../helper/helper';
+} from '../../../../components/bootstrap/Modal'
+import FormGroup from '../../../../components/bootstrap/forms/FormGroup'
+import Input from '../../../../components/bootstrap/forms/Input'
+import Textarea from '../../../../components/bootstrap/forms/Textarea'
+import Button from '../../../../components/bootstrap/Button'
+import Checks, { ChecksGroup } from '../../../../components/bootstrap/forms/Checks'
+import Chat, { ChatGroup } from '../../../../components/Chat'
+import CHATS from '../../../../common/data/chatDummyData'
+import InputGroup from '../../../../components/bootstrap/forms/InputGroup'
+import Select from '../../../../components/bootstrap/forms/Select'
+import Option from '../../../../components/bootstrap/Option'
+import USERS from '../../../../common/data/userDummyData'
+import TAGS from '../../../../common/data/boardTagsData'
+import { TCard, TCards, TColumnsData } from '../type/types'
+import { move } from '../helper/helper'
 
 interface IColumnCard {
-	columnKey: string;
-	columnsData: TColumnsData;
-	card: TCard;
-	cardsData: TCards;
-	setCardsData(...args: unknown[]): unknown;
-	index: number;
+	columnKey: string
+	columnsData: TColumnsData
+	card: TCard
+	cardsData: TCards
+	setCardsData(...args: unknown[]): unknown
+	index: number
 }
 const ColumnCard: FC<IColumnCard> = ({
 	columnKey,
@@ -52,8 +52,8 @@ const ColumnCard: FC<IColumnCard> = ({
 	setCardsData,
 	index,
 }) => {
-	const { darkModeStatus } = useDarkMode();
-	const [editModalStatus, setEditModalStatus] = useState<boolean>(false);
+	const { darkModeStatus } = useDarkMode()
+	const [editModalStatus, setEditModalStatus] = useState<boolean>(false)
 
 	const formik = useFormik({
 		initialValues: {
@@ -75,11 +75,11 @@ const ColumnCard: FC<IColumnCard> = ({
 					droppableId: columnKey,
 				},
 				{ index: 0, droppableId: values.groupId },
-			);
-			setCardsData({ ...cardsData, ...RESULT });
-			setEditModalStatus(false);
+			)
+			setCardsData({ ...cardsData, ...RESULT })
+			setEditModalStatus(false)
 		},
-	});
+	})
 
 	return (
 		<>
@@ -361,7 +361,7 @@ const ColumnCard: FC<IColumnCard> = ({
 				</ModalFooter>
 			</Modal>
 		</>
-	);
-};
+	)
+}
 
-export default ColumnCard;
+export default ColumnCard

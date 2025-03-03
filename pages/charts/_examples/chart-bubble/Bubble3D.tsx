@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateData from '../../../../common/function/generateData';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateData from '../../../../common/function/generateData'
 
 const Bubble3D = () => {
 	const [state] = useState<IChartOptions>({
@@ -69,7 +69,7 @@ const Bubble3D = () => {
 				palette: 'palette2',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-12'>
 			<Card stretch>
@@ -91,7 +91,7 @@ const Bubble3D = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default Bubble3D;
+export default Bubble3D

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgRemoveShoppingCart = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgRemoveShoppingCart = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M18.31 6H9.12l4.99 5h1.44z' opacity={0.3} />
 			<path d='M20 4H7.12l2 2h9.19l-2.76 5h-1.44l1.94 1.94c.54-.14.99-.49 1.25-.97l3.58-6.49C21.25 4.82 20.76 4 20 4zM7 18c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgRemoveShoppingCart;
+export default SvgRemoveShoppingCart

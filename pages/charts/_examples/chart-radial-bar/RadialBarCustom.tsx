@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const RadialBarCustom = () => {
 	const [state] = useState<IChartOptions>({
@@ -54,7 +54,7 @@ const RadialBarCustom = () => {
 					size: 0,
 				},
 				formatter(seriesName, opts) {
-					return `${seriesName}:  ${opts.w.globals.series[opts.seriesIndex]}`;
+					return `${seriesName}:  ${opts.w.globals.series[opts.seriesIndex]}`
 				},
 				itemMargin: {
 					vertical: 3,
@@ -71,7 +71,7 @@ const RadialBarCustom = () => {
 				},
 			],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -93,7 +93,7 @@ const RadialBarCustom = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadialBarCustom;
+export default RadialBarCustom

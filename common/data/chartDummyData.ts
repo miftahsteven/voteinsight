@@ -1,4 +1,4 @@
-import { IChartOptions } from '../../components/extras/Chart';
+import { IChartOptions } from '../../components/extras/Chart'
 
 export const seriesData: { x: Date; y: number[] }[] = [
 	{
@@ -93,7 +93,7 @@ export const seriesData: { x: Date; y: number[] }[] = [
 		x: new Date(2017, 11, 1),
 		y: [61.71, 64.15, 61.29, 63.04],
 	},
-];
+]
 
 export const seriesDataLinear: { x: Date; y: number }[] = [
 	{
@@ -188,7 +188,7 @@ export const seriesDataLinear: { x: Date; y: number }[] = [
 		x: new Date(2017, 11, 1),
 		y: 43.04,
 	},
-];
+]
 
 export const seriesData2: { x: Date; y: number[] }[] = [
 	{
@@ -431,7 +431,7 @@ export const seriesData2: { x: Date; y: number[] }[] = [
 		x: new Date(1538884800000),
 		y: [6604.98, 6606, 6604.07, 6606],
 	},
-];
+]
 
 export const seriesData3: { x: Date; y: number[] }[] = [
 	{
@@ -674,7 +674,7 @@ export const seriesData3: { x: Date; y: number[] }[] = [
 		x: new Date(1538885100000),
 		y: [6605, 6607.52, 6605, 6607.28],
 	},
-];
+]
 
 export const seriesData4: { x: Date; y: number[] }[] = [
 	{
@@ -797,7 +797,7 @@ export const seriesData4: { x: Date; y: number[] }[] = [
 		x: new Date(1538884800000),
 		y: [6604.98, 6605.24, 6604.07, 6605.24],
 	},
-];
+]
 
 export const seriesData5: { x: number; y: number[] }[] = [
 	{
@@ -920,7 +920,7 @@ export const seriesData5: { x: number; y: number[] }[] = [
 		x: 1538884800000,
 		y: [6604.98, 6605.7, 6604.07, 6604.28],
 	},
-];
+]
 
 export const seriesData6: { x: Date; y: number[] }[] = [
 	{
@@ -1043,7 +1043,7 @@ export const seriesData6: { x: Date; y: number[] }[] = [
 		x: new Date(1538882100000),
 		y: [6598.61, 6603.9, 6598.61, 6600.09],
 	},
-];
+]
 
 export const seriesData7: { x: Date; y: number[] }[] = [
 	{
@@ -1138,7 +1138,7 @@ export const seriesData7: { x: Date; y: number[] }[] = [
 		x: new Date(2017, 11, 1),
 		y: [1161.71, 1164.15, 1161.29, 1163.04],
 	},
-];
+]
 
 export const githubData: { series: { x: number; a: number; d: number; y: number }[] } = {
 	series: [
@@ -2877,7 +2877,7 @@ export const githubData: { series: { x: number; a: number; d: number; y: number 
 			y: 1,
 		},
 	],
-};
+}
 
 export const dataSeries: { date: string; value: number }[][] = [
 	[
@@ -4326,7 +4326,7 @@ export const dataSeries: { date: string; value: number }[][] = [
 			value: 67956992,
 		},
 	],
-];
+]
 
 export const series: { [key: string]: { prices: number[]; dates: string[] } } = {
 	monthDataSeries1: {
@@ -4527,7 +4527,7 @@ export const series: { [key: string]: { prices: number[]; dates: string[] } } = 
 			'28 Nov 2017',
 		],
 	},
-};
+}
 
 export const sales: IChartOptions = {
 	series: [
@@ -4557,7 +4557,7 @@ export const sales: IChartOptions = {
 				title: {
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					formatter(seriesName: string) {
-						return '';
+						return ''
 					},
 				},
 			},
@@ -4567,4 +4567,4 @@ export const sales: IChartOptions = {
 			width: 4,
 		},
 	},
-};
+}

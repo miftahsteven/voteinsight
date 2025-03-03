@@ -1,11 +1,11 @@
-import React, { FC } from 'react';
-import Icon from '../../components/icon/Icon';
-import Logo from '../../components/Logo';
-import Link from 'next/link';
+import React, { FC } from 'react'
+import Icon from '../../components/icon/Icon'
+import Logo from '../../components/Logo'
+import Link from 'next/link'
 
 interface IBrandProps {
-	asideStatus: boolean;
-	setAsideStatus(...args: unknown[]): unknown;
+	asideStatus: boolean
+	setAsideStatus(...args: unknown[]): unknown
 }
 const Brand: FC<IBrandProps> = ({ asideStatus, setAsideStatus }) => {
 	return (
@@ -27,7 +27,7 @@ const Brand: FC<IBrandProps> = ({ asideStatus, setAsideStatus }) => {
 				<Icon icon='LastPage' className='brand-aside-toggle-open' />
 			</button>
 		</div>
-	);
-};
+	)
+}
 
-export default Brand;
+export default Brand

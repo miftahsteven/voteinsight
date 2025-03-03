@@ -1,42 +1,42 @@
-import React, { FC, useCallback, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import classNames from 'classnames';
-import { useFormik } from 'formik';
-import { TColor } from '../../../type/color-type';
-import data, { CATEGORIES, TTags } from '../../../common/data/dummyKnowledgeData';
-import useTourStep from '../../../hooks/useTourStep';
-import useDarkMode from '../../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../../menu';
-import { pathRetouch } from '../../../helpers/helpers';
-import Card, { CardBody, CardTitle } from '../../../components/bootstrap/Card';
-import Badge from '../../../components/bootstrap/Badge';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import Page from '../../../layout/Page/Page';
-import Select from '../../../components/bootstrap/forms/Select';
-import Input from '../../../components/bootstrap/forms/Input';
-import Button from '../../../components/bootstrap/Button';
+import React, { FC, useCallback, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import classNames from 'classnames'
+import { useFormik } from 'formik'
+import { TColor } from '../../../type/color-type'
+import data, { CATEGORIES, TTags } from '../../../common/data/dummyKnowledgeData'
+import useTourStep from '../../../hooks/useTourStep'
+import useDarkMode from '../../../hooks/useDarkMode'
+import { demoPagesMenu } from '../../../menu'
+import { pathRetouch } from '../../../helpers/helpers'
+import Card, { CardBody, CardTitle } from '../../../components/bootstrap/Card'
+import Badge from '../../../components/bootstrap/Badge'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import Page from '../../../layout/Page/Page'
+import Select from '../../../components/bootstrap/forms/Select'
+import Input from '../../../components/bootstrap/forms/Input'
+import Button from '../../../components/bootstrap/Button'
 
 interface IItemProps {
-	id: string | number;
-	image: string;
-	title: string;
-	description: string;
-	tags: TTags[];
-	color: TColor;
+	id: string | number
+	image: string
+	title: string
+	description: string
+	tags: TTags[]
+	color: TColor
 }
 const Item: FC<IItemProps> = ({ id, image, title, description, tags, color }) => {
-	useTourStep(15);
-	const { darkModeStatus } = useDarkMode();
+	useTourStep(15)
+	const { darkModeStatus } = useDarkMode()
 
-	const router = useRouter();
+	const router = useRouter()
 	const handleOnClick = useCallback(
 		() => router.push(`${pathRetouch(demoPagesMenu.knowledge.subMenu.itemID.path)}/${id}`),
 		[router, id],
-	);
+	)
 	return (
 		<Card
 			className='cursor-pointer shadow-3d-primary shadow-3d-hover'
@@ -72,21 +72,21 @@ const Item: FC<IItemProps> = ({ id, image, title, description, tags, color }) =>
 				</div>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
 const Index: NextPage = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const [filterableData, setFilterableData] = useState(data);
+	const [filterableData, setFilterableData] = useState(data)
 
 	const searchAndFilterData = (searchValue: string, category: string) => {
-		let tempData = data;
+		let tempData = data
 
 		if (category)
 			tempData = data.filter((item) =>
 				item.categories.find((categ) => categ.value === category),
-			);
+			)
 
 		return tempData.filter((item) => {
 			return (
@@ -95,34 +95,34 @@ const Index: NextPage = () => {
 				item.content.toLowerCase().includes(searchValue) ||
 				item.categories.find((categ) => categ.text.toLowerCase().includes(searchValue)) ||
 				item.tags.find((tag) => tag.text.toLowerCase().includes(searchValue))
-			);
-		});
-	};
+			)
+		})
+	}
 
 	const debounce = (func: any, wait: number | undefined) => {
-		let timeout: string | number | NodeJS.Timeout | undefined;
+		let timeout: string | number | NodeJS.Timeout | undefined
 
 		return function executedFunction(...args: any[]) {
 			const later = () => {
-				clearTimeout(timeout);
-				func(...args);
-			};
+				clearTimeout(timeout)
+				func(...args)
+			}
 
-			clearTimeout(timeout);
-			timeout = setTimeout(later, wait);
-		};
-	};
+			clearTimeout(timeout)
+			timeout = setTimeout(later, wait)
+		}
+	}
 
 	const onFormSubmit = (values: { category: any; search: any }) => {
-		const searchValue = values.search.toString().toLowerCase();
-		const newData = searchAndFilterData(searchValue, values.category);
+		const searchValue = values.search.toString().toLowerCase()
+		const newData = searchAndFilterData(searchValue, values.category)
 
 		if (!values.search && !values.category) {
-			setFilterableData(data);
+			setFilterableData(data)
 		} else {
-			setFilterableData(newData);
+			setFilterableData(newData)
 		}
-	};
+	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -131,7 +131,7 @@ const Index: NextPage = () => {
 		},
 		onSubmit: onFormSubmit,
 		onReset: () => setFilterableData(data),
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -162,7 +162,7 @@ const Index: NextPage = () => {
 										'bg-white': !darkModeStatus,
 									})}
 									onChange={(e: { target: { value: any } }) => {
-										formik.handleChange(e);
+										formik.handleChange(e)
 
 										if (e.target.value)
 											debounce(
@@ -172,7 +172,7 @@ const Index: NextPage = () => {
 														category: e.target.value,
 													}),
 												1000,
-											)();
+											)()
 									}}
 									value={formik.values.category}
 								/>
@@ -186,7 +186,7 @@ const Index: NextPage = () => {
 										'bg-white': !darkModeStatus,
 									})}
 									onChange={(e: { target: { value: string | any[] } }) => {
-										formik.handleChange(e);
+										formik.handleChange(e)
 
 										if (e.target.value.length > 2)
 											debounce(
@@ -196,9 +196,9 @@ const Index: NextPage = () => {
 														search: e.target.value,
 													}),
 												1000,
-											)();
+											)()
 
-										if (e.target.value.length === 0) formik.resetForm();
+										if (e.target.value.length === 0) formik.resetForm()
 									}}
 									value={formik.values.search}
 								/>
@@ -228,14 +228,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

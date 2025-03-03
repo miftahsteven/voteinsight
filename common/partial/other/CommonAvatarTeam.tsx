@@ -1,10 +1,10 @@
-import React, { FC, memo, ReactNode } from 'react';
-import Avatar, { AvatarGroup } from '../../../components/Avatar';
-import USERS from '../../data/userDummyData';
+import React, { FC, memo, ReactNode } from 'react'
+import Avatar, { AvatarGroup } from '../../../components/Avatar'
+import USERS from '../../data/userDummyData'
 
 interface ICommonAvatarTeamProps {
-	children: ReactNode;
-	isAlignmentEnd?: boolean;
+	children: ReactNode
+	isAlignmentEnd?: boolean
 }
 const CommonAvatarTeam: FC<ICommonAvatarTeamProps> = ({ children, isAlignmentEnd }) => {
 	return (
@@ -44,7 +44,7 @@ const CommonAvatarTeam: FC<ICommonAvatarTeamProps> = ({ children, isAlignmentEnd
 			</AvatarGroup>
 			{children && isAlignmentEnd && <span>{children}</span>}
 		</>
-	);
-};
+	)
+}
 
-export default memo(CommonAvatarTeam);
+export default memo(CommonAvatarTeam)

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgAlternateEmail = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -9,7 +9,7 @@ const SvgAlternateEmail = (props: SVGProps<SVGSVGElement>) => {
 				fillOpacity={0.9}
 			/>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgAlternateEmail;
+export default SvgAlternateEmail

@@ -1,33 +1,33 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
 
 const Index: NextPage = () => {
 	const TEXT_SELECTION = `
 <p className='user-select-all'>This paragraph will be entirely selected when clicked by the user.</p>
 <p className='user-select-auto'>This paragraph has default select behavior.</p>
-<p className='user-select-none'>This paragraph will not be selectable when clicked by the user.</p>`;
+<p className='user-select-none'>This paragraph will not be selectable when clicked by the user.</p>`
 
 	const POINTER_EVENT = `
 <p><a href='#' className='pe-none' tabIndex='-1' aria-disabled='true'>This link</a> can not be clicked.</p>
 <p><a href='#' className='pe-auto'>This link</a> can be clicked (this is default behavior).</p>
-<p className='pe-none'><a href='#' tabIndex='-1' aria-disabled='true'>This link</a> can not be clicked because the <code>pointer-events</code> property is inherited from its parent. However, <a href='#' className='pe-auto'> this link</a> has a <code>pe-auto</code> class and can be clicked.</p>`;
+<p className='pe-none'><a href='#' tabIndex='-1' aria-disabled='true'>This link</a> can not be clicked because the <code>pointer-events</code> property is inherited from its parent. However, <a href='#' className='pe-auto'> this link</a> has a <code>pe-auto</code> class and can be clicked.</p>`
 
 	const UTILITIES_API = `
 "user-select": (
@@ -38,7 +38,7 @@ const Index: NextPage = () => {
   	property: pointer-events,
   	class: pe,
   	values: none auto,
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -188,14 +188,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

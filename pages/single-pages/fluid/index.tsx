@@ -1,30 +1,30 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import { useFormik } from 'formik';
-import { useMeasure } from 'react-use';
-import classNames from 'classnames';
-import dayjs from 'dayjs';
-import useDarkMode from '../../../hooks/useDarkMode';
-import showNotification from '../../../components/extras/showNotification';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import { useFormik } from 'formik'
+import { useMeasure } from 'react-use'
+import classNames from 'classnames'
+import dayjs from 'dayjs'
+import useDarkMode from '../../../hooks/useDarkMode'
+import showNotification from '../../../components/extras/showNotification'
 
-import UserImage from '../../../assets/img/wanna/wanna1.png';
+import UserImage from '../../../assets/img/wanna/wanna1.png'
 
-import Pic from '../../../assets/img/wanna/richie/richie.png';
-import Pic2 from '../../../assets/img/wanna/richie/richie2.png';
-import Pic3 from '../../../assets/img/wanna/richie/richie3.png';
-import Pic4 from '../../../assets/img/wanna/richie/richie4.png';
-import Pic5 from '../../../assets/img/wanna/richie/richie5.png';
-import Pic6 from '../../../assets/img/wanna/richie/richie6.png';
-import Pic7 from '../../../assets/img/wanna/richie/richie7.png';
-import Pic8 from '../../../assets/img/wanna/richie/richie8.png';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import Icon from '../../../components/icon/Icon';
-import Page from '../../../layout/Page/Page';
-import { demoPagesMenu } from '../../../menu';
+import Pic from '../../../assets/img/wanna/richie/richie.png'
+import Pic2 from '../../../assets/img/wanna/richie/richie2.png'
+import Pic3 from '../../../assets/img/wanna/richie/richie3.png'
+import Pic4 from '../../../assets/img/wanna/richie/richie4.png'
+import Pic5 from '../../../assets/img/wanna/richie/richie5.png'
+import Pic6 from '../../../assets/img/wanna/richie/richie6.png'
+import Pic7 from '../../../assets/img/wanna/richie/richie7.png'
+import Pic8 from '../../../assets/img/wanna/richie/richie8.png'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import Icon from '../../../components/icon/Icon'
+import Page from '../../../layout/Page/Page'
+import { demoPagesMenu } from '../../../menu'
 import Card, {
 	CardActions,
 	CardBody,
@@ -34,25 +34,25 @@ import Card, {
 	CardLabel,
 	CardTabItem,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Avatar from '../../../components/Avatar';
-import Progress from '../../../components/bootstrap/Progress';
-import Button from '../../../components/bootstrap/Button';
-import Alert from '../../../components/bootstrap/Alert';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Input from '../../../components/bootstrap/forms/Input';
-import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../../components/bootstrap/Modal';
-import Carousel from '../../../components/bootstrap/Carousel';
-import CarouselSlide from '../../../components/bootstrap/CarouselSlide';
-import WannaImg1 from '../../../assets/img/wanna/slide/scene-1.png';
-import WannaImg2 from '../../../assets/img/wanna/slide/scene-2.png';
-import WannaImg5 from '../../../assets/img/wanna/slide/scene-5.png';
-import WannaImg6 from '../../../assets/img/wanna/slide/scene-6.png';
+} from '../../../components/bootstrap/Card'
+import Avatar from '../../../components/Avatar'
+import Progress from '../../../components/bootstrap/Progress'
+import Button from '../../../components/bootstrap/Button'
+import Alert from '../../../components/bootstrap/Alert'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Input from '../../../components/bootstrap/forms/Input'
+import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../../components/bootstrap/Modal'
+import Carousel from '../../../components/bootstrap/Carousel'
+import CarouselSlide from '../../../components/bootstrap/CarouselSlide'
+import WannaImg1 from '../../../assets/img/wanna/slide/scene-1.png'
+import WannaImg2 from '../../../assets/img/wanna/slide/scene-2.png'
+import WannaImg5 from '../../../assets/img/wanna/slide/scene-5.png'
+import WannaImg6 from '../../../assets/img/wanna/slide/scene-6.png'
 
 const Index: NextPage = () => {
-	const router = useRouter();
+	const router = useRouter()
 
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	const formik = useFormik({
 		initialValues: {
@@ -78,14 +78,14 @@ const Index: NextPage = () => {
 					<span>Updated Information</span>
 				</span>,
 				JSON.stringify(values, null, 2),
-			);
+			)
 		},
-	});
-	const [ref, { height }] = useMeasure<HTMLDivElement>();
+	})
+	const [ref, { height }] = useMeasure<HTMLDivElement>()
 
-	const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'dark'];
-	const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined);
-	const [gallerySeeAll, setGallerySeeAll] = useState(false);
+	const colors = ['primary', 'secondary', 'success', 'info', 'warning', 'danger', 'dark']
+	const [selectedImage, setSelectedImage] = useState<string | undefined>(undefined)
+	const [gallerySeeAll, setGallerySeeAll] = useState(false)
 
 	const images: { id: string; img: string }[] = [
 		{ id: 'Pic', img: Pic },
@@ -96,7 +96,7 @@ const Index: NextPage = () => {
 		{ id: 'Pic6', img: Pic6 },
 		{ id: 'Pic7', img: Pic7 },
 		{ id: 'Pic8', img: Pic8 },
-	];
+	]
 
 	const GALLERY = (
 		<div className='row g-4'>
@@ -123,7 +123,7 @@ const Index: NextPage = () => {
 				</div>
 			))}
 		</div>
-	);
+	)
 
 	return (
 		<PageWrapper>
@@ -675,14 +675,14 @@ const Index: NextPage = () => {
 				</Modal>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

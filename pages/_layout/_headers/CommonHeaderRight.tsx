@@ -1,65 +1,65 @@
-import React, { FC, ReactNode, useContext, useState } from 'react';
-import { useTranslation } from 'next-i18next';
-import classNames from 'classnames';
-import { useTour } from '@reactour/tour';
-import { useRouter } from 'next/router';
-import Button, { IButtonProps } from '../../../components/bootstrap/Button';
-import { HeaderRight } from '../../../layout/Header/Header';
+import React, { FC, ReactNode, useContext, useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import classNames from 'classnames'
+import { useTour } from '@reactour/tour'
+import { useRouter } from 'next/router'
+import Button, { IButtonProps } from '../../../components/bootstrap/Button'
+import { HeaderRight } from '../../../layout/Header/Header'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas';
-import Alert from '../../../components/bootstrap/Alert';
+} from '../../../components/bootstrap/OffCanvas'
+import Alert from '../../../components/bootstrap/Alert'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Icon from '../../../components/icon/Icon';
-import ThemeContext from '../../../context/themeContext';
-import LANG, { getLangWithKey, ILang } from '../../../lang';
-import showNotification from '../../../components/extras/showNotification';
-import useDarkMode from '../../../hooks/useDarkMode';
-import Popovers from '../../../components/bootstrap/Popovers';
-import Spinner from '../../../components/bootstrap/Spinner';
-import useMounted from '../../../hooks/useMounted';
+} from '../../../components/bootstrap/Dropdown'
+import Icon from '../../../components/icon/Icon'
+import ThemeContext from '../../../context/themeContext'
+import LANG, { getLangWithKey, ILang } from '../../../lang'
+import showNotification from '../../../components/extras/showNotification'
+import useDarkMode from '../../../hooks/useDarkMode'
+import Popovers from '../../../components/bootstrap/Popovers'
+import Spinner from '../../../components/bootstrap/Spinner'
+import useMounted from '../../../hooks/useMounted'
 
 interface ICommonHeaderRightProps {
-	beforeChildren?: ReactNode;
-	afterChildren?: ReactNode;
+	beforeChildren?: ReactNode
+	afterChildren?: ReactNode
 }
 const CommonHeaderRight: FC<ICommonHeaderRightProps> = ({ beforeChildren, afterChildren }) => {
-	const router = useRouter();
-	const { darkModeStatus, setDarkModeStatus } = useDarkMode();
+	const router = useRouter()
+	const { darkModeStatus, setDarkModeStatus } = useDarkMode()
 
-	const { fullScreenStatus, setFullScreenStatus } = useContext(ThemeContext);
+	const { fullScreenStatus, setFullScreenStatus } = useContext(ThemeContext)
 	const styledBtn: IButtonProps = {
 		color: darkModeStatus ? 'dark' : 'light',
 		hoverShadow: 'default',
 		isLight: !darkModeStatus,
 		size: 'lg',
-	};
+	}
 
-	const [offcanvasStatus, setOffcanvasStatus] = useState(false);
+	const [offcanvasStatus, setOffcanvasStatus] = useState(false)
 
-	const { i18n } = useTranslation();
+	const { i18n } = useTranslation()
 
 	const changeLanguage = (lng: ILang['key']['lng']) => {
-		i18n.changeLanguage(lng);
-		router.push(router.pathname, router.pathname, { locale: lng });
+		i18n.changeLanguage(lng)
+		router.push(router.pathname, router.pathname, { locale: lng })
 		showNotification(
 			<span className='d-flex align-items-center'>
 				<Icon icon={getLangWithKey(lng)?.icon} size='lg' className='me-1' />
 				<span>{`Language changed to ${getLangWithKey(lng)?.text}`}</span>
 			</span>,
 			'You updated the language of the site. (Only "Aside" was prepared as an example.)',
-		);
-	};
+		)
+	}
 
-	const { mounted } = useMounted();
+	const { mounted } = useMounted()
 
-	const { setIsOpen } = useTour();
+	const { setIsOpen } = useTour()
 
 	return (
 		<HeaderRight>
@@ -240,7 +240,7 @@ const CommonHeaderRight: FC<ICommonHeaderRightProps> = ({ beforeChildren, afterC
 						aria-label='Notifications'
 					/>
 				</div>
-				{afterChildren}
+				{/* {afterChildren} */}
 			</div>
 
 			<OffCanvas
@@ -271,7 +271,7 @@ const CommonHeaderRight: FC<ICommonHeaderRightProps> = ({ beforeChildren, afterC
 				</OffCanvasBody>
 			</OffCanvas>
 		</HeaderRight>
-	);
-};
+	)
+}
 
-export default CommonHeaderRight;
+export default CommonHeaderRight

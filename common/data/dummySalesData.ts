@@ -1,12 +1,12 @@
-import dayjs, { Dayjs } from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs'
 
 const data: {
-	id: number;
-	name: string;
-	type: string;
-	price: number;
-	count: number;
-	date: Dayjs;
+	id: number
+	name: string
+	type: string
+	price: number
+	count: number
+	date: Dayjs
 }[] = [
 	{
 		id: 1,
@@ -104,5 +104,5 @@ const data: {
 		count: 63,
 		date: dayjs().add(-9, 'day'),
 	},
-];
-export default data;
+]
+export default data

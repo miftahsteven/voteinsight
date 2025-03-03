@@ -1,16 +1,16 @@
-import React, { FC, HTMLAttributes, ReactNode } from 'react';
-import classNames from 'classnames';
-import Avatar from './Avatar';
-import useDarkMode from '../hooks/useDarkMode';
-import { TColor } from '../type/color-type';
+import React, { FC, HTMLAttributes, ReactNode } from 'react'
+import classNames from 'classnames'
+import Avatar from './Avatar'
+import useDarkMode from '../hooks/useDarkMode'
+import { TColor } from '../type/color-type'
 
 interface IChatAvatarProps extends HTMLAttributes<HTMLDivElement> {
-	src?: string;
-	className?: string;
-	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
-	unreadMessage?: number;
-	isOnline?: boolean;
-	size?: number;
+	src?: string
+	className?: string
+	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
+	unreadMessage?: number
+	isOnline?: boolean
+	size?: number
 }
 export const ChatAvatar: FC<IChatAvatarProps> = ({
 	src,
@@ -37,21 +37,21 @@ export const ChatAvatar: FC<IChatAvatarProps> = ({
 				)}
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 interface IChatListItemProps extends HTMLAttributes<HTMLDivElement> {
-	src: string;
-	className?: string;
-	isOnline?: boolean;
-	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
-	size?: number;
-	name: string;
-	surname: string;
-	latestMessage?: string;
-	unreadMessage?: number;
-	isActive?: boolean;
-	lastSeenTime?: string;
+	src: string
+	className?: string
+	isOnline?: boolean
+	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
+	size?: number
+	name: string
+	surname: string
+	latestMessage?: string
+	unreadMessage?: number
+	isActive?: boolean
+	lastSeenTime?: string
 }
 export const ChatListItem: FC<IChatListItemProps> = ({
 	src,
@@ -67,7 +67,7 @@ export const ChatListItem: FC<IChatListItemProps> = ({
 	lastSeenTime,
 	...props
 }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	return (
 		<div className={classNames('col-12 cursor-pointer', className)} {...props}>
@@ -111,11 +111,11 @@ export const ChatListItem: FC<IChatListItemProps> = ({
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 interface IChatHeaderProps {
-	to: string;
+	to: string
 }
 export const ChatHeader: FC<IChatHeaderProps> = ({ to }) => {
 	return (
@@ -123,15 +123,15 @@ export const ChatHeader: FC<IChatHeaderProps> = ({ to }) => {
 			<strong className='me-2'>To:</strong>
 			{to}
 		</>
-	);
-};
+	)
+}
 
 interface IChatMessagesProps extends HTMLAttributes<HTMLDivElement> {
 	messages: {
-		id?: string | number;
-		message?: string | number;
-	}[];
-	isReply?: boolean;
+		id?: string | number
+		message?: string | number
+	}[]
+	isReply?: boolean
 }
 export const ChatMessages: FC<IChatMessagesProps> = ({ messages, isReply, ...props }) => {
 	return (
@@ -144,25 +144,25 @@ export const ChatMessages: FC<IChatMessagesProps> = ({ messages, isReply, ...pro
 				</div>
 			))}
 		</div>
-	);
-};
+	)
+}
 
 interface IChatGroupProps extends HTMLAttributes<HTMLDivElement> {
-	isReply?: boolean;
+	isReply?: boolean
 	messages: {
-		id?: string | number;
-		message?: string | number;
-	}[];
-	isOnline?: boolean;
-	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
+		id?: string | number
+		message?: string | number
+	}[]
+	isOnline?: boolean
+	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
 	user: {
-		src?: string;
-		username?: string;
-		name?: string;
-		surname?: string;
-		isOnline?: boolean;
-		color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
-	};
+		src?: string
+		username?: string
+		name?: string
+		surname?: string
+		isOnline?: boolean
+		color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
+	}
 }
 export const ChatGroup: FC<IChatGroupProps> = ({
 	isReply,
@@ -174,22 +174,22 @@ export const ChatGroup: FC<IChatGroupProps> = ({
 	user,
 	...props
 }) => {
-	const AVATAR = <ChatAvatar src={user.src} isOnline={user.isOnline} color={user.color} />;
+	const AVATAR = <ChatAvatar src={user.src} isOnline={user.isOnline} color={user.color} />
 	return (
 		<div className={classNames('chat-group', { 'chat-group-reply': isReply })} {...props}>
 			{!isReply && AVATAR}
 			<ChatMessages messages={messages} isReply={isReply} />
 			{isReply && AVATAR}
 		</div>
-	);
-};
+	)
+}
 
 interface IChatProps {
-	children: ReactNode;
-	className?: string;
+	children: ReactNode
+	className?: string
 }
 const Chat: FC<IChatProps> = ({ children, className }) => {
-	return <div className={classNames('chat-container', className)}>{children}</div>;
-};
+	return <div className={classNames('chat-container', className)}>{children}</div>
+}
 
-export default Chat;
+export default Chat

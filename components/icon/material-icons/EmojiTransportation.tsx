@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgEmojiTransportation = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgEmojiTransportation = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M14 9h1V3H7v5H2v13h1V9h5V4h6z' />
 			<path d='M5 11h2v2H5zM10 5h2v2h-2zM5 15h2v2H5zM5 19h2v2H5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgEmojiTransportation;
+export default SvgEmojiTransportation

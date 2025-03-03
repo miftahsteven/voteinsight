@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgStopScreenShare = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -14,7 +14,7 @@ const SvgStopScreenShare = (props: SVGProps<SVGSVGElement>) => {
 				opacity={0.3}
 			/>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgStopScreenShare;
+export default SvgStopScreenShare

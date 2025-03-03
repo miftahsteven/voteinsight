@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -16,14 +16,14 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Collapse from '../../../components/bootstrap/Collapse';
-import Button from '../../../components/bootstrap/Button';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Collapse from '../../../components/bootstrap/Collapse'
+import Button from '../../../components/bootstrap/Button'
 
 const Index: NextPage = () => {
-	const GENERAL_USAGE = `const [state, setState] = useState(false);`;
+	const GENERAL_USAGE = `const [state, setState] = useState(false);`
 
 	const GENERAL_USAGE_2 = `
 <Button 
@@ -38,16 +38,16 @@ const Index: NextPage = () => {
 	className={ String }
 	{...props}>
 	... { // HTML, Component or string }
-</Collapse>`;
+</Collapse>`
 
-	const [isOpen, setIsOpen] = useState(true);
-	const [isOpenTwo, setIsOpenTwo] = useState(false);
+	const [isOpen, setIsOpen] = useState(true)
+	const [isOpenTwo, setIsOpenTwo] = useState(false)
 
-	const [isOpenThree, setIsOpenThree] = useState(true);
-	const [isOpenFour, setIsOpenFour] = useState(true);
+	const [isOpenThree, setIsOpenThree] = useState(true)
+	const [isOpenFour, setIsOpenFour] = useState(true)
 
-	const setFirstElement = () => setIsOpen(!isOpen);
-	const setSecondElement = () => setIsOpenTwo(!isOpenTwo);
+	const setFirstElement = () => setIsOpen(!isOpen)
+	const setSecondElement = () => setIsOpenTwo(!isOpenTwo)
 
 	return (
 		<PageWrapper>
@@ -126,8 +126,8 @@ const Index: NextPage = () => {
 											color='info'
 											isLight
 											onClick={() => {
-												setFirstElement();
-												setSecondElement();
+												setFirstElement()
+												setSecondElement()
 											}}>
 											Toggle both element
 										</Button>
@@ -239,14 +239,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

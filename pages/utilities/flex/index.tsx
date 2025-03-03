@@ -1,23 +1,23 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import { createUseStyles } from 'react-jss';
-import classNames from 'classnames';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import { createUseStyles } from 'react-jss'
+import classNames from 'classnames'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const useStyles = createUseStyles({
 	example: {
@@ -29,19 +29,19 @@ const useStyles = createUseStyles({
 			padding: '0.5rem',
 		},
 	},
-});
+})
 
 const Index: NextPage = () => {
-	const classes = useStyles();
+	const classes = useStyles()
 
-	const FLEX_ITEM = <div>Flex item</div>;
+	const FLEX_ITEM = <div>Flex item</div>
 	const FLEX_ITEMS_3 = (
 		<>
 			{FLEX_ITEM}
 			{FLEX_ITEM}
 			{FLEX_ITEM}
 		</>
-	);
+	)
 	const FLEX_ITEMS_15 = (
 		<>
 			{FLEX_ITEM}
@@ -60,16 +60,16 @@ const Index: NextPage = () => {
 			{FLEX_ITEM}
 			{FLEX_ITEM}
 		</>
-	);
+	)
 
 	const ENABLE_FLEX = `
 <div className='d-flex'>
 	I'm a flexbox container!
-</div>`;
+</div>`
 	const ENABLE_FLEX_2 = `
 <div className='d-inline-flex'>
 	I'm a flexbox container!
-</div>`;
+</div>`
 	const DIRECTION = `
 <div className='d-flex flex-row'>
 	<div>Flex item 1</div>
@@ -80,7 +80,7 @@ const Index: NextPage = () => {
 	<div>Flex item 1</div>
 	<div>Flex item 2</div>
 	<div>Flex item 3</div>
-</div>`;
+</div>`
 	const DIRECTION_2 = `
 <div className='d-flex flex-column'>
 	<div>Flex item 1</div>
@@ -91,7 +91,7 @@ const Index: NextPage = () => {
 	<div>Flex item 1</div>
 	<div>Flex item 2</div>
 	<div>Flex item 3</div>
-</div>`;
+</div>`
 
 	const JUSTIFY_CONTENT = `
 <div className='d-flex justify-content-start'>...</div>
@@ -99,40 +99,40 @@ const Index: NextPage = () => {
 <div className='d-flex justify-content-center'>...</div>
 <div className='d-flex justify-content-between'>...</div>
 <div className='d-flex justify-content-around'>...</div>
-<div className='d-flex justify-content-evenly'>...</div>`;
+<div className='d-flex justify-content-evenly'>...</div>`
 
 	const ALIGN_ITEMS = `
 <div className='d-flex align-items-start'>...</div>
 <div className='d-flex align-items-end'>...</div>
 <div className='d-flex align-items-center'>...</div>
 <div className='d-flex align-items-baseline'>...</div>
-<div className='d-flex align-items-stretch'>...</div>`;
+<div className='d-flex align-items-stretch'>...</div>`
 
 	const ALIGN_SELF = `
 ...<div className='align-self-start'>Aligned flex item</div>...
 ...<div className='align-self-end'>Aligned flex item</div>...
 ...<div className='align-self-center'>Aligned flex item</div>...
 ...<div className='align-self-baseline'>Aligned flex item</div>...
-...<div className='align-self-stretch'>Aligned flex item</div>...`;
+...<div className='align-self-stretch'>Aligned flex item</div>...`
 
 	const FILL = `
 <div className='d-flex'>
 	<div className='flex-fill'>Flex item with a lot of content</div>
 	<div className='flex-fill'>Flex item</div>
 	<div className='flex-fill'>Flex item</div>
-</div>`;
+</div>`
 
 	const GROW_SHRINK = `
 <div className='d-flex'>
 	<div className='flex-grow-1'>Flex item</div>
 	<div>Flex item</div>
 	<div>Third flex item</div>
-</div>`;
+</div>`
 	const GROW_SHRINK_2 = `
 <div className='d-flex'>
 	<div className='w-100'>Flex item</div>
 	<div className='flex-shrink-1'>Flex item</div>
-</div>`;
+</div>`
 
 	const AUTO_MARGIN = `
 <div className='d-flex'>
@@ -151,7 +151,7 @@ const Index: NextPage = () => {
 	<div>Flex item</div>
 	<div>Flex item</div>
 	<div className='ms-auto'>Flex item</div>
-</div>`;
+</div>`
 	const AUTO_MARGIN_2 = `
 <div className='d-flex align-items-start flex-column' style={{ height: 200 }}>
 	<div className='mb-auto'>Flex item</div>
@@ -163,52 +163,52 @@ const Index: NextPage = () => {
 	<div>Flex item</div>
 	<div>Flex item</div>
 	<div className='mt-auto'>Flex item</div>
-</div>`;
+</div>`
 
 	const WRAP = `
 <div className='d-flex flex-nowrap'>
 	...
-</div>`;
+</div>`
 	const WRAP_2 = `
 <div className="d-flex flex-wrap">
 	...
-</div>`;
+</div>`
 	const WRAP_3 = `
 <div className='d-flex flex-wrap-reverse'>
 	...
-</div>`;
+</div>`
 
 	const ORDER = `
 <div className='d-flex flex-nowrap'>
 	<div className='order-3'>First flex item</div>
 	<div className='order-2'>Second flex item</div>
 	<div className='order-1'>Third flex item</div>
-</div>`;
+</div>`
 
 	const ALIGN_CONTENT = `
 <div className='d-flex align-content-start flex-wrap'>
 	...
-</div>`;
+</div>`
 	const ALIGN_CONTENT_2 = `
 <div className='d-flex align-content-end flex-wrap'>
 	...
-</div>`;
+</div>`
 	const ALIGN_CONTENT_3 = `
 <div className='d-flex align-content-center flex-wrap'>
 	...
-</div>`;
+</div>`
 	const ALIGN_CONTENT_4 = `
 <div className='d-flex align-content-between flex-wrap'>
 	...
-</div>`;
+</div>`
 	const ALIGN_CONTENT_5 = `
 <div className='d-flex align-content-around flex-wrap'>
 	...
-</div>`;
+</div>`
 	const ALIGN_CONTENT_6 = `
 <div className='d-flex align-content-stretch flex-wrap'>
 	...
-</div>`;
+</div>`
 
 	const UTILITIES_API = `
 "flex": (
@@ -312,7 +312,7 @@ const Index: NextPage = () => {
 		5: 5,
 		last: 6,
   	),
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -1846,14 +1846,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

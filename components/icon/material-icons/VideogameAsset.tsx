@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgVideogameAsset = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgVideogameAsset = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={14.5} cy={13.5} r={1.5} />
 			<circle cx={18.5} cy={10.5} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgVideogameAsset;
+export default SvgVideogameAsset

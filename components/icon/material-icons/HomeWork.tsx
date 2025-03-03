@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgHomeWork = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -9,7 +9,7 @@ const SvgHomeWork = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M8.17 5.7L15 10.25V21H1V10.48L8.17 5.7zM10 19h3v-7.84L8.17 8.09 3 11.38V19h3v-6h4v6z' />
 			<path d='M10 19h3v-7.84L8.17 8.09 3 11.38V19h3v-6h4z' opacity={0.3} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgHomeWork;
+export default SvgHomeWork

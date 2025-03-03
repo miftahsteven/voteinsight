@@ -1,19 +1,20 @@
-import React, { FC } from 'react';
-import classNames from 'classnames';
-import Card, { CardBody } from './bootstrap/Card';
-import Button from './bootstrap/Button';
-import Avatar from './Avatar';
-import { TColor } from '../type/color-type';
+import React, { FC } from 'react'
+import classNames from 'classnames'
+import Card, { CardBody } from './bootstrap/Card'
+import Button from './bootstrap/Button'
+import Avatar from './Avatar'
+import { TColor } from '../type/color-type'
 
 interface IUserContactProps {
-	className?: string;
-	name: string;
-	position?: string;
-	src: string;
-	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
-	mail?: string;
-	phone?: string;
-	onChat?(...args: unknown[]): unknown;
+	className?: string
+	name: string
+	position?: string
+	src: string
+	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
+	mail?: string
+	phone?: string
+	division?: string
+	onChat?(...args: unknown[]): unknown
 }
 const UserContact: FC<IUserContactProps> = ({
 	name,
@@ -22,6 +23,7 @@ const UserContact: FC<IUserContactProps> = ({
 	color,
 	mail,
 	phone,
+	division,
 	onChat,
 	...props
 }) => {
@@ -31,7 +33,11 @@ const UserContact: FC<IUserContactProps> = ({
 			<CardBody className='d-flex align-items-center'>
 				<div className='flex-grow-1'>
 					<div className='fs-5 fw-bold'>{name}</div>
-					{position && <div className='text-muted'>{position}</div>}
+					{position && (
+						<div className='text-muted'>
+							{position} - {division}
+						</div>
+					)}
 					<div className='row mt-2 g-3'>
 						{mail && (
 							<div className='col-auto'>
@@ -57,17 +63,17 @@ const UserContact: FC<IUserContactProps> = ({
 								/>
 							</div>
 						)}
-						{onChat && (
+						{/* {onChat && (
 							<div className='col-auto'>
 								<Button
 									color='info'
-									icon='Sms'
+									icon='Edit'
 									isLight
 									aria-label='Chat'
 									onClick={onChat}
 								/>
 							</div>
-						)}
+						)} */}
 					</div>
 				</div>
 				{src && (
@@ -83,7 +89,7 @@ const UserContact: FC<IUserContactProps> = ({
 				)}
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default UserContact;
+export default UserContact

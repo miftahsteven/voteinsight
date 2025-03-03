@@ -7,21 +7,21 @@ import React, {
 	useContext,
 	useEffect,
 	useRef,
-} from 'react';
-import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
-import Portal from '../../layout/Portal/Portal';
-import TagWrapper from '../TagWrapper';
-import useEventListener from '../../hooks/useEventListener';
-import ThemeContext from '../../context/themeContext';
-import useDeviceScreen from '../../hooks/useDeviceScreen';
-import { TOffCanvasPlacement } from '../../type/offCanvas-type';
+} from 'react'
+import classNames from 'classnames'
+import { AnimatePresence, motion } from 'framer-motion'
+import Portal from '../../layout/Portal/Portal'
+import TagWrapper from '../TagWrapper'
+import useEventListener from '../../hooks/useEventListener'
+import ThemeContext from '../../context/themeContext'
+import useDeviceScreen from '../../hooks/useDeviceScreen'
+import { TOffCanvasPlacement } from '../../type/offCanvas-type'
 
 interface IOffCanvasTitleProps extends HTMLAttributes<HTMLElement> {
-	id: string;
-	children: ReactNode;
-	className?: string;
-	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'span';
+	id: string
+	children: ReactNode
+	className?: string
+	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'span'
 }
 export const OffCanvasTitle = forwardRef<HTMLHeadingElement, IOffCanvasTitleProps>(
 	({ tag = 'h5', id, children, className, ...props }, ref) => {
@@ -35,15 +35,15 @@ export const OffCanvasTitle = forwardRef<HTMLHeadingElement, IOffCanvasTitleProp
 				{...props}>
 				{children}
 			</TagWrapper>
-		);
+		)
 	},
-);
-OffCanvasTitle.displayName = 'OffCanvasTitle';
+)
+OffCanvasTitle.displayName = 'OffCanvasTitle'
 
 interface IOffCanvasHeaderProps extends HTMLAttributes<HTMLDivElement> {
-	children: ReactElement<IOffCanvasTitleProps> | ReactNode;
-	className?: string;
-	setOpen?(...args: unknown[]): unknown | undefined;
+	children: ReactElement<IOffCanvasTitleProps> | ReactNode
+	className?: string
+	setOpen?(...args: unknown[]): unknown | undefined
 }
 export const OffCanvasHeader = forwardRef<HTMLDivElement, IOffCanvasHeaderProps>(
 	({ children, className, setOpen = () => {}, ...props }, ref) => {
@@ -60,16 +60,16 @@ export const OffCanvasHeader = forwardRef<HTMLDivElement, IOffCanvasHeaderProps>
 					/>
 				)}
 			</div>
-		);
+		)
 	},
-);
-OffCanvasHeader.displayName = 'OffCanvasHeader';
+)
+OffCanvasHeader.displayName = 'OffCanvasHeader'
 
 interface IOffCanvasBodyProps extends HTMLAttributes<HTMLElement> {
-	tag?: 'div' | 'span' | 'section' | 'form';
-	children: ReactNode;
-	className?: string;
-	onSubmit?(...args: unknown[]): unknown;
+	tag?: 'div' | 'span' | 'section' | 'form'
+	children: ReactNode
+	className?: string
+	onSubmit?(...args: unknown[]): unknown
 }
 export const OffCanvasBody = forwardRef<HTMLDivElement, IOffCanvasBodyProps>(
 	({ tag = 'div', children, className, ...props }, ref) => {
@@ -82,31 +82,31 @@ export const OffCanvasBody = forwardRef<HTMLDivElement, IOffCanvasBodyProps>(
 				{...props}>
 				{children}
 			</TagWrapper>
-		);
+		)
 	},
-);
-OffCanvasBody.displayName = 'OffCanvasBody';
+)
+OffCanvasBody.displayName = 'OffCanvasBody'
 
 interface IOffCanvasProps extends HTMLAttributes<HTMLElement> {
-	id?: string;
+	id?: string
 	children:
 		| ReactElement<IOffCanvasHeaderProps>
 		| ReactElement<IOffCanvasHeaderProps>[]
 		| ReactElement<IOffCanvasBodyProps>
 		| ReactElement<IOffCanvasBodyProps>[]
 		| ReactNode
-		| ReactNode[];
-	placement?: TOffCanvasPlacement;
-	titleId?: string | null;
-	isOpen: boolean;
-	setOpen(...args: unknown[]): unknown;
-	isBodyScroll?: boolean;
-	isBackdrop?: boolean;
-	isModalStyle?: boolean;
-	isRightPanel?: boolean;
-	tag?: 'div' | 'section' | 'form';
-	onSubmit?(...args: unknown[]): unknown;
-	noValidate?: true;
+		| ReactNode[]
+	placement?: TOffCanvasPlacement
+	titleId?: string | null
+	isOpen: boolean
+	setOpen(...args: unknown[]): unknown
+	isBodyScroll?: boolean
+	isBackdrop?: boolean
+	isModalStyle?: boolean
+	isRightPanel?: boolean
+	tag?: 'div' | 'section' | 'form'
+	onSubmit?(...args: unknown[]): unknown
+	noValidate?: true
 }
 const OffCanvas: FC<IOffCanvasProps> = ({
 	id,
@@ -122,36 +122,36 @@ const OffCanvas: FC<IOffCanvasProps> = ({
 	tag: Tag = 'div',
 	...props
 }) => {
-	const { mobileDesign } = useContext(ThemeContext);
+	const { mobileDesign } = useContext(ThemeContext)
 
 	const initialProps = {
 		isBackdrop: isRightPanel && !mobileDesign ? false : isBackdrop,
 		isBodyScroll: isRightPanel && !mobileDesign ? true : isBodyScroll,
 		placement: isRightPanel ? 'end' : placement,
-	};
+	}
 
 	// @ts-ignore
-	const { setRightPanel } = useContext(ThemeContext);
-	const deviceScreen = useDeviceScreen();
+	const { setRightPanel } = useContext(ThemeContext)
+	const deviceScreen = useDeviceScreen()
 
 	useEffect(() => {
 		// @ts-ignore
-		setRightPanel(isRightPanel && deviceScreen?.width > 1200 && isOpen);
-	});
+		setRightPanel(isRightPanel && deviceScreen?.width > 1200 && isOpen)
+	})
 
-	const ref = useRef(null);
+	const ref = useRef(null)
 
 	// Disable Body Scroll
 	useEffect(() => {
 		if (!initialProps.isBodyScroll && isOpen) {
-			document.body.style.overflow = 'hidden';
-			document.body.style.paddingRight = '0px';
+			document.body.style.overflow = 'hidden'
+			document.body.style.paddingRight = '0px'
 		}
 		return () => {
-			document.body.style.overflow = 'auto';
-			document.body.style.removeProperty('padding-right');
-		};
-	});
+			document.body.style.overflow = 'auto'
+			document.body.style.removeProperty('padding-right')
+		}
+	})
 
 	// Backdrop close function
 	const closeCanvas = (event: { target: any }) => {
@@ -161,18 +161,18 @@ const OffCanvas: FC<IOffCanvasProps> = ({
 			!ref.current.contains(event.target) &&
 			((!isRightPanel && isBackdrop) || (isRightPanel && mobileDesign))
 		) {
-			setOpen(false);
+			setOpen(false)
 		}
-	};
-	useEventListener('mousedown', closeCanvas);
-	useEventListener('touchstart', closeCanvas);
+	}
+	useEventListener('mousedown', closeCanvas)
+	useEventListener('touchstart', closeCanvas)
 
 	const PLACEMENT_ANIMATION = (initialProps.placement === 'start' && { x: '-100%' }) ||
 		(initialProps.placement === 'top' && { y: '-100%' }) ||
-		(initialProps.placement === 'bottom' && { y: '100%' }) || { x: '100%' };
+		(initialProps.placement === 'bottom' && { y: '100%' }) || { x: '100%' }
 
 	// @ts-ignore
-	const MotionTagWrapper = motion[Tag];
+	const MotionTagWrapper = motion[Tag]
 
 	return (
 		<Portal>
@@ -215,7 +215,7 @@ const OffCanvas: FC<IOffCanvasProps> = ({
 				)}
 			</AnimatePresence>
 		</Portal>
-	);
-};
+	)
+}
 
-export default OffCanvas;
+export default OffCanvas

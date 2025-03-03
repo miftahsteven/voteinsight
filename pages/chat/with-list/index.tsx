@@ -1,20 +1,20 @@
-import React, { SetStateAction, useContext, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import dayjs from 'dayjs';
-import USERS, { IUserProps } from '../../../common/data/userDummyData';
-import CHATS, { IMessages } from '../../../common/data/chatDummyData';
-import ThemeContext from '../../../context/themeContext';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Icon from '../../../components/icon/Icon';
-import CommonChatStatus from '../../../common/partial/CommonChatStatus';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
+import React, { SetStateAction, useContext, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import dayjs from 'dayjs'
+import USERS, { IUserProps } from '../../../common/data/userDummyData'
+import CHATS, { IMessages } from '../../../common/data/chatDummyData'
+import ThemeContext from '../../../context/themeContext'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Icon from '../../../components/icon/Icon'
+import CommonChatStatus from '../../../common/partial/CommonChatStatus'
+import Button from '../../../components/bootstrap/Button'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -24,13 +24,13 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Chat, { ChatAvatar, ChatGroup, ChatListItem } from '../../../components/Chat';
-import InputGroup from '../../../components/bootstrap/forms/InputGroup';
-import Textarea from '../../../components/bootstrap/forms/Textarea';
+} from '../../../components/bootstrap/Card'
+import Chat, { ChatAvatar, ChatGroup, ChatListItem } from '../../../components/Chat'
+import InputGroup from '../../../components/bootstrap/forms/InputGroup'
+import Textarea from '../../../components/bootstrap/forms/Textarea'
 
 const Index: NextPage = () => {
-	const router = useRouter();
+	const router = useRouter()
 
 	const TABS: { [key: string]: IUserProps } = {
 		CHLOE: USERS.CHLOE,
@@ -39,41 +39,41 @@ const Index: NextPage = () => {
 		RYAN: USERS.RYAN,
 		ELLA: USERS.ELLA,
 		SAM: USERS.SAM,
-	};
-	const [activeTab, setActiveTab] = useState<IUserProps | SetStateAction<null>>(TABS.CHLOE);
+	}
+	const [activeTab, setActiveTab] = useState<IUserProps | SetStateAction<null>>(TABS.CHLOE)
 
 	function getMessages(ACTIVE_TAB: IUserProps): IMessages[] | null {
 		if (ACTIVE_TAB === USERS.CHLOE) {
-			return CHATS.CHLOE_VS_JOHN;
+			return CHATS.CHLOE_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.GRACE) {
-			return CHATS.GRACE_VS_JOHN;
+			return CHATS.GRACE_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.JANE) {
-			return CHATS.JANE_VS_JOHN;
+			return CHATS.JANE_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.RYAN) {
-			return CHATS.RYAN_VS_JOHN;
+			return CHATS.RYAN_VS_JOHN
 		}
 
 		if (ACTIVE_TAB === USERS.ELLA) {
-			return CHATS.ELLA_VS_JOHN;
+			return CHATS.ELLA_VS_JOHN
 		}
 		if (ACTIVE_TAB === USERS.SAM) {
-			return CHATS.SAM_VS_JOHN;
+			return CHATS.SAM_VS_JOHN
 		}
-		return null;
+		return null
 	}
 
-	const { mobileDesign } = useContext(ThemeContext);
-	const [listShow, setListShow] = useState<boolean>(true);
+	const { mobileDesign } = useContext(ThemeContext)
+	const [listShow, setListShow] = useState<boolean>(true)
 
 	const getListShow = (TAB_NAME: IUserProps | SetStateAction<null>) => {
-		setActiveTab(TAB_NAME);
+		setActiveTab(TAB_NAME)
 		if (mobileDesign) {
-			setListShow(false);
+			setListShow(false)
 		}
-	};
+	}
 
 	return (
 		<PageWrapper>
@@ -98,7 +98,7 @@ const Index: NextPage = () => {
 							isLight
 							icon='ChevronLeft'
 							onClick={() => {
-								setListShow(true);
+								setListShow(true)
 							}}>
 							Back to List
 						</Button>
@@ -271,14 +271,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

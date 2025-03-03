@@ -1,12 +1,12 @@
-import React from 'react';
-import Header, { HeaderLeft } from '../../../layout/Header/Header';
-import Navigation from '../../../layout/Navigation/Navigation';
-import { productsMenu } from '../../../menu';
-import useDeviceScreen from '../../../hooks/useDeviceScreen';
-import CommonHeaderRight from './CommonHeaderRight';
+import React from 'react'
+import Header, { HeaderLeft } from '../../../layout/Header/Header'
+import Navigation from '../../../layout/Navigation/Navigation'
+import { productsMenu } from '../../../menu'
+import useDeviceScreen from '../../../hooks/useDeviceScreen'
+import CommonHeaderRight from './CommonHeaderRight'
 
 const ProductsHeader = () => {
-	const deviceScreen = useDeviceScreen();
+	const deviceScreen = useDeviceScreen()
 	return (
 		<Header>
 			<HeaderLeft>
@@ -21,7 +21,7 @@ const ProductsHeader = () => {
 			</HeaderLeft>
 			<CommonHeaderRight />
 		</Header>
-	);
-};
+	)
+}
 
-export default ProductsHeader;
+export default ProductsHeader

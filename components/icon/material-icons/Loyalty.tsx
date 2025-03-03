@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgLoyalty = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgLoyalty = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={6.5} cy={6.5} r={1.5} />
 			<path d='M8.9 12.55c0 .57.23 1.07.6 1.45l3.5 3.5 3.5-3.5a2.053 2.053 0 00-2.9-2.9l-.6.6-.6-.59c-.37-.38-.89-.61-1.45-.61-1.13 0-2.05.92-2.05 2.05z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgLoyalty;
+export default SvgLoyalty

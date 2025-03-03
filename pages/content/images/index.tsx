@@ -1,39 +1,39 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import PlaceholderImage from '../../../components/extras/PlaceholderImage';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import PrismCode from '../../../components/extras/PrismCode';
+} from '../../../components/bootstrap/Card'
+import PlaceholderImage from '../../../components/extras/PlaceholderImage'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import PrismCode from '../../../components/extras/PrismCode'
 
 const Index: NextPage = () => {
 	const ALIGN_IMAGE = `
 <img src='...' className='rounded float-start' alt='...' />
-<img src='...' className='rounded float-end' alt='...' />`;
+<img src='...' className='rounded float-end' alt='...' />`
 
-	const ALIGN_IMAGE_2 = `<img src='...' className='rounded mx-auto d-block' alt='...' />`;
+	const ALIGN_IMAGE_2 = `<img src='...' className='rounded mx-auto d-block' alt='...' />`
 
 	const ALIGN_IMAGE_3 = `<div className='text-center'>
 	<img src='...' className='rounded' alt='...'>
-</div>`;
+</div>`
 
 	const PICTURE = `<picture>
 	<source srcSet='...' type='image/svg+xml' />
 	<img src='...' className='img-fluid img-thumbnail' alt='...' />
-</picture>`;
+</picture>`
 
 	return (
 		<PageWrapper>
@@ -185,14 +185,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

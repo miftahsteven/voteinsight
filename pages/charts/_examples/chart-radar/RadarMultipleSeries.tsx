@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const RadarMultipleSeries = () => {
 	const [state] = useState<IChartOptions>({
@@ -51,7 +51,7 @@ const RadarMultipleSeries = () => {
 				categories: ['2011', '2012', '2013', '2014', '2015', '2016'],
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -73,7 +73,7 @@ const RadarMultipleSeries = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadarMultipleSeries;
+export default RadarMultipleSeries

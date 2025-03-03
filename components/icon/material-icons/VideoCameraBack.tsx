@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgVideoCameraBack = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgVideoCameraBack = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M11.62 11.5L9 15l-1.62-2.17L5 16h10z' />
 			<path d='M18 10.48V6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2v-4.48l4 3.98v-11l-4 3.98zM16 18H4V6h12v12z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgVideoCameraBack;
+export default SvgVideoCameraBack

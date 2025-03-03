@@ -1,9 +1,9 @@
-import React from 'react';
-import Header, { HeaderLeft } from '../../../layout/Header/Header';
-import CommonHeaderChat from './CommonHeaderChat';
-import Search from '../../../components/Search';
-import CommonHeaderRight from './CommonHeaderRight';
-import LogoLimanara from '../../../assets/logos/limanara_small.png';
+import React from 'react'
+import Header, { HeaderLeft } from '../../../layout/Header/Header'
+import CommonHeaderChat from './CommonHeaderChat'
+import Search from '../../../components/Search'
+import CommonHeaderRight from './CommonHeaderRight'
+import LogoLimanara from '../../../assets/logos/limanara_small.png'
 
 const DashboardHeader = () => {
 	return (
@@ -12,7 +12,7 @@ const DashboardHeader = () => {
 				{/* <Search /> */}
 				<img
 					src={LogoLimanara}
-					alt={"Limanara Logo"}
+					alt='Limanara Logo'
 					width={256} // TODO auto
 					height={65}
 					style={{ marginLeft: -30, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
@@ -20,7 +20,7 @@ const DashboardHeader = () => {
 			</HeaderLeft>
 			<CommonHeaderRight afterChildren={<CommonHeaderChat />} />
 		</Header>
-	);
-};
+	)
+}
 
-export default DashboardHeader;
+export default DashboardHeader

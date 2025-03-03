@@ -1,8 +1,8 @@
-import React from 'react';
-import Header, { HeaderLeft } from '../../../layout/Header/Header';
-import Avatar from '../../../components/Avatar';
-import UserImage2 from '../../../assets/img/wanna/wanna1.png';
-import CommonHeaderRight from './CommonHeaderRight';
+import React from 'react'
+import Header, { HeaderLeft } from '../../../layout/Header/Header'
+import Avatar from '../../../components/Avatar'
+import UserImage2 from '../../../assets/img/wanna/wanna1.png'
+import CommonHeaderRight from './CommonHeaderRight'
 
 const ProfilePageHeader = () => {
 	return (
@@ -22,7 +22,7 @@ const ProfilePageHeader = () => {
 			</HeaderLeft>
 			<CommonHeaderRight />
 		</Header>
-	);
-};
+	)
+}
 
-export default ProfilePageHeader;
+export default ProfilePageHeader

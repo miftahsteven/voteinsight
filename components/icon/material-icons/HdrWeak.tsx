@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgHdrWeak = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgHdrWeak = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={5} cy={12} opacity={0.3} r={2} />
 			<path d='M5 8c-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4-1.79-4-4-4zm0 6c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgHdrWeak;
+export default SvgHdrWeak

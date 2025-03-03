@@ -1,8 +1,8 @@
-import React, { FC, HTMLAttributes, ReactNode } from 'react';
+import React, { FC, HTMLAttributes, ReactNode } from 'react'
 
 interface ICommonStoryLinkProps extends HTMLAttributes<HTMLAnchorElement> {
-	children: ReactNode;
-	to: string;
+	children: ReactNode
+	to: string
 }
 const CommonStoryLink: FC<ICommonStoryLinkProps> = ({ to, children, ...props }) => {
 	return (
@@ -13,7 +13,7 @@ const CommonStoryLink: FC<ICommonStoryLinkProps> = ({ to, children, ...props }) 
 			{...props}>
 			{children}
 		</a>
-	);
-};
+	)
+}
 
-export default CommonStoryLink;
+export default CommonStoryLink

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const TimelineMultipleSeries = () => {
 	const [state] = useState<IChartOptions>({
@@ -184,9 +184,9 @@ const TimelineMultipleSeries = () => {
 			},
 			tooltip: {
 				custom(opts) {
-					const fromYear = new Date(opts.y1).getFullYear();
-					const toYear = new Date(opts.y2).getFullYear();
-					const values = opts.ctx.rangeBar.getTooltipValues(opts);
+					const fromYear = new Date(opts.y1).getFullYear()
+					const toYear = new Date(opts.y2).getFullYear()
+					const values = opts.ctx.rangeBar.getTooltipValues(opts)
 
 					return (
 						`${
@@ -197,11 +197,11 @@ const TimelineMultipleSeries = () => {
 						}</span></div>` +
 						`<div> <span class="category">${values.ylabel} </span> <span class="value start-value">${fromYear}</span> <span class="separator">-</span> <span class="value end-value">${toYear}</span></div>` +
 						`</div>`
-					);
+					)
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-12'>
 			<Card stretch>
@@ -223,7 +223,7 @@ const TimelineMultipleSeries = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default TimelineMultipleSeries;
+export default TimelineMultipleSeries

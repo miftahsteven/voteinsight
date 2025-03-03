@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgCloudOff = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgCloudOff = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M19.35 10.04A7.49 7.49 0 0012 4c-1.33 0-2.57.36-3.65.97l1.49 1.49C10.51 6.17 11.23 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19a2.996 2.996 0 011.79 5.4l1.41 1.41c1.09-.92 1.8-2.27 1.8-3.81 0-2.64-2.05-4.78-4.65-4.96zM3 5.27l2.77 2.77h-.42A5.994 5.994 0 000 14c0 3.31 2.69 6 6 6h11.73l2 2 1.41-1.41L4.41 3.86 3 5.27zM7.73 10l8 8H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h1.73z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgCloudOff;
+export default SvgCloudOff

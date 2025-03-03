@@ -1,9 +1,9 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import { componentPagesMenu } from '../../menu';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import { componentPagesMenu } from '../../menu'
 import Card, {
 	CardBody,
 	CardCodeView,
@@ -11,16 +11,16 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Page from '../../layout/Page/Page';
-import showNotification from '../../components/extras/showNotification';
-import SubHeader, { SubHeaderLeft } from '../../layout/SubHeader/SubHeader';
-import { AlertLink } from '../../components/bootstrap/Alert';
-import CommonDesc from '../../common/partial/other/CommonDesc';
-import PageWrapper from '../../layout/PageWrapper/PageWrapper';
-import Icon from '../../components/icon/Icon';
-import Breadcrumb from '../../components/bootstrap/Breadcrumb';
-import Button from '../../components/bootstrap/Button';
+} from '../../components/bootstrap/Card'
+import Page from '../../layout/Page/Page'
+import showNotification from '../../components/extras/showNotification'
+import SubHeader, { SubHeaderLeft } from '../../layout/SubHeader/SubHeader'
+import { AlertLink } from '../../components/bootstrap/Alert'
+import CommonDesc from '../../common/partial/other/CommonDesc'
+import PageWrapper from '../../layout/PageWrapper/PageWrapper'
+import Icon from '../../components/icon/Icon'
+import Breadcrumb from '../../components/bootstrap/Breadcrumb'
+import Button from '../../components/bootstrap/Button'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -30,14 +30,14 @@ const Index: NextPage = () => {
 		'message', // String, HTML or Component
 		'type' // 'default' || 'info' || 'warning' || 'success' || 'danger',
 	);
-}`;
+}`
 
 	const TITLE = (
 		<span className='d-flex align-items-center'>
 			<Icon icon='Info' size='lg' className='me-1' />
 			<span>This is a Title</span>
 		</span>
-	);
+	)
 	const MESSAGE = (
 		<div>
 			<p>
@@ -45,7 +45,7 @@ const Index: NextPage = () => {
 				non consectetur sem aliquam nec.
 			</p>
 		</div>
-	);
+	)
 
 	return (
 		<PageWrapper>
@@ -100,7 +100,7 @@ const Index: NextPage = () => {
 									isLight
 									icon='Notifications'
 									onClick={() => {
-										showNotification('', MESSAGE);
+										showNotification('', MESSAGE)
 									}}>
 									Click
 								</Button>
@@ -121,7 +121,7 @@ const Index: NextPage = () => {
 									isLight
 									icon='Notifications'
 									onClick={() => {
-										showNotification(TITLE, MESSAGE);
+										showNotification(TITLE, MESSAGE)
 									}}>
 									Click
 								</Button>
@@ -145,7 +145,7 @@ const Index: NextPage = () => {
 											isLight
 											icon='Notifications'
 											onClick={() => {
-												showNotification(TITLE, MESSAGE);
+												showNotification(TITLE, MESSAGE)
 											}}>
 											Default
 										</Button>
@@ -156,7 +156,7 @@ const Index: NextPage = () => {
 											isLight
 											icon='Notifications'
 											onClick={() => {
-												showNotification(TITLE, MESSAGE, 'info');
+												showNotification(TITLE, MESSAGE, 'info')
 											}}>
 											Info
 										</Button>
@@ -167,7 +167,7 @@ const Index: NextPage = () => {
 											isLight
 											icon='Notifications'
 											onClick={() => {
-												showNotification(TITLE, MESSAGE, 'success');
+												showNotification(TITLE, MESSAGE, 'success')
 											}}>
 											Success
 										</Button>
@@ -178,7 +178,7 @@ const Index: NextPage = () => {
 											isLight
 											icon='Notifications'
 											onClick={() => {
-												showNotification(TITLE, MESSAGE, 'warning');
+												showNotification(TITLE, MESSAGE, 'warning')
 											}}>
 											Warning
 										</Button>
@@ -190,7 +190,7 @@ const Index: NextPage = () => {
 											isLight
 											icon='Notifications'
 											onClick={() => {
-												showNotification(TITLE, MESSAGE, 'danger');
+												showNotification(TITLE, MESSAGE, 'danger')
 											}}>
 											Danger
 										</Button>
@@ -202,14 +202,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgEast = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgEast = (props: SVGProps<SVGSVGElement>) => {
 			<path fill='none' d='M0 0h24v24H0z' />
 			<path d='M15 5l-1.41 1.41L18.17 11H2v2h16.17l-4.59 4.59L15 19l7-7-7-7z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgEast;
+export default SvgEast

@@ -1,38 +1,38 @@
-import dayjs, { Dayjs } from 'dayjs';
-import PAYMENTS from './enumPaymentMethod';
-import UserImage from '../../assets/img/wanna/wanna1.png';
-import UserImage2 from '../../assets/img/wanna/wanna2.png';
-import UserImage3 from '../../assets/img/wanna/wanna3.png';
-import UserImage4 from '../../assets/img/wanna/wanna4.png';
-import UserImage5 from '../../assets/img/wanna/wanna5.png';
-import UserImage6 from '../../assets/img/wanna/wanna6.png';
-import UserImage7 from '../../assets/img/wanna/wanna7.png';
+import dayjs, { Dayjs } from 'dayjs'
+import PAYMENTS from './enumPaymentMethod'
+import UserImage from '../../assets/img/wanna/wanna1.png'
+import UserImage2 from '../../assets/img/wanna/wanna2.png'
+import UserImage3 from '../../assets/img/wanna/wanna3.png'
+import UserImage4 from '../../assets/img/wanna/wanna4.png'
+import UserImage5 from '../../assets/img/wanna/wanna5.png'
+import UserImage6 from '../../assets/img/wanna/wanna6.png'
+import UserImage7 from '../../assets/img/wanna/wanna7.png'
 
 const data: {
-	id: number;
-	name: string;
-	email: string;
-	type: string;
-	membershipDate: Dayjs;
-	balance: number;
-	payout: string;
-	src: string;
-	isOnline?: boolean;
-	streetAddress: string;
-	streetAddress2: string;
-	city: string;
-	state: string;
-	stateFull: string;
-	zip: string;
-	streetAddressDelivery: string;
-	streetAddress2Delivery: string;
-	cityDelivery: string;
-	stateDelivery: string;
-	stateFullDelivery: string;
-	zipDelivery: string;
-	phone: string;
-	latitude: string;
-	longitude: string;
+	id: number
+	name: string
+	email: string
+	type: string
+	membershipDate: Dayjs
+	balance: number
+	payout: string
+	src: string
+	isOnline?: boolean
+	streetAddress: string
+	streetAddress2: string
+	city: string
+	state: string
+	stateFull: string
+	zip: string
+	streetAddressDelivery: string
+	streetAddress2Delivery: string
+	cityDelivery: string
+	stateDelivery: string
+	stateFullDelivery: string
+	zipDelivery: string
+	phone: string
+	latitude: string
+	longitude: string
 }[] = [
 	{
 		id: 1,
@@ -310,5 +310,5 @@ const data: {
 		latitude: '34.001846',
 		longitude: '-118.092308',
 	},
-];
-export default data;
+]
+export default data

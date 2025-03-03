@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgDriveFileMove = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -11,7 +11,7 @@ const SvgDriveFileMove = (props: SVGProps<SVGSVGElement>) => {
 				opacity={0.3}
 			/>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgDriveFileMove;
+export default SvgDriveFileMove

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgDoorSliding = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgDoorSliding = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M20 19V5c0-1.1-.9-2-2-2H6c-1.1 0-2 .9-2 2v14H3v2h18v-2h-1zm-9 0H6V5h5v14zm7 0h-5V5h5v14z' />
 			<path d='M8 11h2v2H8zM14 11h2v2h-2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgDoorSliding;
+export default SvgDoorSliding

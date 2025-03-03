@@ -1,9 +1,9 @@
-import React, { forwardRef, ReactNode } from 'react';
-import classNames from 'classnames';
-import { createUseStyles } from 'react-jss';
-import TagWrapper from '../TagWrapper';
-import { TColor } from '../../type/color-type';
-import useMounted from '../../hooks/useMounted';
+import React, { forwardRef, ReactNode } from 'react'
+import classNames from 'classnames'
+import { createUseStyles } from 'react-jss'
+import TagWrapper from '../TagWrapper'
+import { TColor } from '../../type/color-type'
+import useMounted from '../../hooks/useMounted'
 
 const useStyles = createUseStyles(
 	{
@@ -16,17 +16,17 @@ const useStyles = createUseStyles(
 		}),
 	},
 	{ link: true },
-);
+)
 
 interface ISpinnerProps {
-	children?: ReactNode;
-	tag?: 'div' | 'span';
-	color?: TColor | null;
-	isGrow?: boolean;
-	isSmall?: boolean;
-	size?: string | number | null;
-	inButton?: boolean | 'onlyIcon';
-	className?: string;
+	children?: ReactNode
+	tag?: 'div' | 'span'
+	color?: TColor | null
+	isGrow?: boolean
+	isSmall?: boolean
+	size?: string | number | null
+	inButton?: boolean | 'onlyIcon'
+	className?: string
 }
 const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>(
 	(
@@ -43,12 +43,12 @@ const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>(
 		},
 		ref,
 	) => {
-		const { mounted } = useMounted();
+		const { mounted } = useMounted()
 
 		// @ts-ignore
-		const classes = useStyles({ size });
+		const classes = useStyles({ size })
 
-		const HIDDEN_TEXT = <span className='visually-hidden'>{children}</span>;
+		const HIDDEN_TEXT = <span className='visually-hidden'>{children}</span>
 		return (
 			<>
 				<TagWrapper
@@ -73,9 +73,9 @@ const Spinner = forwardRef<HTMLDivElement, ISpinnerProps>(
 				</TagWrapper>
 				{inButton === 'onlyIcon' ? HIDDEN_TEXT : null}
 			</>
-		);
+		)
 	},
-);
-Spinner.displayName = 'Spinner';
+)
+Spinner.displayName = 'Spinner'
 
-export default Spinner;
+export default Spinner

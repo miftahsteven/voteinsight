@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSignalWifiStatusbar2Bar = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgSignalWifiStatusbar2Bar = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M19.77 13.22C17.78 11.23 15.03 10 12 10s-5.78 1.23-7.77 3.22L12 21l7.77-7.78z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSignalWifiStatusbar2Bar;
+export default SvgSignalWifiStatusbar2Bar

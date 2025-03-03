@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBusAlert = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgBusAlert = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={13.5} cy={15.5} r={1.5} />
 			<path d='M18 1c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm.5 8h-1V8h1v1zm0-2h-1V3h1v4z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBusAlert;
+export default SvgBusAlert

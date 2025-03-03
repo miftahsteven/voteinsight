@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { Calendar as DatePicker } from 'react-date-range';
-import dayjs from 'dayjs';
-import useDarkMode from '../../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Icon from '../../../components/icon/Icon';
-import Popovers from '../../../components/bootstrap/Popovers';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
-import CommonUpcomingEvents from '../../../common/partial/CommonUpcomingEvents';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { Calendar as DatePicker } from 'react-date-range'
+import dayjs from 'dayjs'
+import useDarkMode from '../../../hooks/useDarkMode'
+import { demoPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Icon from '../../../components/icon/Icon'
+import Popovers from '../../../components/bootstrap/Popovers'
+import Button from '../../../components/bootstrap/Button'
+import Page from '../../../layout/Page/Page'
+import CommonUpcomingEvents from '../../../common/partial/CommonUpcomingEvents'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 
 const Index: NextPage = () => {
-	const { themeStatus } = useDarkMode();
+	const { themeStatus } = useDarkMode()
 
-	const [date, setDate] = useState<Date>(new Date());
+	const [date, setDate] = useState<Date>(new Date())
 
 	return (
 		<PageWrapper>
@@ -59,14 +59,14 @@ const Index: NextPage = () => {
 				<CommonUpcomingEvents isFluid />
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

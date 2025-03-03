@@ -1,15 +1,15 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -19,14 +19,14 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Label from '../../../components/bootstrap/forms/Label';
-import Select from '../../../components/bootstrap/forms/Select';
-import Option, { Options } from '../../../components/bootstrap/Option';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Label from '../../../components/bootstrap/forms/Label'
+import Select from '../../../components/bootstrap/forms/Select'
+import Option, { Options } from '../../../components/bootstrap/Option'
 
 export const SELECT_OPTIONS = [
 	{ value: 1, text: 'One' },
@@ -35,7 +35,7 @@ export const SELECT_OPTIONS = [
 	{ value: 4, text: 'Four' },
 	{ value: 5, text: 'Five' },
 	{ value: 6, text: 'Six' },
-];
+]
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -61,7 +61,7 @@ const Index: NextPage = () => {
 	onInput={ Function }
 	onInvalid={ Function }
 	onSelect={ Function }
- 	{...props} />`;
+ 	{...props} />`
 	const GENERAL_USAGE3 = `
 <Select
 	id={ String }
@@ -88,7 +88,7 @@ const Index: NextPage = () => {
  	{...props}>
 		<Option value={ String }>...</Option>
 		...
-</Select>`;
+</Select>`
 	const GENERAL_USAGE_2 = `
 <Select
 	id={ String }
@@ -114,59 +114,59 @@ const Index: NextPage = () => {
 	onSelect={ Function }
  	{...props}>
  		<Options list={ Array } />
-</Select>`;
+</Select>`
 
 	const FIRST_WAY = (
 		<a href='#firstWay' className='text-decoration-none'>
 			<sup>[1]</sup>
 		</a>
-	);
+	)
 	const SECOND_WAY = (
 		<a href='#secondWay' className='text-decoration-none'>
 			<sup>[2]</sup>
 		</a>
-	);
+	)
 	const THIRD_WAY = (
 		<a href='#thirdWay' className='text-decoration-none'>
 			<sup>[3]</sup>
 		</a>
-	);
+	)
 
 	const formikOneWay = useFormik({
 		initialValues: {
 			exampleSelectOneWay: '',
 		},
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			alert(JSON.stringify(values, null, 2))
 		},
-	});
+	})
 
 	const formikTwoWay = useFormik({
 		initialValues: {
 			exampleSelectTwoWay: '',
 		},
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			alert(JSON.stringify(values, null, 2))
 		},
-	});
+	})
 
 	const formikThreeWay = useFormik({
 		initialValues: {
 			exampleSelectThreeWay: '',
 		},
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			alert(JSON.stringify(values, null, 2))
 		},
-	});
+	})
 
 	const formikTwo = useFormik({
 		initialValues: {
 			exampleMultiSelect: ['1', '2'],
 		},
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			alert(JSON.stringify(values, null, 2))
 		},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -591,14 +591,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

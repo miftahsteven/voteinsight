@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const ColumnWithDataLabels = () => {
 	const [columnWithDataLabels] = useState<IChartOptions>({
@@ -31,7 +31,7 @@ const ColumnWithDataLabels = () => {
 			dataLabels: {
 				enabled: true,
 				formatter(val) {
-					return `${val}%`;
+					return `${val}%`
 				},
 				offsetY: -20,
 				style: {
@@ -88,7 +88,7 @@ const ColumnWithDataLabels = () => {
 				labels: {
 					show: false,
 					formatter(val) {
-						return `${val}%`;
+						return `${val}%`
 					},
 				},
 			},
@@ -102,7 +102,7 @@ const ColumnWithDataLabels = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -124,7 +124,7 @@ const ColumnWithDataLabels = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default ColumnWithDataLabels;
+export default ColumnWithDataLabels

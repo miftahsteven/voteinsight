@@ -10,20 +10,20 @@ import React, {
 	useCallback,
 	useRef,
 	useState,
-} from 'react';
-import { Manager, Popper, Reference } from 'react-popper';
-import classNames from 'classnames';
-import useDarkMode from '../../hooks/useDarkMode';
+} from 'react'
+import { Manager, Popper, Reference } from 'react-popper'
+import classNames from 'classnames'
+import useDarkMode from '../../hooks/useDarkMode'
 
-import { IButtonProps } from './Button';
-import { TDropdownDirection } from '../../type/dropdown-type';
-import useEventOutside from '../../hooks/useEventOutside';
+import { IButtonProps } from './Button'
+import { TDropdownDirection } from '../../type/dropdown-type'
+import useEventOutside from '../../hooks/useEventOutside'
 
 interface IDropdownToggleProps {
-	children: ReactElement<IButtonProps> | ReactNode;
-	isOpen?: boolean;
-	setIsOpen?: (value: ((prevState: boolean) => boolean) | boolean | null) => void | null;
-	hasIcon?: boolean;
+	children: ReactElement<IButtonProps> | ReactNode
+	isOpen?: boolean
+	setIsOpen?: (value: ((prevState: boolean) => boolean) | boolean | null) => void | null
+	hasIcon?: boolean
 }
 export const DropdownToggle: FC<IDropdownToggleProps> = ({
 	children,
@@ -31,12 +31,12 @@ export const DropdownToggle: FC<IDropdownToggleProps> = ({
 	setIsOpen = () => {},
 	hasIcon = true,
 }) => {
-	const dropdownButtonRef = useRef(null);
+	const dropdownButtonRef = useRef(null)
 
 	const setButtonRef = useCallback((node: null, ref: (arg0: any) => any) => {
-		dropdownButtonRef.current = node;
-		return ref(node);
-	}, []);
+		dropdownButtonRef.current = node
+		return ref(node)
+	}, [])
 	return (
 		<Reference>
 			{({ ref }) =>
@@ -53,9 +53,9 @@ export const DropdownToggle: FC<IDropdownToggleProps> = ({
 						onClick: () => {
 							// @ts-ignore
 							// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-							children?.props?.onClick ? children.props.onClick() : null;
+							children?.props?.onClick ? children.props.onClick() : null
 							if (setIsOpen) {
-								setIsOpen(!isOpen);
+								setIsOpen(!isOpen)
 							}
 						},
 						className: classNames(
@@ -74,24 +74,24 @@ export const DropdownToggle: FC<IDropdownToggleProps> = ({
 				)
 			}
 		</Reference>
-	);
-};
-DropdownToggle.displayName = 'DropdownToggle';
+	)
+}
+DropdownToggle.displayName = 'DropdownToggle'
 
 interface IDropdownMenuProps extends HTMLAttributes<HTMLUListElement> {
-	isOpen?: boolean;
-	setIsOpen?: (value: ((prevState: boolean) => boolean) | boolean | null) => void | null;
+	isOpen?: boolean
+	setIsOpen?: (value: ((prevState: boolean) => boolean) | boolean | null) => void | null
 	children:
 		| ReactElement<IDropdownItemProps>
 		| ReactElement<IDropdownItemProps>[]
 		| ReactNode
-		| ReactNode[];
-	className?: string;
-	isAlignmentEnd?: boolean;
-	breakpoint?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | null;
-	size?: 'sm' | 'md' | 'lg' | null;
-	direction?: string | null;
-	isCloseAfterLeave?: boolean;
+		| ReactNode[]
+	className?: string
+	isAlignmentEnd?: boolean
+	breakpoint?: 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | null
+	size?: 'sm' | 'md' | 'lg' | null
+	direction?: string | null
+	isCloseAfterLeave?: boolean
 }
 export const DropdownMenu: FC<IDropdownMenuProps> = ({
 	isOpen,
@@ -105,22 +105,22 @@ export const DropdownMenu: FC<IDropdownMenuProps> = ({
 	isCloseAfterLeave = true,
 	...props
 }) => {
-	const dropdownListRef = useRef(null);
+	const dropdownListRef = useRef(null)
 
 	const setListRef = useCallback((node: null, ref: (arg0: any) => any) => {
-		dropdownListRef.current = node;
-		return ref(node);
-	}, []);
+		dropdownListRef.current = node
+		return ref(node)
+	}, [])
 
 	const yAxis =
 		(direction === 'up' && 'top') ||
 		(direction === 'end' && 'right') ||
 		(direction === 'start' && 'left') ||
-		'bottom';
+		'bottom'
 
-	const xAxis = isAlignmentEnd ? 'end' : 'start';
+	const xAxis = isAlignmentEnd ? 'end' : 'start'
 
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	if (isOpen) {
 		return (
@@ -165,15 +165,15 @@ export const DropdownMenu: FC<IDropdownMenuProps> = ({
 					</ul>
 				)}
 			</Popper>
-		);
+		)
 	}
-	return null;
-};
-DropdownMenu.displayName = 'DropdownMenu';
+	return null
+}
+DropdownMenu.displayName = 'DropdownMenu'
 
 interface IItemWrapperProps {
-	children: ReactNode;
-	className?: string;
+	children: ReactNode
+	className?: string
 }
 const ItemWrapper = forwardRef<HTMLLIElement, IItemWrapperProps>(
 	({ children, className, ...props }, ref) => {
@@ -181,16 +181,16 @@ const ItemWrapper = forwardRef<HTMLLIElement, IItemWrapperProps>(
 			<li ref={ref} className={classNames('dropdown-item-wrapper', className)} {...props}>
 				{children}
 			</li>
-		);
+		)
 	},
-);
-ItemWrapper.displayName = 'ItemWrapper';
+)
+ItemWrapper.displayName = 'ItemWrapper'
 
 interface IDropdownItemProps extends HTMLAttributes<HTMLLIElement> {
-	children?: ReactElement<any, string | JSXElementConstructor<any>> | string;
-	isHeader?: boolean;
-	isDivider?: boolean;
-	isText?: boolean;
+	children?: ReactElement<any, string | JSXElementConstructor<any>> | string
+	isHeader?: boolean
+	isDivider?: boolean
+	isText?: boolean
 }
 export const DropdownItem = forwardRef<HTMLLIElement, IDropdownItemProps>(
 	({ children, isHeader, isDivider, isText, ...props }, ref) => {
@@ -208,7 +208,7 @@ export const DropdownItem = forwardRef<HTMLLIElement, IDropdownItemProps>(
 						},
 					)}
 				</ItemWrapper>
-			);
+			)
 		}
 		if (isDivider) {
 			return (
@@ -217,7 +217,7 @@ export const DropdownItem = forwardRef<HTMLLIElement, IDropdownItemProps>(
 					{/* @ts-ignore */}
 					<hr className={classNames('dropdown-divider', children?.props?.className)} />
 				</ItemWrapper>
-			);
+			)
 		}
 		if (isText) {
 			return (
@@ -238,7 +238,7 @@ export const DropdownItem = forwardRef<HTMLLIElement, IDropdownItemProps>(
 						},
 					)}
 				</ItemWrapper>
-			);
+			)
 		}
 		return (
 			// eslint-disable-next-line react/jsx-props-no-spreading
@@ -253,19 +253,19 @@ export const DropdownItem = forwardRef<HTMLLIElement, IDropdownItemProps>(
 					},
 				)}
 			</ItemWrapper>
-		);
+		)
 	},
-);
-DropdownItem.displayName = 'DropdownItem';
+)
+DropdownItem.displayName = 'DropdownItem'
 
 export interface IDropdownProps {
-	tag?: ElementType;
-	children: ReactElement<IDropdownToggleProps>[] | ReactElement<IDropdownMenuProps>[];
-	isOpen?: boolean | null;
-	setIsOpen?(...args: unknown[]): unknown;
-	direction?: TDropdownDirection;
-	isButtonGroup?: boolean;
-	className?: string;
+	tag?: ElementType
+	children: ReactElement<IDropdownToggleProps>[] | ReactElement<IDropdownMenuProps>[]
+	isOpen?: boolean | null
+	setIsOpen?(...args: unknown[]): unknown
+	direction?: TDropdownDirection
+	isButtonGroup?: boolean
+	className?: string
 }
 const Dropdown: FC<IDropdownProps> = ({
 	tag: Tag = 'div',
@@ -276,21 +276,21 @@ const Dropdown: FC<IDropdownProps> = ({
 	isButtonGroup,
 	className,
 }) => {
-	const [state, setState] = useState(isOpen !== null && !!setIsOpen ? isOpen : false);
+	const [state, setState] = useState(isOpen !== null && !!setIsOpen ? isOpen : false)
 
-	const dropdownRef = useRef(null);
+	const dropdownRef = useRef(null)
 
 	// Clicking outside to close
 	const closeMenu = useCallback(() => {
 		if (isOpen !== null && !!setIsOpen) {
-			setIsOpen(false);
+			setIsOpen(false)
 		} else {
-			setState(false);
+			setState(false)
 		}
-	}, [isOpen, setIsOpen]);
+	}, [isOpen, setIsOpen])
 
-	useEventOutside(dropdownRef, 'mousedown', closeMenu);
-	useEventOutside(dropdownRef, 'touchstart', closeMenu);
+	useEventOutside(dropdownRef, 'mousedown', closeMenu)
+	useEventOutside(dropdownRef, 'touchstart', closeMenu)
 
 	return (
 		<Manager>
@@ -319,8 +319,8 @@ const Dropdown: FC<IDropdownProps> = ({
 				)}
 			</Tag>
 		</Manager>
-	);
-};
-Dropdown.displayName = 'Dropdown';
+	)
+}
+Dropdown.displayName = 'Dropdown'
 
-export default Dropdown;
+export default Dropdown

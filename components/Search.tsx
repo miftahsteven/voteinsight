@@ -1,41 +1,41 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useFormik } from 'formik';
-import { useRouter } from 'next/router';
-import Icon from './icon/Icon';
-import Input from './bootstrap/forms/Input';
-import Modal, { ModalBody, ModalHeader } from './bootstrap/Modal';
-import { componentPagesMenu } from '../menu';
+import React, { useEffect, useRef, useState } from 'react'
+import { useFormik } from 'formik'
+import { useRouter } from 'next/router'
+import Icon from './icon/Icon'
+import Input from './bootstrap/forms/Input'
+import Modal, { ModalBody, ModalHeader } from './bootstrap/Modal'
+import { componentPagesMenu } from '../menu'
 
 const Search = () => {
-	const refSearchInput = useRef<HTMLInputElement>(null);
-	const router = useRouter();
-	const [searchModalStatus, setSearchModalStatus] = useState(false);
+	const refSearchInput = useRef<HTMLInputElement>(null)
+	const router = useRouter()
+	const [searchModalStatus, setSearchModalStatus] = useState(false)
 	const formik = useFormik({
 		initialValues: {
 			searchInput: '',
 		},
 		onSubmit: () => {
-			setSearchModalStatus(true);
+			setSearchModalStatus(true)
 		},
-	});
+	})
 
 	useEffect(() => {
 		if (formik.values.searchInput) {
-			setSearchModalStatus(true);
-			refSearchInput?.current?.focus();
+			setSearchModalStatus(true)
+			refSearchInput?.current?.focus()
 		}
 		return () => {
-			setSearchModalStatus(false);
-		};
-	}, [formik.values.searchInput]);
+			setSearchModalStatus(false)
+		}
+	}, [formik.values.searchInput])
 
 	const searchPages: {
 		[key: string]: {
-			id: string;
-			text: string;
-			path: string;
-			icon: string;
-		};
+			id: string
+			text: string
+			path: string
+			icon: string
+		}
 	} = {
 		...componentPagesMenu.components.subMenu,
 		...componentPagesMenu.content.subMenu,
@@ -43,7 +43,7 @@ const Search = () => {
 		...componentPagesMenu.utilities.subMenu,
 		...componentPagesMenu.icons.subMenu,
 		...componentPagesMenu.charts.subMenu,
-	};
+	}
 	const filterResult = Object.keys(searchPages)
 		.filter(
 			(key) =>
@@ -56,7 +56,7 @@ const Search = () => {
 					.toLowerCase()
 					.includes(formik.values.searchInput.toLowerCase()),
 		)
-		.map((i) => searchPages[i]);
+		.map((i) => searchPages[i])
 	return (
 		<>
 			<div className='d-flex' data-tour='search'>
@@ -107,7 +107,7 @@ const Search = () => {
 										key={item.id}
 										className='cursor-pointer'
 										onClick={() => {
-											router.push(`/${item.path}`);
+											router.push(`/${item.path}`)
 										}}>
 										<td>
 											{item.icon && (
@@ -132,7 +132,7 @@ const Search = () => {
 				</ModalBody>
 			</Modal>
 		</>
-	);
-};
+	)
+}
 
-export default Search;
+export default Search

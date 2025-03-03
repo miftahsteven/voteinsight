@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const ColumnDistributed = () => {
 	const colors: string[] = [
@@ -18,7 +18,7 @@ const ColumnDistributed = () => {
 		String(process.env.NEXT_PUBLIC_DANGER_COLOR),
 		'#26a69a',
 		'#D10CE8',
-	];
+	]
 	const [columnDistributed] = useState<IChartOptions>({
 		series: [
 			{
@@ -68,7 +68,7 @@ const ColumnDistributed = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -90,7 +90,7 @@ const ColumnDistributed = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default ColumnDistributed;
+export default ColumnDistributed

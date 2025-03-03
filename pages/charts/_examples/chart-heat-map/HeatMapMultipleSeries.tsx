@@ -1,24 +1,24 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const HeatMapMultipleSeries = () => {
 	function generateData(count: number, yrange: { min: any; max: any }): any[] {
-		let i = 0;
-		const series = [];
+		let i = 0
+		const series = []
 		while (i < count) {
-			const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+			const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
 
-			series.push(y);
-			i += 1;
+			series.push(y)
+			i += 1
 		}
-		return series;
+		return series
 	}
 
 	const data = [
@@ -78,8 +78,8 @@ const HeatMapMultipleSeries = () => {
 				max: 90,
 			}),
 		},
-	];
-	data.reverse();
+	]
+	data.reverse()
 
 	const [state] = useState<IChartOptions>({
 		series: data,
@@ -139,7 +139,7 @@ const HeatMapMultipleSeries = () => {
 				text: 'Color Scales flipped Vertically',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -161,7 +161,7 @@ const HeatMapMultipleSeries = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default HeatMapMultipleSeries;
+export default HeatMapMultipleSeries

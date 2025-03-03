@@ -1,5 +1,5 @@
-import React, { Children, cloneElement, FC, ReactElement, ReactNode, useState } from 'react';
-import classNames from 'classnames';
+import React, { Children, cloneElement, FC, ReactElement, ReactNode, useState } from 'react'
+import classNames from 'classnames'
 import Card, {
 	CardActions,
 	CardBody,
@@ -10,17 +10,17 @@ import Card, {
 	CardLabel,
 	CardTitle,
 	ICardProps,
-} from './bootstrap/Card';
-import Button from './bootstrap/Button';
-import Popovers from './bootstrap/Popovers';
-import useDarkMode from '../hooks/useDarkMode';
-import { TColor } from '../type/color-type';
+} from './bootstrap/Card'
+import Button from './bootstrap/Button'
+import Popovers from './bootstrap/Popovers'
+import useDarkMode from '../hooks/useDarkMode'
+import { TColor } from '../type/color-type'
 
 interface IWizardItemProps extends React.HTMLAttributes<HTMLDivElement> {
-	id: string;
-	children: ReactNode;
-	title?: string;
-	className?: string;
+	id: string
+	children: ReactNode
+	title?: string
+	className?: string
 }
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const WizardItem: FC<IWizardItemProps> = ({ id, title, children, className, ...props }) => {
@@ -32,13 +32,13 @@ export const WizardItem: FC<IWizardItemProps> = ({ id, title, children, classNam
 			{...props}>
 			{children}
 		</section>
-	);
-};
+	)
+}
 
 interface IWizardProps extends ICardProps {
-	children: ReactElement<IWizardItemProps> | ReactElement<IWizardItemProps>[];
-	color?: TColor;
-	isHeader?: boolean | 'withButton';
+	children: ReactElement<IWizardItemProps> | ReactElement<IWizardItemProps>[]
+	color?: TColor
+	isHeader?: boolean | 'withButton'
 }
 const Wizard: FC<IWizardProps> = ({
 	children,
@@ -48,20 +48,20 @@ const Wizard: FC<IWizardProps> = ({
 	stretch,
 	...props
 }) => {
-	const { themeStatus } = useDarkMode();
-	const [activeItemIndex, setActiveItemIndex] = useState(0);
+	const { themeStatus } = useDarkMode()
+	const [activeItemIndex, setActiveItemIndex] = useState(0)
 
-	const childCount = Array.isArray(children) ? children?.length : 1;
+	const childCount = Array.isArray(children) ? children?.length : 1
 
 	const getTitleName = (i: number) => {
-		return `Step ${i + 1}`;
-	};
+		return `Step ${i + 1}`
+	}
 
 	const prevBtn = !!activeItemIndex && (
 		<Button color={color} isLink onClick={() => setActiveItemIndex(activeItemIndex - 1)}>
 			Previous
 		</Button>
-	);
+	)
 
 	const nextBtn = (
 		<>
@@ -81,7 +81,7 @@ const Wizard: FC<IWizardProps> = ({
 				Submit
 			</Button>
 		</>
-	);
+	)
 
 	return (
 		// eslint-disable-next-line react/jsx-props-no-spreading
@@ -162,7 +162,7 @@ const Wizard: FC<IWizardProps> = ({
 				<CardFooterRight>{nextBtn}</CardFooterRight>
 			</CardFooter>
 		</Card>
-	);
-};
+	)
+}
 
-export default Wizard;
+export default Wizard

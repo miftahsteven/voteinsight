@@ -1,12 +1,12 @@
-import React, { FC, ReactNode } from 'react';
-import classNames from 'classnames';
-import useDarkMode from '../../hooks/useDarkMode';
-import { TColor } from '../../type/color-type';
+import React, { FC, ReactNode } from 'react'
+import classNames from 'classnames'
+import useDarkMode from '../../hooks/useDarkMode'
+import { TColor } from '../../type/color-type'
 
 interface IBadgeProps extends Record<string, any> {
-	children: ReactNode;
-	className?: string;
-	color?: TColor;
+	children: ReactNode
+	className?: string
+	color?: TColor
 	rounded?:
 		| null
 		| 'default'
@@ -19,9 +19,9 @@ interface IBadgeProps extends Record<string, any> {
 		| 'circle'
 		| 'end'
 		| 'start'
-		| 'pill';
-	shadow?: null | 'none' | 'sm' | 'default' | 'lg';
-	isLight?: boolean;
+		| 'pill'
+	shadow?: null | 'none' | 'sm' | 'default' | 'lg'
+	isLight?: boolean
 }
 const Badge: FC<IBadgeProps> = ({
 	children,
@@ -32,7 +32,7 @@ const Badge: FC<IBadgeProps> = ({
 	isLight,
 	...props
 }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 	return (
 		<span
 			className={classNames(
@@ -55,7 +55,7 @@ const Badge: FC<IBadgeProps> = ({
 			{...props}>
 			{children}
 		</span>
-	);
-};
+	)
+}
 
-export default Badge;
+export default Badge

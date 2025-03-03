@@ -1,7 +1,7 @@
-import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useState } from 'react';
-import { usePopper } from 'react-popper';
-import classNames from 'classnames';
-import Portal from '../../layout/Portal/Portal';
+import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode, useState } from 'react'
+import { usePopper } from 'react-popper'
+import classNames from 'classnames'
+import Portal from '../../layout/Portal/Portal'
 
 type Direction =
 	| 'auto'
@@ -18,20 +18,20 @@ type Direction =
 	| 'right-end'
 	| 'left'
 	| 'left-start'
-	| 'left-end';
+	| 'left-end'
 
 interface IPopoversProps extends HTMLAttributes<HTMLDivElement> {
-	children: ReactElement | string;
-	className?: string;
-	bodyClassName?: string | null;
-	title?: string;
-	desc?: ReactNode;
-	placement?: Direction;
-	flip?: Direction[];
-	trigger?: 'click' | 'hover';
-	delay?: number;
-	isDisplayInline?: boolean;
-	modifiers?: object;
+	children: ReactElement | string
+	className?: string
+	bodyClassName?: string | null
+	title?: string
+	desc?: ReactNode
+	placement?: Direction
+	flip?: Direction[]
+	trigger?: 'click' | 'hover'
+	delay?: number
+	isDisplayInline?: boolean
+	modifiers?: object
 }
 const Popovers: FC<IPopoversProps> = ({
 	children,
@@ -47,9 +47,9 @@ const Popovers: FC<IPopoversProps> = ({
 	modifiers,
 	...props
 }) => {
-	const [referenceElement, setReferenceElement] = useState<HTMLSpanElement | null>(null);
-	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null);
-	const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null);
+	const [referenceElement, setReferenceElement] = useState<HTMLSpanElement | null>(null)
+	const [popperElement, setPopperElement] = useState<HTMLDivElement | null>(null)
+	const [arrowElement, setArrowElement] = useState<HTMLDivElement | null>(null)
 	const { styles, attributes } = usePopper(referenceElement, popperElement, {
 		placement,
 		modifiers: [
@@ -74,26 +74,26 @@ const Popovers: FC<IPopoversProps> = ({
 			},
 			{ ...modifiers },
 		],
-	});
+	})
 
-	const [popoverOpen, setPopoverOpen] = useState<boolean>(false);
+	const [popoverOpen, setPopoverOpen] = useState<boolean>(false)
 
 	const ON_CLICK = () => {
-		if (trigger === 'click') setPopoverOpen(!popoverOpen);
-		if (typeof children !== 'string' && children?.props?.onClick) children.props.onClick();
-	};
+		if (trigger === 'click') setPopoverOpen(!popoverOpen)
+		if (typeof children !== 'string' && children?.props?.onClick) children.props.onClick()
+	}
 
 	const ON_MOUSE_OVER = () => {
-		if (trigger === 'hover') setPopoverOpen(true);
+		if (trigger === 'hover') setPopoverOpen(true)
 		if (typeof children !== 'string' && children?.props?.onMouseOver)
-			children.props.onMouseOver();
-	};
+			children.props.onMouseOver()
+	}
 
 	const ON_MOUSE_LEAVE = () => {
-		if (trigger === 'hover') setTimeout(() => setPopoverOpen(false), delay);
+		if (trigger === 'hover') setTimeout(() => setPopoverOpen(false), delay)
 		if (typeof children !== 'string' && children?.props?.onMouseLeave)
-			children.props.onMouseLeave();
-	};
+			children.props.onMouseLeave()
+	}
 
 	const PROPS = {
 		className: classNames(
@@ -103,7 +103,7 @@ const Popovers: FC<IPopoversProps> = ({
 		onClick: ON_CLICK,
 		onMouseOver: ON_MOUSE_OVER,
 		onMouseLeave: ON_MOUSE_LEAVE,
-	};
+	}
 
 	return (
 		<>
@@ -138,7 +138,7 @@ const Popovers: FC<IPopoversProps> = ({
 				</Portal>
 			)}
 		</>
-	);
-};
+	)
+}
 
-export default Popovers;
+export default Popovers

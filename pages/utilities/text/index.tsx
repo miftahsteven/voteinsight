@@ -1,22 +1,22 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
 
 const Index: NextPage = () => {
 	const TEXT_ALIGNMENT = `
@@ -27,21 +27,21 @@ const Index: NextPage = () => {
 <p className='text-sm-start'>Start aligned text on viewports sized SM (small) or wider.</p>
 <p className='text-md-start'>Start aligned text on viewports sized MD (medium) or wider.</p>
 <p className='text-lg-start'>Start aligned text on viewports sized LG (large) or wider.</p>
-<p className='text-xl-start'>Start aligned text on viewports sized XL (extra-large) or wider.</p>`;
+<p className='text-xl-start'>Start aligned text on viewports sized XL (extra-large) or wider.</p>`
 
 	const WRAP = `
 <div className='badge bg-primary text-wrap' style={{ width: '6rem' }}>
 	This text should wrap.
-</div>`;
+</div>`
 	const WRAP_2 = `
 <div className='text-nowrap bg-light' style={{ width: '8rem' }}>
 	This text should overflow the parent.
-</div>`;
+</div>`
 
 	const TEXT_TRANSFORM = `
 <p className='text-lowercase'>Lowercased text.</p>
 <p className='text-uppercase'>Uppercased text.</p>
-<p className='text-capitalize'>CapiTaliZed text.</p>`;
+<p className='text-capitalize'>CapiTaliZed text.</p>`
 
 	const FONT_SIZE = `
 <p className='fs-1'>.fs-1 text</p>
@@ -49,7 +49,7 @@ const Index: NextPage = () => {
 <p className='fs-3'>.fs-3 text</p>
 <p className='fs-4'>.fs-4 text</p>
 <p className='fs-5'>.fs-5 text</p>
-<p className='fs-6'>.fs-6 text</p>`;
+<p className='fs-6'>.fs-6 text</p>`
 
 	const FONT_WEIGHT_ITALICS = `
 <p className='fw-bold'>Bold text.</p>
@@ -58,24 +58,24 @@ const Index: NextPage = () => {
 <p className='fw-light'>Light weight text.</p>
 <p className='fw-lighter'>Lighter weight text (relative to the parent element).</p>
 <p className='fst-italic'>Italic text.</p>
-<p className='fst-normal'>Text with normal font style</p>`;
+<p className='fst-normal'>Text with normal font style</p>`
 
 	const LINE_HEIGHT = `
 <p className='lh-1'>...</p>
 <p className='lh-sm'>...</p>
 <p className='lh-base'>...</p>
-<p className='lh-lg'>...</p>`;
+<p className='lh-lg'>...</p>`
 
-	const MONOSPACE = `<p className='font-monospace'>This is in monospace</p>`;
+	const MONOSPACE = `<p className='font-monospace'>This is in monospace</p>`
 
 	const RESET_COLOR = `
 <p className='text-muted'>
 	Muted text with a<a href='#' className='text-reset'>reset link</a>.
-</p>`;
+</p>`
 	const TEXT_DECORATION = `
 <p className='text-decoration-underline'>This text has a line underneath it.</p>
 <p className='text-decoration-line-through'>This text has a line going through it.</p>
-<a href='#' className='text-decoration-none'>This link has its text decoration removed</a>`;
+<a href='#' className='text-decoration-none'>This link has its text decoration removed</a>`
 
 	const VARIABLES = `
 // stylelint-disable value-keyword-case
@@ -109,7 +109,7 @@ $h2-font-size:                $font-size-base * 2;
 $h3-font-size:                $font-size-base * 1.75;
 $h4-font-size:                $font-size-base * 1.5;
 $h5-font-size:                $font-size-base * 1.25;
-$h6-font-size:                $font-size-base;`;
+$h6-font-size:                $font-size-base;`
 	const VARIABLES_2 = `
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 // $font-family-base: 'Montserrat', sans-serif;
@@ -118,7 +118,7 @@ $font-family-base: 'Poppins', var(--bs-font-sans-serif);
 $font-size-root:              0.8125rem; // \`13px\`
 $font-size-base:              1rem; // Assumes the browser default, typically \`16px\`
 $font-size-sm:                $font-size-base * 0.875;
-$font-size-lg:                $font-size-base * 1.25;`;
+$font-size-lg:                $font-size-base * 1.25;`
 
 	const MAP = `
 $font-sizes: (
@@ -128,7 +128,7 @@ $font-sizes: (
 	4: $h4-font-size,
 	5: $h5-font-size,
 	6: $h6-font-size
-);`;
+);`
 
 	const UTILITIES_API = `
 "font-family": (
@@ -200,7 +200,7 @@ $font-sizes: (
 	class: text,
 	values: (break: break-word),
 	rtl: false
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -626,14 +626,14 @@ $font-sizes: (
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

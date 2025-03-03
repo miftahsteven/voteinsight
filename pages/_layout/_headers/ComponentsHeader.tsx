@@ -1,13 +1,13 @@
-import React from 'react';
-import Header, { HeaderLeft } from '../../../layout/Header/Header';
-import Navigation from '../../../layout/Navigation/Navigation';
-import { componentPagesMenu } from '../../../menu';
-import useDeviceScreen from '../../../hooks/useDeviceScreen';
-import CommonHeaderRight from './CommonHeaderRight';
+import React from 'react'
+import Header, { HeaderLeft } from '../../../layout/Header/Header'
+import Navigation from '../../../layout/Navigation/Navigation'
+import { componentPagesMenu } from '../../../menu'
+import useDeviceScreen from '../../../hooks/useDeviceScreen'
+import CommonHeaderRight from './CommonHeaderRight'
 
 const ComponentsHeader = () => {
 	// @ts-ignore
-	const deviceScreen = useDeviceScreen();
+	const deviceScreen = useDeviceScreen()
 
 	return (
 		<Header>
@@ -23,7 +23,7 @@ const ComponentsHeader = () => {
 			</HeaderLeft>
 			<CommonHeaderRight />
 		</Header>
-	);
-};
+	)
+}
 
-export default ComponentsHeader;
+export default ComponentsHeader

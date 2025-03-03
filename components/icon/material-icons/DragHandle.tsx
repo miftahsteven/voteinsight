@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgDragHandle = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgDragHandle = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M0 0h24v24H0z' fill='none' />
 			<path d='M4 9h16v2H4zm0 4h16v2H4z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgDragHandle;
+export default SvgDragHandle

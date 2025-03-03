@@ -1,13 +1,13 @@
-import React, { FC } from 'react';
-import Icon from '../../components/icon/Icon';
-import useDarkMode from '../../hooks/useDarkMode';
+import React, { FC } from 'react'
+import Icon from '../../components/icon/Icon'
+import useDarkMode from '../../hooks/useDarkMode'
 
 interface ICommonFilterTagProps {
-	title: string;
-	text: string;
+	title: string
+	text: string
 }
 const CommonFilterTag: FC<ICommonFilterTagProps> = ({ title, text }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	return (
 		<small
@@ -17,7 +17,7 @@ const CommonFilterTag: FC<ICommonFilterTagProps> = ({ title, text }) => {
 			<strong>{title}:</strong> {text}
 			<Icon icon='ErrorCircle' color='danger' size='lg' className='ms-2 cursor-pointer' />
 		</small>
-	);
-};
+	)
+}
 
-export default CommonFilterTag;
+export default CommonFilterTag

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSpaceBar = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgSpaceBar = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M0 0h24v24H0V0z' fill='none' />
 			<path d='M18 13H6V9H4v6h16V9h-2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSpaceBar;
+export default SvgSpaceBar

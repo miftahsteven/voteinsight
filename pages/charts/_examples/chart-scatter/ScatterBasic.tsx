@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,9 +6,9 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn'
 
 const ScatterBasic = () => {
 	const [state] = useState<IChartOptions>({
@@ -135,7 +135,7 @@ const ScatterBasic = () => {
 				tickAmount: 10,
 				labels: {
 					formatter(val) {
-						return parseFloat(val).toFixed(1);
+						return parseFloat(val).toFixed(1)
 					},
 				},
 			},
@@ -143,7 +143,7 @@ const ScatterBasic = () => {
 				tickAmount: 7,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -168,7 +168,7 @@ const ScatterBasic = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default ScatterBasic;
+export default ScatterBasic

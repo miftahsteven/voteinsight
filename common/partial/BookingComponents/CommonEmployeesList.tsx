@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
-import { CardBody } from '../../../components/bootstrap/Card';
-import Icon from '../../../components/icon/Icon';
-import PaginationButtons, {
-	dataPagination,
-	PER_COUNT,
-} from '../../../components/PaginationButtons';
-import { priceFormat } from '../../../helpers/helpers';
-import Progress from '../../../components/bootstrap/Progress';
-import useSortableData from '../../../hooks/useSortableData';
-import USERS from '../../data/userDummyData';
+import React, { useState } from 'react'
+import classNames from 'classnames'
+import { CardBody } from '../../../components/bootstrap/Card'
+import Icon from '../../../components/icon/Icon'
+import PaginationButtons, { dataPagination, PER_COUNT } from '../../../components/PaginationButtons'
+import { priceFormat } from '../../../helpers/helpers'
+import Progress from '../../../components/bootstrap/Progress'
+import useSortableData from '../../../hooks/useSortableData'
+import USERS from '../../data/userDummyData'
 
 const CommonEmployeesList = () => {
 	const dataEmployees = [
@@ -63,11 +60,11 @@ const CommonEmployeesList = () => {
 			color: USERS.CHLOE.color,
 			img: USERS.CHLOE.src,
 		},
-	];
+	]
 
-	const [currentPage, setCurrentPage] = useState<number>(1);
-	const [perPage, setPerPage] = useState<number>(PER_COUNT['3']);
-	const { items, requestSort, getClassNamesFor } = useSortableData(dataEmployees);
+	const [currentPage, setCurrentPage] = useState<number>(1)
+	const [perPage, setPerPage] = useState<number>(PER_COUNT['3'])
+	const { items, requestSort, getClassNamesFor } = useSortableData(dataEmployees)
 	return (
 		<>
 			<CardBody className='table-responsive'>
@@ -183,7 +180,7 @@ const CommonEmployeesList = () => {
 				setPerPage={setPerPage}
 			/>
 		</>
-	);
-};
+	)
+}
 
-export default CommonEmployeesList;
+export default CommonEmployeesList

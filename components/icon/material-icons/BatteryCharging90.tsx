@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBatteryCharging90 = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgBatteryCharging90 = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M13 12.5h2L11 20v-5.5H9L12.47 8H7v12.67C7 21.4 7.6 22 8.33 22h7.33c.74 0 1.34-.6 1.34-1.33V8h-4v4.5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBatteryCharging90;
+export default SvgBatteryCharging90

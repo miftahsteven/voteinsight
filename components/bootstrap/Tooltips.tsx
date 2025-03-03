@@ -1,18 +1,18 @@
-import React, { cloneElement, FC, ReactNode, useState } from 'react';
-import { usePopper } from 'react-popper';
-import classNames from 'classnames';
-import Portal from '../../layout/Portal/Portal';
+import React, { cloneElement, FC, ReactNode, useState } from 'react'
+import { usePopper } from 'react-popper'
+import classNames from 'classnames'
+import Portal from '../../layout/Portal/Portal'
 
 interface ITooltipsProps {
-	children: ReactNode;
-	title: ReactNode;
-	placement?: 'auto' | 'top' | 'bottom' | 'right' | 'left';
-	flip?: ('auto' | 'top' | 'bottom' | 'right' | 'left')[];
-	delay?: number;
-	isDisplayInline?: boolean;
-	className?: string;
-	modifiers?: object;
-	isDisableElements?: boolean;
+	children: ReactNode
+	title: ReactNode
+	placement?: 'auto' | 'top' | 'bottom' | 'right' | 'left'
+	flip?: ('auto' | 'top' | 'bottom' | 'right' | 'left')[]
+	delay?: number
+	isDisplayInline?: boolean
+	className?: string
+	modifiers?: object
+	isDisableElements?: boolean
 }
 const Tooltips: FC<ITooltipsProps> = ({
 	children,
@@ -25,9 +25,9 @@ const Tooltips: FC<ITooltipsProps> = ({
 	isDisableElements,
 	modifiers,
 }) => {
-	const [referenceElement, setReferenceElement] = useState(null);
-	const [popperElement, setPopperElement] = useState(null);
-	const [arrowElement, setArrowElement] = useState(null);
+	const [referenceElement, setReferenceElement] = useState(null)
+	const [popperElement, setPopperElement] = useState(null)
+	const [arrowElement, setArrowElement] = useState(null)
 	const { styles, attributes } = usePopper(referenceElement, popperElement, {
 		placement,
 		modifiers: [
@@ -53,21 +53,21 @@ const Tooltips: FC<ITooltipsProps> = ({
 			},
 			{ ...modifiers },
 		],
-	});
+	})
 
-	const [tooltipOpen, setTooltipOpen] = useState(false);
+	const [tooltipOpen, setTooltipOpen] = useState(false)
 
 	const ON_MOUSE_OVER = () => {
-		setTooltipOpen(true);
+		setTooltipOpen(true)
 		// @ts-ignore
-		if (children?.props?.onMouseOver) children.props.onMouseOver();
-	};
+		if (children?.props?.onMouseOver) children.props.onMouseOver()
+	}
 
 	const ON_MOUSE_LEAVE = () => {
-		setTimeout(() => setTooltipOpen(false), delay);
+		setTimeout(() => setTooltipOpen(false), delay)
 		// @ts-ignore
-		if (children?.props?.onMouseLeave) children.props.onMouseLeave();
-	};
+		if (children?.props?.onMouseLeave) children.props.onMouseLeave()
+	}
 
 	const PROPS = {
 		className: classNames(
@@ -77,7 +77,7 @@ const Tooltips: FC<ITooltipsProps> = ({
 		),
 		onMouseOver: ON_MOUSE_OVER,
 		onMouseLeave: ON_MOUSE_LEAVE,
-	};
+	}
 
 	return (
 		<>
@@ -118,7 +118,7 @@ const Tooltips: FC<ITooltipsProps> = ({
 				</Portal>
 			)}
 		</>
-	);
-};
+	)
+}
 
-export default Tooltips;
+export default Tooltips

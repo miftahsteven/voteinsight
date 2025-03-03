@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgAvTimer = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -9,7 +9,7 @@ const SvgAvTimer = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={17} cy={12} r={1} />
 			<circle cx={7} cy={12} r={1} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgAvTimer;
+export default SvgAvTimer

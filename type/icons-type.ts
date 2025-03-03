@@ -1,7 +1,7 @@
-import { TMaterialIcons } from './icon/material-icons';
-import { TSvgIcons } from './icon/svg-icons';
+import { TMaterialIcons } from './icon/material-icons'
+import { TSvgIcons } from './icon/svg-icons'
 
-export type TIcons = TMaterialIcons | TSvgIcons | string;
+export type TIcons = TMaterialIcons | TSvgIcons | string
 
 export type TIconsSize =
 	| null
@@ -16,4 +16,4 @@ export type TIconsSize =
 	| '7x'
 	| '8x'
 	| '9x'
-	| '10x';
+	| '10x'

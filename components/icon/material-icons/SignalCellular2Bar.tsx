@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSignalCellular2Bar = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -7,7 +7,7 @@ const SvgSignalCellular2Bar = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M2 22h20V2L2 22z' fillOpacity={0.3} />
 			<path d='M14 10L2 22h12V10z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSignalCellular2Bar;
+export default SvgSignalCellular2Bar

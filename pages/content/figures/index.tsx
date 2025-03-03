@@ -1,29 +1,29 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
-import Card, { CardBody } from '../../../components/bootstrap/Card';
-import PlaceholderImage from '../../../components/extras/PlaceholderImage';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
+import Card, { CardBody } from '../../../components/bootstrap/Card'
+import PlaceholderImage from '../../../components/extras/PlaceholderImage'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const Index: NextPage = () => {
 	const FIGURE = `
 <figure className='figure'>
 	<img src='...' className='figure-img img-fluid rounded' alt='...' />
 	<figcaption className='figure-caption'>A caption for the above image.</figcaption>
-</figure>`;
+</figure>`
 	const FIGURE_2 = `
 <figure className='figure'>
 	<img src='...' className='figure-img img-fluid rounded' alt='...' />
 	<figcaption className='figure-caption text-end'>A caption for the above image.</figcaption>
-</figure>`;
+</figure>`
 
 	return (
 		<PageWrapper>
@@ -103,14 +103,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

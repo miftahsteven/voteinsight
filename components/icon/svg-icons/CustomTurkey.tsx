@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import * as React from 'react';
+import type { SVGProps } from 'react'
+import * as React from 'react'
 
 const SvgCustomTurkey = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -23,5 +23,5 @@ const SvgCustomTurkey = (props: SVGProps<SVGSVGElement>) => (
 			}}
 		/>
 	</svg>
-);
-export default SvgCustomTurkey;
+)
+export default SvgCustomTurkey

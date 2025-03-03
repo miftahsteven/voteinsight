@@ -1,60 +1,60 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import dayjs from 'dayjs';
-import { Calendar as DatePicker } from 'react-date-range';
-import classNames from 'classnames';
-import useDarkMode from '../../../hooks/useDarkMode';
-import USERS from '../../../common/data/userDummyData';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Icon from '../../../components/icon/Icon';
-import Popovers from '../../../components/bootstrap/Popovers';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import dayjs from 'dayjs'
+import { Calendar as DatePicker } from 'react-date-range'
+import classNames from 'classnames'
+import useDarkMode from '../../../hooks/useDarkMode'
+import USERS from '../../../common/data/userDummyData'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Icon from '../../../components/icon/Icon'
+import Popovers from '../../../components/bootstrap/Popovers'
+import Button from '../../../components/bootstrap/Button'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
+} from '../../../components/bootstrap/Card'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas';
-import data from '../../../common/data/dummyEventsData';
-import { priceFormat } from '../../../helpers/helpers';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Input from '../../../components/bootstrap/forms/Input';
-import Textarea from '../../../components/bootstrap/forms/Textarea';
-import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../../components/bootstrap/Modal';
-import Checks from '../../../components/bootstrap/forms/Checks';
+} from '../../../components/bootstrap/OffCanvas'
+import data from '../../../common/data/dummyEventsData'
+import { priceFormat } from '../../../helpers/helpers'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Input from '../../../components/bootstrap/forms/Input'
+import Textarea from '../../../components/bootstrap/forms/Textarea'
+import Modal, { ModalBody, ModalFooter, ModalHeader } from '../../../components/bootstrap/Modal'
+import Checks from '../../../components/bootstrap/forms/Checks'
 
 const Index: NextPage = () => {
-	const { themeStatus, darkModeStatus } = useDarkMode();
-	const [date, setDate] = useState<Date>(new Date());
+	const { themeStatus, darkModeStatus } = useDarkMode()
+	const [date, setDate] = useState<Date>(new Date())
 
 	// BEGIN :: Upcoming Events
-	const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState<boolean>(false);
+	const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState<boolean>(false)
 	const handleUpcomingDetails = () => {
-		setUpcomingEventsInfoOffcanvas(!upcomingEventsInfoOffcanvas);
-	};
+		setUpcomingEventsInfoOffcanvas(!upcomingEventsInfoOffcanvas)
+	}
 
-	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState<boolean>(false);
+	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState<boolean>(false)
 	const handleUpcomingEdit = () => {
-		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
-	};
+		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas)
+	}
 	// END :: Upcoming Events
 
 	const formik = useFormik({
 		onSubmit(): void | Promise<any> {
-			return undefined;
+			return undefined
 		},
 		initialValues: {
 			customerName: 'Alison Berry',
@@ -66,7 +66,7 @@ const Index: NextPage = () => {
 			note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nisi odio. Nam sit amet pharetra enim. Nulla facilisi. Nunc dictum felis id massa mattis pretium. Mauris at blandit orci. Nunc vulputate vulputate turpis vitae cursus. In sit amet turpis tincidunt, interdum ex vitae, sollicitudin massa. Maecenas eget dui molestie, ullamcorper ante vel, tincidunt nisi. Donec vitae pulvinar risus. In ultricies nisl ac massa malesuada, vel tempus neque placerat.',
 			notify: true,
 		},
-	});
+	})
 	return (
 		<PageWrapper>
 			<Head>
@@ -390,14 +390,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

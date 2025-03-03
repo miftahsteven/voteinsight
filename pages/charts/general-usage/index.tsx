@@ -1,12 +1,12 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Button from '../../../components/bootstrap/Button'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardCodeView,
@@ -14,13 +14,13 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import { componentPagesMenu } from '../../../menu';
-import { AlertLink } from '../../../components/bootstrap/Alert';
-import { TMenu } from '../../../type/menu-type';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
+} from '../../../components/bootstrap/Card'
+import { componentPagesMenu } from '../../../menu'
+import { AlertLink } from '../../../components/bootstrap/Alert'
+import { TMenu } from '../../../type/menu-type'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -30,7 +30,7 @@ const Index: NextPage = () => {
 	type={ String } // 'line' || 'area' || 'bar' || 'pie' || 'donut' || 'scatter' || 'bubble' || 'heatmap' || 'radialBar' || 'rangeBar' || 'candlestick' || 'boxPlot' || 'radar' || 'polarArea' 
 	height={ Number || String }
 	width={ Number || String }
-	className={ String } />`;
+	className={ String } />`
 
 	const SERIES_PROP_TYPES = `
 	series: PropTypes.arrayOf(
@@ -68,7 +68,7 @@ const Index: NextPage = () => {
 				),
 			}),
 		]),
-	).isRequired,`;
+	).isRequired,`
 
 	const OPTIONS_PROP_TYPES = `
 options: PropTypes.shape({
@@ -93,9 +93,9 @@ options: PropTypes.shape({
 	tooltip: PropTypes.object,
 	xaxis: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 	yaxis: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
-}).isRequired,`;
+}).isRequired,`
 
-	const MENU: TMenu = componentPagesMenu.charts.subMenu;
+	const MENU: TMenu = componentPagesMenu.charts.subMenu
 
 	return (
 		<PageWrapper>
@@ -194,7 +194,7 @@ options: PropTypes.shape({
 								<div className='row g-3'>
 									{Object.keys(MENU).map((i) => {
 										if (['chartsUsage', 'chartsSparkline'].includes(MENU[i].id))
-											return null;
+											return null
 										return (
 											<div
 												className='col-xl-3 col-lg-4 col-md-6 col-12'
@@ -210,7 +210,7 @@ options: PropTypes.shape({
 													{MENU[i].text}
 												</Button>
 											</div>
-										);
+										)
 									})}
 								</div>
 							</CardBody>
@@ -219,14 +219,14 @@ options: PropTypes.shape({
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

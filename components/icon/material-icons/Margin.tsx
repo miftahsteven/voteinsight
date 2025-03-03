@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgMargin = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgMargin = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M3 3v18h18V3H3zm16 16H5V5h14v14z' />
 			<path d='M11 7h2v2h-2zM15 11h2v2h-2zM11 11h2v2h-2zM15 7h2v2h-2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgMargin;
+export default SvgMargin

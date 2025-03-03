@@ -1,10 +1,10 @@
-import { useContext } from 'react';
-import ThemeContext from '../context/themeContext';
+import { useContext } from 'react'
+import ThemeContext from '../context/themeContext'
 
 export default function useDarkMode() {
-	const { darkModeStatus, setDarkModeStatus } = useContext(ThemeContext);
+	const { darkModeStatus, setDarkModeStatus } = useContext(ThemeContext)
 
-	const themeStatus: 'dark' | 'light' = darkModeStatus ? 'dark' : 'light';
+	const themeStatus: 'dark' | 'light' = darkModeStatus ? 'dark' : 'light'
 
-	return { themeStatus, darkModeStatus, setDarkModeStatus };
+	return { themeStatus, darkModeStatus, setDarkModeStatus }
 }

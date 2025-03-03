@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgLocalLaundryService = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgLocalLaundryService = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={11} cy={6} r={1} />
 			<path d='M12 19c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm2.36-7.36c1.3 1.3 1.3 3.42 0 4.72-1.3 1.3-3.42 1.3-4.72 0l4.72-4.72z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgLocalLaundryService;
+export default SvgLocalLaundryService

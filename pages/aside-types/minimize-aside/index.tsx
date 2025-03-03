@@ -1,19 +1,19 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import useMinimizeAside from '../../../hooks/useMinimizeAside';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Humans from '../../../assets/img/scene6.png';
-import { pageLayoutTypesPagesMenu } from '../../../menu';
-import CommonLayoutRightSubheader from '../../_layout/_subheaders/CommonLayoutRightSubheader';
-import Page from '../../../layout/Page/Page';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import useMinimizeAside from '../../../hooks/useMinimizeAside'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Humans from '../../../assets/img/scene6.png'
+import { pageLayoutTypesPagesMenu } from '../../../menu'
+import CommonLayoutRightSubheader from '../../_layout/_subheaders/CommonLayoutRightSubheader'
+import Page from '../../../layout/Page/Page'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
 
 const Index: NextPage = () => {
-	useMinimizeAside();
+	useMinimizeAside()
 	return (
 		<PageWrapper>
 			<Head>
@@ -52,14 +52,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

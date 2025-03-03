@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,9 +6,9 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn'
 
 const ColumnBasic = () => {
 	const [columnBasic] = useState<IChartOptions>({
@@ -61,12 +61,12 @@ const ColumnBasic = () => {
 			tooltip: {
 				y: {
 					formatter(val) {
-						return `$ ${val} thousands`;
+						return `$ ${val} thousands`
 					},
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -91,7 +91,7 @@ const ColumnBasic = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default ColumnBasic;
+export default ColumnBasic

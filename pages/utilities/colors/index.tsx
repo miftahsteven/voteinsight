@@ -1,24 +1,24 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import { AlertHeading } from '../../../components/bootstrap/Alert';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import PrismCode from '../../../components/extras/PrismCode';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import { AlertHeading } from '../../../components/bootstrap/Alert'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import PrismCode from '../../../components/extras/PrismCode'
 
 const Index: NextPage = () => {
 	const COLORS = `
@@ -34,7 +34,7 @@ const Index: NextPage = () => {
 <p className='text-muted'>.text-muted</p>
 <p className='text-white bg-dark'>.text-white</p>
 <p className='text-black-50'>.text-black-50</p>
-<p className='text-white-50 bg-dark'>.text-white-50</p>`;
+<p className='text-white-50 bg-dark'>.text-white-50</p>`
 
 	const VARIABLES = `
 $primary:       ${process.env.NEXT_PUBLIC_PRIMARY_COLOR};
@@ -44,9 +44,9 @@ $info:          ${process.env.NEXT_PUBLIC_INFO_COLOR};
 $warning:       ${process.env.NEXT_PUBLIC_WARNING_COLOR};
 $danger:        ${process.env.NEXT_PUBLIC_DANGER_COLOR};
 $light:         ${process.env.NEXT_PUBLIC_LIGHT_COLOR};
-$dark:          ${process.env.NEXT_PUBLIC_DARK_COLOR};`;
+$dark:          ${process.env.NEXT_PUBLIC_DARK_COLOR};`
 	const VARIABLES_2 = `
-$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));`;
+$gradient: linear-gradient(180deg, rgba($white, .15), rgba($white, 0));`
 	const VARIABLES_3 = `
 $white:    #fff;
 $gray-100: #f8f9fa;
@@ -58,7 +58,7 @@ $gray-600: #6c757d;
 $gray-700: #495057;
 $gray-800: #343a40;
 $gray-900: #212529;
-$black:    #000;`;
+$black:    #000;`
 
 	const MAP = `
 $theme-colors: (
@@ -70,7 +70,7 @@ $theme-colors: (
   	"danger":     $danger,
   	"light":      $light,
   	"dark":       $dark
-);`;
+);`
 	const MAP_2 = `
 $grays: (
 	"100": $gray-100,
@@ -82,7 +82,7 @@ $grays: (
   	"700": $gray-700,
   	"800": $gray-800,
   	"900": $gray-900
-);`;
+);`
 
 	const UTILITIES_API = `
 "color": (
@@ -99,7 +99,7 @@ $grays: (
 			"reset": inherit,
         )
     )
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -289,14 +289,14 @@ $grays: (
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

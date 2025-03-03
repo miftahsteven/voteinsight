@@ -1,56 +1,56 @@
-import React, { FC, useState } from 'react';
-import classNames from 'classnames';
-import dayjs from 'dayjs';
-import { FormikHelpers, useFormik } from 'formik';
+import React, { FC, useState } from 'react'
+import classNames from 'classnames'
+import dayjs from 'dayjs'
+import { FormikHelpers, useFormik } from 'formik'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Button from '../../components/bootstrap/Button';
-import { priceFormat } from '../../helpers/helpers';
+} from '../../components/bootstrap/Card'
+import Button from '../../components/bootstrap/Button'
+import { priceFormat } from '../../helpers/helpers'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../components/bootstrap/Dropdown';
-import Icon from '../../components/icon/Icon';
+} from '../../components/bootstrap/Dropdown'
+import Icon from '../../components/icon/Icon'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../components/bootstrap/OffCanvas';
-import FormGroup from '../../components/bootstrap/forms/FormGroup';
-import Input from '../../components/bootstrap/forms/Input';
-import Textarea from '../../components/bootstrap/forms/Textarea';
-import Checks from '../../components/bootstrap/forms/Checks';
-import Popovers from '../../components/bootstrap/Popovers';
-import data from '../data/dummyEventsData';
-import USERS from '../data/userDummyData';
-import EVENT_STATUS from '../data/enumEventStatus';
-import Avatar from '../../components/Avatar';
-import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
-import useSortableData from '../../hooks/useSortableData';
-import useDarkMode from '../../hooks/useDarkMode';
+} from '../../components/bootstrap/OffCanvas'
+import FormGroup from '../../components/bootstrap/forms/FormGroup'
+import Input from '../../components/bootstrap/forms/Input'
+import Textarea from '../../components/bootstrap/forms/Textarea'
+import Checks from '../../components/bootstrap/forms/Checks'
+import Popovers from '../../components/bootstrap/Popovers'
+import data from '../data/dummyEventsData'
+import USERS from '../data/userDummyData'
+import EVENT_STATUS from '../data/enumEventStatus'
+import Avatar from '../../components/Avatar'
+import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons'
+import useSortableData from '../../hooks/useSortableData'
+import useDarkMode from '../../hooks/useDarkMode'
 
 interface ICommonUpcomingEventsProps {
-	isFluid?: boolean;
+	isFluid?: boolean
 }
 const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
-	const { themeStatus, darkModeStatus } = useDarkMode();
+	const { themeStatus, darkModeStatus } = useDarkMode()
 
 	// BEGIN :: Upcoming Events
-	const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState(false);
+	const [upcomingEventsInfoOffcanvas, setUpcomingEventsInfoOffcanvas] = useState(false)
 	const handleUpcomingDetails = () => {
-		setUpcomingEventsInfoOffcanvas(!upcomingEventsInfoOffcanvas);
-	};
+		setUpcomingEventsInfoOffcanvas(!upcomingEventsInfoOffcanvas)
+	}
 
-	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false);
+	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false)
 	const handleUpcomingEdit = () => {
-		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas);
-	};
+		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas)
+	}
 	// END :: Upcoming Events
 
 	const formik = useFormik({
@@ -60,7 +60,7 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			formikHelpers: FormikHelpers<Values>,
 		): void | Promise<any> {
-			return undefined;
+			return undefined
 		},
 		initialValues: {
 			customerName: 'Alison Berry',
@@ -72,11 +72,11 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 			note: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer ut nisi odio. Nam sit amet pharetra enim. Nulla facilisi. Nunc dictum felis id massa mattis pretium. Mauris at blandit orci. Nunc vulputate vulputate turpis vitae cursus. In sit amet turpis tincidunt, interdum ex vitae, sollicitudin massa. Maecenas eget dui molestie, ullamcorper ante vel, tincidunt nisi. Donec vitae pulvinar risus. In ultricies nisl ac massa malesuada, vel tempus neque placerat.',
 			notify: true,
 		},
-	});
+	})
 
-	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(PER_COUNT['5']);
-	const { items, requestSort, getClassNamesFor } = useSortableData(data);
+	const [currentPage, setCurrentPage] = useState(1)
+	const [perPage, setPerPage] = useState(PER_COUNT['5'])
+	const { items, requestSort, getClassNamesFor } = useSortableData(data)
 
 	return (
 		<>
@@ -412,7 +412,7 @@ const CommonUpcomingEvents: FC<ICommonUpcomingEventsProps> = ({ isFluid }) => {
 				</div>
 			</OffCanvas>
 		</>
-	);
-};
+	)
+}
 
-export default CommonUpcomingEvents;
+export default CommonUpcomingEvents

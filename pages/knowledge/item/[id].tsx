@@ -1,34 +1,34 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import classNames from 'classnames';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import useTourStep from '../../../hooks/useTourStep';
-import useDarkMode from '../../../hooks/useDarkMode';
-import data from '../../../common/data/dummyKnowledgeData';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import classNames from 'classnames'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import useTourStep from '../../../hooks/useTourStep'
+import useDarkMode from '../../../hooks/useDarkMode'
+import data from '../../../common/data/dummyKnowledgeData'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import Badge from '../../../components/bootstrap/Badge';
-import Avatar from '../../../components/Avatar';
-import USERS from '../../../common/data/userDummyData';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Button from '../../../components/bootstrap/Button'
+import Badge from '../../../components/bootstrap/Badge'
+import Avatar from '../../../components/Avatar'
+import USERS from '../../../common/data/userDummyData'
+import Page from '../../../layout/Page/Page'
 
 const Id: NextPage = () => {
-	const router = useRouter();
+	const router = useRouter()
 
-	useTourStep(16);
-	const { darkModeStatus } = useDarkMode();
+	useTourStep(16)
+	const { darkModeStatus } = useDarkMode()
 
-	const { id } = router.query;
-	const itemData = data.filter((item) => item.id.toString() === id?.toString());
-	const item = itemData[0];
+	const { id } = router.query
+	const itemData = data.filter((item) => item.id.toString() === id?.toString())
+	const item = itemData[0]
 
 	return (
 		<PageWrapper>
@@ -86,15 +86,15 @@ const Id: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
 export async function getStaticPaths() {
 	return {
@@ -105,7 +105,7 @@ export async function getStaticPaths() {
 			{ params: { id: '2' } },
 		],
 		fallback: true,
-	};
+	}
 }
 
-export default Id;
+export default Id

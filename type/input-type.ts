@@ -14,4 +14,4 @@ export type TInputTypes =
 	| 'tel'
 	| 'time'
 	| 'url'
-	| 'week';
+	| 'week'

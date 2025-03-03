@@ -1,41 +1,41 @@
-import React, { useEffect, useRef, useState } from 'react';
-import { useHoverDirty } from 'react-use';
-import classNames from 'classnames';
+import React, { useEffect, useRef, useState } from 'react'
+import { useHoverDirty } from 'react-use'
+import classNames from 'classnames'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Button from '../../components/bootstrap/Button';
-import Chart, { IChartOptions } from '../../components/extras/Chart';
-import Bank1 from '../../assets/logos/logo1.png';
-import Bank2 from '../../assets/logos/logo2.png';
-import Bank3 from '../../assets/logos/logo3.png';
-import Avatar, { AvatarGroup } from '../../components/Avatar';
-import UserImage from '../../assets/img/wanna/wanna1.png';
-import UserImage2 from '../../assets/img/wanna/wanna2.png';
-import UserImage3 from '../../assets/img/wanna/wanna3.png';
-import UserImage4 from '../../assets/img/wanna/wanna4.png';
-import TransferAction, { TTransferActionStatus } from '../../components/TransferAction';
-import Spinner from '../../components/bootstrap/Spinner';
-import showNotification from '../../components/extras/showNotification';
-import Icon from '../../components/icon/Icon';
+} from '../../components/bootstrap/Card'
+import Button from '../../components/bootstrap/Button'
+import Chart, { IChartOptions } from '../../components/extras/Chart'
+import Bank1 from '../../assets/logos/logo1.png'
+import Bank2 from '../../assets/logos/logo2.png'
+import Bank3 from '../../assets/logos/logo3.png'
+import Avatar, { AvatarGroup } from '../../components/Avatar'
+import UserImage from '../../assets/img/wanna/wanna1.png'
+import UserImage2 from '../../assets/img/wanna/wanna2.png'
+import UserImage3 from '../../assets/img/wanna/wanna3.png'
+import UserImage4 from '../../assets/img/wanna/wanna4.png'
+import TransferAction, { TTransferActionStatus } from '../../components/TransferAction'
+import Spinner from '../../components/bootstrap/Spinner'
+import showNotification from '../../components/extras/showNotification'
+import Icon from '../../components/icon/Icon'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../components/bootstrap/Dropdown';
-import useDarkMode from '../../hooks/useDarkMode';
+} from '../../components/bootstrap/Dropdown'
+import useDarkMode from '../../hooks/useDarkMode'
 
 const CommonTransActions = () => {
-	const { themeStatus, darkModeStatus } = useDarkMode();
+	const { themeStatus, darkModeStatus } = useDarkMode()
 
-	const ref = useRef<HTMLAnchorElement>(null);
-	const isHovering = useHoverDirty(ref);
-	const [isLoading, setIsLoading] = useState(false);
-	const [demoStatus, setDemoStatus] = useState<TTransferActionStatus>('Processing');
+	const ref = useRef<HTMLAnchorElement>(null)
+	const isHovering = useHoverDirty(ref)
+	const [isLoading, setIsLoading] = useState(false)
+	const [demoStatus, setDemoStatus] = useState<TTransferActionStatus>('Processing')
 
 	const [sales] = useState<IChartOptions>({
 		series: [
@@ -109,7 +109,7 @@ const CommonTransActions = () => {
 			},
 			colors: [process.env.NEXT_PUBLIC_INFO_COLOR],
 		},
-	});
+	})
 	const [stackedColumn] = useState<IChartOptions>({
 		series: [
 			{
@@ -155,7 +155,7 @@ const CommonTransActions = () => {
 				opacity: 1,
 			},
 		},
-	});
+	})
 	const [fee] = useState<IChartOptions>({
 		series: [
 			{
@@ -189,24 +189,24 @@ const CommonTransActions = () => {
 			},
 			colors: [process.env.NEXT_PUBLIC_DANGER_COLOR],
 		},
-	});
+	})
 
 	useEffect(() => {
 		const timer = isLoading
 			? setTimeout(() => {
-					setIsLoading(false);
-					setDemoStatus('Completed');
+					setIsLoading(false)
+					setDemoStatus('Completed')
 					showNotification(
 						<span className='d-flex align-items-center'>
 							<Icon icon='Info' size='lg' className='me-1' />
 							<span>Updated Successfully</span>
 						</span>,
 						'Transfer list has been updated successfully',
-					);
+					)
 				}, 1500)
-			: undefined;
-		return () => clearTimeout(timer);
-	}, [isLoading]);
+			: undefined
+		return () => clearTimeout(timer)
+	}, [isLoading])
 
 	return (
 		<>
@@ -287,7 +287,7 @@ const CommonTransActions = () => {
 																<span>Updated Successfully</span>
 															</span>,
 															'My earnings has been updated successfully',
-														);
+														)
 													}}>
 													<Icon icon='Refresh' /> Refresh
 												</button>
@@ -359,7 +359,7 @@ const CommonTransActions = () => {
 																<span>Updated Successfully</span>
 															</span>,
 															'My fee has been updated successfully',
-														);
+														)
 													}}>
 													<Icon icon='Refresh' /> Refresh
 												</button>
@@ -404,8 +404,8 @@ const CommonTransActions = () => {
 								isLight
 								icon={isLoading ? undefined : 'PublishedWithChanges'}
 								onClick={() => {
-									ref?.current?.blur();
-									setIsLoading(true);
+									ref?.current?.blur()
+									setIsLoading(true)
 								}}>
 								{isLoading && (
 									<Spinner color={isHovering ? 'light' : 'info'} inButton isSmall>
@@ -534,7 +534,7 @@ const CommonTransActions = () => {
 				</div>
 			</div>
 		</>
-	);
-};
+	)
+}
 
-export default CommonTransActions;
+export default CommonTransActions

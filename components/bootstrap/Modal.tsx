@@ -6,19 +6,19 @@ import React, {
 	ReactNode,
 	useEffect,
 	useRef,
-} from 'react';
-import classNames from 'classnames';
-import { AnimatePresence, motion } from 'framer-motion';
-import Portal from '../../layout/Portal/Portal';
-import TagWrapper from '../TagWrapper';
-import useEventListener from '../../hooks/useEventListener';
-import { TModalFullScreen, TModalSize } from '../../type/modal-type';
+} from 'react'
+import classNames from 'classnames'
+import { AnimatePresence, motion } from 'framer-motion'
+import Portal from '../../layout/Portal/Portal'
+import TagWrapper from '../TagWrapper'
+import useEventListener from '../../hooks/useEventListener'
+import { TModalFullScreen, TModalSize } from '../../type/modal-type'
 
 interface IModalTitleProps extends HTMLAttributes<HTMLElement> {
-	id: string;
-	children: ReactNode;
-	className?: string;
-	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'span';
+	id: string
+	children: ReactNode
+	className?: string
+	tag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6' | 'div' | 'span'
 }
 export const ModalTitle = forwardRef<HTMLHeadingElement, IModalTitleProps>(
 	({ tag = 'h5', id, children, className, ...props }, ref) => {
@@ -32,15 +32,15 @@ export const ModalTitle = forwardRef<HTMLHeadingElement, IModalTitleProps>(
 				{...props}>
 				{children}
 			</TagWrapper>
-		);
+		)
 	},
-);
-ModalTitle.displayName = 'ModalTitle';
+)
+ModalTitle.displayName = 'ModalTitle'
 
 interface IModalHeaderProps extends HTMLAttributes<HTMLDivElement> {
-	children: ReactElement<IModalTitleProps> | ReactNode;
-	className?: string;
-	setIsOpen?(...args: unknown[]): unknown | undefined;
+	children: ReactElement<IModalTitleProps> | ReactNode
+	className?: string
+	setIsOpen?(...args: unknown[]): unknown | undefined
 }
 export const ModalHeader = forwardRef<HTMLDivElement, IModalHeaderProps>(
 	({ children, className, setIsOpen, ...props }, ref) => {
@@ -57,14 +57,14 @@ export const ModalHeader = forwardRef<HTMLDivElement, IModalHeaderProps>(
 					/>
 				)}
 			</div>
-		);
+		)
 	},
-);
-ModalHeader.displayName = 'ModalHeader';
+)
+ModalHeader.displayName = 'ModalHeader'
 
 interface IModalBodyProps extends HTMLAttributes<HTMLDivElement> {
-	children: ReactNode;
-	className?: string;
+	children: ReactNode
+	className?: string
 }
 export const ModalBody = forwardRef<HTMLDivElement, IModalBodyProps>(
 	({ children, className, ...props }, ref) => {
@@ -72,14 +72,14 @@ export const ModalBody = forwardRef<HTMLDivElement, IModalBodyProps>(
 			<div ref={ref} className={classNames('modal-body', className)} {...props}>
 				{children}
 			</div>
-		);
+		)
 	},
-);
-ModalBody.displayName = 'ModalBody';
+)
+ModalBody.displayName = 'ModalBody'
 
 interface IModalFooterProps extends HTMLAttributes<HTMLDivElement> {
-	children: ReactNode;
-	className?: string;
+	children: ReactNode
+	className?: string
 }
 export const ModalFooter = forwardRef<HTMLDivElement, IModalFooterProps>(
 	({ children, className, ...props }, ref) => {
@@ -87,26 +87,26 @@ export const ModalFooter = forwardRef<HTMLDivElement, IModalFooterProps>(
 			<div ref={ref} className={classNames('modal-footer', className)} {...props}>
 				{children}
 			</div>
-		);
+		)
 	},
-);
-ModalFooter.displayName = 'ModalFooter';
+)
+ModalFooter.displayName = 'ModalFooter'
 
 interface IModalProps extends Record<string, any> {
 	children:
 		| ReactElement<IModalHeaderProps>[]
 		| ReactElement<IModalBodyProps>[]
-		| ReactElement<IModalFooterProps>[];
-	isOpen: boolean;
-	setIsOpen(...args: unknown[]): unknown;
-	id?: string | undefined;
-	titleId?: string;
-	isStaticBackdrop?: boolean;
-	isScrollable?: boolean;
-	isCentered?: boolean;
-	size?: TModalSize;
-	fullScreen?: TModalFullScreen;
-	isAnimation?: boolean;
+		| ReactElement<IModalFooterProps>[]
+	isOpen: boolean
+	setIsOpen(...args: unknown[]): unknown
+	id?: string | undefined
+	titleId?: string
+	isStaticBackdrop?: boolean
+	isScrollable?: boolean
+	isCentered?: boolean
+	size?: TModalSize
+	fullScreen?: TModalFullScreen
+	isAnimation?: boolean
 }
 const Modal: FC<IModalProps> = ({
 	children,
@@ -122,49 +122,49 @@ const Modal: FC<IModalProps> = ({
 	isAnimation = true,
 	...props
 }) => {
-	const refModal = useRef(null);
-	const ref = useRef(null);
+	const refModal = useRef(null)
+	const ref = useRef(null)
 
 	// <body> modal-open class (presentation)
 	useEffect(() => {
 		if (isOpen) {
-			document.body.classList.add('modal-open');
+			document.body.classList.add('modal-open')
 		}
 		return () => {
-			document.body.classList.remove('modal-open');
-		};
-	});
+			document.body.classList.remove('modal-open')
+		}
+	})
 
 	// Backdrop close function
 	const closeModal = (event: { target: any }) => {
 		// @ts-ignore
 		if (ref.current && !ref.current.contains(event.target) && !isStaticBackdrop) {
-			setIsOpen(false);
+			setIsOpen(false)
 		}
-	};
-	useEventListener('mousedown', closeModal);
-	useEventListener('touchstart', closeModal); // Touchscreen
+	}
+	useEventListener('mousedown', closeModal)
+	useEventListener('touchstart', closeModal) // Touchscreen
 
 	// Backdrop static function
 	const modalStatic = (event: { target: any }) => {
 		// @ts-ignore
 		if (ref.current && !ref.current.contains(event.target) && isStaticBackdrop) {
 			// @ts-ignore
-			refModal.current.classList.add('modal-static');
+			refModal.current.classList.add('modal-static')
 			// @ts-ignore
-			setTimeout(() => refModal.current.classList.remove('modal-static'), 300);
+			setTimeout(() => refModal.current.classList.remove('modal-static'), 300)
 		}
-	};
-	useEventListener('mousedown', modalStatic);
-	useEventListener('touchstart', modalStatic); // Touchscreen
+	}
+	useEventListener('mousedown', modalStatic)
+	useEventListener('touchstart', modalStatic) // Touchscreen
 
 	// Keypress close function
 	const escFunction = (event: { key: string }) => {
 		if (event.key === 'Escape') {
-			setIsOpen(false);
+			setIsOpen(false)
 		}
-	};
-	useEventListener('keydown', escFunction);
+	}
+	useEventListener('keydown', escFunction)
 
 	const ANIMATION_PROPS = isAnimation
 		? {
@@ -173,7 +173,7 @@ const Modal: FC<IModalProps> = ({
 				exit: { opacity: 0, y: '-50%' },
 				transition: { ease: 'easeInOut', duration: 0.3 },
 			}
-		: null;
+		: null
 
 	return (
 		<Portal>
@@ -214,7 +214,7 @@ const Modal: FC<IModalProps> = ({
 				)}
 			</AnimatePresence>
 		</Portal>
-	);
-};
+	)
+}
 
-export default Modal;
+export default Modal

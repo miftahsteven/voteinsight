@@ -1,20 +1,20 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import PrismCode from '../../../components/extras/PrismCode';
+} from '../../../components/bootstrap/Card'
+import PrismCode from '../../../components/extras/PrismCode'
 
 const Index: NextPage = () => {
 	const API_EXPLAINED = `
@@ -29,13 +29,13 @@ $utilities: (
 			100: 1,
 		)
   	)
- );`;
+ );`
 	const API_EXPLAINED_2 = `
 .opacity-0 { opacity: 0; }
 .opacity-25 { opacity: .25; }
 .opacity-50 { opacity: .5; }
 .opacity-75 { opacity: .75; }
-.opacity-100 { opacity: 1; }`;
+.opacity-100 { opacity: 1; }`
 	const CUSTOM_CLASS_PREFIX = `
 $utilities: (
 	"opacity": (
@@ -49,13 +49,13 @@ $utilities: (
 			100: 1,
 		)
 	)
- );`;
+ );`
 	const CUSTOM_CLASS_PREFIX_2 = `
 .o-0 { opacity: 0; }
 .o-25 { opacity: .25; }
 .o-50 { opacity: .5; }
 .o-75 { opacity: .75; }
-.o-100 { opacity: 1; }`;
+.o-100 { opacity: 1; }`
 
 	const STATES = `
 $utilities: (
@@ -71,13 +71,13 @@ $utilities: (
 			100: 1,
 		)
 	)
-);`;
+);`
 	const STATES_2 = `
 .opacity-0-hover:hover { opacity: 0; }
 .opacity-25-hover:hover { opacity: .25; }
 .opacity-50-hover:hover { opacity: .5; }
 .opacity-75-hover:hover { opacity: .75; }
-.opacity-100-hover:hover { opacity: 1; }`;
+.opacity-100-hover:hover { opacity: 1; }`
 	const RESPONSIVE = `
 $utilities: (
 	"opacity": (
@@ -91,7 +91,7 @@ $utilities: (
 			100: 1,
 		)
 	)
- );`;
+ );`
 	const RESPONSIVE_2 = `
 .opacity-0 { opacity: 0; }
 .opacity-25 { opacity: .25; }
@@ -137,7 +137,7 @@ $utilities: (
 	.opacity-xxl-50 { opacity: .5; }
 	.opacity-xxl-75 { opacity: .75; }
 	.opacity-xxl-100 { opacity: 1; }
-}`;
+}`
 	const CHANGING = `
 $utilities: (
 	"overflow": (
@@ -145,7 +145,7 @@ $utilities: (
 		property: overflow,
 		values: visible hidden scroll auto,
 	),
-);`;
+);`
 	const PRINT = `
 $utilities: (
 	"opacity": (
@@ -159,7 +159,7 @@ $utilities: (
       		100: 1,
     	)
   	)
- );`;
+ );`
 	const PRINT_2 = `
 .opacity-0 { opacity: 0; }
 .opacity-25 { opacity: .25; }
@@ -173,7 +173,7 @@ $utilities: (
   	.opacity-print-50 { opacity: .5; }
   	.opacity-print-75 { opacity: .75; }
   	.opacity-print-100 { opacity: 1; }
-}`;
+}`
 
 	const ADD_UTILITIES = `
 $utilities: map-merge(
@@ -186,7 +186,7 @@ $utilities: map-merge(
       		values: auto pointer grab,
     	)
   	)
-);`;
+);`
 	const MODIFY_UTILITIES = `
 $utilities: map-merge(
 	$utilities,
@@ -201,7 +201,7 @@ $utilities: map-merge(
 			),
 		),
 	)
-);`;
+);`
 	const RENAME_UTILITIES = `
 $utilities: map-merge(
 	$utilities, (
@@ -210,14 +210,14 @@ $utilities: map-merge(
 			( class: ml ),
 		),
 	)
-);`;
+);`
 	const REMOVE_UTILITIES = `
 $utilities: map-merge(
 	$utilities,
 	(
 		"width": null
 	)
-);`;
+);`
 	const REMOVE_UTILITIES_RTL = `
 $utilities: (
 	"word-wrap": (
@@ -226,14 +226,14 @@ $utilities: (
 		values: (break: break-word),
 		rtl: false
 	),
-);`;
+);`
 	const REMOVE_UTILITIES_RTL_2 = `
 /* rtl:begin:remove */
 .text-break {
 	word-wrap: break-word !important;
   	word-break: break-word !important;
 }
-/* rtl:end:remove */`;
+/* rtl:end:remove */`
 
 	return (
 		<PageWrapper>
@@ -713,14 +713,14 @@ $utilities: (
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

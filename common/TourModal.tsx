@@ -1,30 +1,30 @@
-import React, { useEffect, useState } from 'react';
-import { useTour } from '@reactour/tour';
+import React, { useEffect, useState } from 'react'
+import { useTour } from '@reactour/tour'
 import Modal, {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
-} from '../components/bootstrap/Modal';
-import Button from '../components/bootstrap/Button';
-import Logo from '../components/Logo';
-import Img from '../assets/img/wanna/susy/susy9.png';
-import Icon from '../components/icon/Icon';
-import { useRouter } from 'next/router';
+} from '../components/bootstrap/Modal'
+import Button from '../components/bootstrap/Button'
+import Logo from '../components/Logo'
+import Img from '../assets/img/wanna/susy/susy9.png'
+import Icon from '../components/icon/Icon'
+import { useRouter } from 'next/router'
 
 const TourModal = () => {
-	const router = useRouter();
-	const [isOpenModal, setIsOpenModal] = useState<boolean>(false);
+	const router = useRouter()
+	const [isOpenModal, setIsOpenModal] = useState<boolean>(false)
 
 	useEffect(() => {
-		const timeout = setTimeout(() => setIsOpenModal(true), 3000);
+		const timeout = setTimeout(() => setIsOpenModal(true), 3000)
 		return () => {
-			setIsOpenModal(false);
-			clearTimeout(timeout);
-		};
-	}, []);
+			setIsOpenModal(false)
+			clearTimeout(timeout)
+		}
+	}, [])
 
-	const { setIsOpen } = useTour();
+	const { setIsOpen } = useTour()
 
 	return (
 		<Modal isOpen={isOpenModal} setIsOpen={setIsOpenModal} titleId='tour-title'>
@@ -60,15 +60,15 @@ const TourModal = () => {
 					color='success'
 					isLight
 					onClick={() => {
-						setIsOpenModal(false);
-						router.push('/');
-						setTimeout(() => setIsOpen(true), 1000);
+						setIsOpenModal(false)
+						router.push('/')
+						setTimeout(() => setIsOpen(true), 1000)
 					}}>
 					Yes
 				</Button>
 			</ModalFooter>
 		</Modal>
-	);
-};
+	)
+}
 
-export default TourModal;
+export default TourModal

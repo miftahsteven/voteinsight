@@ -1,12 +1,12 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -15,12 +15,12 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import { TColor } from '../../../type/color-type';
-import Wizard, { WizardItem } from '../../../components/Wizard';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
+} from '../../../components/bootstrap/Card'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import { TColor } from '../../../type/color-type'
+import Wizard, { WizardItem } from '../../../components/Wizard'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -38,7 +38,7 @@ const Index: NextPage = () => {
 	{ /* CHILDREN */}
 	</WizardItem>
 	...
-</Wizard>`;
+</Wizard>`
 
 	const COLORS: TColor[] = [
 		'primary',
@@ -48,7 +48,7 @@ const Index: NextPage = () => {
 		'warning',
 		'danger',
 		'dark',
-	];
+	]
 
 	return (
 		<PageWrapper>
@@ -110,7 +110,7 @@ const Index: NextPage = () => {
 											className='mb-0'
 											stretch
 											onSubmit={(e: Event) => {
-												e.preventDefault();
+												e.preventDefault()
 											}}>
 											<WizardItem id='item1'>Header is false.</WizardItem>
 											<WizardItem id='item2'>Item 2</WizardItem>
@@ -122,7 +122,7 @@ const Index: NextPage = () => {
 											className='mb-0'
 											isHeader
 											onSubmit={(e: Event) => {
-												e.preventDefault();
+												e.preventDefault()
 											}}>
 											<WizardItem id='item2-1'>Header is false.</WizardItem>
 											<WizardItem id='item2-2'>Item 2</WizardItem>
@@ -134,7 +134,7 @@ const Index: NextPage = () => {
 											className='mb-0'
 											isHeader='withButton'
 											onSubmit={(e: Event) => {
-												e.preventDefault();
+												e.preventDefault()
 											}}>
 											<WizardItem id='item3-1'>Header is false.</WizardItem>
 											<WizardItem id='item3-2'>Item 2</WizardItem>
@@ -173,7 +173,7 @@ const Index: NextPage = () => {
 												className='mb-0'
 												isHeader='withButton'
 												onSubmit={(e: Event) => {
-													e.preventDefault();
+													e.preventDefault()
 												}}>
 												<WizardItem id={`item-${color}-1`}>
 													Color is {color}.
@@ -211,7 +211,7 @@ const Index: NextPage = () => {
 									className='mb-0'
 									isHeader
 									onSubmit={(e: Event) => {
-										e.preventDefault();
+										e.preventDefault()
 									}}>
 									<WizardItem id='item2-1' title='Sample Section'>
 										Title is "Sample Section".
@@ -229,14 +229,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

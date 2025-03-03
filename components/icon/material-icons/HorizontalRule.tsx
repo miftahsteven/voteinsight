@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgHorizontalRule = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgHorizontalRule = (props: SVGProps<SVGSVGElement>) => {
 			<path fill='none' d='M0 0h24v24H0z' />
 			<path fillRule='evenodd' d='M4 11h16v2H4z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgHorizontalRule;
+export default SvgHorizontalRule

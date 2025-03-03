@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFlashlightOn = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -11,7 +11,7 @@ const SvgFlashlightOn = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M6 2v6l2 3v11h8V11l2-3V2H6zm10 5.39l-2 3.01V20h-4v-9.61l-2-3V7h8v.39zM16 5H8V4h8v1z' />
 			<circle cx={12} cy={14} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFlashlightOn;
+export default SvgFlashlightOn

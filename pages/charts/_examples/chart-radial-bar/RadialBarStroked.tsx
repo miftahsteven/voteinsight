@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const RadialBarStroked = () => {
 	const [state] = useState<IChartOptions>({
@@ -32,7 +32,7 @@ const RadialBarStroked = () => {
 							fontSize: '22px',
 							color: undefined,
 							formatter(val) {
-								return `${val}%`;
+								return `${val}%`
 							},
 						},
 					},
@@ -54,7 +54,7 @@ const RadialBarStroked = () => {
 			},
 			labels: ['Median Ratio'],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -76,7 +76,7 @@ const RadialBarStroked = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadialBarStroked;
+export default RadialBarStroked

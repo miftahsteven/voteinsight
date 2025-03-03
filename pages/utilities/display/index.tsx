@@ -1,22 +1,22 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import { createUseStyles } from 'react-jss';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import { createUseStyles } from 'react-jss'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const useStyles = createUseStyles({
 	// stylelint-disable-next-line selector-type-no-unknown
@@ -26,26 +26,26 @@ const useStyles = createUseStyles({
 			marginRight: '0.5rem',
 		},
 	},
-});
+})
 
 const Index: NextPage = () => {
-	const classes = useStyles();
+	const classes = useStyles()
 
 	const EXAMPLE = `
 <div className='d-inline p-2 bg-primary text-white'>d-inline</div>
-<div className='d-inline p-2 bg-dark text-white'>d-inline</div>`;
+<div className='d-inline p-2 bg-dark text-white'>d-inline</div>`
 	const EXAMPLE_2 = `
 <span className='d-block p-2 bg-primary text-white'>d-block</span>
-<span className='d-block p-2 bg-dark text-white'>d-block</span>`;
+<span className='d-block p-2 bg-dark text-white'>d-block</span>`
 
 	const HIDING = `
 <div className="d-lg-none">hide on lg and wider screens</div>
-<div className="d-none d-lg-block">hide on screens smaller than lg</div>`;
+<div className="d-none d-lg-block">hide on screens smaller than lg</div>`
 
 	const PRINTING = `
 <div className='d-print-none'>Screen Only (Hide on print only)</div>
 <div className='d-none d-print-block'>Print Only (Hide on screen only)</div>
-<div className='d-none d-lg-block d-print-block'>Hide up to large on screen, but always show on print</div>`;
+<div className='d-none d-lg-block d-print-block'>Hide up to large on screen, but always show on print</div>`
 
 	const UTILITIES_API = `"display": (
 	responsive: true,
@@ -53,7 +53,7 @@ const Index: NextPage = () => {
 	property: display,
 	class: d,
 	values: inline inline-block block grid table table-row table-cell flex inline-flex none
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -441,14 +441,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

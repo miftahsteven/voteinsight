@@ -1,16 +1,16 @@
-import React, { FC } from 'react';
-import classNames from 'classnames';
-import Card, { CardBody } from './bootstrap/Card';
-import useDarkMode from '../hooks/useDarkMode';
+import React, { FC } from 'react'
+import classNames from 'classnames'
+import Card, { CardBody } from './bootstrap/Card'
+import useDarkMode from '../hooks/useDarkMode'
 
-export type TTransferActionStatus = 'Completed' | 'Processing' | 'Failed';
+export type TTransferActionStatus = 'Completed' | 'Processing' | 'Failed'
 interface ITransferActionProps {
-	currency: string;
-	amount: number;
-	status: TTransferActionStatus;
-	img: string;
-	className?: string;
-	imgWidth?: number;
+	currency: string
+	amount: number
+	status: TTransferActionStatus
+	img: string
+	className?: string
+	imgWidth?: number
 }
 
 const TransferAction: FC<ITransferActionProps> = ({
@@ -21,12 +21,12 @@ const TransferAction: FC<ITransferActionProps> = ({
 	className,
 	imgWidth = 150,
 }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	const STATUS =
 		(status === 'Completed' && 'success') ||
 		(status === 'Processing' && 'warning') ||
-		(status === 'Failed' && 'danger');
+		(status === 'Failed' && 'danger')
 	return (
 		<Card className={className}>
 			<CardBody>
@@ -78,7 +78,7 @@ const TransferAction: FC<ITransferActionProps> = ({
 				</div>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default TransferAction;
+export default TransferAction

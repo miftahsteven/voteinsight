@@ -1,13 +1,13 @@
-import dayjs from 'dayjs';
-import USERS, { IUserProps } from './userDummyData';
-import SERVICES, { IServiceProps } from './serviceDummyData';
+import dayjs from 'dayjs'
+import USERS, { IUserProps } from './userDummyData'
+import SERVICES, { IServiceProps } from './serviceDummyData'
 
 export interface IEvents extends Partial<IServiceProps> {
-	id?: number;
-	start?: Date;
-	end?: Date;
-	user?: IUserProps;
-	[key: string]: any;
+	id?: number
+	start?: Date
+	end?: Date
+	user?: IUserProps
+	[key: string]: any
 }
 const events: IEvents[] = [
 	{
@@ -158,6 +158,6 @@ const events: IEvents[] = [
 		user: USERS.GRACE,
 		...SERVICES.KAYAKING,
 	},
-];
+]
 
-export default events;
+export default events

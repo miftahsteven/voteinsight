@@ -1,13 +1,13 @@
-import Img1 from '../../assets/img/scene1.png';
-import Img2 from '../../assets/img/scene2.png';
-import Img3 from '../../assets/img/scene3.png';
-import Img4 from '../../assets/img/scene4.png';
-import Img5 from '../../assets/img/scene5.png';
-import Img6 from '../../assets/img/scene6.png';
-import { TColor } from '../../type/color-type';
-import COLORS from './enumColors';
+import Img1 from '../../assets/img/scene1.png'
+import Img2 from '../../assets/img/scene2.png'
+import Img3 from '../../assets/img/scene3.png'
+import Img4 from '../../assets/img/scene4.png'
+import Img5 from '../../assets/img/scene5.png'
+import Img6 from '../../assets/img/scene6.png'
+import { TColor } from '../../type/color-type'
+import COLORS from './enumColors'
 
-export type TTags = { text: string; color: TColor };
+export type TTags = { text: string; color: TColor }
 const TAGS: { [key: string]: TTags } = {
 	NPM: {
 		text: 'NPM',
@@ -25,9 +25,9 @@ const TAGS: { [key: string]: TTags } = {
 		text: 'Dependencies',
 		color: COLORS.INFO.name,
 	},
-};
+}
 
-type TCategories = { value: string; text: string };
+type TCategories = { value: string; text: string }
 export const CATEGORIES: { [key: string]: TCategories } = {
 	DOCUMENTATION: {
 		value: 'documentation',
@@ -41,17 +41,17 @@ export const CATEGORIES: { [key: string]: TCategories } = {
 		value: 'colors',
 		text: 'Colors',
 	},
-};
+}
 
 const data: {
-	id: number;
-	title: string;
-	description: string;
-	image: string;
-	tags: TTags[];
-	color: TColor;
-	categories: TCategories[];
-	content: string;
+	id: number
+	title: string
+	description: string
+	image: string
+	tags: TTags[]
+	color: TColor
+	categories: TCategories[]
+	content: string
 }[] = [
 	{
 		id: 1,
@@ -146,6 +146,6 @@ const data: {
 		content:
 			'Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Morbi rhoncus, turpis mollis tincidunt feugiat, augue enim dapibus ipsum, et placerat neque nibh sit amet justo. Praesent venenatis ex eu massa aliquam congue eu sed diam. Vestibulum suscipit lacus et justo ornare, at rutrum erat malesuada. Fusce ut rutrum dui. Donec posuere fringilla urna, ut efficitur mi feugiat et. In ut elit at turpis dapibus pretium quis vel turpis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam rhoncus vel erat a finibus. Nulla facilisi. Suspendisse ornare rhoncus sollicitudin. Curabitur mollis, erat id tincidunt efficitur, arcu sem elementum enim, ac lacinia tortor purus vel ante. Nullam non feugiat magna.',
 	},
-];
+]
 
-export default data;
+export default data

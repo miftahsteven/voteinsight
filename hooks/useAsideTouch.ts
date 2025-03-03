@@ -1,72 +1,72 @@
-import { useContext, useEffect, useState } from 'react';
-import { useMotionValue, useTransform } from 'framer-motion';
-import ThemeContext from '../context/themeContext';
-import useDeviceScreen from './useDeviceScreen';
+import { useContext, useEffect, useState } from 'react'
+import { useMotionValue, useTransform } from 'framer-motion'
+import ThemeContext from '../context/themeContext'
+import useDeviceScreen from './useDeviceScreen'
 
 const useAsideTouch = () => {
-	const { asideStatus } = useContext(ThemeContext);
-	const deviceScreen = useDeviceScreen();
+	const { asideStatus } = useContext(ThemeContext)
+	const deviceScreen = useDeviceScreen()
 
 	const mobileDesign =
 		// @ts-ignore
-		deviceScreen?.width <= Number(process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE);
+		deviceScreen?.width <= Number(process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE)
 	const hasTouchButton =
 		// @ts-ignore
-		deviceScreen?.width > Number(process.env.NEXT_PUBLIC_ASIDE_MINIMIZE_BREAKPOINT_SIZE);
+		deviceScreen?.width > Number(process.env.NEXT_PUBLIC_ASIDE_MINIMIZE_BREAKPOINT_SIZE)
 
 	const asideWidthWithSpace =
 		(parseInt(String(process.env.NEXT_PUBLIC_ASIDE_WIDTH_PX), 10) +
 			parseInt(String(process.env.NEXT_PUBLIC_SPACER_PX), 10)) *
-		-1;
+		-1
 
 	const x = useMotionValue(
 		process.env.NEXT_PUBLIC_ASIDE_TOUCH_STATUS === 'true' ? 0 : asideWidthWithSpace,
-	);
-	const [touchStatus, setTouchStatus] = useState(!x.get());
+	)
+	const [touchStatus, setTouchStatus] = useState(!x.get())
 	const left = useTransform(
 		x,
 		[-100, -90, -10, 0],
 		[asideWidthWithSpace, asideWidthWithSpace, 0, 0],
-	);
+	)
 
 	// X value get
 	useEffect(() => {
 		function updateX() {
-			const X = x.get();
-			setTouchStatus(!X);
+			const X = x.get()
+			setTouchStatus(!X)
 		}
 
 		// @ts-ignore
-		const unsubscribeX = x.onChange(updateX);
+		const unsubscribeX = x.onChange(updateX)
 
 		return () => {
-			unsubscribeX();
-		};
+			unsubscribeX()
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, []);
+	}, [])
 
 	// Set Aside & Touch Button value
 	useEffect(() => {
 		if (!hasTouchButton) {
-			x.set(0);
+			x.set(0)
 		}
-		return () => {};
+		return () => {}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [hasTouchButton, deviceScreen?.width]);
+	}, [hasTouchButton, deviceScreen?.width])
 
 	//  for start minimize aside
 	useEffect(() => {
 		if (!asideStatus) {
-			x.set(0);
-			setTouchStatus(false);
+			x.set(0)
+			setTouchStatus(false)
 		}
-		return () => {};
+		return () => {}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [asideStatus]);
+	}, [asideStatus])
 
-	const asideStyle = hasTouchButton ? { left } : { left: mobileDesign ? null : '0rem' };
+	const asideStyle = hasTouchButton ? { left } : { left: mobileDesign ? null : '0rem' }
 
-	return { asideStyle, touchStatus, hasTouchButton, asideWidthWithSpace, x };
-};
+	return { asideStyle, touchStatus, hasTouchButton, asideWidthWithSpace, x }
+}
 
-export default useAsideTouch;
+export default useAsideTouch

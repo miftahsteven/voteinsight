@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import showNotification from '../../../components/extras/showNotification';
-import Page from '../../../layout/Page/Page';
+import React, { useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import showNotification from '../../../components/extras/showNotification'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -19,30 +19,30 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
+} from '../../../components/bootstrap/Card'
 import Modal, {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
-} from '../../../components/bootstrap/Modal';
-import Textarea from '../../../components/bootstrap/forms/Textarea';
+} from '../../../components/bootstrap/Modal'
+import Textarea from '../../../components/bootstrap/forms/Textarea'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Button from '../../../components/bootstrap/Button';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import CommonStoryLink from '../../../common/partial/other/CommonStoryLink';
-import { componentPagesMenu } from '../../../menu';
-import { TInputTypes } from '../../../type/input-type';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Input from '../../../components/bootstrap/forms/Input';
-import Label from '../../../components/bootstrap/forms/Label';
+} from '../../../components/bootstrap/Dropdown'
+import Button from '../../../components/bootstrap/Button'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import CommonStoryLink from '../../../common/partial/other/CommonStoryLink'
+import { componentPagesMenu } from '../../../menu'
+import { TInputTypes } from '../../../type/input-type'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Input from '../../../components/bootstrap/forms/Input'
+import Label from '../../../components/bootstrap/forms/Label'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -69,7 +69,7 @@ const Index: NextPage = () => {
 	onInput={ Function }
 	onInvalid={ Function }
 	onSelect={ Function }
- 	{...props}/>`;
+ 	{...props}/>`
 	const GENERAL_USAGE_2 = `
 <Textarea
 	id={ String }
@@ -91,9 +91,9 @@ const Index: NextPage = () => {
 	onInput={ Function }
 	onInvalid={ Function }
 	onSelect={ Function }
- 	{...props}/>`;
+ 	{...props}/>`
 
-	const [modalStatus, setModalStatus] = useState(false);
+	const [modalStatus, setModalStatus] = useState(false)
 
 	const formik = useFormik({
 		initialValues: {
@@ -109,7 +109,7 @@ const Index: NextPage = () => {
 		onSubmit: () => {
 			// console.log(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	const formikEvents = useFormik({
 		initialValues: {
@@ -119,17 +119,17 @@ const Index: NextPage = () => {
 		onSubmit: () => {
 			// console.log(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	useEffect(() => {
-		showNotification('Trigger onChange', 'This input trigger onChange');
-		return () => {};
-	}, [formikEvents.values.exampleEvent]);
+		showNotification('Trigger onChange', 'This input trigger onChange')
+		return () => {}
+	}, [formikEvents.values.exampleEvent])
 
 	useEffect(() => {
-		showNotification('Trigger onChange', 'This input trigger onChange');
-		return () => {};
-	}, [formikEvents.values.exampleEventTextarea]);
+		showNotification('Trigger onChange', 'This input trigger onChange')
+		return () => {}
+	}, [formikEvents.values.exampleEventTextarea])
 
 	const TYPES: TInputTypes[] = [
 		'text',
@@ -148,7 +148,7 @@ const Index: NextPage = () => {
 		'time',
 		'url',
 		'week',
-	];
+	]
 
 	const PLACEHOLDER_SUPPORT_TYPES: TInputTypes[] = [
 		'text',
@@ -158,7 +158,7 @@ const Index: NextPage = () => {
 		'search',
 		'tel',
 		'url',
-	];
+	]
 
 	return (
 		<PageWrapper>
@@ -1012,14 +1012,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

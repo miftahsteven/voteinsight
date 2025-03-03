@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
+import React, { useState } from 'react'
+import dayjs from 'dayjs'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const CandlestickCategoryXAxis = () => {
 	const [state] = useState<IChartOptions>({
@@ -294,7 +294,7 @@ const CandlestickCategoryXAxis = () => {
 				type: 'category',
 				labels: {
 					formatter(val) {
-						return dayjs(val).format('MMM DD HH:mm');
+						return dayjs(val).format('MMM DD HH:mm')
 					},
 				},
 			},
@@ -304,7 +304,7 @@ const CandlestickCategoryXAxis = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -326,7 +326,7 @@ const CandlestickCategoryXAxis = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default CandlestickCategoryXAxis;
+export default CandlestickCategoryXAxis

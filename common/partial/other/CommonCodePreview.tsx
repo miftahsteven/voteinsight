@@ -1,15 +1,15 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react'
 // @ts-ignore
-import jsxToString from 'jsx-to-string';
-import classNames from 'classnames';
-import Card, { CardBody } from '../../../components/bootstrap/Card';
-import PrismCode from '../../../components/extras/PrismCode';
+import jsxToString from 'jsx-to-string'
+import classNames from 'classnames'
+import Card, { CardBody } from '../../../components/bootstrap/Card'
+import PrismCode from '../../../components/extras/PrismCode'
 
 interface ICommonCodePreviewProps {
-	children?: ReactNode;
-	className?: string;
-	code?: string;
-	language?: string;
+	children?: ReactNode
+	className?: string
+	code?: string
+	language?: string
 }
 const CommonCodePreview: FC<ICommonCodePreviewProps> = ({
 	children,
@@ -35,7 +35,7 @@ const CommonCodePreview: FC<ICommonCodePreviewProps> = ({
 					rounded={0}
 				/>
 			</Card>
-		);
+		)
 	}
 	return (
 		<PrismCode
@@ -50,7 +50,7 @@ const CommonCodePreview: FC<ICommonCodePreviewProps> = ({
 			}
 			language={language}
 		/>
-	);
-};
+	)
+}
 
-export default CommonCodePreview;
+export default CommonCodePreview

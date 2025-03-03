@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import useDarkMode from '../../../hooks/useDarkMode';
-import tableData from '../../../common/data/dummyProductData';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
+import React, { useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import useDarkMode from '../../../hooks/useDarkMode'
+import tableData from '../../../common/data/dummyProductData'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import Company2 from '../../../assets/logos/company2.png';
-import Page from '../../../layout/Page/Page';
-import CommonGridProductItem from '../../../common/partial/CommonGridProductItem';
+} from '../../../layout/SubHeader/SubHeader'
+import Button from '../../../components/bootstrap/Button'
+import Company2 from '../../../assets/logos/company2.png'
+import Page from '../../../layout/Page/Page'
+import CommonGridProductItem from '../../../common/partial/CommonGridProductItem'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas';
-import Badge from '../../../components/bootstrap/Badge';
+} from '../../../components/bootstrap/OffCanvas'
+import Badge from '../../../components/bootstrap/Badge'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import PlaceholderImage from '../../../components/extras/PlaceholderImage';
-import Input from '../../../components/bootstrap/forms/Input';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
+} from '../../../components/bootstrap/Card'
+import PlaceholderImage from '../../../components/extras/PlaceholderImage'
+import Input from '../../../components/bootstrap/forms/Input'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
 
 interface IValues {
-	name: string;
-	price: number;
-	stock: number;
-	category: string;
-	image?: string | null;
+	name: string
+	price: number
+	stock: number
+	category: string
+	image?: string | null
 }
 const validate = (values: IValues) => {
 	const errors = {
@@ -46,51 +46,51 @@ const validate = (values: IValues) => {
 		price: '',
 		stock: '',
 		category: '',
-	};
+	}
 
 	if (!values.name) {
-		errors.name = 'Required';
+		errors.name = 'Required'
 	} else if (values.name.length < 3) {
-		errors.name = 'Must be 3 characters or more';
+		errors.name = 'Must be 3 characters or more'
 	} else if (values.name.length > 20) {
-		errors.name = 'Must be 20 characters or less';
+		errors.name = 'Must be 20 characters or less'
 	}
 
 	if (!values.price) {
-		errors.price = 'Required';
+		errors.price = 'Required'
 	} else if (values.price < 0) {
-		errors.price = 'Price should not be 0';
+		errors.price = 'Price should not be 0'
 	}
 
 	if (!values.stock) {
-		errors.stock = 'Required';
+		errors.stock = 'Required'
 	}
 
 	if (!values.category) {
-		errors.category = 'Required';
+		errors.category = 'Required'
 	} else if (values.category.length < 3) {
-		errors.category = 'Must be 3 characters or more';
+		errors.category = 'Must be 3 characters or more'
 	} else if (values.category.length > 20) {
-		errors.category = 'Must be 20 characters or less';
+		errors.category = 'Must be 20 characters or less'
 	}
 
-	return errors;
-};
+	return errors
+}
 
 const Index: NextPage = () => {
-	const { darkModeStatus } = useDarkMode();
-	const [data, setData] = useState(tableData);
-	const [editItem, setEditItem] = useState<IValues | null>(null);
-	const [editPanel, setEditPanel] = useState<boolean>(false);
+	const { darkModeStatus } = useDarkMode()
+	const [data, setData] = useState(tableData)
+	const [editItem, setEditItem] = useState<IValues | null>(null)
+	const [editPanel, setEditPanel] = useState<boolean>(false)
 
 	function handleRemove(id: number) {
-		const newData = data.filter((item) => item.id !== id);
-		setData(newData);
+		const newData = data.filter((item) => item.id !== id)
+		setData(newData)
 	}
 
 	function handleEdit(id: number) {
-		const newData = data.filter((item) => item.id === id);
-		setEditItem(newData[0]);
+		const newData = data.filter((item) => item.id === id)
+		setEditItem(newData[0])
 	}
 
 	const formik = useFormik({
@@ -102,9 +102,9 @@ const Index: NextPage = () => {
 		},
 		validate,
 		onSubmit: () => {
-			setEditPanel(false);
+			setEditPanel(false)
 		},
-	});
+	})
 
 	useEffect(() => {
 		if (editItem) {
@@ -113,7 +113,7 @@ const Index: NextPage = () => {
 				price: editItem.price,
 				stock: editItem.stock,
 				category: editItem.category,
-			});
+			})
 		}
 		return () => {
 			formik.setValues({
@@ -121,10 +121,10 @@ const Index: NextPage = () => {
 				price: 0,
 				stock: 0,
 				category: '',
-			});
-		};
+			})
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [editItem]);
+	}, [editItem])
 
 	return (
 		<PageWrapper>
@@ -144,8 +144,8 @@ const Index: NextPage = () => {
 						isLight
 						icon='Add'
 						onClick={() => {
-							setEditItem(null);
-							setEditPanel(true);
+							setEditItem(null)
+							setEditPanel(true)
 						}}>
 						Add New
 					</Button>
@@ -165,8 +165,8 @@ const Index: NextPage = () => {
 								series={item.series}
 								price={item.price}
 								editAction={() => {
-									setEditPanel(true);
-									handleEdit(item.id);
+									setEditPanel(true)
+									handleEdit(item.id)
 								}}
 								deleteAction={() => handleRemove(item.id)}
 							/>
@@ -234,7 +234,7 @@ const Index: NextPage = () => {
 													icon='Delete'
 													className='w-100'
 													onClick={() => {
-														setEditItem({ ...editItem, image: null });
+														setEditItem({ ...editItem, image: null })
 													}}>
 													Delete Image
 												</Button>
@@ -325,14 +325,14 @@ const Index: NextPage = () => {
 				</div>
 			</OffCanvas>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

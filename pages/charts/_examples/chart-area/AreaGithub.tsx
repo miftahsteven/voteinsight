@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import { githubData } from '../../../../common/data/chartDummyData';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import { githubData } from '../../../../common/data/chartDummyData'
 
 const AreaGithub = () => {
 	const [github] = useState<IChartOptions>({
@@ -29,24 +29,24 @@ const AreaGithub = () => {
 				},
 				events: {
 					mounted(chart) {
-						const commitsEl = document.querySelector('.cmeta span.commits');
+						const commitsEl = document.querySelector('.cmeta span.commits')
 						const commits = chart.getSeriesTotalXRange(
 							chart.w.globals.minX,
 							chart.w.globals.maxX,
-						);
+						)
 
 						// @ts-ignore
-						commitsEl.innerHTML = commits;
+						commitsEl.innerHTML = commits
 					},
 					updated(chart) {
-						const commitsEl = document.querySelector('.cmeta span.commits');
+						const commitsEl = document.querySelector('.cmeta span.commits')
 						const commits = chart.getSeriesTotalXRange(
 							chart.w.globals.minX,
 							chart.w.globals.maxX,
-						);
+						)
 
 						// @ts-ignore
-						commitsEl.innerHTML = commits;
+						commitsEl.innerHTML = commits
 					},
 				},
 			},
@@ -117,7 +117,7 @@ const AreaGithub = () => {
 				type: 'datetime',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -162,7 +162,7 @@ const AreaGithub = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default AreaGithub;
+export default AreaGithub

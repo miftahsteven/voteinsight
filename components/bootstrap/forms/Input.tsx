@@ -1,45 +1,45 @@
-import React, { forwardRef, HTMLAttributes } from 'react';
-import { NumericFormat } from 'react-number-format';
-import InputMask from 'react-input-mask';
-import classNames from 'classnames';
-import Portal from '../../../layout/Portal/Portal';
-import Validation from './Validation';
-import { TInputTypes } from '../../../type/input-type';
+import React, { forwardRef, HTMLAttributes } from 'react'
+import { NumericFormat } from 'react-number-format'
+import InputMask from 'react-input-mask'
+import classNames from 'classnames'
+import Portal from '../../../layout/Portal/Portal'
+import Validation from './Validation'
+import { TInputTypes } from '../../../type/input-type'
 
 export interface IInputProps extends HTMLAttributes<HTMLInputElement>, Partial<InputMask> {
-	component?: 'NumberFormat' | 'InputMask';
-	type?: TInputTypes;
-	id?: string;
-	name?: string;
-	size?: 'lg' | 'sm' | null;
-	className?: string;
-	required?: boolean;
-	placeholder?: string;
-	title?: string;
-	list?: string[];
-	autoComplete?: string;
-	disabled?: boolean;
-	multiple?: boolean;
-	readOnly?: boolean | 'plaintext';
-	ariaDescribedby?: string;
-	ariaLabelledby?: string;
-	ariaLabel?: string;
-	value?: string | number | readonly string[] | undefined;
-	min?: number;
-	max?: number;
-	step?: number;
-	isTouched?: boolean;
-	isValid?: boolean;
-	invalidFeedback?: string;
-	validFeedback?: string;
-	isValidMessage?: boolean;
-	isTooltipFeedback?: boolean;
-	onBlur?(...args: unknown[]): unknown;
-	onChange?(...args: unknown[]): unknown;
-	onFocus?(...args: unknown[]): unknown;
-	onInput?(...args: unknown[]): unknown;
-	onInvalid?(...args: unknown[]): unknown;
-	onSelect?(...args: unknown[]): unknown;
+	component?: 'NumberFormat' | 'InputMask'
+	type?: TInputTypes
+	id?: string
+	name?: string
+	size?: 'lg' | 'sm' | null
+	className?: string
+	required?: boolean
+	placeholder?: string
+	title?: string
+	list?: string[]
+	autoComplete?: string
+	disabled?: boolean
+	multiple?: boolean
+	readOnly?: boolean | 'plaintext'
+	ariaDescribedby?: string
+	ariaLabelledby?: string
+	ariaLabel?: string
+	value?: string | number | readonly string[] | undefined
+	min?: number
+	max?: number
+	step?: number
+	isTouched?: boolean
+	isValid?: boolean
+	invalidFeedback?: string
+	validFeedback?: string
+	isValidMessage?: boolean
+	isTooltipFeedback?: boolean
+	onBlur?(...args: unknown[]): unknown
+	onChange?(...args: unknown[]): unknown
+	onFocus?(...args: unknown[]): unknown
+	onInput?(...args: unknown[]): unknown
+	onInvalid?(...args: unknown[]): unknown
+	onSelect?(...args: unknown[]): unknown
 	/**
 	 * Mask string. Format characters are:
 	 * * `9`: `0-9`
@@ -49,9 +49,9 @@ export interface IInputProps extends HTMLAttributes<HTMLInputElement>, Partial<I
 	 * Any character can be escaped with backslash, which usually will appear as double backslash in JS strings.
 	 * For example, German phone mask with unremoveable prefix +49 will look like `mask="+4\\9 99 999 99"` or `mask={"+4\\\\9 99 999 99"}`
 	 */
-	mask?: string;
-	format?: string;
-	accept?: string;
+	mask?: string
+	format?: string
+	accept?: string
 }
 const Input = forwardRef<HTMLInputElement, IInputProps>(
 	(
@@ -135,7 +135,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 			onInvalid,
 			onSelect,
 			...props,
-		};
+		}
 		const NUMBER_FORMAT_PROPS = {
 			mask,
 			format,
@@ -145,8 +145,8 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 			onInput: () => onInput,
 			onInvalid: () => onInvalid,
 			onSelect: () => onSelect,
-		};
-		const MASK_PROPS = { mask };
+		}
+		const MASK_PROPS = { mask }
 
 		const LIST = list && (
 			<Portal>
@@ -156,7 +156,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 					))}
 				</datalist>
 			</Portal>
-		);
+		)
 
 		const VALIDATION = isValidMessage && (
 			<Validation
@@ -165,7 +165,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 				validFeedback={validFeedback}
 				isTooltip={isTooltipFeedback}
 			/>
-		);
+		)
 
 		if (component === 'NumberFormat' || format) {
 			return (
@@ -175,7 +175,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 					{LIST}
 					{VALIDATION}
 				</>
-			);
+			)
 		}
 		if (component === 'InputMask' || mask) {
 			return (
@@ -185,7 +185,7 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 					{LIST}
 					{VALIDATION}
 				</>
-			);
+			)
 		}
 		return (
 			<>
@@ -193,9 +193,9 @@ const Input = forwardRef<HTMLInputElement, IInputProps>(
 				{LIST}
 				{VALIDATION}
 			</>
-		);
+		)
 	},
-);
-Input.displayName = 'Input';
+)
+Input.displayName = 'Input'
 
-export default Input;
+export default Input

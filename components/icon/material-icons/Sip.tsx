@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSip = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgSip = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12z' />
 			<path d='M11 9h2v6h-2zM15.5 13H18c.55 0 1-.45 1-1v-2c0-.55-.45-1-1-1h-4v6h1.5v-2zm0-2.5h2v1h-2v-1z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSip;
+export default SvgSip

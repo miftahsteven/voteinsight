@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const BarStacked = () => {
 	const [state] = useState<IChartOptions>({
@@ -54,7 +54,7 @@ const BarStacked = () => {
 				categories: [2008, 2009, 2010, 2011, 2012, 2013, 2014],
 				labels: {
 					formatter(val) {
-						return `${val}K`;
+						return `${val}K`
 					},
 				},
 			},
@@ -66,7 +66,7 @@ const BarStacked = () => {
 			tooltip: {
 				y: {
 					formatter(val) {
-						return `${val}K`;
+						return `${val}K`
 					},
 				},
 			},
@@ -79,7 +79,7 @@ const BarStacked = () => {
 				offsetX: 40,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -96,7 +96,7 @@ const BarStacked = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default BarStacked;
+export default BarStacked

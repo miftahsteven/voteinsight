@@ -1,35 +1,35 @@
-import React, { FC, HTMLAttributes } from 'react';
-import classNames from 'classnames';
-import Validation from './Validation';
+import React, { FC, HTMLAttributes } from 'react'
+import classNames from 'classnames'
+import Validation from './Validation'
 
 export interface ITextareaProps extends HTMLAttributes<HTMLTextAreaElement | HTMLInputElement> {
-	id?: string;
-	name?: string;
-	size?: 'lg' | 'sm';
-	className?: string;
-	rows?: number;
-	placeholder?: string;
-	autoComplete?: string;
-	ariaDescribedby?: string;
-	ariaLabelledby?: string;
-	ariaLabel?: string;
-	title?: string;
-	disabled?: boolean;
-	readOnly?: boolean | 'plaintext';
-	value?: string | number | readonly string[] | undefined;
-	isTouched?: boolean;
-	isValid?: boolean;
-	invalidFeedback?: string;
-	validFeedback?: string;
-	isValidMessage?: boolean;
-	isTooltipFeedback?: boolean;
-	onBlur?(...args: unknown[]): unknown;
-	onChange?(...args: unknown[]): unknown;
-	onFocus?(...args: unknown[]): unknown;
-	onInput?(...args: unknown[]): unknown;
-	onInvalid?(...args: unknown[]): unknown;
-	onSelect?(...args: unknown[]): unknown;
-	required?: boolean;
+	id?: string
+	name?: string
+	size?: 'lg' | 'sm'
+	className?: string
+	rows?: number
+	placeholder?: string
+	autoComplete?: string
+	ariaDescribedby?: string
+	ariaLabelledby?: string
+	ariaLabel?: string
+	title?: string
+	disabled?: boolean
+	readOnly?: boolean | 'plaintext'
+	value?: string | number | readonly string[] | undefined
+	isTouched?: boolean
+	isValid?: boolean
+	invalidFeedback?: string
+	validFeedback?: string
+	isValidMessage?: boolean
+	isTooltipFeedback?: boolean
+	onBlur?(...args: unknown[]): unknown
+	onChange?(...args: unknown[]): unknown
+	onFocus?(...args: unknown[]): unknown
+	onInput?(...args: unknown[]): unknown
+	onInvalid?(...args: unknown[]): unknown
+	onSelect?(...args: unknown[]): unknown
+	required?: boolean
 }
 const Textarea: FC<ITextareaProps> = ({
 	id,
@@ -104,7 +104,7 @@ const Textarea: FC<ITextareaProps> = ({
 				/>
 			)}
 		</>
-	);
-};
+	)
+}
 
-export default Textarea;
+export default Textarea

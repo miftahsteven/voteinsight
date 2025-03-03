@@ -5,21 +5,21 @@ import React, {
 	HTMLAttributes,
 	isValidElement,
 	ReactElement,
-} from 'react';
-import classNames from 'classnames';
-import TagWrapper from '../../TagWrapper';
-import Validation from './Validation';
-import { IInputProps } from './Input';
-import { IButtonProps } from '../Button';
-import { ITextareaProps } from './Textarea';
-import { IChecksProps } from './Checks';
+} from 'react'
+import classNames from 'classnames'
+import TagWrapper from '../../TagWrapper'
+import Validation from './Validation'
+import { IInputProps } from './Input'
+import { IButtonProps } from '../Button'
+import { ITextareaProps } from './Textarea'
+import { IChecksProps } from './Checks'
 
 interface IInputGroupTextProps extends HTMLAttributes<HTMLElement> {
-	tag?: 'span' | 'div' | 'label';
-	children: ReactElement<IChecksProps> | string;
-	id?: string;
-	className?: string;
-	htmlFor?: string;
+	tag?: 'span' | 'div' | 'label'
+	children: ReactElement<IChecksProps> | string
+	id?: string
+	className?: string
+	htmlFor?: string
 }
 export const InputGroupText = forwardRef<HTMLDivElement, IInputGroupTextProps>(
 	({ tag = 'span', id, className, children, htmlFor, ...props }, ref) => {
@@ -36,59 +36,59 @@ export const InputGroupText = forwardRef<HTMLDivElement, IInputGroupTextProps>(
 					? cloneElement(children, { isFormCheckInput: true })
 					: children}
 			</TagWrapper>
-		);
+		)
 	},
-);
-InputGroupText.displayName = 'InputGroupText';
+)
+InputGroupText.displayName = 'InputGroupText'
 
 type TInputGroupChildren =
 	| ReactElement<IInputGroupTextProps>[]
 	| ReactElement<IInputProps>[]
 	| ReactElement<ITextareaProps>[]
-	| ReactElement<IButtonProps>[];
+	| ReactElement<IButtonProps>[]
 interface IInputGroupProps extends HTMLAttributes<HTMLDivElement> {
-	children: TInputGroupChildren;
-	id?: string;
-	className?: string;
-	isWrap?: boolean;
-	size?: 'sm' | 'lg';
+	children: TInputGroupChildren
+	id?: string
+	className?: string
+	isWrap?: boolean
+	size?: 'sm' | 'lg'
 }
 const InputGroup = forwardRef<HTMLDivElement, IInputGroupProps>(
 	({ id, className, children, isWrap = true, size, ...props }, ref) => {
-		let IS_VALID = false;
-		let IS_TOUCHED = false;
-		let INVALID_FEEDBACK;
-		let VALID_FEEDBACK;
-		let IS_TOOLTIP_FEEDBACK = false;
+		let IS_VALID = false
+		let IS_TOUCHED = false
+		let INVALID_FEEDBACK
+		let VALID_FEEDBACK
+		let IS_TOOLTIP_FEEDBACK = false
 
 		const validClass = (child: TInputGroupChildren) => {
 			for (let i = 0; i < child?.length; i += 1) {
 				// @ts-ignore
 				if (child[i].props.isValid) {
-					IS_VALID = true;
+					IS_VALID = true
 				}
 				// @ts-ignore
 				if (child[i].props.isTouched) {
-					IS_TOUCHED = true;
+					IS_TOUCHED = true
 				}
 				// @ts-ignore
 				if (child[i].props.invalidFeedback) {
 					// @ts-ignore
-					INVALID_FEEDBACK = child[i].props.invalidFeedback;
+					INVALID_FEEDBACK = child[i].props.invalidFeedback
 				}
 				// @ts-ignore
 				if (child[i].props.validFeedback) {
 					// @ts-ignore
-					VALID_FEEDBACK = child[i].props.validFeedback;
+					VALID_FEEDBACK = child[i].props.validFeedback
 				}
 				// @ts-ignore
 				if (child[i].props.isTooltipFeedback) {
-					IS_TOOLTIP_FEEDBACK = true;
-					break;
+					IS_TOOLTIP_FEEDBACK = true
+					break
 				}
 			}
-		};
-		validClass(children);
+		}
+		validClass(children)
 
 		return (
 			<div
@@ -126,9 +126,9 @@ const InputGroup = forwardRef<HTMLDivElement, IInputGroupProps>(
 					isTooltip={IS_TOOLTIP_FEEDBACK}
 				/>
 			</div>
-		);
+		)
 	},
-);
-InputGroup.displayName = 'InputGroup';
+)
+InputGroup.displayName = 'InputGroup'
 
-export default InputGroup;
+export default InputGroup

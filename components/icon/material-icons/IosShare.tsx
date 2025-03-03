@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgIosShare = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -7,7 +7,7 @@ const SvgIosShare = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M18 8h-3v2h3v11H6V10h3V8H6c-1.11 0-2 .89-2 2v11a2 2 0 002 2h12c1.1 0 2-.9 2-2V10a2 2 0 00-2-2z' />
 			<path d='M11 16h2V5h3l-4-4-4 4h3z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgIosShare;
+export default SvgIosShare

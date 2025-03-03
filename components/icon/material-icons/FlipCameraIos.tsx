@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFlipCameraIos = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -11,7 +11,7 @@ const SvgFlipCameraIos = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M20 5h-3.17L15 3H9L7.17 5H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 14H4V7h4.05l1.83-2h4.24l1.83 2H20v12z' />
 			<path d='M12 17c-2.21 0-4-1.79-4-4h2l-2.5-2.5-.01.01L5 13h2c0 2.76 2.24 5 5 5 .86 0 1.65-.24 2.36-.62l-.74-.74c-.49.23-1.04.36-1.62.36zM12 8c-.86 0-1.65.24-2.36.62l.74.73C10.87 9.13 11.42 9 12 9c2.21 0 4 1.79 4 4h-2l2.5 2.5.01-.01L19 13h-2c0-2.76-2.24-5-5-5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFlipCameraIos;
+export default SvgFlipCameraIos

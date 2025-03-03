@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgShutterSpeed = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgShutterSpeed = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M7.55 8.99A5.965 5.965 0 006 13c0 .34.04.67.09 1h4.72L7.55 8.99zm6.76-1.53L12.26 11h5.39a6.012 6.012 0 00-3.34-3.54zm-.98-.31C12.9 7.06 12.46 7 12 7c-1.4 0-2.69.49-3.71 1.29l2.32 3.56 2.72-4.7zM11.68 15H6.35a5.992 5.992 0 003.41 3.56l-.11-.06 2.03-3.5zm7.35-7.61l1.42-1.42c-.43-.51-.9-.99-1.41-1.41l-1.42 1.42A8.962 8.962 0 0012 4c-4.97 0-9 4.03-9 9s4.02 9 9 9a8.994 8.994 0 007.03-14.61zM12 20c-3.87 0-7-3.13-7-7s3.13-7 7-7 7 3.13 7 7-3.13 7-7 7zM9 1h6v2H9zm7.34 16.13A5.94 5.94 0 0018 13c0-.34-.04-.67-.09-1h-4.34l2.77 5.13zm-5.73 1.7c.45.11.91.17 1.39.17 1.34 0 2.57-.45 3.57-1.19l-2.11-3.9-2.85 4.92z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgShutterSpeed;
+export default SvgShutterSpeed

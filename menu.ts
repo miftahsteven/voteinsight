@@ -1,4 +1,4 @@
-import { Visibility } from "./components/icon/material-icons";
+import { Visibility } from './components/icon/material-icons'
 
 export const summaryPageTopMenu = {
 	intro: { id: 'intro', text: 'Intro', path: '#intro', icon: 'Vrpano', subMenu: null },
@@ -30,9 +30,9 @@ export const summaryPageTopMenu = {
 		icon: 'AreaChart',
 		subMenu: null,
 	},
-};
+}
 
-export const odSystAdminPagesMenu = {
+export const odSystDashboard = {
 	dashboard: {
 		id: 'dashboard',
 		text: 'Dashboard',
@@ -40,23 +40,25 @@ export const odSystAdminPagesMenu = {
 		icon: 'Dashboard',
 		subMenu: null,
 	},
+}
+export const odSystAdminPagesMenu = {
 	userPages: {
-		id: 'userPages',
+		id: 'users',
 		text: 'User',
-		path: 'user-pages',
+		path: 'users',
 		icon: 'Person',
 		subMenu: {
 			listUser: {
 				id: 'listUser',
 				text: 'List User',
-				path: 'user-pages/list',
+				path: 'users/list',
 				icon: 'TableView',
 			},
-			roleUser: {
-				id: 'roleUser',
-				text: 'Role User',
-				path: 'user-pages/role',
-				icon: 'Rule',
+			listInactive: {
+				id: 'userInactive',
+				text: 'User Inactive',
+				path: 'users/list/inactive',
+				icon: 'PersonRemove',
 			},
 		},
 	},
@@ -66,15 +68,21 @@ export const odSystAdminPagesMenu = {
 		path: 'menu-pages',
 		icon: 'MenuOpen',
 		subMenu: {
+			roleUser: {
+				id: 'roleUser',
+				text: 'Role User',
+				path: 'role/list',
+				icon: 'Rule',
+			},
 			userMenu: {
 				id: 'userMenu',
-				text: 'User Menu',
-				path: 'menu-pages/user-menu',
-				icon: 'Rule',
+				text: 'Role Menu',
+				path: 'role/list/menu',
+				icon: 'Menu',
 			},
 		},
 	},
-};
+}
 
 export const odSystPagesMenu = {
 	employee: {
@@ -94,7 +102,7 @@ export const odSystPagesMenu = {
 				id: 'mutationList',
 				text: 'Mutasi',
 				path: 'list-mutation',
-				icon: 'Shuffle',
+				icon: 'PersonOutline',
 				subMenu: null,
 			},
 			promotion: {
@@ -155,7 +163,7 @@ export const odSystPagesMenu = {
 		icon: 'CardTravel',
 		subMenu: null,
 	},
-};
+}
 
 export const odSystFinancePagesMenu = {
 	benefit: {
@@ -172,7 +180,7 @@ export const odSystFinancePagesMenu = {
 		icon: 'AttachMoney',
 		subMenu: null,
 	},
-};
+}
 
 export const dashboardPagesMenu = {
 	dashboard: {
@@ -210,7 +218,7 @@ export const dashboardPagesMenu = {
 		icon: 'sticky_note_2',
 		subMenu: null,
 	},
-};
+}
 
 export const demoPagesMenu = {
 	pages: {
@@ -221,19 +229,25 @@ export const demoPagesMenu = {
 	userPages: {
 		id: 'userPages',
 		text: 'User',
-		path: 'user-pages',
+		path: 'users',
 		icon: 'Person',
 		subMenu: {
 			listUser: {
 				id: 'listUser',
 				text: 'List User',
-				path: 'user-pages/list',
+				path: 'users/list',
 				icon: 'TableView',
+			},
+			userID: {
+				id: 'userId',
+				text: 'userID',
+				path: 'users/view',
+				hide: true,
 			},
 			roleUser: {
 				id: 'roleUser',
 				text: 'Role User',
-				path: 'user-pages/role',
+				path: 'users/role',
 				icon: 'Rule',
 			},
 		},
@@ -358,7 +372,7 @@ export const demoPagesMenu = {
 	login: {
 		id: 'login',
 		text: 'Login',
-		path: 'auth-pages/login',
+		path: 'auth/login',
 		icon: 'Login',
 	},
 	signUp: {
@@ -586,7 +600,7 @@ export const demoPagesMenu = {
 			},
 		},
 	},
-};
+}
 
 export const pageLayoutTypesPagesMenu = {
 	layoutTypes: {
@@ -651,7 +665,7 @@ export const pageLayoutTypesPagesMenu = {
 			},
 		},
 	},
-};
+}
 
 export const componentPagesMenu = {
 	bootstrap: {
@@ -1151,11 +1165,11 @@ export const componentPagesMenu = {
 		path: 'hooks',
 		icon: 'Anchor',
 	},
-};
+}
 
 export const productsMenu = {
 	companyA: { id: 'companyA', text: 'Company A', path: 'grid-pages/products', subMenu: null },
 	companyB: { id: 'companyB', text: 'Company B', path: '/', subMenu: null },
 	companyC: { id: 'companyC', text: 'Company C', path: '/', subMenu: null },
 	companyD: { id: 'companyD', text: 'Company D', path: '/', subMenu: null },
-};
+}

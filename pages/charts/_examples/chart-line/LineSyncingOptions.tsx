@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateDayWiseTimeSeries from '../../../../common/function/generateDayWiseTimeSeries';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateDayWiseTimeSeries from '../../../../common/function/generateDayWiseTimeSeries'
 
 const LineSyncingOptions = () => {
 	const syncingChartsOptions: IChartOptions['options'] = {
@@ -45,7 +45,7 @@ const LineSyncingOptions = () => {
 		xaxis: {
 			type: 'datetime',
 		},
-	};
+	}
 	const [state] = useState<IChartOptions>({
 		series: [
 			{
@@ -118,7 +118,7 @@ const LineSyncingOptions = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -147,7 +147,7 @@ const LineSyncingOptions = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default LineSyncingOptions;
+export default LineSyncingOptions

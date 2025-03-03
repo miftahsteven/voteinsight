@@ -1,14 +1,14 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -17,16 +17,16 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Button, { ButtonGroup } from '../../../components/bootstrap/Button';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Button, { ButtonGroup } from '../../../components/bootstrap/Button'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import CommonStoryLink from '../../../common/partial/other/CommonStoryLink';
+} from '../../../components/bootstrap/Dropdown'
+import CommonStoryLink from '../../../common/partial/other/CommonStoryLink'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -49,7 +49,7 @@ const Index: NextPage = () => {
 	target={ String } // '_blank' || '_self' || '_parent' || '_top'
 	{...props}>
 	...
-</Button>`;
+</Button>`
 
 	const ROUNDED_STORY = [
 		{ text: 'Default', path: '/docs/components-button-props-rounded--default' },
@@ -63,41 +63,41 @@ const Index: NextPage = () => {
 		{ text: 'Start', path: '/docs/components-button-props-rounded--start' },
 		{ text: 'Circle', path: '/docs/components-button-props-rounded--circle' },
 		{ text: 'Pill', path: '/docs/components-button-props-rounded--pill' },
-	];
+	]
 
 	const SIZE_STORY = [
 		{ text: 'Default', path: '/docs/components-button-props-size--default' },
 		{ text: 'Small', path: '/docs/components-button-props-size--small' },
 		{ text: 'Large', path: '/docs/components-button-props-size--large' },
-	];
+	]
 
 	const IS_ACTIVE_STORY = [
 		{ text: 'Color Button', path: '/docs/components-button-props-isactive--color-button' },
 		{ text: 'Outline Button', path: '/docs/components-button-props-isactive--outline-button' },
 		{ text: 'Link Button', path: '/docs/components-button-props-isactive--link-button' },
 		{ text: 'Light Button', path: '/docs/components-button-props-isactive--light-button' },
-	];
+	]
 
 	const IS_DISABLE_STORY = [
 		{ text: 'Color Button', path: '/docs/components-button-props-isdisable--color-button' },
 		{ text: 'Outline Button', path: '/docs/components-button-props-isdisable--outline-button' },
 		{ text: 'Link Button', path: '/docs/components-button-props-isdisable--link-button' },
 		{ text: 'Light Button', path: '/docs/components-button-props-isdisable--light-button' },
-	];
+	]
 
 	const SHADOW_STORY = [
 		{ text: 'None', path: '/docs/components-button-props-shadow--none' },
 		{ text: 'Small', path: '/docs/components-button-props-shadow--small' },
 		{ text: 'Default', path: '/docs/components-button-props-shadow--default-or-true' },
 		{ text: 'Large', path: '/docs/components-button-props-shadow--large' },
-	];
+	]
 
 	const HOVER_SHADOW_STORY = [
 		{ text: 'None', path: '/docs/components-button-props-hovershadow--none' },
 		{ text: 'Small', path: '/docs/components-button-props-hovershadow--small' },
 		{ text: 'Default', path: '/docs/components-button-props-hovershadow--default-or-true' },
 		{ text: 'Large', path: '/docs/components-button-props-hovershadow--large' },
-	];
+	]
 
 	return (
 		<PageWrapper>
@@ -1742,14 +1742,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

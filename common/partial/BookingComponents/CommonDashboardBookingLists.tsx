@@ -1,26 +1,26 @@
-import React, { useState } from 'react';
-import Card, { CardActions, CardBody, CardHeader } from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import CommonEmployeesList from './CommonEmployeesList';
-import CommonServicesList from './CommonServicesList';
-import CommonPackagesList from './CommonPackagesList';
+import React, { useState } from 'react'
+import Card, { CardActions, CardBody, CardHeader } from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import CommonEmployeesList from './CommonEmployeesList'
+import CommonServicesList from './CommonServicesList'
+import CommonPackagesList from './CommonPackagesList'
 
-type TListTab = 'Employees' | 'Services' | 'Packages';
+type TListTab = 'Employees' | 'Services' | 'Packages'
 const CommonDashboardBookingLists = () => {
 	// BEGIN :: List Tab
 	const LIST_TAB: { [key: string]: TListTab } = {
 		EMPLOYEES: 'Employees',
 		SERVICE: 'Services',
 		PACKAGE: 'Packages',
-	};
-	const [activeListTab, setActiveListTab] = useState(LIST_TAB.EMPLOYEES);
+	}
+	const [activeListTab, setActiveListTab] = useState(LIST_TAB.EMPLOYEES)
 	const handleActiveListTab = (tabName: TListTab) => {
-		setActiveListTab(tabName);
-	};
+		setActiveListTab(tabName)
+	}
 	const getStatusActiveListTabColor = (tabName: TListTab): 'success' | 'light' => {
-		if (activeListTab === tabName) return 'success';
-		return 'light';
-	};
+		if (activeListTab === tabName) return 'success'
+		return 'light'
+	}
 	// END :: List Tab
 
 	return (
@@ -45,7 +45,7 @@ const CommonDashboardBookingLists = () => {
 				{activeListTab === LIST_TAB.PACKAGE && <CommonPackagesList />}
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonDashboardBookingLists;
+export default CommonDashboardBookingLists

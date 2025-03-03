@@ -1,14 +1,14 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import { componentPagesMenu } from '../../menu';
-import Card, { CardBody, CardHeader, CardLabel, CardTitle } from '../../components/bootstrap/Card';
-import Page from '../../layout/Page/Page';
-import SubHeader, { SubHeaderLeft } from '../../layout/SubHeader/SubHeader';
-import PageWrapper from '../../layout/PageWrapper/PageWrapper';
-import Breadcrumb from '../../components/bootstrap/Breadcrumb';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import { componentPagesMenu } from '../../menu'
+import Card, { CardBody, CardHeader, CardLabel, CardTitle } from '../../components/bootstrap/Card'
+import Page from '../../layout/Page/Page'
+import SubHeader, { SubHeaderLeft } from '../../layout/SubHeader/SubHeader'
+import PageWrapper from '../../layout/PageWrapper/PageWrapper'
+import Breadcrumb from '../../components/bootstrap/Breadcrumb'
 
 const HookLink = ({ hook, path }: { hook: string; path?: string }) => {
 	return (
@@ -18,8 +18,8 @@ const HookLink = ({ hook, path }: { hook: string; path?: string }) => {
 			rel='noreferrer'>
 			{hook}
 		</a>
-	);
-};
+	)
+}
 
 const Index: NextPage = () => {
 	return (
@@ -559,14 +559,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

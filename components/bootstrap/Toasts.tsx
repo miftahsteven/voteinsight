@@ -1,14 +1,14 @@
-import React, { Children, cloneElement, FC, ReactNode } from 'react';
-import Icon from '../icon/Icon';
-import { TColor } from '../../type/color-type';
-import { TIcons } from '../../type/icons-type';
+import React, { Children, cloneElement, FC, ReactNode } from 'react'
+import Icon from '../icon/Icon'
+import { TColor } from '../../type/color-type'
+import { TIcons } from '../../type/icons-type'
 
 interface IToastHeaderProps {
-	icon?: TIcons;
-	iconColor?: TColor;
-	title: ReactNode;
-	time?: string | null;
-	isDismiss?: boolean;
+	icon?: TIcons
+	iconColor?: TColor
+	title: ReactNode
+	time?: string | null
+	isDismiss?: boolean
 }
 const ToastHeader: FC<IToastHeaderProps> = ({
 	icon,
@@ -21,7 +21,7 @@ const ToastHeader: FC<IToastHeaderProps> = ({
 	// @ts-ignore
 
 	// eslint-disable-next-line react/prop-types
-	const { onDismiss } = props;
+	const { onDismiss } = props
 	return (
 		<div className='toast-header'>
 			{icon && <Icon icon={icon} size='lg' color={iconColor} className='me-2' />}
@@ -29,19 +29,19 @@ const ToastHeader: FC<IToastHeaderProps> = ({
 			{time && <small>{time}</small>}
 			{isDismiss && onDismiss}
 		</div>
-	);
-};
+	)
+}
 
 interface IToastBodyProps {
-	children: ReactNode;
+	children: ReactNode
 }
 const ToastBody: FC<IToastBodyProps> = ({ children }) => {
-	return <div className='toast-body'>{children}</div>;
-};
+	return <div className='toast-body'>{children}</div>
+}
 
 interface IToastProps {
-	children: ReactNode;
-	onDismiss(...args: unknown[]): unknown;
+	children: ReactNode
+	onDismiss(...args: unknown[]): unknown
 }
 export const Toast: FC<IToastProps> = ({ children, onDismiss }) => {
 	return (
@@ -61,28 +61,28 @@ export const Toast: FC<IToastProps> = ({ children, onDismiss }) => {
 				}),
 			)}
 		</div>
-	);
-};
+	)
+}
 
 interface IToastContainerProps {
-	children: ReactNode;
+	children: ReactNode
 }
 export const ToastContainer: FC<IToastContainerProps> = ({ children }) => {
-	return <div className='toast-container position-fixed top-0 end-0 p-3'>{children}</div>;
-};
+	return <div className='toast-container position-fixed top-0 end-0 p-3'>{children}</div>
+}
 
 // @ts-ignore
 // eslint-disable-next-line @typescript-eslint/no-unused-vars,react/prop-types
 export const ToastCloseButton = ({ closeToast }) => (
 	<button type='button' className='btn-close' aria-label='Close' />
-);
+)
 
 interface IToastsProps {
-	title: ReactNode;
-	children: ReactNode;
-	icon?: TIcons;
-	iconColor?: TColor;
-	time?: string | null;
+	title: ReactNode
+	children: ReactNode
+	icon?: TIcons
+	iconColor?: TColor
+	time?: string | null
 }
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const Toasts: FC<IToastsProps> = ({ icon, iconColor, title, time, children, ...props }) => {
@@ -91,7 +91,7 @@ const Toasts: FC<IToastsProps> = ({ icon, iconColor, title, time, children, ...p
 			<ToastHeader icon={icon} iconColor={iconColor} title={title} time={time} />
 			<ToastBody>{children}</ToastBody>
 		</>
-	);
-};
+	)
+}
 
-export default Toasts;
+export default Toasts

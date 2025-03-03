@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSmartToy = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgSmartToy = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={15} cy={11.5} r={1.5} />
 			<circle cx={9} cy={11.5} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSmartToy;
+export default SvgSmartToy

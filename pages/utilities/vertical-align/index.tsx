@@ -1,21 +1,21 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const Index: NextPage = () => {
 	const VERTICAL = `
@@ -24,7 +24,7 @@ const Index: NextPage = () => {
 <span className='align-middle'>middle</span>
 <span className='align-bottom'>bottom</span>
 <span className='align-text-top'>text-top</span>
-<span className='align-text-bottom'>text-bottom</span>`;
+<span className='align-text-bottom'>text-bottom</span>`
 	const VERTICAL_2 = `
 <table style={{ height: 100 }}>
 	<tbody>
@@ -37,14 +37,14 @@ const Index: NextPage = () => {
 			<td className='align-text-bottom'>text-bottom</td>
 		</tr>
 	</tbody>
-</table>`;
+</table>`
 
 	const UTILITIES_API = `
 "align": (
 	property: vertical-align,
 	class: align,
 	values: baseline top middle bottom text-bottom text-top
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -160,14 +160,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

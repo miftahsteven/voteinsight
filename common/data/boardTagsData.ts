@@ -1,5 +1,5 @@
-import COLORS from './enumColors';
-import { TColor } from '../../type/color-type';
+import COLORS from './enumColors'
+import { TColor } from '../../type/color-type'
 
 const TAGS: { [key: string]: { id: string; color: TColor; title: string } } = {
 	critical: {
@@ -27,11 +27,11 @@ const TAGS: { [key: string]: { id: string; color: TColor; title: string } } = {
 		color: COLORS.SECONDARY.name,
 		title: 'Revise',
 	},
-};
+}
 
 export function getTagsDataWithId(id: { toString: () => any }) {
 	// @ts-ignore
-	return TAGS[Object.keys(TAGS).filter((f) => TAGS[f].id.toString() === id.toString())];
+	return TAGS[Object.keys(TAGS).filter((f) => TAGS[f].id.toString() === id.toString())]
 }
 
-export default TAGS;
+export default TAGS

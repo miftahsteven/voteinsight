@@ -1,1 +1,1 @@
-export type TDropdownDirection = 'up' | 'end' | 'down' | 'start';
+export type TDropdownDirection = 'up' | 'end' | 'down' | 'start'

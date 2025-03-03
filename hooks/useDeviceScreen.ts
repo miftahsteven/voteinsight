@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
-import { hasNotch } from '../helpers/helpers';
+import { useEffect, useState } from 'react'
+import { hasNotch } from '../helpers/helpers'
 
 export default function useDeviceScreen() {
-	const isClient = typeof window === 'object';
+	const isClient = typeof window === 'object'
 
 	function getProperties() {
 		if (typeof window !== 'undefined') {
@@ -18,26 +18,26 @@ export default function useDeviceScreen() {
 					? window.matchMedia('(orientation: landscape)').matches
 					: undefined,
 				notch: hasNotch(),
-			};
+			}
 		}
 	}
 
-	const [deviceScreen, setDeviceScreen] = useState(getProperties);
+	const [deviceScreen, setDeviceScreen] = useState(getProperties)
 
 	// @ts-ignore
 	useEffect(() => {
 		if (!isClient) {
-			return false;
+			return false
 		}
 
 		function handleResize() {
-			setDeviceScreen(getProperties());
+			setDeviceScreen(getProperties())
 		}
 
-		window.addEventListener('resize', handleResize);
-		return () => window.removeEventListener('resize', handleResize);
+		window.addEventListener('resize', handleResize)
+		return () => window.removeEventListener('resize', handleResize)
 		/* eslint-disable-next-line react-hooks/exhaustive-deps */
-	}, []);
+	}, [])
 
-	return deviceScreen;
+	return deviceScreen
 }

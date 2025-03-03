@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFaceRetouchingNatural = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgFaceRetouchingNatural = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={15} cy={13} r={1.25} />
 			<path d='M20.6 3.4L19.5 1l-1.1 2.4L16 4.5l2.4 1.1L19.5 8l1.1-2.4L23 4.5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFaceRetouchingNatural;
+export default SvgFaceRetouchingNatural

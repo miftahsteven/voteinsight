@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgMenuBook = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgMenuBook = (props: SVGProps<SVGSVGElement>) => {
 				<path d='M17.5 10.5c.88 0 1.73.09 2.5.26V9.24c-.79-.15-1.64-.24-2.5-.24-1.28 0-2.46.16-3.5.47v1.57c.99-.35 2.18-.54 3.5-.54zM17.5 13.16c.88 0 1.73.09 2.5.26V11.9c-.79-.15-1.64-.24-2.5-.24-1.28 0-2.46.16-3.5.47v1.57c.99-.34 2.18-.54 3.5-.54zM17.5 15.83c.88 0 1.73.09 2.5.26v-1.52c-.79-.15-1.64-.24-2.5-.24-1.28 0-2.46.16-3.5.47v1.57c.99-.35 2.18-.54 3.5-.54z' />
 			</g>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgMenuBook;
+export default SvgMenuBook

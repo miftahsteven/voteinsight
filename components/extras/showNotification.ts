@@ -1,4 +1,4 @@
-import { Store } from 'react-notifications-component';
+import { Store } from 'react-notifications-component'
 
 const showNotification = (
 	title: string | JSX.Element,
@@ -21,7 +21,7 @@ const showNotification = (
 			showIcon: true,
 			waitForAnimation: true,
 		},
-	});
-};
+	})
+}
 
-export default showNotification;
+export default showNotification

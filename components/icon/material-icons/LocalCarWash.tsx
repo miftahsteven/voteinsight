@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgLocalCarWash = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgLocalCarWash = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={7.5} cy={16.5} r={1.5} />
 			<circle cx={16.5} cy={16.5} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgLocalCarWash;
+export default SvgLocalCarWash

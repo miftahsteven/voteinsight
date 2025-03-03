@@ -1,16 +1,16 @@
-import React, { FC, HTMLAttributes, ReactNode } from 'react';
-import classNames from 'classnames';
+import React, { FC, HTMLAttributes, ReactNode } from 'react'
+import classNames from 'classnames'
 
 interface ILabelProps extends HTMLAttributes<HTMLLabelElement> {
-	htmlFor?: string;
-	className?: string;
-	children?: ReactNode;
-	isColForLabel?: boolean;
-	isHidden?: boolean;
-	size?: 'sm' | null | 'lg';
-	title?: string;
-	ariaLabelledby?: string;
-	ariaLabel?: string;
+	htmlFor?: string
+	className?: string
+	children?: ReactNode
+	isColForLabel?: boolean
+	isHidden?: boolean
+	size?: 'sm' | null | 'lg'
+	title?: string
+	ariaLabelledby?: string
+	ariaLabel?: string
 }
 const Label: FC<ILabelProps> = ({
 	htmlFor,
@@ -42,7 +42,7 @@ const Label: FC<ILabelProps> = ({
 			{...props}>
 			{children}
 		</label>
-	);
-};
+	)
+}
 
-export default Label;
+export default Label

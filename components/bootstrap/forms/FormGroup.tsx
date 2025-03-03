@@ -1,23 +1,23 @@
-import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode } from 'react';
-import classNames from 'classnames';
-import TagWrapper from '../../TagWrapper';
-import Label from './Label';
-import FormText from './FormText';
+import React, { cloneElement, FC, HTMLAttributes, ReactElement, ReactNode } from 'react'
+import classNames from 'classnames'
+import TagWrapper from '../../TagWrapper'
+import Label from './Label'
+import FormText from './FormText'
 
 interface IFormGroupProps extends HTMLAttributes<HTMLElement> {
-	children: ReactElement | ReactElement[];
-	className?: string;
-	labelClassName?: string;
-	childWrapperClassName?: string;
-	tag?: 'div' | 'section';
-	isFloating?: boolean;
-	id?: string;
-	label?: string;
-	size?: 'lg' | 'sm' | null;
-	isHiddenLabel?: boolean;
-	isColForLabel?: boolean;
-	formText?: ReactNode;
-	name?: string;
+	children: ReactElement | ReactElement[]
+	className?: string
+	labelClassName?: string
+	childWrapperClassName?: string
+	tag?: 'div' | 'section'
+	isFloating?: boolean
+	id?: string
+	label?: string
+	size?: 'lg' | 'sm' | null
+	isHiddenLabel?: boolean
+	isColForLabel?: boolean
+	formText?: ReactNode
+	name?: string
 }
 const FormGroup: FC<IFormGroupProps> = ({
 	children,
@@ -43,7 +43,7 @@ const FormGroup: FC<IFormGroupProps> = ({
 			size={size}>
 			{label}
 		</Label>
-	);
+	)
 
 	const CHILDREN =
 		id && !Array.isArray(children)
@@ -53,9 +53,9 @@ const FormGroup: FC<IFormGroupProps> = ({
 					placeholder: isFloating ? label : children.props.placeholder,
 					'aria-describedby': formText ? `${id}-text` : null,
 				})
-			: children;
+			: children
 
-	const FORM_TEXT = formText && <FormText id={`${id}-text`}>{formText}</FormText>;
+	const FORM_TEXT = formText && <FormText id={`${id}-text`}>{formText}</FormText>
 	return (
 		<TagWrapper
 			tag={tag}
@@ -77,7 +77,7 @@ const FormGroup: FC<IFormGroupProps> = ({
 
 			{!childWrapperClassName && FORM_TEXT}
 		</TagWrapper>
-	);
-};
+	)
+}
 
-export default FormGroup;
+export default FormGroup

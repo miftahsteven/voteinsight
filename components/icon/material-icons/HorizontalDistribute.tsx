@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgHorizontalDistribute = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgHorizontalDistribute = (props: SVGProps<SVGSVGElement>) => {
 			<path fill='none' d='M0 0h24v24H0z' />
 			<path d='M4 22H2V2h2v20zM22 2h-2v20h2V2zm-8.5 5h-3v10h3V7z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgHorizontalDistribute;
+export default SvgHorizontalDistribute

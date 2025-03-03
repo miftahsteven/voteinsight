@@ -1,37 +1,37 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import { DragDropContext, DropResult } from '@hello-pangea/dnd';
-import useDarkMode from '../../../../hooks/useDarkMode';
-import COLORS from '../../../../common/data/enumColors';
-import USERS from '../../../../common/data/userDummyData';
-import TAGS from '../../../../common/data/boardTagsData';
-import Slide2 from '../../../../assets/img/wanna/slide/scene-2.png';
-import Slide4 from '../../../../assets/img/wanna/slide/scene-4.png';
-import Slide6 from '../../../../assets/img/wanna/slide/scene-6.png';
-import PageWrapper from '../../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../../menu';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import { DragDropContext, DropResult } from '@hello-pangea/dnd'
+import useDarkMode from '../../../../hooks/useDarkMode'
+import COLORS from '../../../../common/data/enumColors'
+import USERS from '../../../../common/data/userDummyData'
+import TAGS from '../../../../common/data/boardTagsData'
+import Slide2 from '../../../../assets/img/wanna/slide/scene-2.png'
+import Slide4 from '../../../../assets/img/wanna/slide/scene-4.png'
+import Slide6 from '../../../../assets/img/wanna/slide/scene-6.png'
+import PageWrapper from '../../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../../menu'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../../layout/SubHeader/SubHeader';
-import Button from '../../../../components/bootstrap/Button';
-import Badge from '../../../../components/bootstrap/Badge';
-import CommonAvatarTeam from '../../../../common/partial/other/CommonAvatarTeam';
-import Page from '../../../../layout/Page/Page';
-import { TCards, TColumnsData } from '../../../../common/partial/ProjectManagement/type/types';
-import { move, reorder } from '../../../../common/partial/ProjectManagement/helper/helper';
-import Board from '../../../../common/partial/ProjectManagement/component/Board';
-import Columns from '../../../../common/partial/ProjectManagement/component/Columns';
+} from '../../../../layout/SubHeader/SubHeader'
+import Button from '../../../../components/bootstrap/Button'
+import Badge from '../../../../components/bootstrap/Badge'
+import CommonAvatarTeam from '../../../../common/partial/other/CommonAvatarTeam'
+import Page from '../../../../layout/Page/Page'
+import { TCards, TColumnsData } from '../../../../common/partial/ProjectManagement/type/types'
+import { move, reorder } from '../../../../common/partial/ProjectManagement/helper/helper'
+import Board from '../../../../common/partial/ProjectManagement/component/Board'
+import Columns from '../../../../common/partial/ProjectManagement/component/Columns'
 
 const Index: NextPage = () => {
-	const router = useRouter();
+	const router = useRouter()
 
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 	const columnsData: TColumnsData = {
 		column1: {
 			id: 'column1',
@@ -48,7 +48,7 @@ const Index: NextPage = () => {
 		},
 		column4: { id: 'column4', title: 'Run', color: COLORS.INFO.name, icon: 'DirectionsRun' },
 		column5: { id: 'column5', title: 'Done', color: COLORS.SUCCESS.name, icon: 'Verified' },
-	};
+	}
 
 	const [state, setState] = useState<TCards>({
 		column1: [
@@ -159,35 +159,35 @@ const Index: NextPage = () => {
 				],
 			},
 		],
-	});
+	})
 
 	const onDragEnd = (result: DropResult) => {
-		const { source, destination } = result;
+		const { source, destination } = result
 
 		// dropped outside the list
 		if (!destination) {
-			return;
+			return
 		}
 
 		if (source.droppableId === destination.droppableId) {
-			const ITEMS = reorder(state[source.droppableId], source.index, destination.index);
+			const ITEMS = reorder(state[source.droppableId], source.index, destination.index)
 
-			const sourceList = source.droppableId;
-			setState({ ...state, [sourceList]: ITEMS });
+			const sourceList = source.droppableId
+			setState({ ...state, [sourceList]: ITEMS })
 		} else {
 			const RESULT = move(
 				state[source.droppableId],
 				state[destination.droppableId],
 				source,
 				destination,
-			);
+			)
 
 			setState({
 				...state,
 				...RESULT,
-			});
+			})
 		}
-	};
+	}
 
 	return (
 		<PageWrapper>
@@ -230,14 +230,14 @@ const Index: NextPage = () => {
 				</DragDropContext>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

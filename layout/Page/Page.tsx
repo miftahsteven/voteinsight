@@ -1,10 +1,10 @@
-import React, { forwardRef, ReactNode } from 'react';
-import classNames from 'classnames';
+import React, { forwardRef, ReactNode } from 'react'
+import classNames from 'classnames'
 
 export interface IPageProps {
-	children: ReactNode;
-	container?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid';
-	className?: string;
+	children: ReactNode
+	container?: boolean | 'sm' | 'md' | 'lg' | 'xl' | 'xxl' | 'fluid'
+	className?: string
 }
 const Page = forwardRef<HTMLDivElement, IPageProps>(
 	({ children, className, container = 'xxl', ...props }, ref) => {
@@ -17,9 +17,9 @@ const Page = forwardRef<HTMLDivElement, IPageProps>(
 				{...props}>
 				{children}
 			</div>
-		);
+		)
 	},
-);
-Page.displayName = 'Page';
+)
+Page.displayName = 'Page'
 
-export default Page;
+export default Page

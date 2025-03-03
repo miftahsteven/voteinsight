@@ -1,18 +1,18 @@
-import dayjs from 'dayjs';
-import USERS, { IUserProps } from './userDummyData';
-import EVENT_STATUS, { IEventStatus } from './enumEventStatus';
-import SERVICES, { IServiceProps } from './serviceDummyData';
+import dayjs from 'dayjs'
+import USERS, { IUserProps } from './userDummyData'
+import EVENT_STATUS, { IEventStatus } from './enumEventStatus'
+import SERVICES, { IServiceProps } from './serviceDummyData'
 
 const data: {
-	id: number;
-	status: IEventStatus['key'];
-	date: string;
-	time: number | string;
-	customer: { name: string; email: string };
-	assigned: IUserProps;
-	service: IServiceProps;
-	duration: string;
-	payment: number | null;
+	id: number
+	status: IEventStatus['key']
+	date: string
+	time: number | string
+	customer: { name: string; email: string }
+	assigned: IUserProps
+	service: IServiceProps
+	duration: string
+	payment: number | null
 }[] = [
 	{
 		id: 1,
@@ -124,6 +124,6 @@ const data: {
 		duration: '30min',
 		payment: null,
 	},
-];
+]
 
-export default data;
+export default data

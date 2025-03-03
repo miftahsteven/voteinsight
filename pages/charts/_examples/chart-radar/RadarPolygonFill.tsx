@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const RadarPolygonFill = () => {
 	const [state] = useState<IChartOptions>({
@@ -49,7 +49,7 @@ const RadarPolygonFill = () => {
 			tooltip: {
 				y: {
 					formatter(val) {
-						return val.toString();
+						return val.toString()
 					},
 				},
 			},
@@ -69,14 +69,14 @@ const RadarPolygonFill = () => {
 				labels: {
 					formatter(val, i) {
 						if (i % 2 === 0) {
-							return val.toString();
+							return val.toString()
 						}
-						return '';
+						return ''
 					},
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -98,7 +98,7 @@ const RadarPolygonFill = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadarPolygonFill;
+export default RadarPolygonFill

@@ -1,27 +1,27 @@
-import React, { FC } from 'react';
-import classNames from 'classnames';
+import React, { FC } from 'react'
+import classNames from 'classnames'
 
 interface ICarouselIndicatorsProps {
-	id?: string;
+	id?: string
 	items:
 		| {
-				src?: string;
-				altText?: string;
-				captionHeader?: string;
-				captionText?: string;
+				src?: string
+				altText?: string
+				captionHeader?: string
+				captionText?: string
 		  }[]
-		| any;
-	activeIndex: number | undefined;
-	onClickHandler(...args: unknown[]): unknown;
-	className?: string;
+		| any
+	activeIndex: number | undefined
+	onClickHandler(...args: unknown[]): unknown
+	className?: string
 }
 const CarouselIndicators: FC<ICarouselIndicatorsProps> = (props) => {
-	const { id, items, activeIndex, onClickHandler, className } = props;
+	const { id, items, activeIndex, onClickHandler, className } = props
 
 	return (
 		<div className={classNames(className, 'carousel-indicators')}>
 			{items.map((item: { altText: string | undefined }, index: unknown) => {
-				const indicatorClasses = classNames({ active: activeIndex === index });
+				const indicatorClasses = classNames({ active: activeIndex === index })
 				return (
 					<button
 						// @ts-ignore
@@ -34,14 +34,14 @@ const CarouselIndicators: FC<ICarouselIndicatorsProps> = (props) => {
 						aria-current={activeIndex === index ? 'true' : undefined}
 						aria-label={item.altText}
 						onClick={(e) => {
-							e.preventDefault();
-							onClickHandler(index);
+							e.preventDefault()
+							onClickHandler(index)
 						}}
 					/>
-				);
+				)
 			})}
 		</div>
-	);
-};
+	)
+}
 
-export default CarouselIndicators;
+export default CarouselIndicators

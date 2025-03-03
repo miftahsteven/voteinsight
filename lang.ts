@@ -1,9 +1,9 @@
 export interface ILang {
 	[key: string]: {
-		text: string;
-		lng: 'en-US' | 'de-DE' | 'fr-FR' | 'tr-TR';
-		icon: string;
-	};
+		text: string
+		lng: 'en-US' | 'de-DE' | 'fr-FR' | 'tr-TR'
+		icon: string
+	}
 }
 
 const LANG: ILang = {
@@ -27,11 +27,11 @@ const LANG: ILang = {
 		lng: 'tr-TR',
 		icon: 'CustomTurkey',
 	},
-};
+}
 
 export const getLangWithKey = (key: ILang['key']['lng']): ILang['key'] => {
 	// @ts-ignore
-	return LANG[Object.keys(LANG).filter((f) => LANG[f].lng === key)];
-};
+	return LANG[Object.keys(LANG).filter((f) => LANG[f].lng === key)]
+}
 
-export default LANG;
+export default LANG

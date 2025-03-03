@@ -1,8 +1,8 @@
-import React, { FC, HTMLAttributes, ReactNode } from 'react';
-import classNames from 'classnames';
-import { useMeasure } from 'react-use';
-import { createUseStyles } from 'react-jss';
-import useMounted from '../../hooks/useMounted';
+import React, { FC, HTMLAttributes, ReactNode } from 'react'
+import classNames from 'classnames'
+import { useMeasure } from 'react-use'
+import { createUseStyles } from 'react-jss'
+import useMounted from '../../hooks/useMounted'
 
 const useStyles = createUseStyles(
 	{
@@ -24,14 +24,14 @@ const useStyles = createUseStyles(
 		},
 	},
 	{ link: true },
-);
+)
 
 interface IReactCreditCardsContainerProps extends HTMLAttributes<HTMLDivElement> {
-	className?: string;
-	children: ReactNode;
-	is3dShadow?: boolean;
-	issuer?: string;
-	scale?: number;
+	className?: string
+	children: ReactNode
+	is3dShadow?: boolean
+	issuer?: string
+	scale?: number
 }
 const ReactCreditCardsContainer: FC<IReactCreditCardsContainerProps> = ({
 	className,
@@ -41,11 +41,11 @@ const ReactCreditCardsContainer: FC<IReactCreditCardsContainerProps> = ({
 	children,
 	...props
 }) => {
-	const { mounted } = useMounted();
+	const { mounted } = useMounted()
 
-	const [ref, { width }] = useMeasure<HTMLDivElement>();
+	const [ref, { width }] = useMeasure<HTMLDivElement>()
 	// @ts-ignore
-	const classes = useStyles({ width, scale });
+	const classes = useStyles({ width, scale })
 	return (
 		<div
 			ref={ref}
@@ -65,7 +65,7 @@ const ReactCreditCardsContainer: FC<IReactCreditCardsContainerProps> = ({
 			{...props}>
 			{children}
 		</div>
-	);
-};
+	)
+}
 
-export default ReactCreditCardsContainer;
+export default ReactCreditCardsContainer

@@ -1,10 +1,10 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode } from 'react'
 
 interface IContent {
-	children: ReactNode;
+	children: ReactNode
 }
 const Content: FC<IContent> = ({ children }) => {
-	return <main className='content'>{children}</main>;
-};
+	return <main className='content'>{children}</main>
+}
 
-export default Content;
+export default Content

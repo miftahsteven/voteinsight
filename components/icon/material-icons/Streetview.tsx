@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgStreetview = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgStreetview = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={18} cy={6} r={5} />
 			<path d='M11.5 6c0-1.08.27-2.1.74-3H5c-1.1 0-2 .9-2 2v14c0 .55.23 1.05.59 1.41l9.82-9.82A6.435 6.435 0 0111.5 6z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgStreetview;
+export default SvgStreetview

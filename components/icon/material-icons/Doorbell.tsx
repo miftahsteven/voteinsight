@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgDoorbell = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -11,7 +11,7 @@ const SvgDoorbell = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M12 3L4 9v12h16V9l-8-6zm6 16H6v-9l6-4.5 6 4.5v9z' />
 			<path d='M11.25 9.25v.25C9.82 9.84 9 11.12 9 12.66V15H8v1h8v-1h-1v-2.34c0-1.54-.81-2.82-2.25-3.16v-.25c0-.41-.34-.75-.75-.75s-.75.34-.75.75zM12 17.5c.55 0 1-.45 1-1h-2c0 .55.45 1 1 1z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgDoorbell;
+export default SvgDoorbell

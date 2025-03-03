@@ -1,15 +1,12 @@
-import React, { useState } from 'react';
-import classNames from 'classnames';
-import Icon from '../../../components/icon/Icon';
-import { priceFormat } from '../../../helpers/helpers';
-import Progress from '../../../components/bootstrap/Progress';
-import { CardBody } from '../../../components/bootstrap/Card';
-import SERVICES from '../../data/serviceDummyData';
-import PaginationButtons, {
-	dataPagination,
-	PER_COUNT,
-} from '../../../components/PaginationButtons';
-import useSortableData from '../../../hooks/useSortableData';
+import React, { useState } from 'react'
+import classNames from 'classnames'
+import Icon from '../../../components/icon/Icon'
+import { priceFormat } from '../../../helpers/helpers'
+import Progress from '../../../components/bootstrap/Progress'
+import { CardBody } from '../../../components/bootstrap/Card'
+import SERVICES from '../../data/serviceDummyData'
+import PaginationButtons, { dataPagination, PER_COUNT } from '../../../components/PaginationButtons'
+import useSortableData from '../../../hooks/useSortableData'
 
 const CommonServicesList = () => {
 	const dataServices = [
@@ -113,11 +110,11 @@ const CommonServicesList = () => {
 			color: SERVICES.FOOTBALL.color,
 			icon: SERVICES.FOOTBALL.icon,
 		},
-	];
+	]
 
-	const [currentPage, setCurrentPage] = useState<number>(1);
-	const [perPage, setPerPage] = useState<number>(PER_COUNT['3']);
-	const { items, requestSort, getClassNamesFor } = useSortableData(dataServices);
+	const [currentPage, setCurrentPage] = useState<number>(1)
+	const [perPage, setPerPage] = useState<number>(PER_COUNT['3'])
+	const { items, requestSort, getClassNamesFor } = useSortableData(dataServices)
 	return (
 		<>
 			<CardBody className='table-responsive'>
@@ -237,7 +234,7 @@ const CommonServicesList = () => {
 				setPerPage={setPerPage}
 			/>
 		</>
-	);
-};
+	)
+}
 
-export default CommonServicesList;
+export default CommonServicesList

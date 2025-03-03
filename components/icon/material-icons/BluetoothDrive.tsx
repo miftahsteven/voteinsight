@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBluetoothDrive = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgBluetoothDrive = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={15.5} cy={14.5} r={1.5} />
 			<path d='M22 3.85L19.15 1h-.5v3.79l-2.3-2.29-.7.7L18.44 6l-2.79 2.79.7.71 2.3-2.3V11h.5L22 8.14 19.85 6 22 3.85zm-2.35-.94l.94.94-.94.94V2.91zm.94 5.23l-.94.94V7.2l.94.94z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBluetoothDrive;
+export default SvgBluetoothDrive

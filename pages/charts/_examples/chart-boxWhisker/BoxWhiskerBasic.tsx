@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,9 +6,9 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn'
 
 const BoxWhiskerBasic = () => {
 	const [state] = useState<IChartOptions>({
@@ -65,7 +65,7 @@ const BoxWhiskerBasic = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -90,7 +90,7 @@ const BoxWhiskerBasic = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default BoxWhiskerBasic;
+export default BoxWhiskerBasic

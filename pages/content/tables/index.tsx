@@ -1,25 +1,25 @@
-import React from 'react';
-import classNames from 'classnames';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
+import React from 'react'
+import classNames from 'classnames'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import { AlertHeading } from '../../../components/bootstrap/Alert';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import PrismCode from '../../../components/extras/PrismCode';
+} from '../../../components/bootstrap/Card'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import { AlertHeading } from '../../../components/bootstrap/Alert'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import PrismCode from '../../../components/extras/PrismCode'
 
 const ExampleTable = ({
 	className,
@@ -29,12 +29,12 @@ const ExampleTable = ({
 	isCaption,
 	isResponsive,
 }: {
-	className?: string;
-	headClassName?: string;
-	isActive?: boolean;
-	isFooter?: boolean;
-	isCaption?: boolean;
-	isResponsive?: boolean;
+	className?: string
+	headClassName?: string
+	isActive?: boolean
+	isFooter?: boolean
+	isCaption?: boolean
+	isResponsive?: boolean
 }) => {
 	if (isResponsive) {
 		return (
@@ -94,7 +94,7 @@ const ExampleTable = ({
 					</tbody>
 				</table>
 			</div>
-		);
+		)
 	}
 	return (
 		<table className={classNames('table', className)}>
@@ -139,8 +139,8 @@ const ExampleTable = ({
 				</tfoot>
 			)}
 		</table>
-	);
-};
+	)
+}
 
 const Index: NextPage = () => {
 	const OVERVIEW = `
@@ -172,7 +172,7 @@ const Index: NextPage = () => {
 			<td>@twitter</td>
 		</tr>
 	</tbody>
-</table>`;
+</table>`
 
 	const MODERN = `
 <table className='table'>
@@ -203,7 +203,7 @@ const Index: NextPage = () => {
 			<td>@twitter</td>
 		</tr>
 	</tbody>
-</table>`;
+</table>`
 
 	const VARIANTS = `
 // On tables
@@ -236,33 +236,33 @@ const Index: NextPage = () => {
   <td className='table-info'>...</td>
   <td className='table-light'>...</td>
   <td className='table-dark'>...</td>
-</tr>`;
+</tr>`
 
 	const STRIPED = `
 <table className='table table-striped'>
   ...
-</table>`;
+</table>`
 	const STRIPED_2 = `
 <table className='table table-dark table-striped'>
   ...
-</table>`;
+</table>`
 	const STRIPED_3 = `
 <table className='table table-success table-striped'>
   ...
-</table>`;
+</table>`
 
 	const HOVER = `
 <table className='table table-striped'>
   ...
-</table>`;
+</table>`
 	const HOVER_2 = `
 <table className='table table-striped'>
   ...
-</table>`;
+</table>`
 	const HOVER_3 = `
 <table className='table table-striped'>
   ...
-</table>`;
+</table>`
 
 	const ACTIVE = `
 <table className="table">
@@ -282,7 +282,7 @@ const Index: NextPage = () => {
 			<td>@twitter</td>
 		</tr>
 	</tbody>
-</table>`;
+</table>`
 	const ACTIVE_2 = `
 <table className="table table-dark">
 	<thead>
@@ -301,7 +301,7 @@ const Index: NextPage = () => {
 			<td>@twitter</td>
 		</tr>
 	</tbody>
-</table>`;
+</table>`
 
 	const TABLE_VARIANTS_SCSS = `
 @mixin table-variant($state, $background) {
@@ -322,33 +322,33 @@ const Index: NextPage = () => {
     color: $color;
     border-color: mix($color, $background, percentage($table-border-factor));
   }
-}`;
+}`
 
 	const BORDERED = `
 <table className='table table-bordered'>
 	...
-</table>`;
+</table>`
 	const BORDERED_COLORS = `
 <table className='table table-bordered border-primary'>
 	...
-</table>`;
+</table>`
 	const BORDERLESS = `
 <table className='table table-borderless'>
 	...
-</table>`;
+</table>`
 	const BORDERLESS_DARK = `
 <table className='table table-dark table-borderless'>
 	...
-</table>`;
+</table>`
 
 	const SM = `
 <table className='table table-sm'>
 	...
-</table>`;
+</table>`
 	const SM_DARK = `
 <table className='table table-dark table-sm'>
 	...
-</table>`;
+</table>`
 
 	const V_ALIGN = `
 <table className='table table-sm table-dark'>
@@ -369,7 +369,7 @@ const Index: NextPage = () => {
 			</tbody>
 		</table>
 	</div>
-</table>`;
+</table>`
 
 	const NESTING = `
 <table className='table table-striped'>
@@ -385,7 +385,7 @@ const Index: NextPage = () => {
 		</tr>
 		...
 	</tbody>
-</table>`;
+</table>`
 
 	const THEAD = `
 <table className='table'>
@@ -395,7 +395,7 @@ const Index: NextPage = () => {
 	<tbody>
 		...
 	</tbody>
-</table>`;
+</table>`
 	const THEAD_DARK = `
 <table className='table'>
 	<thead className='table-dark'>
@@ -404,7 +404,7 @@ const Index: NextPage = () => {
 	<tbody>
 		...
 	</tbody>
-</table>`;
+</table>`
 	const TFOOT = `
 <table className='table'>
 	<thead>
@@ -416,24 +416,24 @@ const Index: NextPage = () => {
 	<tfoot>
 		...
 	</tfoot>
-</table>`;
+</table>`
 	const CAPTION = `
 <table className='table'>
 	<caption>List of users</caption>
 	<thead>...</thead>
 	<tbody>...</tbody>
-</table>`;
+</table>`
 	const CAPTION_TOP = `
 <table className='table caption-top'>
 	<caption>List of users</caption>
 	<thead>...</thead>
 	<tbody>...</tbody>
-</table>`;
+</table>`
 
 	const RESPONSIVE_TABLE = `
 <div className='table-responsive'>
 	<table className='table'>...</table>
-</div>`;
+</div>`
 	const RESPONSIVE_TABLE_2 = `
 <div className='table-responsive'>
 	<table className='table'>...</table>
@@ -457,7 +457,7 @@ const Index: NextPage = () => {
 
 <div className='table-responsive-xxl'>
 	<table className='table'>...</table>
-</div>`;
+</div>`
 
 	const CUSTOMIZE_TABLE = `
 $table-cell-padding-y:        .5rem;
@@ -505,7 +505,7 @@ $table-variants: (
   "danger":     shift-color($danger, $table-bg-scale),
   "light":      $light,
   "dark":       $dark,
-);`;
+);`
 
 	return (
 		<PageWrapper>
@@ -1372,14 +1372,14 @@ $table-variants: (
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

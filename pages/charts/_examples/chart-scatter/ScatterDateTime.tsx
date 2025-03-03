@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateDayWiseTimeSeries from '../../../../common/function/generateDayWiseTimeSeries';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateDayWiseTimeSeries from '../../../../common/function/generateDayWiseTimeSeries'
 
 const ScatterDateTime = () => {
 	const [state] = useState<IChartOptions>({
@@ -78,7 +78,7 @@ const ScatterDateTime = () => {
 				max: 70,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -100,7 +100,7 @@ const ScatterDateTime = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default ScatterDateTime;
+export default ScatterDateTime

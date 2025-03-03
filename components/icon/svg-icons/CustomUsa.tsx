@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import * as React from 'react';
+import type { SVGProps } from 'react'
+import * as React from 'react'
 
 const SvgCustomUsa = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -35,5 +35,5 @@ const SvgCustomUsa = (props: SVGProps<SVGSVGElement>) => (
 			}}
 		/>
 	</svg>
-);
-export default SvgCustomUsa;
+)
+export default SvgCustomUsa

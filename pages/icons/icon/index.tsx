@@ -1,13 +1,13 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardCodeView,
@@ -15,13 +15,13 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import { componentPagesMenu } from '../../../menu';
-import { TIconsSize } from '../../../type/icons-type';
-import { TColor } from '../../../type/color-type';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import Icon from '../../../components/icon/Icon';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
+} from '../../../components/bootstrap/Card'
+import { componentPagesMenu } from '../../../menu'
+import { TIconsSize } from '../../../type/icons-type'
+import { TColor } from '../../../type/color-type'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import Icon from '../../../components/icon/Icon'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
 
 const GENERAL_USAGE = `<Icon
 	icon={ String }
@@ -29,7 +29,7 @@ const GENERAL_USAGE = `<Icon
 	color={ String } // null || 'primary' || 'secondary' || 'success' || 'info' || 'warning' || 'danger' || 'light' || 'dark'
 	size={ String } // null || 'sm' || 'md' || 'lg' || '2x' || '3x' || '4x' || '5x' || '6x' || '7x' || '8x' || '9x' || '10x'
 	forceFamily={ String } // null || 'custom' || 'material'
-	{...props} />`;
+	{...props} />`
 const COLORS: (TColor | undefined)[] = [
 	undefined,
 	'primary',
@@ -40,7 +40,7 @@ const COLORS: (TColor | undefined)[] = [
 	'danger',
 	'light',
 	'dark',
-];
+]
 const SIZES: TIconsSize[] = [
 	null,
 	'sm',
@@ -55,7 +55,7 @@ const SIZES: TIconsSize[] = [
 	'8x',
 	'9x',
 	'10x',
-];
+]
 
 const Index: NextPage = () => {
 	return (
@@ -236,14 +236,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

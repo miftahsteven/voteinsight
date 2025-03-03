@@ -1,12 +1,12 @@
-import React, { FC, HTMLAttributes } from 'react';
-import classNames from 'classnames';
+import React, { FC, HTMLAttributes } from 'react'
+import classNames from 'classnames'
 
 interface IPlaceholderImageProps extends HTMLAttributes<HTMLOrSVGElement> {
-	width?: string | number;
-	height?: string | number;
-	text?: string;
-	className?: string;
-	ariaLabel?: string;
+	width?: string | number
+	height?: string | number
+	text?: string
+	className?: string
+	ariaLabel?: string
 }
 const PlaceholderImage: FC<IPlaceholderImageProps> = ({
 	width = 75,
@@ -38,7 +38,7 @@ const PlaceholderImage: FC<IPlaceholderImageProps> = ({
 				{text || `${width}x${height}`}
 			</text>
 		</svg>
-	);
-};
+	)
+}
 
-export default PlaceholderImage;
+export default PlaceholderImage

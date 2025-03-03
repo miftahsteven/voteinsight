@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const LineWithMissingData = () => {
 	const [state] = useState<IChartOptions>({
@@ -79,7 +79,7 @@ const LineWithMissingData = () => {
 			},
 			xaxis: {},
 		},
-	});
+	})
 	return (
 		<div className='col-12'>
 			<Card stretch>
@@ -96,7 +96,7 @@ const LineWithMissingData = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default LineWithMissingData;
+export default LineWithMissingData

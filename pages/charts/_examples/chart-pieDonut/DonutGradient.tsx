@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const DonutGradient = () => {
 	const [state] = useState<IChartOptions>({
@@ -30,7 +30,7 @@ const DonutGradient = () => {
 			},
 			legend: {
 				formatter(val, opts) {
-					return `${val} - ${opts.w.globals.series[opts.seriesIndex]}`;
+					return `${val} - ${opts.w.globals.series[opts.seriesIndex]}`
 				},
 			},
 			title: {
@@ -50,7 +50,7 @@ const DonutGradient = () => {
 				},
 			],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -72,7 +72,7 @@ const DonutGradient = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default DonutGradient;
+export default DonutGradient

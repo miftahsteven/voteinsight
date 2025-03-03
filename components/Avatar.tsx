@@ -1,17 +1,17 @@
-import React, { Children, cloneElement, FC, HTMLAttributes, ReactNode } from 'react';
-import classNames from 'classnames';
-import { randomColor } from '../helpers/helpers';
-import Popovers from './bootstrap/Popovers';
-import useDarkMode from '../hooks/useDarkMode';
-import { TColor } from '../type/color-type';
+import React, { Children, cloneElement, FC, HTMLAttributes, ReactNode } from 'react'
+import classNames from 'classnames'
+import { randomColor } from '../helpers/helpers'
+import Popovers from './bootstrap/Popovers'
+import useDarkMode from '../hooks/useDarkMode'
+import { TColor } from '../type/color-type'
 
 interface IAvatarGroupProps {
-	className?: string;
-	children: ReactNode[];
-	size?: number;
+	className?: string
+	children: ReactNode[]
+	size?: number
 }
 export const AvatarGroup: FC<IAvatarGroupProps> = ({ className, children, size = 32 }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	return (
 		<div className={classNames('avatar-group', className)}>
@@ -47,21 +47,21 @@ export const AvatarGroup: FC<IAvatarGroupProps> = ({ className, children, size =
 				</Popovers>
 			)}
 		</div>
-	);
-};
+	)
+}
 
 interface IAvatarProps extends HTMLAttributes<HTMLImageElement> {
-	border?: null | 0 | 1 | 2 | 3 | 4 | 5;
-	borderColor?: null | TColor | 'link' | 'brand' | 'brand-two' | 'storybook' | 'white';
-	className?: string;
-	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
-	isOnline?: boolean;
-	isReply?: boolean;
-	rounded?: 'default' | 0 | 1 | 2 | 3 | 'bottom' | 'top' | 'circle' | 'end' | 'start' | 'pill';
-	shadow?: 'none' | 'sm' | 'default' | 'lg' | null;
-	size?: number;
-	src: string;
-	userName?: string | null;
+	border?: null | 0 | 1 | 2 | 3 | 4 | 5
+	borderColor?: null | TColor | 'link' | 'brand' | 'brand-two' | 'storybook' | 'white'
+	className?: string
+	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
+	isOnline?: boolean
+	isReply?: boolean
+	rounded?: 'default' | 0 | 1 | 2 | 3 | 'bottom' | 'top' | 'circle' | 'end' | 'start' | 'pill'
+	shadow?: 'none' | 'sm' | 'default' | 'lg' | null
+	size?: number
+	src: string
+	userName?: string | null
 }
 const Avatar: FC<IAvatarProps> = ({
 	src,
@@ -79,7 +79,7 @@ const Avatar: FC<IAvatarProps> = ({
 	isReply, // Not used
 	...props
 }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	const INNER = (
 		<img
@@ -102,17 +102,17 @@ const Avatar: FC<IAvatarProps> = ({
 			height={size}
 			{...props}
 		/>
-	);
+	)
 
 	if (userName) {
 		return (
 			<Popovers desc={userName} trigger='hover'>
 				{INNER}
 			</Popovers>
-		);
+		)
 	}
-	return INNER;
-};
-Avatar.displayName = 'Avatar';
+	return INNER
+}
+Avatar.displayName = 'Avatar'
 
-export default Avatar;
+export default Avatar

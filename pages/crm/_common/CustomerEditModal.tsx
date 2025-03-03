@@ -1,36 +1,36 @@
-import React, { FC } from 'react';
-import { useFormik } from 'formik';
-import dayjs from 'dayjs';
+import React, { FC } from 'react'
+import { useFormik } from 'formik'
+import dayjs from 'dayjs'
 import Modal, {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
-} from '../../../components/bootstrap/Modal';
-import data from '../../../common/data/dummyCustomerData';
-import showNotification from '../../../components/extras/showNotification';
-import Icon from '../../../components/icon/Icon';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Input from '../../../components/bootstrap/forms/Input';
+} from '../../../components/bootstrap/Modal'
+import data from '../../../common/data/dummyCustomerData'
+import showNotification from '../../../components/extras/showNotification'
+import Icon from '../../../components/icon/Icon'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Input from '../../../components/bootstrap/forms/Input'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import Label from '../../../components/bootstrap/forms/Label';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
-import PAYMENTS from '../../../common/data/enumPaymentMethod';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import Label from '../../../components/bootstrap/forms/Label'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
+import PAYMENTS from '../../../common/data/enumPaymentMethod'
 
 interface ICustomerEditModalProps {
-	id: string;
-	isOpen: boolean;
-	setIsOpen(...args: unknown[]): unknown;
+	id: string
+	isOpen: boolean
+	setIsOpen(...args: unknown[]): unknown
 }
 const CustomerEditModal: FC<ICustomerEditModalProps> = ({ id, isOpen, setIsOpen }) => {
-	const itemData = id ? data.filter((item) => item.id.toString() === id.toString()) : {};
-	const item = id && Array.isArray(itemData) ? itemData[0] : {};
+	const itemData = id ? data.filter((item) => item.id.toString() === id.toString()) : {}
+	const item = id && Array.isArray(itemData) ? itemData[0] : {}
 
 	const formik = useFormik({
 		initialValues: {
@@ -51,16 +51,16 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({ id, isOpen, setIsOpen 
 			payoutType: item?.payout || '',
 		},
 		onSubmit: () => {
-			setIsOpen(false);
+			setIsOpen(false)
 			showNotification(
 				<span className='d-flex align-items-center'>
 					<Icon icon='Info' size='lg' className='me-1' />
 					<span>Updated Successfully</span>
 				</span>,
 				'Customer has been updated successfully',
-			);
+			)
 		},
-	});
+	})
 
 	if (id || id === '0') {
 		return (
@@ -230,9 +230,9 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({ id, isOpen, setIsOpen 
 					</Button>
 				</ModalFooter>
 			</Modal>
-		);
+		)
 	}
-	return null;
-};
+	return null
+}
 
-export default CustomerEditModal;
+export default CustomerEditModal

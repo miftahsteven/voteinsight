@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgHowToVote = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -9,7 +9,7 @@ const SvgHowToVote = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M12.048 12.905L8.505 9.362l4.95-4.95 3.543 3.543z' opacity={0.3} />
 			<path d='M19.11 7.25L14.16 2.3a.975.975 0 00-1.4-.01L6.39 8.66a.996.996 0 000 1.41l4.95 4.95c.39.39 1.02.39 1.41 0l6.36-6.36a.996.996 0 000-1.41zm-7.06 5.65L8.51 9.36l4.95-4.95L17 7.95l-4.95 4.95z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgHowToVote;
+export default SvgHowToVote

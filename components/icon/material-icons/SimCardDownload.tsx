@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSimCardDownload = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgSimCardDownload = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M18 2h-8L4 8v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm0 18H6V8.83L10.83 4H18v16z' />
 			<path d='M12 17l4-4h-3V9l-2 .02V13H8z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSimCardDownload;
+export default SvgSimCardDownload

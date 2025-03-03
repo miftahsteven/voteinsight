@@ -1,29 +1,31 @@
-import UserImage from '../../assets/img/wanna/wanna1.png';
-import UserImage2 from '../../assets/img/wanna/wanna2.png';
-import UserImage3 from '../../assets/img/wanna/wanna3.png';
-import UserImage4 from '../../assets/img/wanna/wanna4.png';
-import UserImage5 from '../../assets/img/wanna/wanna5.png';
-import UserImage6 from '../../assets/img/wanna/wanna6.png';
-import UserImage7 from '../../assets/img/wanna/wanna7.png';
-import SERVICES, { IServiceProps } from './serviceDummyData';
+import UserImage from '../../assets/img/wanna/wanna1.png'
+import UserImage2 from '../../assets/img/wanna/wanna2.png'
+import UserImage3 from '../../assets/img/wanna/wanna3.png'
+import UserImage4 from '../../assets/img/wanna/wanna4.png'
+import UserImage5 from '../../assets/img/wanna/wanna5.png'
+import UserImage6 from '../../assets/img/wanna/wanna6.png'
+import UserImage7 from '../../assets/img/wanna/wanna7.png'
+import SERVICES, { IServiceProps } from './serviceDummyData'
 
-import User7Landing from '../../assets/img/wanna/landing1.png';
-import { TColor } from '../../type/color-type';
+import User7Landing from '../../assets/img/wanna/landing1.png'
+import { TColor } from '../../type/color-type'
 
 export interface IUserProps {
-	id: string;
-	username: string;
-	name: string;
-	surname: string;
-	position: string;
-	email?: string;
-	src: string;
-	isOnline: boolean;
-	isReply?: boolean;
-	color: TColor;
-	fullImage?: string;
-	services?: IServiceProps[];
-	password: string;
+	id: string
+	username: string
+	name: string
+	surname: string
+	position: string
+	email?: string
+	src: string
+	isOnline: boolean
+	isReply?: boolean
+	color: TColor
+	fullImage?: string
+	services?: IServiceProps[]
+	password: string
+	group: string
+	phone: string
 }
 
 const john: IUserProps = {
@@ -39,7 +41,7 @@ const john: IUserProps = {
 	color: 'primary',
 	services: [SERVICES.SURFING, SERVICES.KITE_SURFING, SERVICES.TENNIS],
 	password: '@ABC123',
-};
+}
 
 const grace: IUserProps = {
 	id: '2',
@@ -53,7 +55,7 @@ const grace: IUserProps = {
 	color: 'warning',
 	services: [SERVICES.SNOWBOARDING, SERVICES.ICE_SKATING, SERVICES.KITE_SURFING],
 	password: '@ABC123',
-};
+}
 
 const jane: IUserProps = {
 	id: '3',
@@ -67,7 +69,7 @@ const jane: IUserProps = {
 	color: 'secondary',
 	services: [SERVICES.YOGA, SERVICES.HANDBALL, SERVICES.CRICKET],
 	password: '@ABC123',
-};
+}
 
 const ryan: IUserProps = {
 	id: '4',
@@ -81,7 +83,7 @@ const ryan: IUserProps = {
 	color: 'info',
 	services: [SERVICES.HIKING, SERVICES.FOOTBALL, SERVICES.HANDBALL],
 	password: '@ABC123',
-};
+}
 
 const ella: IUserProps = {
 	id: '5',
@@ -95,7 +97,7 @@ const ella: IUserProps = {
 	color: 'success',
 	services: [SERVICES.ICE_SKATING, SERVICES.TENNIS, SERVICES.SNOWBOARDING, SERVICES.YOGA],
 	password: '@ABC123',
-};
+}
 
 const chloe: IUserProps = {
 	id: '6',
@@ -109,7 +111,7 @@ const chloe: IUserProps = {
 	color: 'warning',
 	services: [SERVICES.VOLLEYBALL, SERVICES.CRICKET],
 	password: '@ABC123',
-};
+}
 
 const sam: IUserProps = {
 	id: '7',
@@ -123,7 +125,7 @@ const sam: IUserProps = {
 	color: 'danger',
 	fullImage: User7Landing,
 	password: '@ABC123',
-};
+}
 
 const USERS: { [key: string]: IUserProps } = {
 	JOHN: john,
@@ -133,16 +135,16 @@ const USERS: { [key: string]: IUserProps } = {
 	ELLA: ella,
 	CHLOE: chloe,
 	SAM: sam,
-};
+}
 
 export function getUserDataWithUsername(username: string): IUserProps {
 	// @ts-ignore
-	return USERS[Object.keys(USERS).filter((f) => USERS[f].username.toString() === username)];
+	return USERS[Object.keys(USERS).filter((f) => USERS[f].username.toString() === username)]
 }
 
 export function getUserDataWithId(id?: string): IUserProps {
 	// @ts-ignore
-	return USERS[Object.keys(USERS).filter((f) => USERS[f].id.toString() === id.toString())];
+	return USERS[Object.keys(USERS).filter((f) => USERS[f].id.toString() === id.toString())]
 }
 
-export default USERS;
+export default USERS

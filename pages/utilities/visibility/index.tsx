@@ -1,27 +1,27 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
 
 const Index: NextPage = () => {
 	const VISIBILITY = `
 <div class="visible">...</div>
-<div class="invisible">...</div>`;
+<div class="invisible">...</div>`
 	const VISIBILITY_2 = `
 // Class
 .visible {
@@ -29,7 +29,7 @@ const Index: NextPage = () => {
 }
 .invisible {
 	visibility: hidden !important;
-}`;
+}`
 
 	const UTILITIES_API = `
 "visibility": (
@@ -39,7 +39,7 @@ const Index: NextPage = () => {
 		visible: visible,
 		invisible: hidden,
 	)
-)`;
+)`
 
 	return (
 		<PageWrapper>
@@ -124,14 +124,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

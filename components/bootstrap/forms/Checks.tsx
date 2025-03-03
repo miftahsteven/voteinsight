@@ -5,20 +5,20 @@ import React, {
 	HTMLAttributes,
 	ReactElement,
 	ReactNode,
-} from 'react';
-import classNames from 'classnames';
-import Validation from './Validation';
+} from 'react'
+import classNames from 'classnames'
+import Validation from './Validation'
 
 interface IChecksGroupProps extends HTMLAttributes<HTMLDivElement> {
-	id?: string | undefined;
-	className?: string;
-	children: ReactElement<IChecksProps> | ReactElement<IChecksProps>[];
-	isInline?: boolean;
-	isTouched?: boolean;
-	isValid?: boolean;
-	invalidFeedback?: string;
-	validFeedback?: string;
-	isTooltipFeedback?: boolean;
+	id?: string | undefined
+	className?: string
+	children: ReactElement<IChecksProps> | ReactElement<IChecksProps>[]
+	isInline?: boolean
+	isTouched?: boolean
+	isValid?: boolean
+	invalidFeedback?: string
+	validFeedback?: string
+	isTooltipFeedback?: boolean
 }
 export const ChecksGroup = forwardRef<HTMLDivElement, IChecksGroupProps>(
 	(
@@ -68,35 +68,35 @@ export const ChecksGroup = forwardRef<HTMLDivElement, IChecksGroupProps>(
 					isTooltip={isTooltipFeedback}
 				/>
 			</>
-		);
+		)
 	},
-);
-ChecksGroup.displayName = 'ChecksGroup';
+)
+ChecksGroup.displayName = 'ChecksGroup'
 
 export interface IChecksProps extends HTMLAttributes<HTMLInputElement> {
-	id?: string | undefined;
-	className?: string;
-	name?: string | null;
-	type?: 'checkbox' | 'radio' | 'switch';
-	label?: ReactNode;
-	value?: string | number;
-	checked?: boolean | string;
-	disabled?: boolean;
-	isInline?: boolean;
-	isFormCheckInput?: boolean;
-	isTouched?: boolean;
-	isValid?: boolean;
-	invalidFeedback?: string;
-	validFeedback?: string;
-	isValidMessage?: boolean;
-	isTooltipFeedback?: boolean;
-	onBlur?(...args: unknown[]): unknown;
-	onChange?(...args: unknown[]): unknown;
-	onFocus?(...args: unknown[]): unknown;
-	onInput?(...args: unknown[]): unknown;
-	onInvalid?(...args: unknown[]): unknown;
-	onSelect?(...args: unknown[]): unknown;
-	ariaLabel?: string;
+	id?: string | undefined
+	className?: string
+	name?: string | null
+	type?: 'checkbox' | 'radio' | 'switch'
+	label?: ReactNode
+	value?: string | number
+	checked?: boolean | string
+	disabled?: boolean
+	isInline?: boolean
+	isFormCheckInput?: boolean
+	isTouched?: boolean
+	isValid?: boolean
+	invalidFeedback?: string
+	validFeedback?: string
+	isValidMessage?: boolean
+	isTooltipFeedback?: boolean
+	onBlur?(...args: unknown[]): unknown
+	onChange?(...args: unknown[]): unknown
+	onFocus?(...args: unknown[]): unknown
+	onInput?(...args: unknown[]): unknown
+	onInvalid?(...args: unknown[]): unknown
+	onSelect?(...args: unknown[]): unknown
+	ariaLabel?: string
 }
 const Checks = forwardRef<HTMLInputElement, IChecksProps>(
 	(
@@ -155,10 +155,10 @@ const Checks = forwardRef<HTMLInputElement, IChecksProps>(
 				aria-label={ariaLabel}
 				{...props}
 			/>
-		);
+		)
 
 		if (isFormCheckInput) {
-			return INNER;
+			return INNER
 		}
 		return (
 			<div
@@ -181,9 +181,9 @@ const Checks = forwardRef<HTMLInputElement, IChecksProps>(
 					/>
 				)}
 			</div>
-		);
+		)
 	},
-);
-Checks.displayName = 'Checks';
+)
+Checks.displayName = 'Checks'
 
-export default Checks;
+export default Checks

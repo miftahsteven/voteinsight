@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import * as React from 'react';
+import type { SVGProps } from 'react'
+import * as React from 'react'
 
 const SvgCustomNpm = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -14,5 +14,5 @@ const SvgCustomNpm = (props: SVGProps<SVGSVGElement>) => (
 			<path fill='#FFF' d='M16.718 7.928h-4.513V20.25H4V3h16v17.249h-3.282V7.93Z' />
 		</g>
 	</svg>
-);
-export default SvgCustomNpm;
+)
+export default SvgCustomNpm

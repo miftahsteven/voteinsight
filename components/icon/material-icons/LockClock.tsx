@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgLockClock = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgLockClock = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M11 18c0-3.87 3.13-7 7-7v-1H6v10h5.29c-.19-.63-.29-1.3-.29-2z' opacity={0.3} />
 			<path d='M18 13c-2.76 0-5 2.24-5 5s2.24 5 5 5 5-2.24 5-5-2.24-5-5-5zm1.65 7.35L17.5 18.2V15h1v2.79l1.85 1.85-.7.71z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgLockClock;
+export default SvgLockClock

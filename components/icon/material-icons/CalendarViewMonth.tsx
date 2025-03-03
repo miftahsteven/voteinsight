@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgCalendarViewMonth = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgCalendarViewMonth = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM8 18H4v-5h4v5zm0-7H4V6h4v5zm6 7h-4v-5h4v5zm0-7h-4V6h4v5zm6 7h-4v-5h4v5zm0-7h-4V6h4v5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgCalendarViewMonth;
+export default SvgCalendarViewMonth

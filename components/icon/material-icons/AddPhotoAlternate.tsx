@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgAddPhotoAlternate = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -11,7 +11,7 @@ const SvgAddPhotoAlternate = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M20 4V1h-2v3h-3v2h3v2.99h2V6h3V4zm-2 16H4V6h10V4H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V10h-2v10z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgAddPhotoAlternate;
+export default SvgAddPhotoAlternate

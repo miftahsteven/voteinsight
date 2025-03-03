@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgMood = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgMood = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={15.5} cy={9.5} r={1.5} />
 			<path d='M12 17.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgMood;
+export default SvgMood

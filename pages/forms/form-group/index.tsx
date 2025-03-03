@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import Page from '../../../layout/Page/Page';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import Page from '../../../layout/Page/Page'
 import Modal, {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
-} from '../../../components/bootstrap/Modal';
+} from '../../../components/bootstrap/Modal'
 import Card, {
 	CardActions,
 	CardBody,
@@ -25,24 +25,24 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
+} from '../../../components/bootstrap/Card'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Button from '../../../components/bootstrap/Button';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import CommonStoryLink from '../../../common/partial/other/CommonStoryLink';
-import FormText from '../../../components/bootstrap/forms/FormText';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Input from '../../../components/bootstrap/forms/Input';
-import Label from '../../../components/bootstrap/forms/Label';
+} from '../../../components/bootstrap/Dropdown'
+import Button from '../../../components/bootstrap/Button'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import CommonStoryLink from '../../../common/partial/other/CommonStoryLink'
+import FormText from '../../../components/bootstrap/forms/FormText'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Input from '../../../components/bootstrap/forms/Input'
+import Label from '../../../components/bootstrap/forms/Label'
 
 const Index: NextPage = () => {
-	const [modalStatus, setModalStatus] = useState(false);
-	const [modalStatus2, setModalStatus2] = useState(false);
+	const [modalStatus, setModalStatus] = useState(false)
+	const [modalStatus2, setModalStatus2] = useState(false)
 
 	const GENERAL_USAGE = `
 <FormGroup
@@ -64,7 +64,7 @@ const Index: NextPage = () => {
 	{/* or */}
 	<Textarea {...props}/>
 	
-</FormGroup>`;
+</FormGroup>`
 	const GENERAL_USAGE_2 = `
 <FormGroup
 	tag={ String } // 'div' || 'section'
@@ -94,18 +94,18 @@ const Index: NextPage = () => {
 	<Textarea {...props}/>
 	
 	<FormText {...props}>...</FormText>
-</FormGroup>`;
+</FormGroup>`
 
 	const FIRST_WAY = (
 		<a href='#firstWay' className='text-decoration-none'>
 			<sup>[1]</sup>
 		</a>
-	);
+	)
 	const SECOND_WAY = (
 		<a href='#secondWay' className='text-decoration-none'>
 			<sup>[2]</sup>
 		</a>
-	);
+	)
 
 	const formik = useFormik({
 		initialValues: {
@@ -115,7 +115,7 @@ const Index: NextPage = () => {
 		onSubmit: () => {
 			// console.log(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 	const formik2 = useFormik({
 		initialValues: {
 			exampleColForLabelMail2: 'email@example.com',
@@ -124,7 +124,7 @@ const Index: NextPage = () => {
 		onSubmit: () => {
 			// console.log(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -886,14 +886,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

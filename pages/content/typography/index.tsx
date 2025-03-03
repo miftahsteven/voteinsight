@@ -1,22 +1,22 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardCodeView,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const Index: NextPage = () => {
 	const DISPLAY_FONT_SIZE = `
@@ -30,7 +30,7 @@ $display-font-sizes: (
 );
 
 $display-font-weight: 300;
-$display-line-height: $headings-line-height;`;
+$display-line-height: $headings-line-height;`
 
 	const FANCY_HEADING = `
 <h3>
@@ -38,7 +38,7 @@ $display-line-height: $headings-line-height;`;
   <small className='text-muted'>
     With faded secondary text
   </small>
-</h3>`;
+</h3>`
 
 	const DISPLAY_HEADING = `
 <h1 className='display-1'>Display 1</h1>
@@ -46,12 +46,12 @@ $display-line-height: $headings-line-height;`;
 <h1 className='display-3'>Display 3</h1>
 <h1 className='display-4'>Display 4</h1>
 <h1 className='display-5'>Display 5</h1>
-<h1 className='display-6'>Display 6</h1>`;
+<h1 className='display-6'>Display 6</h1>`
 
 	const LEAD = `
 <p className='lead'>
   This is a lead paragraph. It stands out from regular paragraphs.
-</p>`;
+</p>`
 
 	const INLINE_ELEMENTS = `
 <p>You can use the mark tag to <mark>highlight</mark> text.</p>
@@ -61,16 +61,16 @@ $display-line-height: $headings-line-height;`;
 <p><u>This line of text will render as underlined.</u></p>
 <p><small>This line of text is meant to be treated as fine print.</small></p>
 <p><strong>This line rendered as bold text.</strong></p>
-<p><em>This line rendered as italicized text.</em></p>`;
+<p><em>This line rendered as italicized text.</em></p>`
 
 	const ABBR = `
 <p><abbr title='attribute'>attr</abbr></p>
-<p><abbr title='HyperText Markup Language' className='initialism'>HTML</abbr></p>`;
+<p><abbr title='HyperText Markup Language' className='initialism'>HTML</abbr></p>`
 
 	const BLOCKQUOTE = `
 <blockquote className='blockquote'>
 	<p>A well-known quote, contained in a blockquote element.</p>
-</blockquote>`;
+</blockquote>`
 
 	const NAMING_A_SOURCE = `
 <figure>
@@ -80,7 +80,7 @@ $display-line-height: $headings-line-height;`;
 	<figcaption className='blockquote-footer'>
 		Someone famous in <cite title='Source Title'>Source Title</cite>
 	</figcaption>
-</figure>`;
+</figure>`
 
 	const NAMING_A_SOURCE_CENTER = `
 <figure className='text-center'>
@@ -90,7 +90,7 @@ $display-line-height: $headings-line-height;`;
 	<figcaption className='blockquote-footer'>
 		Someone famous in <cite title='Source Title'>Source Title</cite>
 	</figcaption>
-</figure>`;
+</figure>`
 
 	const NAMING_A_SOURCE_END = `
 <figure className='text-end'>
@@ -100,7 +100,7 @@ $display-line-height: $headings-line-height;`;
 	<figcaption className='blockquote-footer'>
 		Someone famous in <cite title='Source Title'>Source Title</cite>
 	</figcaption>
-</figure>`;
+</figure>`
 
 	const LIST_UN = `
 <ul className='list-unstyled'>
@@ -116,14 +116,14 @@ $display-line-height: $headings-line-height;`;
 		</ul>
 	</li>
 	<li>This may still come in handy in some situations.</li>
-</ul>`;
+</ul>`
 
 	const LIST_INLINE = `
 <ul className='list-inline'>
 	<li className='list-inline-item'>This is a list item.</li>
 	<li className='list-inline-item'>And another one.</li>
 	<li className='list-inline-item'>But they're displayed inline.</li>
-</ul>`;
+</ul>`
 
 	// language=HTML
 	const DESC_LIST_ALIGN = `
@@ -150,7 +150,7 @@ $display-line-height: $headings-line-height;`;
 			<dd class="col-sm-8">I heard you like definition lists. Let me put a definition list inside your definition list.</dd>
 		</dl>
 	</dd>
-</dl>`;
+</dl>`
 
 	return (
 		<PageWrapper>
@@ -905,14 +905,14 @@ $display-line-height: $headings-line-height;`;
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

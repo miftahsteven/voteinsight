@@ -1,28 +1,28 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const Index: NextPage = () => {
 	const SHADOW = `
 <div className='shadow-none p-3 mb-5 bg-light rounded'>No shadow</div>
 <div className='shadow-sm p-3 mb-5 bg-body rounded'>Small shadow</div>
 <div className='shadow p-3 mb-5 bg-body rounded'>Regular shadow</div>
-<div className='shadow-lg p-3 mb-5 bg-body rounded'>Larger shadow</div>`;
+<div className='shadow-lg p-3 mb-5 bg-body rounded'>Larger shadow</div>`
 
 	const VARIABLES = `
 $box-shadow:                  0 .5rem 1rem rgba($black, .15) !default;
@@ -33,7 +33,7 @@ $box-shadow-inset:            inset 0 1px 2px rgba($black, .075);
 // Overwrite src/styles/settings/index.scss
 $box-shadow:                  0 1.6rem 3rem rgba($black, 0.1);
 $box-shadow-sm:               0 0.8rem 3rem rgba($black, 0.075);
-$box-shadow-lg:               0 1.6rem 3rem rgba($black, 0.175);`;
+$box-shadow-lg:               0 1.6rem 3rem rgba($black, 0.175);`
 	const UTILITIES_API = `
 "shadow": (
 	property: box-shadow,
@@ -44,7 +44,7 @@ $box-shadow-lg:               0 1.6rem 3rem rgba($black, 0.175);`;
 		lg: $box-shadow-lg,
 		none: none,
 	)
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -146,14 +146,14 @@ $box-shadow-lg:               0 1.6rem 3rem rgba($black, 0.175);`;
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

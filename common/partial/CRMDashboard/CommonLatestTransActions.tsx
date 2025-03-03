@@ -1,34 +1,34 @@
-import React, { FC } from 'react';
-import dayjs from 'dayjs';
-import classNames from 'classnames';
+import React, { FC } from 'react'
+import dayjs from 'dayjs'
+import classNames from 'classnames'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import { priceFormat } from '../../../helpers/helpers';
-import useDarkMode from '../../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../../menu';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import { priceFormat } from '../../../helpers/helpers'
+import useDarkMode from '../../../hooks/useDarkMode'
+import { demoPagesMenu } from '../../../menu'
 
-type TStatus = 'Paid' | 'Pending' | 'Failed';
+type TStatus = 'Paid' | 'Pending' | 'Failed'
 interface ITransactionsItemProps {
-	id: number;
-	date: string;
-	status: TStatus;
-	email: string;
-	price: number;
-	tax: number;
+	id: number
+	date: string
+	status: TStatus
+	email: string
+	price: number
+	tax: number
 }
 const TransactionsItem: FC<ITransactionsItemProps> = ({ date, status, email, price, tax }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	const STATUS =
 		(status === 'Paid' && 'success') ||
 		(status === 'Pending' && 'warning') ||
-		(status === 'Failed' && 'danger');
+		(status === 'Failed' && 'danger')
 	return (
 		<div className='col-12'>
 			<div className='row'>
@@ -61,8 +61,8 @@ const TransactionsItem: FC<ITransactionsItemProps> = ({ date, status, email, pri
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const CommonLatestTransActions = () => {
 	const transactionsData: ITransactionsItemProps[] = [
@@ -122,7 +122,7 @@ const CommonLatestTransActions = () => {
 			price: 78,
 			tax: 18,
 		},
-	];
+	]
 	return (
 		<Card stretch>
 			<CardHeader>
@@ -149,7 +149,7 @@ const CommonLatestTransActions = () => {
 				</div>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonLatestTransActions;
+export default CommonLatestTransActions

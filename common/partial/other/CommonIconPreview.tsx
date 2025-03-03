@@ -1,15 +1,15 @@
-import React, { FC } from 'react';
-import { useClipboard } from 'use-clipboard-copy';
-import Button from '../../../components/bootstrap/Button';
-import showNotification from '../../../components/extras/showNotification';
-import Icon from '../../../components/icon/Icon';
+import React, { FC } from 'react'
+import { useClipboard } from 'use-clipboard-copy'
+import Button from '../../../components/bootstrap/Button'
+import showNotification from '../../../components/extras/showNotification'
+import Icon from '../../../components/icon/Icon'
 
 interface ICommonIconPreviewProps {
-	icon: string;
-	forceFamily?: 'custom' | 'material' | null;
+	icon: string
+	forceFamily?: 'custom' | 'material' | null
 }
 const CommonIconPreview: FC<ICommonIconPreviewProps> = ({ icon, forceFamily }) => {
-	const clipboard = useClipboard();
+	const clipboard = useClipboard()
 	return (
 		<div className='col-xl-3 col-lg-4 col-md-6 col-12'>
 			<Button
@@ -19,7 +19,7 @@ const CommonIconPreview: FC<ICommonIconPreviewProps> = ({ icon, forceFamily }) =
 				shadow='default'
 				hoverShadow='none'
 				onClick={() => {
-					clipboard.copy(icon);
+					clipboard.copy(icon)
 					showNotification(
 						'Copy to Clipboard',
 						<div className='row d-flex align-items-center'>
@@ -28,7 +28,7 @@ const CommonIconPreview: FC<ICommonIconPreviewProps> = ({ icon, forceFamily }) =
 							</div>
 							<div className='col-auto h5'>{icon}</div>
 						</div>,
-					);
+					)
 				}}>
 				<div className='row d-flex align-items-center'>
 					<div className='col-auto'>
@@ -44,7 +44,7 @@ const CommonIconPreview: FC<ICommonIconPreviewProps> = ({ icon, forceFamily }) =
 				</div>
 			</Button>
 		</div>
-	);
-};
+	)
+}
 
-export default CommonIconPreview;
+export default CommonIconPreview

@@ -1,6 +1,6 @@
-import React from 'react';
-import dayjs from 'dayjs';
-import classNames from 'classnames';
+import React from 'react'
+import dayjs from 'dayjs'
+import classNames from 'classnames'
 import Card, {
 	CardActions,
 	CardBody,
@@ -8,15 +8,15 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Icon from '../../components/icon/Icon';
-import Button from '../../components/bootstrap/Button';
-import { demoPagesMenu } from '../../menu';
-import Chart, { IChartOptions } from '../../components/extras/Chart';
-import useDarkMode from '../../hooks/useDarkMode';
+} from '../../components/bootstrap/Card'
+import Icon from '../../components/icon/Icon'
+import Button from '../../components/bootstrap/Button'
+import { demoPagesMenu } from '../../menu'
+import Chart, { IChartOptions } from '../../components/extras/Chart'
+import useDarkMode from '../../hooks/useDarkMode'
 
 const CommonApprovedAppointmentChart = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 	const approvedAppointments: IChartOptions = {
 		series: [
 			{
@@ -83,7 +83,7 @@ const CommonApprovedAppointmentChart = () => {
 				theme: 'dark',
 				y: {
 					formatter(val: number): string {
-						return `${val} Appointments`;
+						return `${val} Appointments`
 					},
 				},
 			},
@@ -91,7 +91,7 @@ const CommonApprovedAppointmentChart = () => {
 				show: false,
 			},
 		},
-	};
+	}
 	return (
 		<Card
 			className={classNames('shadow-3d-success', {
@@ -130,7 +130,7 @@ const CommonApprovedAppointmentChart = () => {
 				/>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonApprovedAppointmentChart;
+export default CommonApprovedAppointmentChart

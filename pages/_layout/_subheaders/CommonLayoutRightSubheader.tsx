@@ -1,13 +1,13 @@
-import React from 'react';
-import Link from 'next/link';
-import Button, { ButtonGroup } from '../../../components/bootstrap/Button';
+import React from 'react'
+import Link from 'next/link'
+import Button, { ButtonGroup } from '../../../components/bootstrap/Button'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Icon from '../../../components/icon/Icon';
-import { SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
+} from '../../../components/bootstrap/Dropdown'
+import Icon from '../../../components/icon/Icon'
+import { SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
 
 const CommonLayoutRightSubheader = () => {
 	return (
@@ -57,7 +57,7 @@ const CommonLayoutRightSubheader = () => {
 				</Dropdown>
 			</ButtonGroup>
 		</SubHeaderRight>
-	);
-};
+	)
+}
 
-export default CommonLayoutRightSubheader;
+export default CommonLayoutRightSubheader

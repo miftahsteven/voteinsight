@@ -1,40 +1,40 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../components/bootstrap/Card';
+} from '../../components/bootstrap/Card'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../components/bootstrap/Dropdown';
-import Button from '../../components/bootstrap/Button';
-import dayjs from 'dayjs';
-import Icon from '../../components/icon/Icon';
-import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons';
-import useSortableData from '../../hooks/useSortableData';
-import { ApexOptions } from 'apexcharts';
-import useDarkMode from '../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../menu';
-import classNames from 'classnames';
-import Chart from '../../components/extras/Chart';
-import Badge from '../../components/bootstrap/Badge';
-import data from '../data/dummyProductData';
-import Link from 'next/link';
+} from '../../components/bootstrap/Dropdown'
+import Button from '../../components/bootstrap/Button'
+import dayjs from 'dayjs'
+import Icon from '../../components/icon/Icon'
+import PaginationButtons, { dataPagination, PER_COUNT } from '../../components/PaginationButtons'
+import useSortableData from '../../hooks/useSortableData'
+import { ApexOptions } from 'apexcharts'
+import useDarkMode from '../../hooks/useDarkMode'
+import { demoPagesMenu } from '../../menu'
+import classNames from 'classnames'
+import Chart from '../../components/extras/Chart'
+import Badge from '../../components/bootstrap/Badge'
+import data from '../data/dummyProductData'
+import Link from 'next/link'
 
 interface ITableRowProps {
-	id: string;
-	image: string;
-	name: string;
-	category: string;
-	series: ApexOptions['series'];
-	color: string;
-	stock: string;
-	price: string;
-	store: string;
+	id: string
+	image: string
+	name: string
+	category: string
+	series: ApexOptions['series']
+	color: string
+	stock: string
+	price: string
+	store: string
 }
 const TableRow: FC<ITableRowProps> = ({
 	id,
@@ -47,7 +47,7 @@ const TableRow: FC<ITableRowProps> = ({
 	price,
 	store,
 }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 	const dummyOptions: ApexOptions = {
 		colors: [color],
 		chart: {
@@ -70,7 +70,7 @@ const TableRow: FC<ITableRowProps> = ({
 				title: {
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					formatter(seriesName: string) {
-						return '';
+						return ''
 					},
 				},
 			},
@@ -79,7 +79,7 @@ const TableRow: FC<ITableRowProps> = ({
 			curve: 'smooth',
 			width: 2,
 		},
-	};
+	}
 	return (
 		<tr>
 			<th scope='row'>{id}</th>
@@ -138,16 +138,16 @@ const TableRow: FC<ITableRowProps> = ({
 				</Badge>
 			</td>
 		</tr>
-	);
-};
+	)
+}
 
 const CommonDashboardTopSeller = () => {
 	const TOP_SELLER_FILTER = {
 		DAY: 'day',
 		WEEK: 'week',
 		MONTH: 'month',
-	};
-	const [topSellerFilter, setTopSellerFilter] = useState(TOP_SELLER_FILTER.DAY);
+	}
+	const [topSellerFilter, setTopSellerFilter] = useState(TOP_SELLER_FILTER.DAY)
 	const filteredData = data
 		.filter(
 			(f) =>
@@ -155,11 +155,11 @@ const CommonDashboardTopSeller = () => {
 				(topSellerFilter === TOP_SELLER_FILTER.WEEK && f.name.includes('c')) ||
 				(topSellerFilter === TOP_SELLER_FILTER.MONTH && f.price > 13),
 		)
-		.filter((c, index) => index < 5);
+		.filter((c, index) => index < 5)
 
-	const [currentPage, setCurrentPage] = useState(1);
-	const [perPage, setPerPage] = useState(PER_COUNT['3']);
-	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData);
+	const [currentPage, setCurrentPage] = useState(1)
+	const [perPage, setPerPage] = useState(PER_COUNT['3'])
+	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData)
 	return (
 		<Card>
 			<CardHeader>
@@ -293,7 +293,7 @@ const CommonDashboardTopSeller = () => {
 				setPerPage={setPerPage}
 			/>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonDashboardTopSeller;
+export default CommonDashboardTopSeller

@@ -1,11 +1,11 @@
-import React, { FC, HTMLAttributes, useCallback } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useRouter } from 'next/router';
-import useDarkMode from '../../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../../menu';
+import React, { FC, HTMLAttributes, useCallback } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useRouter } from 'next/router'
+import useDarkMode from '../../../hooks/useDarkMode'
+import { demoPagesMenu } from '../../../menu'
 import Card, {
 	CardActions,
 	CardBody,
@@ -13,31 +13,31 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Badge from '../../../components/bootstrap/Badge';
-import Icon from '../../../components/icon/Icon';
-import Progress from '../../../components/bootstrap/Progress';
-import Avatar, { AvatarGroup } from '../../../components/Avatar';
-import USERS from '../../../common/data/userDummyData';
-import useTourStep from '../../../hooks/useTourStep';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+} from '../../../components/bootstrap/Card'
+import Badge from '../../../components/bootstrap/Badge'
+import Icon from '../../../components/icon/Icon'
+import Progress from '../../../components/bootstrap/Progress'
+import Avatar, { AvatarGroup } from '../../../components/Avatar'
+import USERS from '../../../common/data/userDummyData'
+import useTourStep from '../../../hooks/useTourStep'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import CommonAvatarTeam from '../../../common/partial/other/CommonAvatarTeam';
-import Page from '../../../layout/Page/Page';
-import Button from '../../../components/bootstrap/Button';
-import { pathRetouch } from '../../../helpers/helpers';
+} from '../../../layout/SubHeader/SubHeader'
+import CommonAvatarTeam from '../../../common/partial/other/CommonAvatarTeam'
+import Page from '../../../layout/Page/Page'
+import Button from '../../../components/bootstrap/Button'
+import { pathRetouch } from '../../../helpers/helpers'
 
 interface IItemProps extends HTMLAttributes<HTMLDivElement> {
-	name: string;
-	teamName: string;
-	attachCount: number;
-	taskCount: number;
-	percent: number;
-	dueDate: string;
+	name: string
+	teamName: string
+	attachCount: number
+	taskCount: number
+	percent: number
+	dueDate: string
 }
 const Item: FC<IItemProps> = ({
 	name,
@@ -48,12 +48,12 @@ const Item: FC<IItemProps> = ({
 	dueDate,
 	...props
 }) => {
-	const { darkModeStatus } = useDarkMode();
-	const router = useRouter();
+	const { darkModeStatus } = useDarkMode()
+	const router = useRouter()
 	const handleOnClickToProjectPage = useCallback(
 		() => router.push(`${pathRetouch(demoPagesMenu.projectManagement.subMenu.itemID.path)}/1`),
 		[router],
-	);
+	)
 	return (
 		<div className='col-md-4' {...props}>
 			<Card stretch onClick={handleOnClickToProjectPage} className='cursor-pointer'>
@@ -125,18 +125,18 @@ const Item: FC<IItemProps> = ({
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
 const Index: NextPage = () => {
-	useTourStep(12);
+	useTourStep(12)
 
-	const { darkModeStatus } = useDarkMode();
-	const router = useRouter();
+	const { darkModeStatus } = useDarkMode()
+	const router = useRouter()
 	const handleOnClickToEmployeeListPage = useCallback(
 		() => router.push(`../${demoPagesMenu.appointment.subMenu.employeeList.path}`),
 		[router],
-	);
+	)
 
 	return (
 		<PageWrapper>
@@ -363,14 +363,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

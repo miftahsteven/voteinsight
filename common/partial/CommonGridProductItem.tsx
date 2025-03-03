@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -7,32 +7,32 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Button from '../../components/bootstrap/Button';
-import Chart from '../../components/extras/Chart';
+} from '../../components/bootstrap/Card'
+import Button from '../../components/bootstrap/Button'
+import Chart from '../../components/extras/Chart'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../components/bootstrap/Dropdown';
-import Badge from '../../components/bootstrap/Badge';
-import { priceFormat } from '../../helpers/helpers';
-import showNotification from '../../components/extras/showNotification';
-import Icon from '../../components/icon/Icon';
-import { demoPagesMenu } from '../../menu';
-import useDarkMode from '../../hooks/useDarkMode';
-import { ApexOptions } from 'apexcharts';
+} from '../../components/bootstrap/Dropdown'
+import Badge from '../../components/bootstrap/Badge'
+import { priceFormat } from '../../helpers/helpers'
+import showNotification from '../../components/extras/showNotification'
+import Icon from '../../components/icon/Icon'
+import { demoPagesMenu } from '../../menu'
+import useDarkMode from '../../hooks/useDarkMode'
+import { ApexOptions } from 'apexcharts'
 
 interface ICommonGridProductItemProps {
-	id: string | number;
-	name: string;
-	category: string;
-	img: string;
-	color: string;
-	series: ApexOptions['series'];
-	price: number;
-	editAction: any;
-	deleteAction: any;
+	id: string | number
+	name: string
+	category: string
+	img: string
+	color: string
+	series: ApexOptions['series']
+	price: number
+	editAction: any
+	deleteAction: any
 }
 const CommonGridProductItem: FC<ICommonGridProductItemProps> = ({
 	id,
@@ -45,7 +45,7 @@ const CommonGridProductItem: FC<ICommonGridProductItemProps> = ({
 	editAction,
 	deleteAction,
 }) => {
-	const { themeStatus, darkModeStatus } = useDarkMode();
+	const { themeStatus, darkModeStatus } = useDarkMode()
 
 	const dummyOptions: ApexOptions = {
 		colors: [color],
@@ -69,7 +69,7 @@ const CommonGridProductItem: FC<ICommonGridProductItemProps> = ({
 				title: {
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					formatter(seriesName: string) {
-						return '';
+						return ''
 					},
 				},
 			},
@@ -78,7 +78,7 @@ const CommonGridProductItem: FC<ICommonGridProductItemProps> = ({
 			curve: 'smooth',
 			width: 2,
 		},
-	};
+	}
 	return (
 		<Card>
 			<CardHeader>
@@ -114,7 +114,7 @@ const CommonGridProductItem: FC<ICommonGridProductItemProps> = ({
 												<span>{name} duplicated.</span>
 											</span>,
 											`A copy of the ${name} product was created.`,
-										);
+										)
 									}}>
 									Duplicate
 								</Button>
@@ -163,7 +163,7 @@ const CommonGridProductItem: FC<ICommonGridProductItemProps> = ({
 				</Button>
 			</CardFooter>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonGridProductItem;
+export default CommonGridProductItem

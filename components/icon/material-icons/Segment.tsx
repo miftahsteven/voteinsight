@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSegment = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgSegment = (props: SVGProps<SVGSVGElement>) => {
 			<path fill='none' d='M0 0h24v24H0z' />
 			<path d='M9 18h12v-2H9v2zM3 6v2h18V6H3zm6 7h12v-2H9v2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSegment;
+export default SvgSegment

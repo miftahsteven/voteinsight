@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import * as React from 'react';
+import type { SVGProps } from 'react'
+import * as React from 'react'
 
 const SvgCustomPayoneer = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -21,5 +21,5 @@ const SvgCustomPayoneer = (props: SVGProps<SVGSVGElement>) => (
 			transform='matrix(2.87 0 0 2.87 132.18 132.18)'
 		/>
 	</svg>
-);
-export default SvgCustomPayoneer;
+)
+export default SvgCustomPayoneer

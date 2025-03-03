@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardFooter,
@@ -8,9 +8,9 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import Button from '../../../../components/bootstrap/Button';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import Button from '../../../../components/bootstrap/Button'
 
 const DonutUpdate = () => {
 	const [state, setState] = useState<IChartOptions>({
@@ -29,32 +29,32 @@ const DonutUpdate = () => {
 				height: 230,
 			},
 		},
-	});
+	})
 
 	function appendData() {
 		if (state.series) {
-			const arr = state.series.slice();
+			const arr = state.series.slice()
 			// @ts-ignore
-			arr.push(Math.floor(Math.random() * (100 - 1 + 1)) + 1);
+			arr.push(Math.floor(Math.random() * (100 - 1 + 1)) + 1)
 
 			setState({
 				series: arr,
 				options: state.options,
-			});
+			})
 		}
 	}
 
 	function removeData() {
 		if (state.series) {
-			if (state.series.length === 1) return;
+			if (state.series.length === 1) return
 
-			const arr = state.series.slice();
-			arr.pop();
+			const arr = state.series.slice()
+			arr.pop()
 
 			setState({
 				series: arr,
 				options: state.options,
-			});
+			})
 		}
 	}
 
@@ -62,10 +62,10 @@ const DonutUpdate = () => {
 		if (state.series) {
 			setState({
 				series: state.series.map(() => {
-					return Math.floor(Math.random() * (100 - 1 + 1)) + 1;
+					return Math.floor(Math.random() * (100 - 1 + 1)) + 1
 				}),
 				options: state.options,
-			});
+			})
 		}
 	}
 
@@ -73,7 +73,7 @@ const DonutUpdate = () => {
 		setState({
 			series: [44, 55, 13, 33],
 			options: state.options,
-		});
+		})
 	}
 
 	return (
@@ -118,7 +118,7 @@ const DonutUpdate = () => {
 				</CardFooter>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default DonutUpdate;
+export default DonutUpdate

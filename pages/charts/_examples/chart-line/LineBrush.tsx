@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateDayWiseTimeSeries from '../../../../common/function/generateDayWiseTimeSeries';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateDayWiseTimeSeries from '../../../../common/function/generateDayWiseTimeSeries'
 
 const LineBrush = () => {
 	const brushData = generateDayWiseTimeSeries(new Date('11 Feb 2017').getTime(), 185, {
 		min: 30,
 		max: 90,
-	});
+	})
 	const [state] = useState<IChartOptions>({
 		series: [
 			{
@@ -88,7 +88,7 @@ const LineBrush = () => {
 				tickAmount: 2,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -115,7 +115,7 @@ const LineBrush = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default LineBrush;
+export default LineBrush

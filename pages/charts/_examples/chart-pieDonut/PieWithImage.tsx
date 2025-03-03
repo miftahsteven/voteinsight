@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import Avocado from '../../../../assets/img/fruit/avocado.jpg';
-import Banana from '../../../../assets/img/fruit/banana.jpg';
-import Pineapple from '../../../../assets/img/fruit/pineapple.jpg';
-import Strawberry from '../../../../assets/img/fruit/strawberry.jpg';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import Avocado from '../../../../assets/img/fruit/avocado.jpg'
+import Banana from '../../../../assets/img/fruit/banana.jpg'
+import Pineapple from '../../../../assets/img/fruit/pineapple.jpg'
+import Strawberry from '../../../../assets/img/fruit/strawberry.jpg'
 
 const PieWithImage = () => {
 	const [state] = useState<IChartOptions>({
@@ -59,7 +59,7 @@ const PieWithImage = () => {
 				},
 			],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -81,7 +81,7 @@ const PieWithImage = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default PieWithImage;
+export default PieWithImage

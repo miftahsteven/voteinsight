@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgPersonSearch = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -11,7 +11,7 @@ const SvgPersonSearch = (props: SVGProps<SVGSVGElement>) => {
 				<circle cx={10} cy={9} r={2} />
 			</g>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgPersonSearch;
+export default SvgPersonSearch

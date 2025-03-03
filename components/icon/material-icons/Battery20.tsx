@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBattery20 = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgBattery20 = (props: SVGProps<SVGSVGElement>) => {
 				fillOpacity={0.3}
 			/>
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBattery20;
+export default SvgBattery20

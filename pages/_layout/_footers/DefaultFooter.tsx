@@ -1,17 +1,17 @@
-import React from 'react';
-import classNames from 'classnames';
-import Footer from '../../../layout/Footer/Footer';
-import useDarkMode from '../../../hooks/useDarkMode';
+import React from 'react'
+import classNames from 'classnames'
+import Footer from '../../../layout/Footer/Footer'
+import useDarkMode from '../../../hooks/useDarkMode'
 
 const DefaultFooter = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	return (
 		<Footer>
 			<div className='container-fluid'>
 				<div className='row'>
 					<div className='col'>
-						<span className='fw-light'>Copyright © 2024 - Version 4.4.0</span>
+						<span className='fw-light'>Copyright © 2025 - Version 1.0</span>
 					</div>
 					<div className='col-auto'>
 						<a
@@ -20,13 +20,13 @@ const DefaultFooter = () => {
 								'link-dark': !darkModeStatus,
 								'link-light': darkModeStatus,
 							})}>
-							<small className='fw-bold'>Facit Theme</small>
+							<small className='fw-bold'>Limanara Solusi Digital</small>
 						</a>
 					</div>
 				</div>
 			</div>
 		</Footer>
-	);
-};
+	)
+}
 
-export default DefaultFooter;
+export default DefaultFooter

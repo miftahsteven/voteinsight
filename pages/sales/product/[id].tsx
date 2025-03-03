@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { useRouter } from 'next/router';
-import { ApexOptions } from 'apexcharts';
-import { useFormik } from 'formik';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import useDarkMode from '../../../hooks/useDarkMode';
-import showNotification from '../../../components/extras/showNotification';
-import Icon from '../../../components/icon/Icon';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
+import React, { useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { useRouter } from 'next/router'
+import { ApexOptions } from 'apexcharts'
+import { useFormik } from 'formik'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import useDarkMode from '../../../hooks/useDarkMode'
+import showNotification from '../../../components/extras/showNotification'
+import Icon from '../../../components/icon/Icon'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import Avatar from '../../../components/Avatar';
-import USERS from '../../../common/data/userDummyData';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Button from '../../../components/bootstrap/Button'
+import Avatar from '../../../components/Avatar'
+import USERS from '../../../common/data/userDummyData'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardFooter,
@@ -29,21 +29,21 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import { priceFormat } from '../../../helpers/helpers';
-import Chart from '../../../components/extras/Chart';
-import Accordion, { AccordionItem } from '../../../components/bootstrap/Accordion';
-import PlaceholderImage from '../../../components/extras/PlaceholderImage';
-import Input from '../../../components/bootstrap/forms/Input';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import tableData from '../../../common/data/dummyProductData';
+} from '../../../components/bootstrap/Card'
+import { priceFormat } from '../../../helpers/helpers'
+import Chart from '../../../components/extras/Chart'
+import Accordion, { AccordionItem } from '../../../components/bootstrap/Accordion'
+import PlaceholderImage from '../../../components/extras/PlaceholderImage'
+import Input from '../../../components/bootstrap/forms/Input'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import tableData from '../../../common/data/dummyProductData'
 
 interface IValues {
-	name: string;
-	price: number;
-	stock: number;
-	category: string;
-	image?: string;
+	name: string
+	price: number
+	stock: number
+	category: string
+	image?: string
 }
 const validate = (values: IValues) => {
 	const errors = {
@@ -51,56 +51,56 @@ const validate = (values: IValues) => {
 		price: '',
 		stock: '',
 		category: '',
-	};
+	}
 
 	if (!values.name) {
-		errors.name = 'Required';
+		errors.name = 'Required'
 	} else if (values.name.length < 3) {
-		errors.name = 'Must be 3 characters or more';
+		errors.name = 'Must be 3 characters or more'
 	} else if (values.name.length > 20) {
-		errors.name = 'Must be 20 characters or less';
+		errors.name = 'Must be 20 characters or less'
 	}
 
 	if (!values.price) {
-		errors.price = 'Required';
+		errors.price = 'Required'
 	} else if (values.price < 0) {
-		errors.price = 'Price should not be 0';
+		errors.price = 'Price should not be 0'
 	}
 
 	if (!values.stock) {
-		errors.stock = 'Required';
+		errors.stock = 'Required'
 	}
 
 	if (!values.category) {
-		errors.category = 'Required';
+		errors.category = 'Required'
 	} else if (values.category.length < 3) {
-		errors.category = 'Must be 3 characters or more';
+		errors.category = 'Must be 3 characters or more'
 	} else if (values.category.length > 20) {
-		errors.category = 'Must be 20 characters or less';
+		errors.category = 'Must be 20 characters or less'
 	}
 
-	return errors;
-};
+	return errors
+}
 
-type TTabs = 'Summary' | 'Comments' | 'Edit';
+type TTabs = 'Summary' | 'Comments' | 'Edit'
 interface ITabs {
-	[key: string]: TTabs;
+	[key: string]: TTabs
 }
 
 const Id: NextPage = () => {
-	const router = useRouter();
+	const router = useRouter()
 
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const { id } = router.query;
+	const { id } = router.query
 
 	const itemData = tableData.filter(
 		(item) =>
 			typeof item.id !== 'undefined' &&
 			typeof id !== 'undefined' &&
 			item.id.toString() === id.toString(),
-	);
-	const data = itemData[0];
+	)
+	const data = itemData[0]
 
 	const chartOptions: ApexOptions = {
 		colors: [String(process.env.NEXT_PUBLIC_WARNING_COLOR)],
@@ -123,7 +123,7 @@ const Id: NextPage = () => {
 			y: {
 				title: {
 					formatter() {
-						return '';
+						return ''
 					},
 				},
 			},
@@ -132,16 +132,16 @@ const Id: NextPage = () => {
 			curve: 'smooth',
 			width: 2,
 		},
-	};
+	}
 
 	const TABS: ITabs = {
 		SUMMARY: 'Summary',
 		COMMENTS: 'Comments',
 		EDIT: 'Edit',
-	};
-	const [activeTab, setActiveTab] = useState(TABS.SUMMARY);
+	}
+	const [activeTab, setActiveTab] = useState(TABS.SUMMARY)
 
-	const [editItem, setEditItem] = useState<IValues>(data);
+	const [editItem, setEditItem] = useState<IValues>(data)
 	const formik = useFormik({
 		initialValues: {
 			name: '',
@@ -157,9 +157,9 @@ const Id: NextPage = () => {
 					<span>Updated Successfully</span>
 				</span>,
 				'Product has been updated successfully',
-			);
+			)
 		},
-	});
+	})
 	useEffect(() => {
 		if (editItem) {
 			formik.setValues({
@@ -167,7 +167,7 @@ const Id: NextPage = () => {
 				price: editItem.price,
 				stock: editItem.stock,
 				category: editItem.category,
-			});
+			})
 		}
 		return () => {
 			formik.setValues({
@@ -175,10 +175,10 @@ const Id: NextPage = () => {
 				price: 0,
 				stock: 0,
 				category: '',
-			});
-		};
+			})
+		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [editItem]);
+	}, [editItem])
 
 	return (
 		<PageWrapper>
@@ -610,7 +610,7 @@ const Id: NextPage = () => {
 																		setEditItem({
 																			...editItem,
 																			image: undefined,
-																		});
+																		})
 																	}}>
 																	Delete Image
 																</Button>
@@ -725,15 +725,15 @@ const Id: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
 export async function getStaticPaths() {
 	return {
@@ -744,7 +744,7 @@ export async function getStaticPaths() {
 			{ params: { id: '2' } },
 		],
 		fallback: true,
-	};
+	}
 }
 
-export default Id;
+export default Id

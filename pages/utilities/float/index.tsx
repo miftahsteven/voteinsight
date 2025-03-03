@@ -1,32 +1,32 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
 
 const Index: NextPage = () => {
 	const OVERVIEW = `
 <div className='float-start'>Float start on all viewport sizes</div><br />
 <div className='float-end'>Float end on all viewport sizes</div><br />
-<div className='float-none'>Don't float on all viewport sizes</div>`;
+<div className='float-none'>Don't float on all viewport sizes</div>`
 	const RESPONSIVE = `
 <div className='float-sm-start'>Float start on viewports sized SM (small) or wider</div><br />
 <div className='float-md-start'>Float start on viewports sized MD (medium) or wider</div><br />
 <div className='float-lg-start'>Float start on viewports sized LG (large) or wider</div><br />
-<div className='float-xl-start'>Float start on viewports sized XL (extra-large) or wider</div><br />`;
+<div className='float-xl-start'>Float start on viewports sized XL (extra-large) or wider</div><br />`
 
 	const UTILITIES_API = `
 "float": (
@@ -37,7 +37,7 @@ const Index: NextPage = () => {
 		end: right,
 		none: none,
   	)
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -224,14 +224,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

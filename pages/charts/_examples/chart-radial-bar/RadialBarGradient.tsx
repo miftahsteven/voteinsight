@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const RadialBarGradient = () => {
 	const [state] = useState<IChartOptions>({
@@ -62,7 +62,7 @@ const RadialBarGradient = () => {
 						},
 						value: {
 							formatter(val) {
-								return parseInt(String(val), 10).toString();
+								return parseInt(String(val), 10).toString()
 							},
 							color: '#111',
 							fontSize: '36px',
@@ -89,7 +89,7 @@ const RadialBarGradient = () => {
 			},
 			labels: ['Percent'],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -111,7 +111,7 @@ const RadialBarGradient = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadialBarGradient;
+export default RadialBarGradient

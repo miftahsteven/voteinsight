@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgDvr = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgDvr = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M8 12h11v2H8zm0-4h11v2H8zm13-5H3c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h5v2h8v-2h5c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm0 14H3V5h18v12zM5 12h2v2H5zm0-4h2v2H5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgDvr;
+export default SvgDvr

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBlurLinear = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -19,7 +19,7 @@ const SvgBlurLinear = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={9} cy={8} r={1} />
 			<path d='M3 19h18v2H3z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBlurLinear;
+export default SvgBlurLinear

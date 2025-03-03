@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFindInPage = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgFindInPage = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6zm4 15.58l-1.84-1.84a4.992 4.992 0 00-.64-6.28A4.96 4.96 0 0012 8a5 5 0 00-3.53 1.46 4.98 4.98 0 000 7.05 4.982 4.982 0 006.28.63L17.6 20H6V4h7l5 5v8.58zm-3.01-4.59c0 .8-.31 1.55-.88 2.11-.56.56-1.31.88-2.11.88s-1.55-.31-2.11-.88c-.56-.56-.88-1.31-.88-2.11s.31-1.55.88-2.11S11.2 10 12 10s1.55.31 2.11.88c.57.56.88 1.31.88 2.11z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFindInPage;
+export default SvgFindInPage

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const RadialBarSemiCircleGauge = () => {
 	const [state] = useState<IChartOptions>({
@@ -65,7 +65,7 @@ const RadialBarSemiCircleGauge = () => {
 			},
 			labels: ['Average Results'],
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -87,7 +87,7 @@ const RadialBarSemiCircleGauge = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default RadialBarSemiCircleGauge;
+export default RadialBarSemiCircleGauge

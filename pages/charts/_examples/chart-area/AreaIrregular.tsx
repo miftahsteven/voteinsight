@@ -1,36 +1,36 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
+import React, { useState } from 'react'
+import dayjs from 'dayjs'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import { dataSeries } from '../../../../common/data/chartDummyData';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import { dataSeries } from '../../../../common/data/chartDummyData'
 
 const AreaIrregular = () => {
-	let ts1 = 1388534400000;
-	let ts2 = 1388620800000;
-	let ts3 = 1389052800000;
+	let ts1 = 1388534400000
+	let ts2 = 1388620800000
+	let ts3 = 1389052800000
 
-	const dataSet: any[] = [[], [], []];
+	const dataSet: any[] = [[], [], []]
 
 	for (let i = 0; i < 12; i += 1) {
-		ts1 += 86400000;
-		const innerArr = [ts1, dataSeries[2][i].value];
-		dataSet[0].push(innerArr);
+		ts1 += 86400000
+		const innerArr = [ts1, dataSeries[2][i].value]
+		dataSet[0].push(innerArr)
 	}
 	for (let i = 0; i < 18; i += 1) {
-		ts2 += 86400000;
-		const innerArr = [ts2, dataSeries[1][i].value];
-		dataSet[1].push(innerArr);
+		ts2 += 86400000
+		const innerArr = [ts2, dataSeries[1][i].value]
+		dataSet[1].push(innerArr)
 	}
 	for (let i = 0; i < 12; i += 1) {
-		ts3 += 86400000;
-		const innerArr = [ts3, dataSeries[0][i].value];
-		dataSet[2].push(innerArr);
+		ts3 += 86400000
+		const innerArr = [ts3, dataSeries[0][i].value]
+		dataSet[2].push(innerArr)
 	}
 	const [state] = useState<IChartOptions>({
 		series: [
@@ -79,7 +79,7 @@ const AreaIrregular = () => {
 					},
 					offsetX: 0,
 					formatter(val) {
-						return (val / 1000000).toFixed(2);
+						return (val / 1000000).toFixed(2)
 					},
 				},
 				axisBorder: {
@@ -100,7 +100,7 @@ const AreaIrregular = () => {
 					formatter(val, timestamp) {
 						return dayjs(
 							new Date(typeof timestamp === 'number' ? timestamp : ''),
-						).format('DD MMM YYYY');
+						).format('DD MMM YYYY')
 					},
 				},
 			},
@@ -118,7 +118,7 @@ const AreaIrregular = () => {
 				offsetX: -10,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -135,7 +135,7 @@ const AreaIrregular = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default AreaIrregular;
+export default AreaIrregular

@@ -1,23 +1,23 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import classNames from 'classnames';
-import useDarkMode from '../../hooks/useDarkMode';
-import PageWrapper from '../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../menu';
-import SubHeader, { SubHeaderLeft, SubheaderSeparator } from '../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../components/bootstrap/Breadcrumb';
-import ScrollspyNav from '../../components/bootstrap/ScrollspyNav';
-import Button from '../../components/bootstrap/Button';
-import Page from '../../layout/Page/Page';
-import Card, { CardBody, CardHeader } from '../../components/bootstrap/Card';
-import Icon from '../../components/icon/Icon';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import classNames from 'classnames'
+import useDarkMode from '../../hooks/useDarkMode'
+import PageWrapper from '../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../menu'
+import SubHeader, { SubHeaderLeft, SubheaderSeparator } from '../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../components/bootstrap/Breadcrumb'
+import ScrollspyNav from '../../components/bootstrap/ScrollspyNav'
+import Button from '../../components/bootstrap/Button'
+import Page from '../../layout/Page/Page'
+import Card, { CardBody, CardHeader } from '../../components/bootstrap/Card'
+import Icon from '../../components/icon/Icon'
 
 const Index: NextPage = () => {
-	const { darkModeStatus } = useDarkMode();
-	const [activeElementId, setActiveElementId] = useState<string | null>(null);
+	const { darkModeStatus } = useDarkMode()
+	const [activeElementId, setActiveElementId] = useState<string | null>(null)
 	return (
 		<PageWrapper>
 			<Head>
@@ -508,14 +508,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

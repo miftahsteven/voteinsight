@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -17,37 +17,37 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import Icon from '../../../components/icon/Icon';
-import Button from '../../../components/bootstrap/Button';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import Icon from '../../../components/icon/Icon'
+import Button from '../../../components/bootstrap/Button'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas';
-import { TOffCanvasPlacement } from '../../../type/offCanvas-type';
-import Alert from '../../../components/bootstrap/Alert';
+} from '../../../components/bootstrap/OffCanvas'
+import { TOffCanvasPlacement } from '../../../type/offCanvas-type'
+import Alert from '../../../components/bootstrap/Alert'
 
 const Index: NextPage = () => {
-	const [offcanvasStatus, setOffcanvasStatus] = useState(false);
+	const [offcanvasStatus, setOffcanvasStatus] = useState(false)
 
-	const [backdropStatus, setBackdropStatus] = useState(true);
-	const [bodyScrollStatus, setBodyScrollStatus] = useState(false);
-	const [placement, setPlacement] = useState<TOffCanvasPlacement>('end');
+	const [backdropStatus, setBackdropStatus] = useState(true)
+	const [bodyScrollStatus, setBodyScrollStatus] = useState(false)
+	const [placement, setPlacement] = useState<TOffCanvasPlacement>('end')
 
-	const [headerClose, setHeaderClose] = useState(true);
+	const [headerClose, setHeaderClose] = useState(true)
 
 	const initialStatus = () => {
-		setBackdropStatus(true);
-		setBodyScrollStatus(false);
-		setPlacement('end');
-		setHeaderClose(true);
-	};
+		setBackdropStatus(true)
+		setBodyScrollStatus(false)
+		setPlacement('end')
+		setHeaderClose(true)
+	}
 
-	const GENERAL_USAGE = `const [state, setState] = useState(false);`;
+	const GENERAL_USAGE = `const [state, setState] = useState(false);`
 
 	const GENERAL_USAGE_2 = `
 <Button 
@@ -73,7 +73,7 @@ const Index: NextPage = () => {
 		<OffCanvasTitle id={ String }>...</OffCanvasTitle>
 	</OffCanvasHeader>
 	<OffCanvasBody className={ String } {...props}>...</OffCanvasBody>
-</OffCanvas>`;
+</OffCanvas>`
 
 	return (
 		<PageWrapper>
@@ -135,8 +135,8 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setOffcanvasStatus(true);
+												initialStatus()
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											Open offcanvas
@@ -147,8 +147,8 @@ const Index: NextPage = () => {
 											icon='PersonAdd'
 											className='mb-0 text-info h2'
 											onClick={() => {
-												initialStatus();
-												setOffcanvasStatus(true);
+												initialStatus()
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'
 										/>
@@ -156,8 +156,8 @@ const Index: NextPage = () => {
 									<div className='col-auto'>
 										<span
 											onClick={() => {
-												initialStatus();
-												setOffcanvasStatus(true);
+												initialStatus()
+												setOffcanvasStatus(true)
 											}}
 											role='presentation'
 											aria-controls='exampleOffcanvas'>
@@ -197,8 +197,8 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setOffcanvasStatus(true);
+												initialStatus()
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											isBackdrop="true"
@@ -210,9 +210,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setBackdropStatus(false);
-												setOffcanvasStatus(true);
+												initialStatus()
+												setBackdropStatus(false)
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											isBackdrop="false"
@@ -252,8 +252,8 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setOffcanvasStatus(true);
+												initialStatus()
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											isBodyScroll="false"
@@ -265,9 +265,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setBodyScrollStatus(true);
-												setOffcanvasStatus(true);
+												initialStatus()
+												setBodyScrollStatus(true)
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											isBodyScroll="true"
@@ -279,10 +279,10 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setBackdropStatus(false);
-												setBodyScrollStatus(true);
-												setOffcanvasStatus(true);
+												initialStatus()
+												setBackdropStatus(false)
+												setBodyScrollStatus(true)
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											isBodyScroll="true" & isBackdrop="false"
@@ -321,9 +321,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='East'
 											onClick={() => {
-												initialStatus();
-												setPlacement('start');
-												setOffcanvasStatus(true);
+												initialStatus()
+												setPlacement('start')
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											placement="start"
@@ -335,9 +335,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='South'
 											onClick={() => {
-												initialStatus();
-												setPlacement('top');
-												setOffcanvasStatus(true);
+												initialStatus()
+												setPlacement('top')
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											placement="top"
@@ -349,9 +349,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='North'
 											onClick={() => {
-												initialStatus();
-												setPlacement('bottom');
-												setOffcanvasStatus(true);
+												initialStatus()
+												setPlacement('bottom')
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											placement="bottom"
@@ -363,9 +363,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='West'
 											onClick={() => {
-												initialStatus();
-												setPlacement('end');
-												setOffcanvasStatus(true);
+												initialStatus()
+												setPlacement('end')
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											placement="end"
@@ -395,8 +395,8 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setOffcanvasStatus(true);
+												initialStatus()
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											isCloseButton="true"
@@ -408,9 +408,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setHeaderClose(false);
-												setOffcanvasStatus(true);
+												initialStatus()
+												setHeaderClose(false)
+												setOffcanvasStatus(true)
 											}}
 											aria-controls='exampleOffcanvas'>
 											isCloseButton="false"
@@ -459,14 +459,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

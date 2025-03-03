@@ -1,5 +1,5 @@
-import React from 'react';
-import Alert, { AlertHeading } from '../../components/bootstrap/Alert';
+import React from 'react'
+import Alert, { AlertHeading } from '../../components/bootstrap/Alert'
 
 const CommonDashboardAlert = () => {
 	return (
@@ -15,7 +15,7 @@ const CommonDashboardAlert = () => {
 			</AlertHeading>
 			<span>You have reached your monthly sales targets.</span>
 		</Alert>
-	);
-};
+	)
+}
 
-export default CommonDashboardAlert;
+export default CommonDashboardAlert

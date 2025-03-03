@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgCustomSaudiArabia = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -54,6 +54,6 @@ const SvgCustomSaudiArabia = (props: SVGProps<SVGSVGElement>) => (
 			fill='#fff'
 		/>
 	</svg>
-);
+)
 
-export default SvgCustomSaudiArabia;
+export default SvgCustomSaudiArabia

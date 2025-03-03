@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateDataHeatMap from '../../../../common/function/generateDataHeatMap';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateDataHeatMap from '../../../../common/function/generateDataHeatMap'
 
 const HeatMapColorRange = () => {
 	const [state] = useState<IChartOptions>({
@@ -126,7 +126,7 @@ const HeatMapColorRange = () => {
 				text: 'HeatMap Chart with Color Range',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -148,7 +148,7 @@ const HeatMapColorRange = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default HeatMapColorRange;
+export default HeatMapColorRange

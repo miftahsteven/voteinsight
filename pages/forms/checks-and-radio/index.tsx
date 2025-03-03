@@ -1,15 +1,15 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -19,19 +19,19 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
+} from '../../../components/bootstrap/Card'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Button from '../../../components/bootstrap/Button';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import CommonStoryLink from '../../../common/partial/other/CommonStoryLink';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import Label from '../../../components/bootstrap/forms/Label';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
+} from '../../../components/bootstrap/Dropdown'
+import Button from '../../../components/bootstrap/Button'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import CommonStoryLink from '../../../common/partial/other/CommonStoryLink'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import Label from '../../../components/bootstrap/forms/Label'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 
 const Index: NextPage = () => {
 	const GENERAL_USAGE = `
@@ -52,7 +52,7 @@ const Index: NextPage = () => {
 	onInput={ Function }
 	onInvalid={ Function }
 	onSelect={ Function }
- 	{...props}>`;
+ 	{...props}>`
 	const GENERAL_USAGE_2 = `
 <ChecksGroup
 	id={ String }
@@ -61,7 +61,7 @@ const Index: NextPage = () => {
  	{...props}>
  	<Checks {...props} />
  	...
-</ChecksGroup>`;
+</ChecksGroup>`
 
 	const flexChecks = useFormik({
 		initialValues: {
@@ -69,14 +69,14 @@ const Index: NextPage = () => {
 			checkedCheck: true,
 		},
 		onSubmit: () => {},
-	});
+	})
 	const flexRadios = useFormik({
 		initialValues: {
 			flexRadioDefault: 'first',
 			flexRadioDisabled: 'third',
 		},
 		onSubmit: () => {},
-	});
+	})
 
 	const inlineCheckboxes = useFormik({
 		initialValues: {
@@ -85,14 +85,14 @@ const Index: NextPage = () => {
 			checkThree: false,
 		},
 		onSubmit: () => {},
-	});
+	})
 
 	const inlineRadios = useFormik({
 		initialValues: {
 			radios: 'first',
 		},
 		onSubmit: () => {},
-	});
+	})
 
 	const exampleLabel = useFormik({
 		initialValues: {
@@ -102,7 +102,7 @@ const Index: NextPage = () => {
 			exampleLabelFour: false,
 		},
 		onSubmit: () => {},
-	});
+	})
 
 	const exampleInline = useFormik({
 		initialValues: {
@@ -111,7 +111,7 @@ const Index: NextPage = () => {
 			exampleInlineThree: false,
 		},
 		onSubmit: () => {},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -728,14 +728,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

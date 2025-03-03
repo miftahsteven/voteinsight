@@ -1,23 +1,23 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import { createUseStyles } from 'react-jss';
-import Link from 'next/link';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import { createUseStyles } from 'react-jss'
+import Link from 'next/link'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import PlaceholderImage from '../../../components/extras/PlaceholderImage';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import PlaceholderImage from '../../../components/extras/PlaceholderImage'
 
 const useStyles = createUseStyles({
 	// stylelint-disable-next-line selector-type-no-unknown
@@ -36,23 +36,23 @@ const useStyles = createUseStyles({
 			marginRight: '0.5rem',
 		},
 	},
-});
+})
 
 const Index: NextPage = () => {
-	const classes = useStyles();
+	const classes = useStyles()
 
 	const ADDITIVE = `
 <span className='border' />
 <span className='border-top' />
 <span className='border-end' />
 <span className='border-bottom' />
-<span className='border-start' />`;
+<span className='border-start' />`
 	const SUBTRACTIVE = `
 <span className='border-0' />
 <span className='border border-top-0' />
 <span className='border border-end-0' />
 <span className='border border-bottom-0' />
-<span className='border border-start-0' />`;
+<span className='border border-start-0' />`
 
 	const BORDER_COLOR = `
 <span className='border border-primary' />
@@ -63,14 +63,14 @@ const Index: NextPage = () => {
 <span className='border border-info' />
 <span className='border border-light' />
 <span className='border border-dark' />
-<span className='border border-white' />`;
+<span className='border border-white' />`
 
 	const BORDER_WIDTH = `
 <span className='border border-1' />
 <span className='border border-2' />
 <span className='border border-3' />
 <span className='border border-4' />
-<span className='border border-5' />`;
+<span className='border border-5' />`
 
 	const ROUNDED = `
 <img src='...' className='rounded' alt='...'/>
@@ -79,12 +79,12 @@ const Index: NextPage = () => {
 <img src='...' className='rounded-bottom' alt='...'/>
 <img src='...' className='rounded-start' alt='...'/>
 <img src='...' className='rounded-circle' alt='...'/>
-<img src='...' className='rounded-pill' alt='...'/>`;
+<img src='...' className='rounded-pill' alt='...'/>`
 	const SIZE = `
 <img src='...' className='rounded-0' alt='...' />
 <img src='...' className='rounded-1' alt='...' />
 <img src='...' className='rounded-2' alt='...' />
-<img src='...' className='rounded-3' alt='...' />`;
+<img src='...' className='rounded-3' alt='...' />`
 
 	const VARIABLES = `
 $border-width:			1px;
@@ -96,12 +96,12 @@ $border-widths: (
 	5: 5px
 );
 
-$border-color:			$gray-300;s`;
+$border-color:			$gray-300;s`
 	const VARIABLES_2 = `
 $border-radius:			1rem;
 $border-radius-sm:		$border-radius * 0.875;
 $border-radius-lg:		$border-radius * 1.25;
-$border-radius-pill:	50rem;`;
+$border-radius-pill:	50rem;`
 
 	const MIXIN = `
 @mixin border-radius($radius: $border-radius, $fallback-border-radius: false) {
@@ -163,7 +163,7 @@ $border-radius-pill:	50rem;`;
   	@if $enable-rounded {
     	border-bottom-left-radius: valid-radius($radius);
   	}
-}`;
+}`
 
 	const UTILITIES_API = `
 "border": (
@@ -212,7 +212,7 @@ $border-radius-pill:	50rem;`;
   	property: border-width,
   	class: border,
   	values: $border-widths
-),`;
+),`
 	const UTILITIES_API_2 = `
 "rounded": (
 	property: border-radius,
@@ -246,7 +246,7 @@ $border-radius-pill:	50rem;`;
 	property: border-bottom-left-radius border-top-left-radius,
 	class: rounded-start,
 	values: (null: $border-radius)
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -478,14 +478,14 @@ $border-radius-pill:	50rem;`;
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

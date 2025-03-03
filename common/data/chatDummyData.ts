@@ -1,10 +1,10 @@
-import USERS, { IUserProps } from './userDummyData';
+import USERS, { IUserProps } from './userDummyData'
 
 export interface IMessages {
-	id: number;
-	messages: { id: number; message: string }[];
-	user: IUserProps;
-	isReply?: boolean;
+	id: number
+	messages: { id: number; message: string }[]
+	user: IUserProps
+	isReply?: boolean
 }
 
 const CHLOE_VS_JOHN: IMessages[] = [
@@ -73,7 +73,7 @@ const CHLOE_VS_JOHN: IMessages[] = [
 		],
 		user: USERS.CHLOE,
 	},
-];
+]
 
 const GRACE_VS_JOHN: IMessages[] = [
 	{
@@ -128,7 +128,7 @@ const GRACE_VS_JOHN: IMessages[] = [
 		],
 		user: USERS.GRACE,
 	},
-];
+]
 
 const JANE_VS_JOHN: IMessages[] = [
 	{
@@ -189,7 +189,7 @@ const JANE_VS_JOHN: IMessages[] = [
 		],
 		user: USERS.JANE,
 	},
-];
+]
 
 const RYAN_VS_JOHN: IMessages[] = [
 	{
@@ -258,7 +258,7 @@ const RYAN_VS_JOHN: IMessages[] = [
 		],
 		user: USERS.RYAN,
 	},
-];
+]
 
 const ELLA_VS_JOHN: IMessages[] = [
 	{
@@ -328,7 +328,7 @@ const ELLA_VS_JOHN: IMessages[] = [
 		],
 		user: USERS.ELLA,
 	},
-];
+]
 
 const SAM_VS_JOHN: IMessages[] = [
 	{
@@ -400,7 +400,7 @@ const SAM_VS_JOHN: IMessages[] = [
 		],
 		user: USERS.SAM,
 	},
-];
+]
 
 const CHATS: { [key: string]: IMessages[] } = {
 	ELLA_VS_JOHN,
@@ -409,6 +409,6 @@ const CHATS: { [key: string]: IMessages[] } = {
 	RYAN_VS_JOHN,
 	CHLOE_VS_JOHN,
 	SAM_VS_JOHN,
-};
+}
 
-export default CHATS;
+export default CHATS

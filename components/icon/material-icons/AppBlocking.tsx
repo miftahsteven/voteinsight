@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgAppBlocking = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgAppBlocking = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M17 18H7V6h10v1h2V3c0-1.1-.9-2-2-2H7c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2v-4h-2v1zM7 3h10v1H7V3zm10 18H7v-1h10v1z' />
 			<path opacity={0.3} d='M7 3h10v1H7zM7 20h10v1H7z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgAppBlocking;
+export default SvgAppBlocking

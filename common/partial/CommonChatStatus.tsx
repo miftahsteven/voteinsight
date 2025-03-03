@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
-import Button, { ButtonGroup } from '../../components/bootstrap/Button';
+import React, { useState } from 'react'
+import Button, { ButtonGroup } from '../../components/bootstrap/Button'
 
 interface IStatus {
-	[key: string]: 'Online' | "Don't Disturb" | 'Offline' | 'Invisible';
+	[key: string]: 'Online' | "Don't Disturb" | 'Offline' | 'Invisible'
 }
 const CommonChatStatus = () => {
 	const STATUS: IStatus = {
@@ -10,8 +10,8 @@ const CommonChatStatus = () => {
 		DONT_DISTURB: "Don't Disturb",
 		OFFLINE: 'Offline',
 		INVISIBLE: 'Invisible',
-	};
-	const [status, setStatus] = useState<IStatus['key']>(STATUS.ONLINE);
+	}
+	const [status, setStatus] = useState<IStatus['key']>(STATUS.ONLINE)
 	return (
 		<ButtonGroup>
 			<Button isDisable color='dark' isLight>
@@ -42,7 +42,7 @@ const CommonChatStatus = () => {
 				onClick={() => setStatus(STATUS.INVISIBLE)}
 			/>
 		</ButtonGroup>
-	);
-};
+	)
+}
 
-export default CommonChatStatus;
+export default CommonChatStatus

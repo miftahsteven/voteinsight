@@ -1,20 +1,20 @@
-import React from 'react';
-import { useTour } from '@reactour/tour';
-import { createUseStyles } from 'react-jss';
-import SusyDarkMode from './assets/img/wanna/susy/susy-dark-mode.png';
-import Susy from './assets/img/wanna/susy/susy.png';
-import Susy2 from './assets/img/wanna/susy/susy2.png';
-import Susy3 from './assets/img/wanna/susy/susy3.png';
-import Susy4 from './assets/img/wanna/susy/susy4.png';
-import Susy5 from './assets/img/wanna/susy/susy5.png';
-import Susy6 from './assets/img/wanna/susy/susy6.png';
-import Susy7 from './assets/img/wanna/susy/susy7.png';
-import Susy8 from './assets/img/wanna/susy/susy8.png';
-import Susy9 from './assets/img/wanna/susy/susy9.png';
-import Susy10 from './assets/img/wanna/susy/susy10.png';
-import useDarkMode from './hooks/useDarkMode';
-import Button from './components/bootstrap/Button';
-import useMounted from './hooks/useMounted';
+import React from 'react'
+import { useTour } from '@reactour/tour'
+import { createUseStyles } from 'react-jss'
+import SusyDarkMode from './assets/img/wanna/susy/susy-dark-mode.png'
+import Susy from './assets/img/wanna/susy/susy.png'
+import Susy2 from './assets/img/wanna/susy/susy2.png'
+import Susy3 from './assets/img/wanna/susy/susy3.png'
+import Susy4 from './assets/img/wanna/susy/susy4.png'
+import Susy5 from './assets/img/wanna/susy/susy5.png'
+import Susy6 from './assets/img/wanna/susy/susy6.png'
+import Susy7 from './assets/img/wanna/susy/susy7.png'
+import Susy8 from './assets/img/wanna/susy/susy8.png'
+import Susy9 from './assets/img/wanna/susy/susy9.png'
+import Susy10 from './assets/img/wanna/susy/susy10.png'
+import useDarkMode from './hooks/useDarkMode'
+import Button from './components/bootstrap/Button'
+import useMounted from './hooks/useMounted'
 
 /**
  * Steps style
@@ -38,7 +38,7 @@ export const styles = {
 		color: 'var(--bs-body-color)',
 		borderRadius: 'var(--bs-border-radius)',
 	}),
-};
+}
 
 /**
  * Image Styles
@@ -52,7 +52,7 @@ const useStyles = createUseStyles(
 		},
 	},
 	{ link: true },
-);
+)
 
 /**
  * Prev & Next buttons
@@ -60,7 +60,7 @@ const useStyles = createUseStyles(
  * @constructor
  */
 const TourNavigation = () => {
-	const { currentStep, setCurrentStep } = useTour();
+	const { currentStep, setCurrentStep } = useTour()
 	return (
 		<div className='col-12 mt-3'>
 			<div className='row'>
@@ -86,8 +86,8 @@ const TourNavigation = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 /**
  * Selector
@@ -95,12 +95,12 @@ const TourNavigation = () => {
  * @returns {`[data-tour='${string}']`}
  */
 const getTargetName = (name: string): `[data-tour='${string}']` => {
-	return `[data-tour='${name}']`;
-};
+	return `[data-tour='${name}']`
+}
 
 const DarkModeTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-5'>
@@ -119,12 +119,12 @@ const DarkModeTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const LangSwitcherTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -147,12 +147,12 @@ const LangSwitcherTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const SearchTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -179,12 +179,12 @@ const SearchTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const CrmTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -209,13 +209,13 @@ const CrmTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const DateRangeTour = () => {
-	const { mounted } = useMounted();
-	const { darkModeStatus, setDarkModeStatus } = useDarkMode();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const { darkModeStatus, setDarkModeStatus } = useDarkMode()
+	const classes = useStyles()
 
 	return (
 		<div className='row'>
@@ -261,12 +261,12 @@ const DateRangeTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const ListPageTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -287,12 +287,12 @@ const ListPageTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const FilterTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-8 d-flex align-items-center'>
@@ -314,12 +314,12 @@ const FilterTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const ListTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -354,12 +354,12 @@ const ListTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const GridPageTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -378,12 +378,12 @@ const GridPageTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const EditPageTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -405,12 +405,12 @@ const EditPageTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const AuthPageTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -429,12 +429,12 @@ const AuthPageTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const PMTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -458,12 +458,12 @@ const PMTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const ProjectsTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -483,12 +483,12 @@ const ProjectsTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const ProjectItemTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -510,12 +510,12 @@ const ProjectItemTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const KnowledgeTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -533,12 +533,12 @@ const KnowledgeTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const KnowledgeItemTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -559,12 +559,12 @@ const KnowledgeItemTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const SalesTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -583,12 +583,12 @@ const SalesTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const AppointmentTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -609,12 +609,12 @@ const AppointmentTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const EmployeeTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -633,12 +633,12 @@ const EmployeeTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 const CRMPagesTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -660,12 +660,12 @@ const CRMPagesTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const ChatPagesTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -687,12 +687,12 @@ const ChatPagesTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const DocTour = () => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -711,13 +711,13 @@ const DocTour = () => {
 			</div>
 			<TourNavigation />
 		</div>
-	);
-};
+	)
+}
 
 const LastTour = () => {
-	const { mounted } = useMounted();
-	const { setIsOpen, setCurrentStep } = useTour();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const { setIsOpen, setCurrentStep } = useTour()
+	const classes = useStyles()
 	return (
 		<div className='row'>
 			<div className='col-md-4'>
@@ -746,8 +746,8 @@ const LastTour = () => {
 							color='danger'
 							isLink
 							onClick={() => {
-								setIsOpen(false);
-								setCurrentStep(0);
+								setIsOpen(false)
+								setCurrentStep(0)
 							}}>
 							Close
 						</Button>
@@ -765,8 +765,8 @@ const LastTour = () => {
 				</div>
 			</div>
 		</div>
-	);
-};
+	)
+}
 
 /**
  * Tour Steps
@@ -881,22 +881,22 @@ const steps = [
 	 * @step 10
 	 */
 	{
-		selector: '[href="/auth-pages/login"]',
+		selector: '[href="/auth/login"]',
 		content: () => <AuthPageTour />,
 		highlightedSelectors: [
-			'[href="/auth-pages/login"]',
+			'[href="/auth/login"]',
 			'[href="/auth-pages/sign-up"]',
 			'[href="/auth-pages/404"]',
 			getTargetName('login-page'),
 		],
 		mutationObservables: [
-			'[href="/auth-pages/login"]',
+			'[href="/auth/login"]',
 			'[href="/auth-pages/sign-up"]',
 			'[href="/auth-pages/404"]',
 			getTargetName('login-page'),
 		],
 		resizeObservables: [
-			'[href="/auth-pages/login"]',
+			'[href="/auth/login"]',
 			'[href="/auth-pages/sign-up"]',
 			'[href="/auth-pages/404"]',
 			getTargetName('login-page'),
@@ -1031,6 +1031,6 @@ const steps = [
 		selector: 'body',
 		content: () => <LastTour />,
 	},
-];
+]
 
-export default steps;
+export default steps

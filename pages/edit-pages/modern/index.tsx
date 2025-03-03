@@ -1,25 +1,25 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import dayjs, { Dayjs } from 'dayjs';
-import { useFormik } from 'formik';
-import useDarkMode from '../../../hooks/useDarkMode';
-import showNotification from '../../../components/extras/showNotification';
-import Icon from '../../../components/icon/Icon';
-import validate from '../../../common/function/validation/editPagesValidate';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dayjs, { Dayjs } from 'dayjs'
+import { useFormik } from 'formik'
+import useDarkMode from '../../../hooks/useDarkMode'
+import showNotification from '../../../components/extras/showNotification'
+import Icon from '../../../components/icon/Icon'
+import validate from '../../../common/function/validation/editPagesValidate'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Button from '../../../components/bootstrap/Button';
-import Spinner from '../../../components/bootstrap/Spinner';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Button from '../../../components/bootstrap/Button'
+import Spinner from '../../../components/bootstrap/Spinner'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -28,39 +28,39 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Avatar from '../../../components/Avatar';
-import USERS from '../../../common/data/userDummyData';
-import Input from '../../../components/bootstrap/forms/Input';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
-import Label from '../../../components/bootstrap/forms/Label';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
+} from '../../../components/bootstrap/Card'
+import Avatar from '../../../components/Avatar'
+import USERS from '../../../common/data/userDummyData'
+import Input from '../../../components/bootstrap/forms/Input'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
+import Label from '../../../components/bootstrap/forms/Label'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
+} from '../../../components/bootstrap/Dropdown'
 
 const Index: NextPage = () => {
-	const { themeStatus } = useDarkMode();
+	const { themeStatus } = useDarkMode()
 
 	/**
 	 * Common
 	 */
-	const [lastSave, setLastSave] = useState<Dayjs | null>(null);
-	const [isLoading, setIsLoading] = useState<boolean>(false);
+	const [lastSave, setLastSave] = useState<Dayjs | null>(null)
+	const [isLoading, setIsLoading] = useState<boolean>(false)
 	const handleSave = () => {
-		setLastSave(dayjs());
-		setIsLoading(false);
+		setLastSave(dayjs())
+		setIsLoading(false)
 		showNotification(
 			<span className='d-flex align-items-center'>
 				<Icon icon='Info' size='lg' className='me-1' />
 				<span>Updated Successfully</span>
 			</span>,
 			"The user's account details have been successfully updated.",
-		);
-	};
+		)
+	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -78,12 +78,12 @@ const Index: NextPage = () => {
 		},
 		validate,
 		onSubmit: () => {
-			setIsLoading(true);
-			setTimeout(handleSave, 2000);
+			setIsLoading(true)
+			setTimeout(handleSave, 2000)
 		},
-	});
+	})
 
-	const [passwordChangeCTA, setPasswordChangeCTA] = useState<boolean>(false);
+	const [passwordChangeCTA, setPasswordChangeCTA] = useState<boolean>(false)
 
 	return (
 		<PageWrapper>
@@ -481,14 +481,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

@@ -1,41 +1,75 @@
-import React, { useContext, useState } from 'react';
-import classNames from 'classnames';
-import { useTranslation } from 'next-i18next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Brand from '../../../layout/Brand/Brand';
-import Navigation, { NavigationLine } from '../../../layout/Navigation/Navigation';
-import User from '../../../layout/User/User';
+import React, { useContext, useState, useEffect } from 'react'
+import classNames from 'classnames'
+import { useTranslation } from 'next-i18next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Brand from '../../../layout/Brand/Brand'
+//import Navigation, { NavigationLine } from '../../../layout/Navigation/Navigation'
+import Navigation, { NavigationLine } from '../../../layout/Navigation/NavigationMenu'
+import User from '../../../layout/User/User'
+import { useRouter } from 'next/navigation'
+import useQueryMenuStructure from '../hooks/useQueryMenuStructure'
 import {
 	componentPagesMenu,
 	dashboardPagesMenu,
 	demoPagesMenu,
 	pageLayoutTypesPagesMenu,
+	odSystDashboard,
 	odSystAdminPagesMenu,
 	odSystPagesMenu,
 	odSystFinancePagesMenu,
-} from '../../../menu';
-import ThemeContext from '../../../context/themeContext';
-import Card, { CardBody } from '../../../components/bootstrap/Card';
+} from '../../../menu'
+import ThemeContext from '../../../context/themeContext'
+import Card, { CardBody } from '../../../components/bootstrap/Card'
 
-import Hand from '../../../assets/img/hand.png';
-import Icon from '../../../components/icon/Icon';
-import Button from '../../../components/bootstrap/Button';
-import useDarkMode from '../../../hooks/useDarkMode';
-import Aside, { AsideBody, AsideFoot, AsideHead } from '../../../layout/Aside/Aside';
+import Hand from '../../../assets/img/hand.png'
+import Icon from '../../../components/icon/Icon'
+import Button from '../../../components/bootstrap/Button'
+import useDarkMode from '../../../hooks/useDarkMode'
+import AuthContext from '../../../context/authContext'
+import Aside, { AsideBody, AsideFoot, AsideHead } from '../../../layout/Aside/Aside'
 
 const DefaultAside = () => {
-	const { asideStatus, setAsideStatus } = useContext(ThemeContext);
-
+	const { asideStatus, setAsideStatus } = useContext(ThemeContext)
+	// const { user, userData } = useContext(AuthContext);
 	const [doc, setDoc] = useState(
 		(typeof window !== 'undefined' &&
 			localStorage.getItem('facit_asideDocStatus') === 'true') ||
 			false,
-	);
+	)
 
-	const { t } = useTranslation(['common', 'menu']);
+	const router = useRouter()
 
-	const { darkModeStatus } = useDarkMode();
+	const redirectSession = () => {
+		const userLogin = JSON.stringify(localStorage.getItem('dataLogin'))
+		// @ts-ignore
+		try {
+			if (userLogin == 'null') {
+				//alert('Anda Harus Login Terlebih Dahulu');
+				//window.location.href = '/auth/login';
+				//return router.push(`/auth/login`);
+				router.push(`/${demoPagesMenu.login.path}?sessionNull=true`)
+			}
+		} catch (e) {
+			console.log(e)
+		}
+	}
+
+	const dataMenu = useQueryMenuStructure()
+	let dataMenuFinal = []
+	if (dataMenu !== undefined) {
+		dataMenuFinal = dataMenu.data[0]
+	}
+
+	console.log('SIBAPAKKK', JSON.stringify(dataMenuFinal))
+
+	useEffect(() => {
+		return redirectSession()
+	}, [])
+
+	const { t } = useTranslation(['common', 'menu'])
+
+	const { darkModeStatus } = useDarkMode()
 
 	return (
 		<Aside>
@@ -43,7 +77,8 @@ const DefaultAside = () => {
 				<Brand asideStatus={asideStatus} setAsideStatus={setAsideStatus} />
 			</AsideHead>
 			<AsideBody>
-				<Navigation menu={odSystAdminPagesMenu} id='aside-dashboard' />
+				<Navigation menu={odSystDashboard} id='aside-dashboard' />
+				<Navigation menu={dataMenuFinal} id='aside-admin' />
 				{/* {!doc && (
 					<>
 						<NavigationLine />
@@ -83,8 +118,8 @@ const DefaultAside = () => {
 								isLight
 								className='w-100'
 								onClick={() => {
-									localStorage.setItem('facit_asideDocStatus', 'false');
-									setDoc(false);
+									localStorage.setItem('facit_asideDocStatus', 'false')
+									setDoc(false)
 								}}>
 								{t('Demo Pages')}
 							</Button>
@@ -131,14 +166,14 @@ const DefaultAside = () => {
 				<User />
 			</AsideFoot>
 		</Aside>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default DefaultAside;
+export default DefaultAside

@@ -1,8 +1,8 @@
-import React, { FC, ReactNode } from 'react';
-import { createUseStyles } from 'react-jss';
-import Alert from '../../../components/bootstrap/Alert';
-import PrismCode from '../../../components/extras/PrismCode';
-import useMounted from '../../../hooks/useMounted';
+import React, { FC, ReactNode } from 'react'
+import { createUseStyles } from 'react-jss'
+import Alert from '../../../components/bootstrap/Alert'
+import PrismCode from '../../../components/extras/PrismCode'
+import useMounted from '../../../hooks/useMounted'
 
 const useStyles = createUseStyles(
 	{
@@ -22,15 +22,15 @@ const useStyles = createUseStyles(
 		},
 	},
 	{ link: true },
-);
+)
 
 interface ICommonHowToUseProps {
-	children: string | ReactNode;
-	isPrism?: boolean;
+	children: string | ReactNode
+	isPrism?: boolean
 }
 const CommonHowToUse: FC<ICommonHowToUseProps> = ({ children, isPrism }) => {
-	const { mounted } = useMounted();
-	const classes = useStyles();
+	const { mounted } = useMounted()
+	const classes = useStyles()
 
 	return (
 		<Alert
@@ -50,7 +50,7 @@ const CommonHowToUse: FC<ICommonHowToUseProps> = ({ children, isPrism }) => {
 				<code>{children}</code>
 			)}
 		</Alert>
-	);
-};
+	)
+}
 
-export default CommonHowToUse;
+export default CommonHowToUse

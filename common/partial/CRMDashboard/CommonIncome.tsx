@@ -1,17 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import Chart, { IChartOptions } from '../../../components/extras/Chart';
-import { ApexOptions } from 'apexcharts';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import Chart, { IChartOptions } from '../../../components/extras/Chart'
+import { ApexOptions } from 'apexcharts'
 
 interface ISalePerTab {
-	[key: string]: 'Day' | 'Week' | 'Month';
+	[key: string]: 'Day' | 'Week' | 'Month'
 }
 const CommonIncome = () => {
 	const chartOptions: ApexOptions = {
@@ -39,7 +39,7 @@ const CommonIncome = () => {
 							fontWeight: 900,
 							offsetY: 0,
 							formatter(val) {
-								return val;
+								return val
 							},
 						},
 						value: {
@@ -49,7 +49,7 @@ const CommonIncome = () => {
 							fontWeight: 900,
 							offsetY: 16,
 							formatter(val) {
-								return val;
+								return val
 							},
 						},
 					},
@@ -60,7 +60,7 @@ const CommonIncome = () => {
 			show: true,
 			position: 'bottom',
 		},
-	};
+	}
 
 	const DUMMY_DATA: { [key: string]: IChartOptions } = {
 		DAY: {
@@ -81,21 +81,19 @@ const CommonIncome = () => {
 				...chartOptions,
 			},
 		},
-	};
+	}
 
 	const [state, setState] = useState<IChartOptions>({
 		series: DUMMY_DATA.MONTH.series,
 		options: chartOptions,
-	});
+	})
 
 	const SALE_PER_TAB: { [key: string]: ISalePerTab['key'] } = {
 		DAY: 'Day',
 		WEEK: 'Week',
 		MONTH: 'Month',
-	};
-	const [activeSalePerTab, setActiveSalePerTab] = useState<ISalePerTab['key']>(
-		SALE_PER_TAB.MONTH,
-	);
+	}
+	const [activeSalePerTab, setActiveSalePerTab] = useState<ISalePerTab['key']>(SALE_PER_TAB.MONTH)
 	return (
 		<Card stretch>
 			<CardHeader>
@@ -106,11 +104,11 @@ const CommonIncome = () => {
 					<Button
 						color='info'
 						onClick={() => {
-							setActiveSalePerTab(SALE_PER_TAB.DAY);
+							setActiveSalePerTab(SALE_PER_TAB.DAY)
 							setState({
 								series: DUMMY_DATA.DAY.series,
 								options: DUMMY_DATA.DAY.options,
-							});
+							})
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.DAY}
 						isLight={activeSalePerTab === SALE_PER_TAB.DAY}>
@@ -119,11 +117,11 @@ const CommonIncome = () => {
 					<Button
 						color='info'
 						onClick={() => {
-							setActiveSalePerTab(SALE_PER_TAB.WEEK);
+							setActiveSalePerTab(SALE_PER_TAB.WEEK)
 							setState({
 								series: DUMMY_DATA.WEEK.series,
 								options: DUMMY_DATA.WEEK.options,
-							});
+							})
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.WEEK}
 						isLight={activeSalePerTab === SALE_PER_TAB.WEEK}>
@@ -132,11 +130,11 @@ const CommonIncome = () => {
 					<Button
 						color='info'
 						onClick={() => {
-							setActiveSalePerTab(SALE_PER_TAB.MONTH);
+							setActiveSalePerTab(SALE_PER_TAB.MONTH)
 							setState({
 								series: DUMMY_DATA.MONTH.series,
 								options: DUMMY_DATA.MONTH.options,
-							});
+							})
 						}}
 						isLink={activeSalePerTab !== SALE_PER_TAB.MONTH}
 						isLight={activeSalePerTab === SALE_PER_TAB.MONTH}>
@@ -153,7 +151,7 @@ const CommonIncome = () => {
 				/>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonIncome;
+export default CommonIncome

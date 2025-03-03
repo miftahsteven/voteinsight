@@ -1,21 +1,21 @@
-import React, { FC, HTMLAttributes, memo } from 'react';
-import classNames from 'classnames';
-import { ApexOptions } from 'apexcharts';
+import React, { FC, HTMLAttributes, memo } from 'react'
+import classNames from 'classnames'
+import { ApexOptions } from 'apexcharts'
 
-import dynamic from 'next/dynamic';
-import Mounted from '../Mounted';
+import dynamic from 'next/dynamic'
+import Mounted from '../Mounted'
 
 const ReactApexChart = dynamic(() => import('react-apexcharts'), {
 	ssr: false,
-});
+})
 
 interface IChartProps extends HTMLAttributes<HTMLDivElement> {
-	series: ApexOptions['series'];
-	options: ApexOptions;
-	type?: ApexChart['type'];
-	width?: string | number;
-	height?: string | number;
-	className?: string;
+	series: ApexOptions['series']
+	options: ApexOptions
+	type?: ApexChart['type']
+	width?: string | number
+	height?: string | number
+	className?: string
 }
 const Chart: FC<IChartProps> = ({
 	series,
@@ -63,15 +63,15 @@ const Chart: FC<IChartProps> = ({
 				/>
 			</Mounted>
 		</div>
-	);
-};
+	)
+}
 
 /**
  * For use useState
  */
 export interface IChartOptions extends Record<string, any> {
-	series: ApexOptions['series'];
-	options: ApexOptions;
+	series: ApexOptions['series']
+	options: ApexOptions
 }
 
-export default memo(Chart);
+export default memo(Chart)

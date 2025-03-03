@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react';
+import React, { useCallback } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,22 +6,22 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Button from '../../components/bootstrap/Button';
-import Avatar, { AvatarGroup } from '../../components/Avatar';
-import useDarkMode from '../../hooks/useDarkMode';
-import { demoPagesMenu } from '../../menu';
-import USERS from '../data/userDummyData';
-import { useRouter } from 'next/router';
+} from '../../components/bootstrap/Card'
+import Button from '../../components/bootstrap/Button'
+import Avatar, { AvatarGroup } from '../../components/Avatar'
+import useDarkMode from '../../hooks/useDarkMode'
+import { demoPagesMenu } from '../../menu'
+import USERS from '../data/userDummyData'
+import { useRouter } from 'next/router'
 
 const CommonDashboardMarketingTeam = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const router = useRouter();
+	const router = useRouter()
 	const handleOnClickToEmployeeListPage = useCallback(
 		() => router.push(`../${demoPagesMenu.appointment.subMenu.employeeList.path}`),
 		[router],
-	);
+	)
 
 	return (
 		<Card stretch>
@@ -80,7 +80,7 @@ const CommonDashboardMarketingTeam = () => {
 				</AvatarGroup>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonDashboardMarketingTeam;
+export default CommonDashboardMarketingTeam

@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSupportAgent = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -9,7 +9,7 @@ const SvgSupportAgent = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={15} cy={13} r={1} />
 			<path d='M18 11.03A6.04 6.04 0 0012.05 6c-3.03 0-6.29 2.51-6.03 6.45a8.075 8.075 0 004.86-5.89c1.31 2.63 4 4.44 7.12 4.47z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSupportAgent;
+export default SvgSupportAgent

@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const TreeMapColorRange = () => {
 	const [state] = useState<IChartOptions>({
@@ -86,7 +86,7 @@ const TreeMapColorRange = () => {
 				},
 				// @ts-ignore
 				formatter(text, op) {
-					return [text, op.value];
+					return [text, op.value]
 				},
 				offsetY: -4,
 			},
@@ -112,7 +112,7 @@ const TreeMapColorRange = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -134,7 +134,7 @@ const TreeMapColorRange = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default TreeMapColorRange;
+export default TreeMapColorRange

@@ -1,35 +1,35 @@
-import React, { FC, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import useDarkMode from '../../../hooks/useDarkMode';
-import showNotification from '../../../components/extras/showNotification';
-import Icon from '../../../components/icon/Icon';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import Page from '../../../layout/Page/Page';
-import CommonTransActions from '../../../common/partial/CommonTransActions';
-import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../../components/bootstrap/Modal';
-import Wizard, { WizardItem } from '../../../components/Wizard';
+import React, { FC, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import useDarkMode from '../../../hooks/useDarkMode'
+import showNotification from '../../../components/extras/showNotification'
+import Icon from '../../../components/icon/Icon'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Button from '../../../components/bootstrap/Button'
+import Page from '../../../layout/Page/Page'
+import CommonTransActions from '../../../common/partial/CommonTransActions'
+import Modal, { ModalBody, ModalHeader, ModalTitle } from '../../../components/bootstrap/Modal'
+import Wizard, { WizardItem } from '../../../components/Wizard'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Input from '../../../components/bootstrap/forms/Input';
-import Select from '../../../components/bootstrap/forms/Select';
-import Label from '../../../components/bootstrap/forms/Label';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
+} from '../../../components/bootstrap/Card'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Input from '../../../components/bootstrap/forms/Input'
+import Select from '../../../components/bootstrap/forms/Select'
+import Label from '../../../components/bootstrap/forms/Label'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 
 interface IPreviewItemProps {
-	title: string;
-	value: string;
+	title: string
+	value: string
 }
 const PreviewItem: FC<IPreviewItemProps> = ({ title, value }) => {
 	return (
@@ -37,18 +37,18 @@ const PreviewItem: FC<IPreviewItemProps> = ({ title, value }) => {
 			<div className='col-3 text-end'>{title}</div>
 			<div className='col-9 fw-bold'>{value || '-'}</div>
 		</>
-	);
-};
+	)
+}
 
 const Index: NextPage = () => {
-	const { darkModeStatus } = useDarkMode();
-	const [newTransferModal, setNewTransferModal] = useState<boolean>(false);
+	const { darkModeStatus } = useDarkMode()
+	const [newTransferModal, setNewTransferModal] = useState<boolean>(false)
 
 	const bankTypes: { id: number; name: string }[] = [
 		{ id: 1, name: 'Fast Bank' },
 		{ id: 2, name: 'Bank of World' },
 		{ id: 3, name: 'OS Bank' },
-	];
+	]
 	const formik = useFormik({
 		initialValues: {
 			firstName: 'John',
@@ -65,16 +65,16 @@ const Index: NextPage = () => {
 			iban: '',
 		},
 		onSubmit: () => {
-			setNewTransferModal(false);
+			setNewTransferModal(false)
 			showNotification(
 				<span className='d-flex align-items-center'>
 					<Icon icon='Info' size='lg' className='me-1' />
 					<span>Transaction queued</span>
 				</span>,
 				'The operation is queued, when it is successful, a notification will come again.',
-			);
+			)
 		},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -102,7 +102,7 @@ const Index: NextPage = () => {
 						isLight
 						icon='PublishedWithChanges'
 						onClick={() => {
-							setNewTransferModal(true);
+							setNewTransferModal(true)
 						}}>
 						New Transfer
 					</Button>
@@ -384,14 +384,14 @@ const Index: NextPage = () => {
 				</ModalBody>
 			</Modal>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

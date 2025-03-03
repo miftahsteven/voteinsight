@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSignalWifiStatusbarConnectedNoInternet2 = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgSignalWifiStatusbarConnectedNoInternet2 = (props: SVGProps<SVGSVGElemen
 			/>
 			<path d='M4.23 13.22L12 21l5-5.01v-4.78a10.96 10.96 0 00-12.77 2.01zM19 18h2v2h-2zM19 10h2v6h-2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSignalWifiStatusbarConnectedNoInternet2;
+export default SvgSignalWifiStatusbarConnectedNoInternet2

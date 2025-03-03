@@ -1,5 +1,5 @@
-import type { SVGProps } from 'react';
-import * as React from 'react';
+import type { SVGProps } from 'react'
+import * as React from 'react'
 
 const SvgCustomPaypal = (props: SVGProps<SVGSVGElement>) => (
 	<svg
@@ -23,5 +23,5 @@ const SvgCustomPaypal = (props: SVGProps<SVGSVGElement>) => (
 			}}
 		/>
 	</svg>
-);
-export default SvgCustomPaypal;
+)
+export default SvgCustomPaypal

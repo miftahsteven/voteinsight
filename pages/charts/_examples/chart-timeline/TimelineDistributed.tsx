@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
+import React, { useState } from 'react'
+import dayjs from 'dayjs'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const TimelineDistributed = () => {
 	const [state] = useState<IChartOptions>({
@@ -59,13 +59,13 @@ const TimelineDistributed = () => {
 			dataLabels: {
 				enabled: true,
 				formatter(val, opts) {
-					const label = opts.w.globals.labels[opts.dataPointIndex];
+					const label = opts.w.globals.labels[opts.dataPointIndex]
 					// @ts-ignore
-					const a = dayjs(val[0]);
+					const a = dayjs(val[0])
 					// @ts-ignore
-					const b = dayjs(val[1]);
-					const diff = b.diff(a, 'days');
-					return `${label}: ${diff}${diff > 1 ? ' days' : ' day'}`;
+					const b = dayjs(val[1])
+					const diff = b.diff(a, 'days')
+					return `${label}: ${diff}${diff > 1 ? ' days' : ' day'}`
 				},
 				style: {
 					colors: ['#f3f4f5', '#fff'],
@@ -84,7 +84,7 @@ const TimelineDistributed = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -106,7 +106,7 @@ const TimelineDistributed = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default TimelineDistributed;
+export default TimelineDistributed

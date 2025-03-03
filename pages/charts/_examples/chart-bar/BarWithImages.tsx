@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import Image from '../../../../assets/img/coins.jpeg';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import Image from '../../../../assets/img/coins.jpeg'
 
 const BarWithImages = () => {
 	const [state] = useState<IChartOptions>({
@@ -44,7 +44,7 @@ const BarWithImages = () => {
 			// @ts-ignore
 			// eslint-disable-next-line prefer-spread
 			labels: Array.apply(null, { length: 39 }).map((el, index) => {
-				return (index + 1).toString();
+				return (index + 1).toString()
 			}),
 			yaxis: {
 				axisBorder: {
@@ -78,7 +78,7 @@ const BarWithImages = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -95,7 +95,7 @@ const BarWithImages = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default BarWithImages;
+export default BarWithImages

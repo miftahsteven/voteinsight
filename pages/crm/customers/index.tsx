@@ -1,47 +1,44 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import useDarkMode from '../../../hooks/useDarkMode';
-import PaginationButtons, {
-	dataPagination,
-	PER_COUNT,
-} from '../../../components/PaginationButtons';
-import PAYMENTS from '../../../common/data/enumPaymentMethod';
-import data from '../../../common/data/dummyCustomerData';
-import useSortableData from '../../../hooks/useSortableData';
-import { demoPagesMenu } from '../../../menu';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import useDarkMode from '../../../hooks/useDarkMode'
+import PaginationButtons, { dataPagination, PER_COUNT } from '../../../components/PaginationButtons'
+import PAYMENTS from '../../../common/data/enumPaymentMethod'
+import data from '../../../common/data/dummyCustomerData'
+import useSortableData from '../../../hooks/useSortableData'
+import { demoPagesMenu } from '../../../menu'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Icon from '../../../components/icon/Icon';
-import Input from '../../../components/bootstrap/forms/Input';
+} from '../../../layout/SubHeader/SubHeader'
+import Icon from '../../../components/icon/Icon'
+import Input from '../../../components/bootstrap/forms/Input'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Button from '../../../components/bootstrap/Button';
-import Popovers from '../../../components/bootstrap/Popovers';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
-import Page from '../../../layout/Page/Page';
-import Card, { CardBody } from '../../../components/bootstrap/Card';
-import { getColorNameWithIndex } from '../../../common/data/enumColors';
-import { getFirstLetter, priceFormat } from '../../../helpers/helpers';
-import CustomerEditModal from '../_common/CustomerEditModal';
+} from '../../../components/bootstrap/Dropdown'
+import Button from '../../../components/bootstrap/Button'
+import Popovers from '../../../components/bootstrap/Popovers'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
+import Page from '../../../layout/Page/Page'
+import Card, { CardBody } from '../../../components/bootstrap/Card'
+import { getColorNameWithIndex } from '../../../common/data/enumColors'
+import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
+import CustomerEditModal from '../_common/CustomerEditModal'
 
 const Index: NextPage = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const [currentPage, setCurrentPage] = useState<number>(1);
-	const [perPage, setPerPage] = useState<number>(PER_COUNT['10']);
+	const [currentPage, setCurrentPage] = useState<number>(1)
+	const [perPage, setPerPage] = useState<number>(PER_COUNT['10'])
 
 	const formik = useFormik({
 		initialValues: {
@@ -53,7 +50,7 @@ const Index: NextPage = () => {
 		onSubmit: () => {
 			// alert(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	const filteredData = data.filter(
 		(f) =>
@@ -64,11 +61,11 @@ const Index: NextPage = () => {
 			(formik.values.maxPrice === '' || f.balance < Number(formik.values.maxPrice)) &&
 			// Payment Type
 			formik.values.payment.includes(f.payout),
-	);
+	)
 
-	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData);
+	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData)
 
-	const [editModalStatus, setEditModalStatus] = useState<boolean>(false);
+	const [editModalStatus, setEditModalStatus] = useState<boolean>(false)
 
 	return (
 		<PageWrapper>
@@ -310,14 +307,14 @@ const Index: NextPage = () => {
 			</Page>
 			<CustomerEditModal setIsOpen={setEditModalStatus} isOpen={editModalStatus} id='0' />
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

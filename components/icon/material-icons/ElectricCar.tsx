@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgElectricCar = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -13,7 +13,7 @@ const SvgElectricCar = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={16.5} cy={10.5} r={1.5} />
 			<path d='M7 20h4v-2l6 3h-4v2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgElectricCar;
+export default SvgElectricCar

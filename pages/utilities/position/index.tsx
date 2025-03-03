@@ -1,24 +1,24 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import Link from 'next/link';
-import { createUseStyles } from 'react-jss';
-import classNames from 'classnames';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import Link from 'next/link'
+import { createUseStyles } from 'react-jss'
+import classNames from 'classnames'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonCodePreview from '../../../common/partial/other/CommonCodePreview';
-import PrismCode from '../../../components/extras/PrismCode';
+} from '../../../components/bootstrap/Card'
+import CommonCodePreview from '../../../common/partial/other/CommonCodePreview'
+import PrismCode from '../../../components/extras/PrismCode'
 
 const useStyles = createUseStyles({
 	// stylelint-disable-next-line selector-type-no-unknown
@@ -34,17 +34,17 @@ const useStyles = createUseStyles({
 			borderRadius: '0.25rem',
 		},
 	},
-});
+})
 
 const Index: NextPage = () => {
-	const classes = useStyles();
+	const classes = useStyles()
 
 	const POSITION_VALUES = `
 <div className='position-static'>...</div>
 <div className='position-relative'>...</div>
 <div className='position-absolute'>...</div>
 <div className='position-fixed'>...</div>
-<div className='position-sticky'>...</div>`;
+<div className='position-sticky'>...</div>`
 	const ARRANGE = `
 <div className='position-relative'>
 	<div className='position-absolute top-0 start-0' />
@@ -53,7 +53,7 @@ const Index: NextPage = () => {
 	<div className='position-absolute bottom-50 end-50' />
 	<div className='position-absolute bottom-0 start-0' />
 	<div className='position-absolute bottom-0 end-0' />
-</div>`;
+</div>`
 
 	const CENTER = `
 <div className='position-relative'>
@@ -66,7 +66,7 @@ const Index: NextPage = () => {
 	<div className='position-absolute top-100 start-0 translate-middle' />
 	<div className='position-absolute top-100 start-50 translate-middle' />
 	<div className='position-absolute top-100 start-100 translate-middle' />
-</div>`;
+</div>`
 	const CENTER_2 = `
 <div className='position-relative'>
 	<div className='position-absolute top-0 start-0' />
@@ -78,7 +78,7 @@ const Index: NextPage = () => {
 	<div className='position-absolute bottom-0 start-0' />
 	<div className='position-absolute bottom-0 start-50 translate-middle-x' />
 	<div className='position-absolute bottom-0 end-0' />
-</div>`;
+</div>`
 
 	const EXAMPLE = `
 <button
@@ -112,7 +112,7 @@ const Index: NextPage = () => {
 	<span className='position-absolute top-0 start-100 translate-middle badge border border-light rounded-circle bg-danger p-2'>
 		<span className='visually-hidden'>unread messages</span>
 	</span>
-</button>`;
+</button>`
 
 	const MAP = `
 $position-values: (
@@ -137,7 +137,7 @@ $position-values: (
 	90: 90%,
 	95: 95%,
 	100: 100%
-);`;
+);`
 	const UTILITIES_API = `
 "position": (
   	property: position,
@@ -169,7 +169,7 @@ $position-values: (
 		x: translateX(-50%),
 		y: translateY(-50%),
   	)
-),`;
+),`
 
 	return (
 		<PageWrapper>
@@ -490,14 +490,14 @@ $position-values: (
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

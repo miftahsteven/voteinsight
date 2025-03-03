@@ -1,64 +1,64 @@
-import React, { FC, ReactElement, ReactNode, useContext, useEffect, useState } from 'react';
-import classNames from 'classnames';
-import { useMeasure, useWindowSize } from 'react-use';
-import ThemeContext from '../../context/themeContext';
-import Button from '../../components/bootstrap/Button';
-import Portal from '../Portal/Portal';
-import useDarkMode from '../../hooks/useDarkMode';
-import useMounted from '../../hooks/useMounted';
-import Mounted from '../../components/Mounted';
-import useRoot from '../../hooks/useRoot';
+import React, { FC, ReactElement, ReactNode, useContext, useEffect, useState } from 'react'
+import classNames from 'classnames'
+import { useMeasure, useWindowSize } from 'react-use'
+import ThemeContext from '../../context/themeContext'
+import Button from '../../components/bootstrap/Button'
+import Portal from '../Portal/Portal'
+import useDarkMode from '../../hooks/useDarkMode'
+import useMounted from '../../hooks/useMounted'
+import Mounted from '../../components/Mounted'
+import useRoot from '../../hooks/useRoot'
 
 interface IHeaderLeftProps {
-	children: ReactNode;
-	className?: string;
+	children: ReactNode
+	className?: string
 }
 export const HeaderLeft: FC<IHeaderLeftProps> = ({ children, className }) => {
-	return <div className={classNames('header-left', 'col-md', className)}>{children}</div>;
-};
+	return <div className={classNames('header-left', 'col-md', className)}>{children}</div>
+}
 
 interface IHeaderRightProps {
-	children: ReactNode;
-	className?: string;
+	children: ReactNode
+	className?: string
 }
 export const HeaderRight: FC<IHeaderRightProps> = ({ children, className }) => {
-	const [ref, { height }] = useMeasure<HTMLDivElement>();
+	const [ref, { height }] = useMeasure<HTMLDivElement>()
 
-	const root = useRoot();
-	root?.style.setProperty('--header-right-height', `${height}px`);
+	const root = useRoot()
+	root?.style.setProperty('--header-right-height', `${height}px`)
 
 	return (
 		<div ref={ref} className={classNames('header-right', 'col-md-auto', className)}>
 			{children}
 		</div>
-	);
-};
+	)
+}
 
 interface IHeaderProps {
-	children: ReactElement<IHeaderLeftProps> | ReactElement<IHeaderRightProps> | ReactNode;
-	hasLeftMobileMenu?: boolean;
-	hasRightMobileMenu?: boolean;
+	children: ReactElement<IHeaderLeftProps> | ReactElement<IHeaderRightProps> | ReactNode
+	hasLeftMobileMenu?: boolean
+	hasRightMobileMenu?: boolean
 }
 const Header: FC<IHeaderProps> = ({
 	children,
 	hasLeftMobileMenu = true,
 	hasRightMobileMenu = true,
 }) => {
-	const { themeStatus } = useDarkMode();
-	const { mounted } = useMounted();
+	const { themeStatus } = useDarkMode()
+	const { mounted } = useMounted()
 
-	const windowsWidth = useWindowSize().width;
-	const [refMobileHeader, sizeMobileHeader] = useMeasure<HTMLDivElement>();
-	const [refHeader, sizeHeader] = useMeasure<HTMLDivElement>();
+	const windowsWidth = useWindowSize().width
+	const [refMobileHeader, sizeMobileHeader] = useMeasure<HTMLDivElement>()
+	const [refHeader, sizeHeader] = useMeasure<HTMLDivElement>()
 
-	const [root, setRoot] = useState<any>(null);
+	const [root, setRoot] = useState<any>(null)
 	useEffect(() => {
 		if (mounted) {
-			setRoot(document.documentElement);
+			setRoot(document.documentElement)
 		}
-	}, [mounted]);
-	root?.style.setProperty('--mobile-header-height', `${sizeMobileHeader.height}px`);
-	root?.style.setProperty('--header-height', `${sizeHeader.height}px`);
+	}, [mounted])
+	root?.style.setProperty('--mobile-header-height', `${sizeMobileHeader.height}px`)
+	root?.style.setProperty('--header-height', `${sizeHeader.height}px`)
 
 	const {
 		asideStatus,
@@ -67,18 +67,18 @@ const Header: FC<IHeaderProps> = ({
 		setLeftMenuStatus,
 		rightMenuStatus,
 		setRightMenuStatus,
-	} = useContext(ThemeContext);
+	} = useContext(ThemeContext)
 
 	useEffect(() => {
 		if (
 			(asideStatus || leftMenuStatus || rightMenuStatus) &&
 			windowsWidth < Number(process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE)
 		)
-			document.body.classList.add('overflow-hidden');
+			document.body.classList.add('overflow-hidden')
 		return () => {
-			document.body.classList.remove('overflow-hidden');
-		};
-	});
+			document.body.classList.remove('overflow-hidden')
+		}
+	})
 
 	return (
 		<Mounted>
@@ -94,9 +94,9 @@ const Header: FC<IHeaderProps> = ({
 								isLight={asideStatus}
 								icon={asideStatus ? 'FirstPage' : 'LastPage'}
 								onClick={() => {
-									setAsideStatus(!asideStatus);
-									setLeftMenuStatus(false);
-									setRightMenuStatus(false);
+									setAsideStatus(!asideStatus)
+									setLeftMenuStatus(false)
+									setRightMenuStatus(false)
 								}}
 							/>
 							{hasLeftMobileMenu && (
@@ -108,9 +108,9 @@ const Header: FC<IHeaderProps> = ({
 									isLight={leftMenuStatus}
 									icon={leftMenuStatus ? 'MoreVert' : 'MoreHoriz'}
 									onClick={() => {
-										setAsideStatus(false);
-										setLeftMenuStatus(!leftMenuStatus);
-										setRightMenuStatus(false);
+										setAsideStatus(false)
+										setLeftMenuStatus(!leftMenuStatus)
+										setRightMenuStatus(false)
 									}}
 								/>
 							)}
@@ -125,9 +125,9 @@ const Header: FC<IHeaderProps> = ({
 									isLight={rightMenuStatus}
 									icon={rightMenuStatus ? 'Menu' : 'MenuOpen'}
 									onClick={() => {
-										setAsideStatus(false);
-										setLeftMenuStatus(false);
-										setRightMenuStatus(!rightMenuStatus);
+										setAsideStatus(false)
+										setLeftMenuStatus(false)
+										setRightMenuStatus(!rightMenuStatus)
 									}}
 								/>
 							</div>
@@ -153,9 +153,9 @@ const Header: FC<IHeaderProps> = ({
 										'header-overlay-right-menu': rightMenuStatus,
 									})}
 									onClick={() => {
-										setAsideStatus(false);
-										setLeftMenuStatus(false);
-										setRightMenuStatus(false);
+										setAsideStatus(false)
+										setLeftMenuStatus(false)
+										setRightMenuStatus(false)
 									}}
 								/>
 							</Portal>
@@ -164,7 +164,7 @@ const Header: FC<IHeaderProps> = ({
 				</div>
 			</header>
 		</Mounted>
-	);
-};
+	)
+}
 
-export default Header;
+export default Header

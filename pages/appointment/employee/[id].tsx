@@ -1,54 +1,54 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { useRouter } from 'next/router';
-import Head from 'next/head';
-import dayjs from 'dayjs';
-import classNames from 'classnames';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import useTourStep from '../../../hooks/useTourStep';
-import useDarkMode from '../../../hooks/useDarkMode';
-import { getUserDataWithId } from '../../../common/data/userDummyData';
-import Chart, { IChartOptions } from '../../../components/extras/Chart';
-import COLORS from '../../../common/data/enumColors';
-import dummyEventsData from '../../../common/data/dummyEventsData';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { useRouter } from 'next/router'
+import Head from 'next/head'
+import dayjs from 'dayjs'
+import classNames from 'classnames'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import useTourStep from '../../../hooks/useTourStep'
+import useDarkMode from '../../../hooks/useDarkMode'
+import { getUserDataWithId } from '../../../common/data/userDummyData'
+import Chart, { IChartOptions } from '../../../components/extras/Chart'
+import COLORS from '../../../common/data/enumColors'
+import dummyEventsData from '../../../common/data/dummyEventsData'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import Button from '../../../components/bootstrap/Button';
-import { demoPagesMenu } from '../../../menu';
-import CommonAvatarTeam from '../../../common/partial/other/CommonAvatarTeam';
-import Page from '../../../layout/Page/Page';
+} from '../../../layout/SubHeader/SubHeader'
+import Button from '../../../components/bootstrap/Button'
+import { demoPagesMenu } from '../../../menu'
+import CommonAvatarTeam from '../../../common/partial/other/CommonAvatarTeam'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Avatar from '../../../components/Avatar';
-import Icon from '../../../components/icon/Icon';
-import Badge from '../../../components/bootstrap/Badge';
-import Alert from '../../../components/bootstrap/Alert';
+} from '../../../components/bootstrap/Card'
+import Avatar from '../../../components/Avatar'
+import Icon from '../../../components/icon/Icon'
+import Badge from '../../../components/bootstrap/Badge'
+import Alert from '../../../components/bootstrap/Alert'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import EVENT_STATUS from '../../../common/data/enumEventStatus';
-import { priceFormat } from '../../../helpers/helpers';
+} from '../../../components/bootstrap/Dropdown'
+import EVENT_STATUS from '../../../common/data/enumEventStatus'
+import { priceFormat } from '../../../helpers/helpers'
 
 const Id: NextPage = () => {
-	useTourStep(19);
-	const { darkModeStatus } = useDarkMode();
+	useTourStep(19)
+	const { darkModeStatus } = useDarkMode()
 
-	const router = useRouter();
-	const { id } = router.query;
+	const router = useRouter()
+	const { id } = router.query
 
-	const data = getUserDataWithId(String(id));
+	const data = getUserDataWithId(String(id))
 
 	const [dayHours] = useState<IChartOptions>({
 		series: [
@@ -89,7 +89,7 @@ const Id: NextPage = () => {
 				y: {
 					title: {
 						formatter() {
-							return 'Hours';
+							return 'Hours'
 						},
 					},
 				},
@@ -108,9 +108,9 @@ const Id: NextPage = () => {
 				},
 			},
 		},
-	});
+	})
 
-	const userTasks = dummyEventsData.filter((f) => f.assigned.username === data?.username);
+	const userTasks = dummyEventsData.filter((f) => f.assigned.username === data?.username)
 
 	return (
 		<PageWrapper>
@@ -603,15 +603,15 @@ const Id: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
 export async function getStaticPaths() {
 	return {
@@ -622,7 +622,7 @@ export async function getStaticPaths() {
 			{ params: { id: '2' } },
 		],
 		fallback: true,
-	};
+	}
 }
 
-export default Id;
+export default Id

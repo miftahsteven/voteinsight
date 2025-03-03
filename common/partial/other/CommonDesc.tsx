@@ -1,12 +1,12 @@
-import React, { FC, ReactNode } from 'react';
-import classNames from 'classnames';
-import Alert from '../../../components/bootstrap/Alert';
-import { TColor } from '../../../type/color-type';
+import React, { FC, ReactNode } from 'react'
+import classNames from 'classnames'
+import Alert from '../../../components/bootstrap/Alert'
+import { TColor } from '../../../type/color-type'
 
 interface ICommonDescProps {
-	children: ReactNode;
-	className?: string;
-	color?: TColor;
+	children: ReactNode
+	className?: string
+	color?: TColor
 }
 const CommonDesc: FC<ICommonDescProps> = ({ children, className, color = 'warning' }) => {
 	return (
@@ -19,7 +19,7 @@ const CommonDesc: FC<ICommonDescProps> = ({ children, className, color = 'warnin
 			className={classNames('flex-nowrap', 'w-100', 'mb-0', className)}>
 			{children}
 		</Alert>
-	);
-};
+	)
+}
 
-export default CommonDesc;
+export default CommonDesc

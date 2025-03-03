@@ -7,29 +7,29 @@ import React, {
 	useContext,
 	useRef,
 	useState,
-} from 'react';
-import classNames from 'classnames';
-import { useWindowSize } from 'react-use';
-import { Manager, Popper, Reference } from 'react-popper';
-import { useTranslation } from 'next-i18next';
-import Icon from '../../components/icon/Icon';
-import ThemeContext from '../../context/themeContext';
-import Collapse from '../../components/bootstrap/Collapse';
-import useDarkMode from '../../hooks/useDarkMode';
-import { TIcons } from '../../type/icons-type';
-import { useRouter } from 'next/router';
-import Link from 'next/link';
-import useEventOutside from '../../hooks/useEventOutside';
-import { pathRetouch } from '../../helpers/helpers';
+} from 'react'
+import classNames from 'classnames'
+import { useWindowSize } from 'react-use'
+import { Manager, Popper, Reference } from 'react-popper'
+import { useTranslation } from 'next-i18next'
+import Icon from '../../components/icon/Icon'
+import ThemeContext from '../../context/themeContext'
+import Collapse from '../../components/bootstrap/Collapse'
+import useDarkMode from '../../hooks/useDarkMode'
+import { TIcons } from '../../type/icons-type'
+import { useRouter } from 'next/router'
+import Link from 'next/link'
+import useEventOutside from '../../hooks/useEventOutside'
+import { pathRetouch } from '../../helpers/helpers'
 
 interface IListProps extends HTMLAttributes<HTMLUListElement> {
-	id?: string;
-	children?: ReactNode;
-	className?: string;
-	ariaLabelledby?: string;
-	parentId?: string;
-	rootId?: string;
-	horizontal?: boolean;
+	id?: string
+	children?: ReactNode
+	className?: string
+	ariaLabelledby?: string
+	parentId?: string
+	rootId?: string
+	horizontal?: boolean
 }
 export const List = forwardRef<HTMLUListElement, IListProps>(
 	({ id, children, className, ariaLabelledby, parentId, rootId, horizontal, ...props }, ref) => {
@@ -47,26 +47,26 @@ export const List = forwardRef<HTMLUListElement, IListProps>(
 				{...props}>
 				{children}
 			</ul>
-		);
+		)
 	},
-);
-List.displayName = 'List';
+)
+List.displayName = 'List'
 
 interface IItemProps {
-	children?: ReactNode;
-	to?: string;
-	as?: string;
-	title?: string;
-	icon?: TIcons;
-	id?: string;
-	parentId?: string;
-	rootId: string;
-	isHorizontal?: boolean;
-	notification?: boolean | string;
-	isMore?: boolean;
-	hide?: boolean;
-	activeItem?: string;
-	setActiveItem?(...args: unknown[]): unknown;
+	children?: ReactNode
+	to?: string
+	as?: string
+	title?: string
+	icon?: TIcons
+	id?: string
+	parentId?: string
+	rootId: string
+	isHorizontal?: boolean
+	notification?: boolean | string
+	isMore?: boolean
+	hide?: boolean
+	activeItem?: string
+	setActiveItem?(...args: unknown[]): unknown
 }
 export const Item: FC<IItemProps> = ({
 	children,
@@ -83,40 +83,40 @@ export const Item: FC<IItemProps> = ({
 	hide,
 	...props
 }) => {
-	const { darkModeStatus } = useDarkMode();
-	const { width } = useWindowSize();
-	const { setAsideStatus, setLeftMenuStatus, setRightMenuStatus } = useContext(ThemeContext);
+	const { darkModeStatus } = useDarkMode()
+	const { width } = useWindowSize()
+	const { setAsideStatus, setLeftMenuStatus, setRightMenuStatus } = useContext(ThemeContext)
 
-	const ACTIVE = props.activeItem === id;
+	const ACTIVE = props.activeItem === id
 
 	const handleClick = () => {
 		if (typeof props.setActiveItem !== 'undefined') {
 			// eslint-disable-next-line @typescript-eslint/no-unused-expressions
-			ACTIVE ? props.setActiveItem(null) : props.setActiveItem(id);
+			ACTIVE ? props.setActiveItem(null) : props.setActiveItem(id)
 		}
-	};
+	}
 
 	const linkHandleClick = () => {
 		// For Mobile Design
-		if (width < Number(process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE)) setAsideStatus(false);
-		setLeftMenuStatus(false);
-		setRightMenuStatus(false);
-	};
+		if (width < Number(process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE)) setAsideStatus(false)
+		setLeftMenuStatus(false)
+		setRightMenuStatus(false)
+	}
 
-	const ANCHOR_LINK_PATTERN = /^#/i;
-	const router = useRouter();
+	const ANCHOR_LINK_PATTERN = /^#/i
+	const router = useRouter()
 
 	// For aside menu
-	const here = typeof to === 'string' && to !== '/' && router.pathname.includes(to);
+	const here = typeof to === 'string' && to !== '/' && router.pathname.includes(to)
 	// For top menu
-	const match = to !== '/' && router.pathname === to;
+	const match = to !== '/' && router.pathname === to
 
-	const { t } = useTranslation('menu');
+	const { t } = useTranslation('menu')
 
 	const LINK_CLASS = classNames('navigation-link', 'navigation-link-pill', {
 		collapsed: !!children && !isHorizontal,
 		active: isHorizontal ? match : here,
-	});
+	})
 
 	const INNER = (
 		<>
@@ -143,7 +143,7 @@ export const Item: FC<IItemProps> = ({
 				</span>
 			)}
 		</>
-	);
+	)
 
 	const WITHOUT_CHILD =
 		!children &&
@@ -160,35 +160,35 @@ export const Item: FC<IItemProps> = ({
 				onClick={linkHandleClick}>
 				{INNER}
 			</Link>
-		));
+		))
 
 	// Dropdown
-	const dropdownRef = useRef(null);
+	const dropdownRef = useRef(null)
 
-	const dropdownButtonRef = useRef(null);
+	const dropdownButtonRef = useRef(null)
 	const setButtonRef = useCallback((node: null, ref: (arg0: any) => any) => {
-		dropdownButtonRef.current = node;
-		return ref(node);
-	}, []);
+		dropdownButtonRef.current = node
+		return ref(node)
+	}, [])
 
-	const dropdownListRef = useRef(null);
+	const dropdownListRef = useRef(null)
 	const setListRef = useCallback((node: null, ref: (arg0: any) => any) => {
-		dropdownListRef.current = node;
-		return ref(node);
-	}, []);
+		dropdownListRef.current = node
+		return ref(node)
+	}, [])
 
-	const [dropdownStatus, setDropdownStatus] = useState(false);
+	const [dropdownStatus, setDropdownStatus] = useState(false)
 
 	const dropdownButtonHandleClick = () => {
-		setDropdownStatus(!dropdownStatus);
-	};
+		setDropdownStatus(!dropdownStatus)
+	}
 
 	// Clicking outside to close
 	const closeMenu = useCallback(() => {
-		setDropdownStatus(false);
-	}, []);
-	useEventOutside(dropdownRef, 'mousedown', closeMenu);
-	useEventOutside(dropdownRef, 'touchstart', closeMenu);
+		setDropdownStatus(false)
+	}, [])
+	useEventOutside(dropdownRef, 'mousedown', closeMenu)
+	useEventOutside(dropdownRef, 'touchstart', closeMenu)
 
 	if (children) {
 		// submenu && in header
@@ -255,7 +255,7 @@ export const Item: FC<IItemProps> = ({
 						)}
 					</li>
 				</Manager>
-			);
+			)
 		}
 		// submenu && in aside
 		return (
@@ -284,22 +284,22 @@ export const Item: FC<IItemProps> = ({
 					</List>
 				</Collapse>
 			</li>
-		);
+		)
 	}
 	// without submenu
-	return <li className='navigation-item'>{WITHOUT_CHILD}</li>;
-};
+	return <li className='navigation-item'>{WITHOUT_CHILD}</li>
+}
 
 interface INavigationLineProps {
-	className?: string;
+	className?: string
 }
 export const NavigationLine: FC<INavigationLineProps> = ({ className }) => {
-	return <hr className={classNames('navigation-line', className)} />;
-};
+	return <hr className={classNames('navigation-line', className)} />
+}
 
 interface INavigationTitleProps extends HTMLAttributes<HTMLSpanElement> {
-	className?: string;
-	children: ReactNode;
+	className?: string
+	children: ReactNode
 }
 export const NavigationTitle: FC<INavigationTitleProps> = ({ className, children, ...props }) => {
 	return (
@@ -308,55 +308,55 @@ export const NavigationTitle: FC<INavigationTitleProps> = ({ className, children
 				{children}
 			</span>
 		</li>
-	);
-};
+	)
+}
 
 interface INavigationProps {
-	horizontal?: boolean;
+	horizontal?: boolean
 	menu: {
 		[key: string]: {
-			id?: string | number;
-			text?: string;
-			path?: string;
-			icon?: TIcons;
-			isDisable?: boolean;
+			id?: string | number
+			text?: string
+			path?: string
+			icon?: TIcons
+			isDisable?: boolean
 			subMenu?: {
 				[key: string]: {
-					id?: string | number;
-					text?: string;
-					path?: string;
-					icon?: TIcons;
-					isDisable?: boolean;
-				};
-			} | null;
-		};
-	};
-	id: string;
-	className?: string;
+					id?: string | number
+					text?: string
+					path?: string
+					icon?: TIcons
+					isDisable?: boolean
+				}
+			} | null
+		}
+	}
+	id: string
+	className?: string
 }
 const Navigation = forwardRef<HTMLElement, INavigationProps>(
 	({ menu, horizontal, id, className, ...props }, ref) => {
-		const [activeItem, setActiveItem] = useState(undefined);
+		const [activeItem, setActiveItem] = useState(undefined)
 
-		const { t } = useTranslation('menu');
+		const { t } = useTranslation('menu')
 
 		function fillMenu(
 			data:
 				| {
-						id?: string | number;
-						text?: string;
-						path?: string;
-						icon?: TIcons;
-						isDisable?: boolean;
+						id?: string | number
+						text?: string
+						path?: string
+						icon?: TIcons
+						isDisable?: boolean
 						subMenu?:
 							| {
-									id?: string | number;
-									text?: string;
-									path?: string;
-									icon?: TIcons;
-									isDisable?: boolean;
+									id?: string | number
+									text?: string
+									path?: string
+									icon?: TIcons
+									isDisable?: boolean
 							  }[]
-							| undefined;
+							| undefined
 				  }[]
 				| any,
 			parentId: string,
@@ -395,7 +395,7 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 						<NavigationTitle key={data[item].id}>{t(data[item].text)}</NavigationTitle>
 					)
 				),
-			);
+			)
 		}
 
 		return (
@@ -416,9 +416,9 @@ const Navigation = forwardRef<HTMLElement, INavigationProps>(
 					)}
 				</List>
 			</nav>
-		);
+		)
 	},
-);
-Navigation.displayName = 'Navigation';
+)
+Navigation.displayName = 'Navigation'
 
-export default Navigation;
+export default Navigation

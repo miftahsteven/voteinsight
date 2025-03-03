@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgLocalTaxi = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgLocalTaxi = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={7.5} cy={14.5} r={1.5} />
 			<circle cx={16.5} cy={14.5} r={1.5} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgLocalTaxi;
+export default SvgLocalTaxi

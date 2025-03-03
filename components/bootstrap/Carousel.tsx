@@ -1,37 +1,37 @@
-import React, { forwardRef, ReactNode, SetStateAction, useState } from 'react';
-import CarouselIndicators from './CarouselIndicators';
-import CarouselControl from './CarouselControl';
-import CarouselContainer from './CarouselContainer';
-import CarouselItem from './CarouselItem';
-import CarouselCaption from './CarouselCaption';
-import { TCarouselRounded } from '../../type/carousel-type';
+import React, { forwardRef, ReactNode, SetStateAction, useState } from 'react'
+import CarouselIndicators from './CarouselIndicators'
+import CarouselControl from './CarouselControl'
+import CarouselContainer from './CarouselContainer'
+import CarouselItem from './CarouselItem'
+import CarouselCaption from './CarouselCaption'
+import { TCarouselRounded } from '../../type/carousel-type'
 
 interface ICarouselProps {
-	id?: string;
+	id?: string
 	items?: {
-		src?: string;
-		altText?: string;
-		captionHeader?: string;
-		captionText?: string;
-	}[];
-	children?: ReactNode;
-	activeItemIndex?: number;
-	isKeyboardControl?: boolean;
-	isHoverPause?: boolean;
-	isRide?: boolean;
-	interval?: number | string | boolean;
-	mouseEnter?(...args: unknown[]): unknown;
-	mouseLeave?(...args: unknown[]): unknown;
-	isSlide?: boolean;
-	isDark?: boolean;
-	className?: string;
-	isEnableTouch?: boolean;
-	isFade?: boolean;
-	isIndicators?: boolean;
-	isControl?: boolean;
-	rounded?: TCarouselRounded;
-	isFluid?: boolean;
-	height?: number;
+		src?: string
+		altText?: string
+		captionHeader?: string
+		captionText?: string
+	}[]
+	children?: ReactNode
+	activeItemIndex?: number
+	isKeyboardControl?: boolean
+	isHoverPause?: boolean
+	isRide?: boolean
+	interval?: number | string | boolean
+	mouseEnter?(...args: unknown[]): unknown
+	mouseLeave?(...args: unknown[]): unknown
+	isSlide?: boolean
+	isDark?: boolean
+	className?: string
+	isEnableTouch?: boolean
+	isFade?: boolean
+	isIndicators?: boolean
+	isControl?: boolean
+	rounded?: TCarouselRounded
+	isFluid?: boolean
+	height?: number
 }
 const Carousel = forwardRef<HTMLDivElement, ICarouselProps>(
 	(
@@ -59,35 +59,35 @@ const Carousel = forwardRef<HTMLDivElement, ICarouselProps>(
 		},
 		ref,
 	) => {
-		const ITEMS = items || children;
-		const [activeIndex, setActiveIndex] = useState<number | undefined>(activeItemIndex);
-		const [animating, setAnimating] = useState(false);
+		const ITEMS = items || children
+		const [activeIndex, setActiveIndex] = useState<number | undefined>(activeItemIndex)
+		const [animating, setAnimating] = useState(false)
 
 		const next = () => {
-			if (animating) return;
+			if (animating) return
 			// @ts-ignore
 
-			const nextIndex = activeIndex === ITEMS?.length - 1 ? 0 : activeIndex + 1;
-			setActiveIndex(nextIndex);
-		};
+			const nextIndex = activeIndex === ITEMS?.length - 1 ? 0 : activeIndex + 1
+			setActiveIndex(nextIndex)
+		}
 
 		const previous = () => {
-			if (animating) return;
+			if (animating) return
 			// @ts-ignore
-			const nextIndex = activeIndex === 0 ? ITEMS.length - 1 : activeIndex - 1;
-			setActiveIndex(nextIndex);
-		};
+			const nextIndex = activeIndex === 0 ? ITEMS.length - 1 : activeIndex - 1
+			setActiveIndex(nextIndex)
+		}
 
 		const goToIndex = (newIndex: SetStateAction<number | undefined>) => {
-			if (animating) return;
-			setActiveIndex(newIndex);
-		};
+			if (animating) return
+			setActiveIndex(newIndex)
+		}
 
 		const getSlideContent = (_item: {
-			src?: string;
-			altText?: string;
-			captionHeader?: string;
-			captionText?: string;
+			src?: string
+			altText?: string
+			captionHeader?: string
+			captionText?: string
 		}) => {
 			if (items) {
 				if (isFluid) {
@@ -104,7 +104,7 @@ const Carousel = forwardRef<HTMLDivElement, ICarouselProps>(
 								captionHeader={_item.captionHeader}
 							/>
 						</>
-					);
+					)
 				}
 				return (
 					<>
@@ -116,10 +116,10 @@ const Carousel = forwardRef<HTMLDivElement, ICarouselProps>(
 							captionHeader={_item.captionHeader}
 						/>
 					</>
-				);
+				)
 			}
-			return _item;
-		};
+			return _item
+		}
 
 		return (
 			<CarouselContainer
@@ -162,7 +162,7 @@ const Carousel = forwardRef<HTMLDivElement, ICarouselProps>(
 								{/* @ts-ignore */}
 								{getSlideContent(item)}
 							</CarouselItem>
-						);
+						)
 					})}
 				{isControl && (
 					<>
@@ -181,9 +181,9 @@ const Carousel = forwardRef<HTMLDivElement, ICarouselProps>(
 					</>
 				)}
 			</CarouselContainer>
-		);
+		)
 	},
-);
-Carousel.displayName = 'Carousels';
+)
+Carousel.displayName = 'Carousels'
 
-export default Carousel;
+export default Carousel

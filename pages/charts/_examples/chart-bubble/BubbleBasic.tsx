@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,10 +6,10 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateData from '../../../../common/function/generateData';
-import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateData from '../../../../common/function/generateData'
+import CommonStoryBtn from '../../../../common/partial/other/CommonStoryBtn'
 
 const BubbleBasic = () => {
 	const [state] = useState<IChartOptions>({
@@ -65,7 +65,7 @@ const BubbleBasic = () => {
 				max: 70,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-12'>
 			<Card stretch>
@@ -90,7 +90,7 @@ const BubbleBasic = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default BubbleBasic;
+export default BubbleBasic

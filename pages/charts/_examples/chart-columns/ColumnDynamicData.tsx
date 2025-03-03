@@ -469,6 +469,6 @@ const ColumnDynamicData = () => {
 	// 		</Card>
 	// 	</div>
 	// );
-};
+}
 
-export default ColumnDynamicData;
+export default ColumnDynamicData

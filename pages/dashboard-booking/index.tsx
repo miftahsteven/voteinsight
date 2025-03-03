@@ -1,69 +1,69 @@
-import React, { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import dayjs from 'dayjs';
-import classNames from 'classnames';
-import { useFormik } from 'formik';
-import { Calendar, dayjsLocalizer, View as TView, Views } from 'react-big-calendar';
-import { Calendar as DatePicker } from 'react-date-range';
-import useDarkMode from '../../hooks/useDarkMode';
-import useMinimizeAside from '../../hooks/useMinimizeAside';
-import USERS, { getUserDataWithUsername, IUserProps } from '../../common/data/userDummyData';
+import React, { useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dayjs from 'dayjs'
+import classNames from 'classnames'
+import { useFormik } from 'formik'
+import { Calendar, dayjsLocalizer, View as TView, Views } from 'react-big-calendar'
+import { Calendar as DatePicker } from 'react-date-range'
+import useDarkMode from '../../hooks/useDarkMode'
+import useMinimizeAside from '../../hooks/useMinimizeAside'
+import USERS, { getUserDataWithUsername, IUserProps } from '../../common/data/userDummyData'
 import {
 	CalendarTodayButton,
 	CalendarViewModeButtons,
 	getLabel,
 	getUnitType,
 	getViews,
-} from '../../components/extras/calendarHelper';
-import { TColor } from '../../type/color-type';
-import SERVICES, { getServiceDataWithServiceName } from '../../common/data/serviceDummyData';
-import PageWrapper from '../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../layout/SubHeader/SubHeader';
-import Icon from '../../components/icon/Icon';
-import Button from '../../components/bootstrap/Button';
-import Popovers from '../../components/bootstrap/Popovers';
-import Page from '../../layout/Page/Page';
-import Avatar, { AvatarGroup } from '../../components/Avatar';
+} from '../../components/extras/calendarHelper'
+import { TColor } from '../../type/color-type'
+import SERVICES, { getServiceDataWithServiceName } from '../../common/data/serviceDummyData'
+import PageWrapper from '../../layout/PageWrapper/PageWrapper'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../layout/SubHeader/SubHeader'
+import Icon from '../../components/icon/Icon'
+import Button from '../../components/bootstrap/Button'
+import Popovers from '../../components/bootstrap/Popovers'
+import Page from '../../layout/Page/Page'
+import Avatar, { AvatarGroup } from '../../components/Avatar'
 import Card, {
 	CardActions,
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../components/bootstrap/Card';
+} from '../../components/bootstrap/Card'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../components/bootstrap/OffCanvas';
-import CommonDashboardBookingLists from '../../common/partial/BookingComponents/CommonDashboardBookingLists';
-import CommonUpcomingEvents from '../../common/partial/CommonUpcomingEvents';
-import FormGroup from '../../components/bootstrap/forms/FormGroup';
-import Select from '../../components/bootstrap/forms/Select';
-import Checks from '../../components/bootstrap/forms/Checks';
-import Input from '../../components/bootstrap/forms/Input';
-import Option from '../../components/bootstrap/Option';
-import CommonRightPanel from '../../common/partial/BookingComponents/CommonRightPanel';
-import eventList, { IEvents } from '../../common/data/events';
-import CommonApprovedAppointmentChart from '../../common/partial/CommonApprovedAppointmentChart';
-import CommonPercentageOfLoadChart from '../../common/partial/CommonPercentageOfLoadChart';
+} from '../../components/bootstrap/OffCanvas'
+import CommonDashboardBookingLists from '../../common/partial/BookingComponents/CommonDashboardBookingLists'
+import CommonUpcomingEvents from '../../common/partial/CommonUpcomingEvents'
+import FormGroup from '../../components/bootstrap/forms/FormGroup'
+import Select from '../../components/bootstrap/forms/Select'
+import Checks from '../../components/bootstrap/forms/Checks'
+import Input from '../../components/bootstrap/forms/Input'
+import Option from '../../components/bootstrap/Option'
+import CommonRightPanel from '../../common/partial/BookingComponents/CommonRightPanel'
+import eventList, { IEvents } from '../../common/data/events'
+import CommonApprovedAppointmentChart from '../../common/partial/CommonApprovedAppointmentChart'
+import CommonPercentageOfLoadChart from '../../common/partial/CommonPercentageOfLoadChart'
 
-const localizer = dayjsLocalizer(dayjs);
-const now = new Date();
+const localizer = dayjsLocalizer(dayjs)
+const now = new Date()
 
 interface IEvent extends IEvents {
-	user?: IUserProps;
-	users?: IUserProps[];
-	color?: TColor;
+	user?: IUserProps
+	users?: IUserProps[]
+	color?: TColor
 }
 
 const MyEvent = (data: { event: IEvent }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const { event } = data;
+	const { event } = data
 	return (
 		<div className='row g-2'>
 			<div className='col text-truncate'>
@@ -97,12 +97,12 @@ const MyEvent = (data: { event: IEvent }) => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 const MyWeekEvent = (data: { event: IEvent }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const { event } = data;
+	const { event } = data
 	return (
 		<div className='row g-2'>
 			<div className='col-12 text-truncate'>
@@ -137,14 +137,14 @@ const MyWeekEvent = (data: { event: IEvent }) => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 
 const Index: NextPage = () => {
-	const { darkModeStatus, themeStatus } = useDarkMode();
-	useMinimizeAside();
+	const { darkModeStatus, themeStatus } = useDarkMode()
+	useMinimizeAside()
 
-	const [toggleRightPanel, setToggleRightPanel] = useState(true);
+	const [toggleRightPanel, setToggleRightPanel] = useState(true)
 
 	// BEGIN :: Calendar
 	// Active employee
@@ -153,15 +153,15 @@ const Index: NextPage = () => {
 		[USERS.ELLA.username]: true,
 		[USERS.RYAN.username]: true,
 		[USERS.GRACE.username]: true,
-	});
+	})
 	// Events
-	const [events, setEvents] = useState(eventList);
+	const [events, setEvents] = useState(eventList)
 
 	// FOR DEV
 	useEffect(() => {
-		setEvents(eventList);
-		return () => {};
-	}, []);
+		setEvents(eventList)
+		return () => {}
+	}, [])
 
 	const initialEventItem: IEvent = {
 		start: undefined,
@@ -169,43 +169,43 @@ const Index: NextPage = () => {
 		name: undefined,
 		id: undefined,
 		user: undefined,
-	};
+	}
 	// Selected Event
-	const [eventItem, setEventItem] = useState<IEvent>(initialEventItem);
+	const [eventItem, setEventItem] = useState<IEvent>(initialEventItem)
 	// Calendar View Mode
-	const [viewMode, setViewMode] = useState<TView>(Views.MONTH);
+	const [viewMode, setViewMode] = useState<TView>(Views.MONTH)
 	// Calendar Date
-	const [date, setDate] = useState(new Date());
+	const [date, setDate] = useState(new Date())
 	// Item edit panel status
-	const [toggleInfoEventCanvas, setToggleInfoEventCanvas] = useState<boolean>(false);
-	const setInfoEvent = () => setToggleInfoEventCanvas(!toggleInfoEventCanvas);
-	const [eventAdding, setEventAdding] = useState<boolean>(false);
+	const [toggleInfoEventCanvas, setToggleInfoEventCanvas] = useState<boolean>(false)
+	const setInfoEvent = () => setToggleInfoEventCanvas(!toggleInfoEventCanvas)
+	const [eventAdding, setEventAdding] = useState<boolean>(false)
 
 	// Calendar Unit Type
-	const unitType = getUnitType(viewMode);
+	const unitType = getUnitType(viewMode)
 	// Calendar Date Label
-	const calendarDateLabel = getLabel(date, viewMode);
+	const calendarDateLabel = getLabel(date, viewMode)
 
 	// Change view mode
 	const handleViewMode = (e: dayjs.ConfigType) => {
-		setDate(dayjs(e).toDate());
-		setViewMode(Views.DAY);
-	};
+		setDate(dayjs(e).toDate())
+		setViewMode(Views.DAY)
+	}
 	// View modes; Month, Week, Work Week, Day and Agenda
-	const views = getViews();
+	const views = getViews()
 
 	// New Event
 	const handleSelect = ({ start, end }: { start: any; end: any }) => {
-		setEventAdding(true);
-		setEventItem({ ...initialEventItem, start, end });
-	};
+		setEventAdding(true)
+		setEventItem({ ...initialEventItem, start, end })
+	}
 
 	useEffect(() => {
 		if (eventAdding) {
-			setInfoEvent();
+			setInfoEvent()
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [eventAdding]);
+	}, [eventAdding])
 
 	/**
 	 * Calendar Item Container Style
@@ -216,9 +216,9 @@ const Index: NextPage = () => {
 	 * @returns {{className: string}}
 	 */
 	const eventStyleGetter = (event: { color?: TColor }, start: any, end: any) => {
-		const isActiveEvent = start <= now && end >= now;
-		const isPastEvent = end < now;
-		const color = isActiveEvent ? 'success' : event.color;
+		const isActiveEvent = start <= now && end >= now
+		const isPastEvent = end < now
+		const color = isActiveEvent ? 'success' : event.color
 
 		return {
 			className: classNames({
@@ -226,8 +226,8 @@ const Index: NextPage = () => {
 				'border border-success': isActiveEvent,
 				'opacity-50': isPastEvent,
 			}),
-		};
-	};
+		}
+	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -248,20 +248,20 @@ const Index: NextPage = () => {
 						start: values.eventStart,
 						user: { ...getUserDataWithUsername(values.eventEmployee) },
 					},
-				]);
+				])
 			}
-			setToggleInfoEventCanvas(false);
-			setEventAdding(false);
-			setEventItem(initialEventItem);
+			setToggleInfoEventCanvas(false)
+			setEventAdding(false)
+			setEventItem(initialEventItem)
 			formik.setValues({
 				eventName: '',
 				eventStart: '',
 				eventEnd: '',
 				eventEmployee: '',
 				eventAllDay: false,
-			});
+			})
 		},
-	});
+	})
 
 	useEffect(() => {
 		if (eventItem)
@@ -273,13 +273,13 @@ const Index: NextPage = () => {
 				eventStart: dayjs(eventItem.start).format(),
 				eventEnd: dayjs(eventItem.end).format(),
 				eventEmployee: eventItem?.user?.username || '',
-			});
-		return () => {};
+			})
+		return () => {}
 		//	eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [eventItem]);
+	}, [eventItem])
 	// END:: Calendar
 
-	const [toggleCalendar, setToggleCalendar] = useState(true);
+	const [toggleCalendar, setToggleCalendar] = useState(true)
 
 	return (
 		<PageWrapper>
@@ -439,8 +439,8 @@ const Index: NextPage = () => {
 											scrollToTime={new Date(1970, 1, 1, 6)}
 											defaultDate={new Date()}
 											onSelectEvent={(event) => {
-												setInfoEvent();
-												setEventItem(event);
+												setInfoEvent()
+												setEventItem(event)
 											}}
 											onSelectSlot={handleSelect}
 											onView={handleViewMode}
@@ -499,15 +499,15 @@ const Index: NextPage = () => {
 
 				<OffCanvas
 					setOpen={(status: boolean) => {
-						setToggleInfoEventCanvas(status);
-						setEventAdding(status);
+						setToggleInfoEventCanvas(status)
+						setEventAdding(status)
 					}}
 					isOpen={toggleInfoEventCanvas}
 					titleId='canvas-title'>
 					<OffCanvasHeader
 						setOpen={(status: boolean) => {
-							setToggleInfoEventCanvas(status);
-							setEventAdding(status);
+							setToggleInfoEventCanvas(status)
+							setEventAdding(status)
 						}}
 						className='p-4'>
 						<OffCanvasTitle id='canvas-title'>
@@ -640,14 +640,14 @@ const Index: NextPage = () => {
 				<CommonRightPanel setOpen={setToggleRightPanel} isOpen={toggleRightPanel} />
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

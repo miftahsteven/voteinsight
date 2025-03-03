@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgIntegrationInstructions = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgIntegrationInstructions = (props: SVGProps<SVGSVGElement>) => {
 			<path fill='none' opacity={0.3} d='M19 5H5M5 19h14' />
 			<path opacity={0.3} d='M5 5h14v14H5z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgIntegrationInstructions;
+export default SvgIntegrationInstructions

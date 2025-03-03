@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgSupport = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgSupport = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm2.87 2.54c2.1.81 3.77 2.48 4.58 4.58l-2.78 1.15a4.982 4.982 0 00-2.95-2.94l1.15-2.79zm-5.74 0l1.17 2.78a5 5 0 00-2.98 2.97L4.54 9.13a7.984 7.984 0 014.59-4.59zm0 14.92a8.013 8.013 0 01-4.59-4.59l2.78-1.15a4.968 4.968 0 002.97 2.96l-1.16 2.78zM9 12c0-1.66 1.34-3 3-3s3 1.34 3 3-1.34 3-3 3-3-1.34-3-3zm5.88 7.46l-1.15-2.78a4.978 4.978 0 002.95-2.97l2.78 1.17a8.007 8.007 0 01-4.58 4.58z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgSupport;
+export default SvgSupport

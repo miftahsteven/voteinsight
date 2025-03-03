@@ -4,31 +4,31 @@ import React, {
 	HTMLAttributes,
 	ReactElement,
 	ReactNode,
-} from 'react';
-import classNames from 'classnames';
-import Link from 'next/link';
-import TagWrapper from '../TagWrapper';
-import Icon from '../icon/Icon';
-import { TColor } from '../../type/color-type';
+} from 'react'
+import classNames from 'classnames'
+import Link from 'next/link'
+import TagWrapper from '../TagWrapper'
+import Icon from '../icon/Icon'
+import { TColor } from '../../type/color-type'
 
-import { IDropdownProps } from './Dropdown';
-import { TIcons } from '../../type/icons-type';
+import { IDropdownProps } from './Dropdown'
+import { TIcons } from '../../type/icons-type'
 
 interface IButtonGroupProps extends HTMLAttributes<HTMLDivElement> {
 	children:
 		| ReactElement<IButtonProps>[]
 		| ReactElement<IDropdownProps>[]
 		| JSX.Element
-		| JSX.Element[];
-	className?: string;
-	isToolbar?: boolean;
-	isVertical?: boolean;
-	size?: 'sm' | 'lg' | null;
-	ariaLabel?: string;
+		| JSX.Element[]
+	className?: string
+	isToolbar?: boolean
+	isVertical?: boolean
+	size?: 'sm' | 'lg' | null
+	ariaLabel?: string
 }
 export const ButtonGroup = forwardRef<HTMLDivElement, IButtonGroupProps>(
 	({ children, className, isToolbar, isVertical, size, ariaLabel, ...props }, ref) => {
-		const PREFIX = isToolbar ? 'toolbar' : 'group';
+		const PREFIX = isToolbar ? 'toolbar' : 'group'
 		return (
 			<div
 				ref={ref}
@@ -45,27 +45,27 @@ export const ButtonGroup = forwardRef<HTMLDivElement, IButtonGroupProps>(
 				{...props}>
 				{children}
 			</div>
-		);
+		)
 	},
-);
-ButtonGroup.displayName = 'ButtonGroup';
+)
+ButtonGroup.displayName = 'ButtonGroup'
 
 export interface IButtonProps
 	extends HTMLAttributes<
 		HTMLButtonElement | HTMLAnchorElement | HTMLInputElement | HTMLLinkElement
 	> {
-	children?: ReactNode;
-	tag?: 'button' | 'a' | 'input' | 'link';
-	type?: 'button' | 'submit' | 'reset';
-	to?: string;
-	href?: string;
-	isActive?: boolean;
-	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook';
-	isOutline?: boolean;
-	isLight?: boolean;
-	isLink?: boolean;
-	className?: string;
-	icon?: TIcons;
+	children?: ReactNode
+	tag?: 'button' | 'a' | 'input' | 'link'
+	type?: 'button' | 'submit' | 'reset'
+	to?: string
+	href?: string
+	isActive?: boolean
+	color?: TColor | 'link' | 'brand' | 'brand-two' | 'storybook'
+	isOutline?: boolean
+	isLight?: boolean
+	isLink?: boolean
+	className?: string
+	icon?: TIcons
 	rounded?:
 		| 'default'
 		| 0
@@ -78,15 +78,15 @@ export interface IButtonProps
 		| 'end'
 		| 'start'
 		| 'pill'
-		| null;
-	size?: 'sm' | null | 'lg';
-	isDisable?: boolean;
-	shadow?: null | 'none' | 'sm' | 'default' | 'lg';
-	hoverShadow?: null | 'none' | 'sm' | 'default' | 'lg';
-	target?: HTMLAttributeAnchorTarget;
-	isVisuallyHidden?: boolean;
-	onClick?(...args: unknown[]): unknown;
-	download?: true;
+		| null
+	size?: 'sm' | null | 'lg'
+	isDisable?: boolean
+	shadow?: null | 'none' | 'sm' | 'default' | 'lg'
+	hoverShadow?: null | 'none' | 'sm' | 'default' | 'lg'
+	target?: HTMLAttributeAnchorTarget
+	isVisuallyHidden?: boolean
+	onClick?(...args: unknown[]): unknown
+	download?: true
 }
 const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 	(
@@ -137,7 +137,7 @@ const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 				active: isActive,
 			},
 			className,
-		);
+		)
 
 		const INNER = (
 			<>
@@ -148,15 +148,15 @@ const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 					children
 				)}
 			</>
-		);
+		)
 
-		const ANCHOR_LINK_PATTERN = /^#/i;
+		const ANCHOR_LINK_PATTERN = /^#/i
 
 		const disableProps = isDisable && {
 			tabIndex: -1,
 			'aria-disabled': true,
 			disabled: true,
-		};
+		}
 
 		if (tag === 'a') {
 			if (typeof to === 'string' && ANCHOR_LINK_PATTERN.test(to)) {
@@ -171,7 +171,7 @@ const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 						{...props}>
 						{INNER}
 					</Link>
-				);
+				)
 			}
 			if (to) {
 				return (
@@ -187,7 +187,7 @@ const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 						{...props}>
 						{INNER}
 					</Link>
-				);
+				)
 			}
 			return (
 				<a
@@ -201,7 +201,7 @@ const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 					{...props}>
 					{INNER}
 				</a>
-			);
+			)
 		}
 		return (
 			<TagWrapper
@@ -215,9 +215,9 @@ const Button = forwardRef<HTMLAnchorElement, IButtonProps>(
 				{...props}>
 				{INNER}
 			</TagWrapper>
-		);
+		)
 	},
-);
-Button.displayName = 'Button';
+)
+Button.displayName = 'Button'
 
-export default Button;
+export default Button

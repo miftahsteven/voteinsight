@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFiberDvr = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgFiberDvr = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M3 5h18v14H3z' opacity={0.3} />
 			<path d='M21 3H3c-1.11 0-2 .89-2 2v14a2 2 0 002 2h18a2 2 0 002-2V5c0-1.11-.89-2-2-2zm0 16H3V5h18v14z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFiberDvr;
+export default SvgFiberDvr

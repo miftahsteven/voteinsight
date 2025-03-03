@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgImageSearch = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -10,7 +10,7 @@ const SvgImageSearch = (props: SVGProps<SVGSVGElement>) => {
 			/>
 			<path d='M10.21 16.83l-1.96-2.36L5.5 18h11l-3.54-4.71zM20 6.5C20 4.01 17.99 2 15.5 2S11 4.01 11 6.5s2.01 4.5 4.49 4.5c.88 0 1.7-.26 2.39-.7L21 13.42 22.42 12 19.3 8.89c.44-.7.7-1.51.7-2.39zM15.5 9a2.5 2.5 0 010-5 2.5 2.5 0 010 5zM18 20H4V6h6.03c.06-.72.27-1.39.58-2H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-6.17l-2-2V20z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgImageSearch;
+export default SvgImageSearch

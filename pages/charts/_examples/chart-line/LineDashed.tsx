@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const LineDashed = () => {
 	const [state] = useState<IChartOptions>({
@@ -48,7 +48,7 @@ const LineDashed = () => {
 				tooltipHoverFormatter(val, opts) {
 					return `${val} - <strong>${
 						opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex]
-					}</strong>`;
+					}</strong>`
 				},
 			},
 			markers: {
@@ -78,21 +78,21 @@ const LineDashed = () => {
 					{
 						title: {
 							formatter(val) {
-								return `${val} (mins)`;
+								return `${val} (mins)`
 							},
 						},
 					},
 					{
 						title: {
 							formatter(val) {
-								return `${val} per session`;
+								return `${val} per session`
 							},
 						},
 					},
 					{
 						title: {
 							formatter(val) {
-								return val;
+								return val
 							},
 						},
 					},
@@ -102,7 +102,7 @@ const LineDashed = () => {
 				borderColor: '#f1f1f1',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -119,7 +119,7 @@ const LineDashed = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default LineDashed;
+export default LineDashed

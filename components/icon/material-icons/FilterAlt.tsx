@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFilterAlt = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -8,7 +8,7 @@ const SvgFilterAlt = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M0 0h24v24H0V0z' fill='none' />
 			<path opacity={0.3} d='M7 6h10l-5.01 6.3z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFilterAlt;
+export default SvgFilterAlt

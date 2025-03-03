@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import dayjs from 'dayjs';
+import React, { useState } from 'react'
+import dayjs from 'dayjs'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const TimelineMultiSeries = () => {
 	const [state] = useState<IChartOptions>({
@@ -61,11 +61,11 @@ const TimelineMultiSeries = () => {
 				enabled: true,
 				formatter(val) {
 					// @ts-ignore
-					const a = dayjs(val[0]);
+					const a = dayjs(val[0])
 					// @ts-ignore
-					const b = dayjs(val[1]);
-					const diff = b.diff(a, 'days');
-					return diff + (diff > 1 ? ' days' : ' day');
+					const b = dayjs(val[1])
+					const diff = b.diff(a, 'days')
+					return diff + (diff > 1 ? ' days' : ' day')
 				},
 			},
 			fill: {
@@ -88,7 +88,7 @@ const TimelineMultiSeries = () => {
 				position: 'top',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -110,7 +110,7 @@ const TimelineMultiSeries = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default TimelineMultiSeries;
+export default TimelineMultiSeries

@@ -1,4 +1,4 @@
-import { TColor } from '../../type/color-type';
+import { TColor } from '../../type/color-type'
 
 const COLORS: { [key: string]: TColor } = {
 	PRIMARY: 'primary',
@@ -9,5 +9,5 @@ const COLORS: { [key: string]: TColor } = {
 	SUCCESS: 'success',
 	LIGHT: 'light',
 	DARK: 'dark',
-};
-export default COLORS;
+}
+export default COLORS

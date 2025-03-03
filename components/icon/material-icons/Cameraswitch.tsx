@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgCameraswitch = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgCameraswitch = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={12} cy={12} r={2} />
 			<path d='M8.57.52L13.05 5V2.05c4.72.47 8.48 4.23 8.95 8.95h2C23.34 3.03 15.49-1.58 8.57.52zM10.95 21.96c-4.72-.47-8.48-4.23-8.95-8.95H0c.66 7.97 8.51 12.58 15.43 10.48l-4.48-4.48v2.95z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgCameraswitch;
+export default SvgCameraswitch

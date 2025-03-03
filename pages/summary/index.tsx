@@ -1,42 +1,42 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { motion } from 'framer-motion';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { createUseStyles } from 'react-jss';
-import { useMeasure } from 'react-use';
-import classNames from 'classnames';
-import Richie from '../../assets/img/richie.png';
-import BootstrapLogo from '../../assets/img/bootstrap.svg';
-import StorybookLogo from '../../assets/img/storybbok.png';
-import FormikLogo from '../../assets/img/formik.jpeg';
-import ApexLogo from '../../assets/img/apexcharts.png';
-import Item1 from '../../assets/img/animation-items/item.png';
-import Item2 from '../../assets/img/animation-items/item2.png';
-import Item3 from '../../assets/img/animation-items/item3.png';
-import Item4 from '../../assets/img/animation-items/item4.png';
-import Item5 from '../../assets/img/animation-items/item5.png';
-import Item6 from '../../assets/img/animation-items/item6.png';
-import Item7 from '../../assets/img/animation-items/item7.png';
-import Item8 from '../../assets/img/animation-items/item8.png';
-import Item9 from '../../assets/img/animation-items/item9.png';
-import Item10 from '../../assets/img/animation-items/item10.png';
-import Item11 from '../../assets/img/animation-items/item11.png';
-import Item12 from '../../assets/img/animation-items/item12.png';
-import Item13 from '../../assets/img/animation-items/item13.png';
-import Item14 from '../../assets/img/animation-items/item14.png';
-import PageWrapper from '../../layout/PageWrapper/PageWrapper';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { motion } from 'framer-motion'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { createUseStyles } from 'react-jss'
+import { useMeasure } from 'react-use'
+import classNames from 'classnames'
+import Richie from '../../assets/img/richie.png'
+import BootstrapLogo from '../../assets/img/bootstrap.svg'
+import StorybookLogo from '../../assets/img/storybbok.png'
+import FormikLogo from '../../assets/img/formik.jpeg'
+import ApexLogo from '../../assets/img/apexcharts.png'
+import Item1 from '../../assets/img/animation-items/item.png'
+import Item2 from '../../assets/img/animation-items/item2.png'
+import Item3 from '../../assets/img/animation-items/item3.png'
+import Item4 from '../../assets/img/animation-items/item4.png'
+import Item5 from '../../assets/img/animation-items/item5.png'
+import Item6 from '../../assets/img/animation-items/item6.png'
+import Item7 from '../../assets/img/animation-items/item7.png'
+import Item8 from '../../assets/img/animation-items/item8.png'
+import Item9 from '../../assets/img/animation-items/item9.png'
+import Item10 from '../../assets/img/animation-items/item10.png'
+import Item11 from '../../assets/img/animation-items/item11.png'
+import Item12 from '../../assets/img/animation-items/item12.png'
+import Item13 from '../../assets/img/animation-items/item13.png'
+import Item14 from '../../assets/img/animation-items/item14.png'
+import PageWrapper from '../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../layout/SubHeader/SubHeader';
-import Badge from '../../components/bootstrap/Badge';
-import Button from '../../components/bootstrap/Button';
-import Page from '../../layout/Page/Page';
-import Card, { CardBody } from '../../components/bootstrap/Card';
-import Logo from '../../components/Logo';
+} from '../../layout/SubHeader/SubHeader'
+import Badge from '../../components/bootstrap/Badge'
+import Button from '../../components/bootstrap/Button'
+import Page from '../../layout/Page/Page'
+import Card, { CardBody } from '../../components/bootstrap/Card'
+import Logo from '../../components/Logo'
 
 const useStyles = createUseStyles({
 	// stylelint-disable
@@ -255,11 +255,11 @@ const useStyles = createUseStyles({
 		backgroundSize: 'contain',
 	},
 	// stylelint-enable
-});
+})
 
 const Index: NextPage = () => {
-	const classes = useStyles();
-	const [ref, { height }] = useMeasure<HTMLDivElement>();
+	const classes = useStyles()
+	const [ref, { height }] = useMeasure<HTMLDivElement>()
 
 	return (
 		<PageWrapper ref={ref}>
@@ -701,14 +701,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

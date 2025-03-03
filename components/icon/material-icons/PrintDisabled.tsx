@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgPrintDisabled = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -14,7 +14,7 @@ const SvgPrintDisabled = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M16 5H8v.35L10.66 8H16z' opacity={0.3} />
 			<path d='M19 8h-1V3H6v.36l2 2V5h8v3h-5.34l2 2H19c.55 0 1 .45 1 1v4l-2 .01V13h-2.34l4 4H22v-6c0-1.66-1.34-3-3-3z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgPrintDisabled;
+export default SvgPrintDisabled

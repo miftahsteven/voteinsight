@@ -1,42 +1,42 @@
-import React, { FC, ReactNode, useContext, useRef } from 'react';
-import { motion, MotionStyle } from 'framer-motion';
-import classNames from 'classnames';
-import ThemeContext from '../../context/themeContext';
-import useAsideTouch from '../../hooks/useAsideTouch';
-import Tooltips from '../../components/bootstrap/Tooltips';
+import React, { FC, ReactNode, useContext, useRef } from 'react'
+import { motion, MotionStyle } from 'framer-motion'
+import classNames from 'classnames'
+import ThemeContext from '../../context/themeContext'
+import useAsideTouch from '../../hooks/useAsideTouch'
+import Tooltips from '../../components/bootstrap/Tooltips'
 
 interface IAsideHeadProps {
-	children: ReactNode;
+	children: ReactNode
 }
 export const AsideHead: FC<IAsideHeadProps> = ({ children }) => {
-	return <div className='aside-head'>{children}</div>;
-};
+	return <div className='aside-head'>{children}</div>
+}
 
 interface IAsideBodyProps {
-	children: ReactNode;
+	children: ReactNode
 }
 export const AsideBody: FC<IAsideBodyProps> = ({ children }) => {
-	return <div className='aside-body'>{children}</div>;
-};
+	return <div className='aside-body'>{children}</div>
+}
 
 interface IAsideFootProps {
-	children: ReactNode;
+	children: ReactNode
 }
 export const AsideFoot: FC<IAsideFootProps> = ({ children }) => {
-	return <div className='aside-foot'>{children}</div>;
-};
+	return <div className='aside-foot'>{children}</div>
+}
 
 interface IAsideProps {
-	children: any;
+	children: any
 }
 const Aside: FC<IAsideProps> = ({ children }) => {
-	const { asideStatus, mobileDesign } = useContext(ThemeContext);
+	const { asideStatus, mobileDesign } = useContext(ThemeContext)
 
-	const { asideStyle, touchStatus, hasTouchButton, asideWidthWithSpace, x } = useAsideTouch();
+	const { asideStyle, touchStatus, hasTouchButton, asideWidthWithSpace, x } = useAsideTouch()
 
-	const isModernDesign = process.env.NEXT_PUBLIC_MODERN_DESGIN === 'true';
+	const isModernDesign = process.env.NEXT_PUBLIC_MODERN_DESGIN === 'true'
 
-	const constraintsRef = useRef(null);
+	const constraintsRef = useRef(null)
 
 	const classes = classNames(
 		'aside',
@@ -46,7 +46,7 @@ const Aside: FC<IAsideProps> = ({ children }) => {
 			'aside-touch-bar-close': !touchStatus && hasTouchButton && isModernDesign,
 			'aside-touch-bar-open': touchStatus && hasTouchButton && isModernDesign,
 		},
-	);
+	)
 
 	return (
 		<>
@@ -77,7 +77,7 @@ const Aside: FC<IAsideProps> = ({ children }) => {
 				</>
 			)}
 		</>
-	);
-};
+	)
+}
 
-export default Aside;
+export default Aside

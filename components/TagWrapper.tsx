@@ -1,8 +1,8 @@
-import React, { ElementType, forwardRef, HTMLAttributes, ReactNode } from 'react';
+import React, { ElementType, forwardRef, HTMLAttributes, ReactNode } from 'react'
 
 interface ITagWrapper extends Record<string, any>, HTMLAttributes<HTMLElement> {
-	children: ReactNode;
-	tag: ElementType;
+	children: ReactNode
+	tag: ElementType
 }
 const TagWrapper = forwardRef<HTMLDivElement | HTMLAnchorElement | HTMLFormElement, ITagWrapper>(
 	({ tag: Tag = 'div', children, ...props }, ref) => {
@@ -11,9 +11,9 @@ const TagWrapper = forwardRef<HTMLDivElement | HTMLAnchorElement | HTMLFormEleme
 			<Tag ref={ref} {...props}>
 				{children}
 			</Tag>
-		);
+		)
 	},
-);
-TagWrapper.displayName = 'TagWrapper';
+)
+TagWrapper.displayName = 'TagWrapper'
 
-export default TagWrapper;
+export default TagWrapper

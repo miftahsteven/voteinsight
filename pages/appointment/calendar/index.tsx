@@ -1,35 +1,35 @@
-import React, { useEffect, useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import dayjs from 'dayjs';
-import classNames from 'classnames';
-import { Calendar, dayjsLocalizer, View as TView, Views } from 'react-big-calendar';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import { Calendar as DatePicker } from 'react-date-range';
-import eventList, { IEvents } from '../../../common/data/events';
-import USERS, { getUserDataWithUsername, IUserProps } from '../../../common/data/userDummyData';
-import { TColor } from '../../../type/color-type';
-import useDarkMode from '../../../hooks/useDarkMode';
-import Icon from '../../../components/icon/Icon';
-import Avatar, { AvatarGroup } from '../../../components/Avatar';
-import Tooltips from '../../../components/bootstrap/Tooltips';
+import React, { useEffect, useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import dayjs from 'dayjs'
+import classNames from 'classnames'
+import { Calendar, dayjsLocalizer, View as TView, Views } from 'react-big-calendar'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import { Calendar as DatePicker } from 'react-date-range'
+import eventList, { IEvents } from '../../../common/data/events'
+import USERS, { getUserDataWithUsername, IUserProps } from '../../../common/data/userDummyData'
+import { TColor } from '../../../type/color-type'
+import useDarkMode from '../../../hooks/useDarkMode'
+import Icon from '../../../components/icon/Icon'
+import Avatar, { AvatarGroup } from '../../../components/Avatar'
+import Tooltips from '../../../components/bootstrap/Tooltips'
 import {
 	CalendarTodayButton,
 	CalendarViewModeButtons,
 	getLabel,
 	getUnitType,
 	getViews,
-} from '../../../components/extras/calendarHelper';
-import SERVICES, { getServiceDataWithServiceName } from '../../../common/data/serviceDummyData';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { demoPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Popovers from '../../../components/bootstrap/Popovers';
-import Button from '../../../components/bootstrap/Button';
-import Option from '../../../components/bootstrap/Option';
-import Page from '../../../layout/Page/Page';
+} from '../../../components/extras/calendarHelper'
+import SERVICES, { getServiceDataWithServiceName } from '../../../common/data/serviceDummyData'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { demoPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Popovers from '../../../components/bootstrap/Popovers'
+import Button from '../../../components/bootstrap/Button'
+import Option from '../../../components/bootstrap/Option'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -37,30 +37,30 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
+} from '../../../components/bootstrap/Card'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
 	OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Select from '../../../components/bootstrap/forms/Select';
-import Checks from '../../../components/bootstrap/forms/Checks';
-import Input from '../../../components/bootstrap/forms/Input';
+} from '../../../components/bootstrap/OffCanvas'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Select from '../../../components/bootstrap/forms/Select'
+import Checks from '../../../components/bootstrap/forms/Checks'
+import Input from '../../../components/bootstrap/forms/Input'
 
-const localizer = dayjsLocalizer(dayjs);
-const now = new Date();
+const localizer = dayjsLocalizer(dayjs)
+const now = new Date()
 
 interface IEvent extends IEvents {
-	user?: IUserProps;
-	users?: IUserProps[];
-	color?: TColor;
+	user?: IUserProps
+	users?: IUserProps[]
+	color?: TColor
 }
 
 const MyEvent = (data: { event: IEvent }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const { event } = data;
+	const { event } = data
 	return (
 		<div className='row g-2'>
 			<div className='col text-truncate'>
@@ -94,13 +94,13 @@ const MyEvent = (data: { event: IEvent }) => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 
 const MyWeekEvent = (data: { event: IEvent }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const { event } = data;
+	const { event } = data
 	return (
 		<div className='row g-2'>
 			<div className='col-12 text-truncate'>
@@ -135,11 +135,11 @@ const MyWeekEvent = (data: { event: IEvent }) => {
 				</div>
 			)}
 		</div>
-	);
-};
+	)
+}
 
 const MyEventDay = (data: { event: IEvent }) => {
-	const { event } = data;
+	const { event } = data
 	return (
 		<Tooltips
 			title={`${event?.name} / ${dayjs(event.start).format('LT')} - ${dayjs(event.end).format(
@@ -167,11 +167,11 @@ const MyEventDay = (data: { event: IEvent }) => {
 				</small>
 			</div>
 		</Tooltips>
-	);
-};
+	)
+}
 
 const Index: NextPage = () => {
-	const { darkModeStatus, themeStatus } = useDarkMode();
+	const { darkModeStatus, themeStatus } = useDarkMode()
 
 	// BEGIN :: Calendar
 	// Active employee
@@ -180,15 +180,15 @@ const Index: NextPage = () => {
 		[USERS.ELLA.username]: true,
 		[USERS.RYAN.username]: true,
 		[USERS.GRACE.username]: true,
-	});
+	})
 	// Events
-	const [events, setEvents] = useState(eventList);
+	const [events, setEvents] = useState(eventList)
 
 	// FOR DEV
 	useEffect(() => {
-		setEvents(eventList);
-		return () => {};
-	}, []);
+		setEvents(eventList)
+		return () => {}
+	}, [])
 
 	const initialEventItem: IEvent = {
 		start: undefined,
@@ -196,44 +196,44 @@ const Index: NextPage = () => {
 		name: undefined,
 		id: undefined,
 		user: undefined,
-	};
+	}
 	// Selected Event
-	const [eventItem, setEventItem] = useState<IEvent>(initialEventItem);
+	const [eventItem, setEventItem] = useState<IEvent>(initialEventItem)
 	// Calendar View Mode
-	const [viewMode, setViewMode] = useState<TView>(Views.MONTH);
+	const [viewMode, setViewMode] = useState<TView>(Views.MONTH)
 	// Calendar Date
-	const [date, setDate] = useState(new Date());
+	const [date, setDate] = useState(new Date())
 	// Item edit panel status
-	const [toggleInfoEventCanvas, setToggleInfoEventCanvas] = useState(false);
-	const setInfoEvent = () => setToggleInfoEventCanvas(!toggleInfoEventCanvas);
-	const [eventAdding, setEventAdding] = useState(false);
+	const [toggleInfoEventCanvas, setToggleInfoEventCanvas] = useState(false)
+	const setInfoEvent = () => setToggleInfoEventCanvas(!toggleInfoEventCanvas)
+	const [eventAdding, setEventAdding] = useState(false)
 
 	// Calendar Unit Type
-	const unitType = getUnitType(viewMode);
+	const unitType = getUnitType(viewMode)
 	// Calendar Date Label
-	const calendarDateLabel = getLabel(date, viewMode);
+	const calendarDateLabel = getLabel(date, viewMode)
 
 	// Change view mode
 	const handleViewMode = (e: dayjs.ConfigType) => {
-		setDate(dayjs(e).toDate());
-		setViewMode(Views.DAY);
-	};
+		setDate(dayjs(e).toDate())
+		setViewMode(Views.DAY)
+	}
 
 	// View modes; Month, Week, Work Week, Day and Agenda
-	const views = getViews();
+	const views = getViews()
 
 	// New Event
 	const handleSelect = ({ start, end }: { start: any; end: any }) => {
-		setEventAdding(true);
-		setEventItem({ start, end });
-	};
+		setEventAdding(true)
+		setEventItem({ start, end })
+	}
 
 	useEffect(() => {
 		if (eventAdding) {
-			setInfoEvent();
+			setInfoEvent()
 		}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [eventAdding]);
+	}, [eventAdding])
 
 	const eventStyleGetter = (
 		event: { color?: TColor },
@@ -241,9 +241,9 @@ const Index: NextPage = () => {
 		end: any,
 		// isSelected: boolean,
 	) => {
-		const isActiveEvent = start <= now && end >= now;
-		const isPastEvent = end < now;
-		const color = isActiveEvent ? 'success' : event.color;
+		const isActiveEvent = start <= now && end >= now
+		const isPastEvent = end < now
+		const color = isActiveEvent ? 'success' : event.color
 
 		return {
 			className: classNames({
@@ -251,8 +251,8 @@ const Index: NextPage = () => {
 				'border border-success': isActiveEvent,
 				'opacity-50': isPastEvent,
 			}),
-		};
-	};
+		}
+	}
 
 	const formik = useFormik({
 		initialValues: {
@@ -273,20 +273,20 @@ const Index: NextPage = () => {
 						start: values.eventStart,
 						user: { ...getUserDataWithUsername(values.eventEmployee) },
 					},
-				]);
+				])
 			}
-			setToggleInfoEventCanvas(false);
-			setEventAdding(false);
-			setEventItem(initialEventItem);
+			setToggleInfoEventCanvas(false)
+			setEventAdding(false)
+			setEventItem(initialEventItem)
 			formik.setValues({
 				eventName: '',
 				eventStart: '',
 				eventEnd: '',
 				eventEmployee: '',
 				eventAllDay: false,
-			});
+			})
 		},
-	});
+	})
 
 	useEffect(() => {
 		if (eventItem)
@@ -298,10 +298,10 @@ const Index: NextPage = () => {
 				eventStart: dayjs(eventItem.start).format(),
 				eventEnd: dayjs(eventItem.end).format(),
 				eventEmployee: eventItem?.user?.username || '',
-			});
-		return () => {};
+			})
+		return () => {}
 		//	eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [eventItem]);
+	}, [eventItem])
 	// END:: Calendar
 	return (
 		<PageWrapper>
@@ -434,8 +434,8 @@ const Index: NextPage = () => {
 									scrollToTime={new Date(1970, 1, 1, 6)}
 									defaultDate={new Date()}
 									onSelectEvent={(event) => {
-										setInfoEvent();
-										setEventItem(event);
+										setInfoEvent()
+										setEventItem(event)
 									}}
 									onSelectSlot={handleSelect}
 									onView={handleViewMode}
@@ -483,8 +483,8 @@ const Index: NextPage = () => {
 									scrollToTime={new Date(1970, 1, 1, 6)}
 									defaultDate={new Date()}
 									onSelectEvent={(event) => {
-										setInfoEvent();
-										setEventItem(event);
+										setInfoEvent()
+										setEventItem(event)
 									}}
 									onSelectSlot={handleSelect}
 									onView={handleViewMode}
@@ -501,15 +501,15 @@ const Index: NextPage = () => {
 
 				<OffCanvas
 					setOpen={(status: boolean) => {
-						setToggleInfoEventCanvas(status);
-						setEventAdding(status);
+						setToggleInfoEventCanvas(status)
+						setEventAdding(status)
 					}}
 					isOpen={toggleInfoEventCanvas}
 					titleId='canvas-title'>
 					<OffCanvasHeader
 						setOpen={(status: boolean) => {
-							setToggleInfoEventCanvas(status);
-							setEventAdding(status);
+							setToggleInfoEventCanvas(status)
+							setEventAdding(status)
 						}}
 						className='p-4'>
 						<OffCanvasTitle id='canvas-title'>
@@ -640,14 +640,14 @@ const Index: NextPage = () => {
 				</OffCanvas>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

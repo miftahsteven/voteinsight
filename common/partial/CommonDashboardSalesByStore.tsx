@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -6,57 +6,57 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../components/bootstrap/Card';
-import Button, { ButtonGroup } from '../../components/bootstrap/Button';
-import Chart from '../../components/extras/Chart';
-import dayjs from 'dayjs';
-import Company1 from '../../assets/logos/company1.png';
-import Company2 from '../../assets/logos/company2.png';
-import Company3 from '../../assets/logos/company3.png';
-import Company4 from '../../assets/logos/company4.png';
-import { ApexOptions } from 'apexcharts';
-import useDarkMode from '../../hooks/useDarkMode';
+} from '../../components/bootstrap/Card'
+import Button, { ButtonGroup } from '../../components/bootstrap/Button'
+import Chart from '../../components/extras/Chart'
+import dayjs from 'dayjs'
+import Company1 from '../../assets/logos/company1.png'
+import Company2 from '../../assets/logos/company2.png'
+import Company3 from '../../assets/logos/company3.png'
+import Company4 from '../../assets/logos/company4.png'
+import { ApexOptions } from 'apexcharts'
+import useDarkMode from '../../hooks/useDarkMode'
 
 const CommonDashboardSalesByStore = () => {
-	const { themeStatus } = useDarkMode();
+	const { themeStatus } = useDarkMode()
 
-	const [year, setYear] = useState(Number(dayjs().format('YYYY')));
+	const [year, setYear] = useState(Number(dayjs().format('YYYY')))
 	const companies = [
 		{ name: 'Fidusiaku', img: Company1 },
 		{ name: 'Trenwuz', img: Company2 },
 		{ name: 'Whatsapp API', img: Company3 },
 		// { name: 'Company 4', img: Company4 },
-	];
+	]
 	const COMPANIES_TAB = {
 		COMP1: companies[0].name,
 		COMP2: companies[1].name,
 		COMP3: companies[2].name,
 		// COMP4: companies[3].name,
-	};
-	const [activeCompanyTab, setActiveCompanyTab] = useState(COMPANIES_TAB.COMP1);
+	}
+	const [activeCompanyTab, setActiveCompanyTab] = useState(COMPANIES_TAB.COMP1)
 	function randomize(value: number, x = year) {
 		if (x === 2019) {
 			// @ts-ignore
 			if (value.toFixed(0) % 2) {
-				return (value * 1.5).toFixed(2);
+				return (value * 1.5).toFixed(2)
 			}
-			return (value / 1.4).toFixed(2);
+			return (value / 1.4).toFixed(2)
 		}
 		if (x === 2020) {
 			// @ts-ignore
 			if (value.toFixed(0) % 2) {
-				return (value / 1.5).toFixed(2);
+				return (value / 1.5).toFixed(2)
 			}
-			return (value * 1.4).toFixed(2);
+			return (value * 1.4).toFixed(2)
 		}
 		if (x === 2021) {
 			// @ts-ignore
 			if (value.toFixed(0) % 2) {
-				return (value / 2).toFixed(2);
+				return (value / 2).toFixed(2)
 			}
-			return (value * 1.4).toFixed(2);
+			return (value * 1.4).toFixed(2)
 		}
-		return value.toFixed(2);
+		return value.toFixed(2)
 	}
 
 	const salesByStoreOptions: ApexOptions = {
@@ -182,7 +182,7 @@ const CommonDashboardSalesByStore = () => {
 			horizontalAlign: 'left',
 			offsetX: 40,
 		},
-	};
+	}
 	const salesByStoreSeries1: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
@@ -229,7 +229,7 @@ const CommonDashboardSalesByStore = () => {
 				randomize(58),
 			],
 		},
-	];
+	]
 	const salesByStoreSeries2: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
@@ -276,7 +276,7 @@ const CommonDashboardSalesByStore = () => {
 				randomize(53),
 			],
 		},
-	];
+	]
 	const salesByStoreSeries3: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
@@ -323,7 +323,7 @@ const CommonDashboardSalesByStore = () => {
 				randomize(43),
 			],
 		},
-	];
+	]
 	const salesByStoreSeries4: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
@@ -370,7 +370,7 @@ const CommonDashboardSalesByStore = () => {
 				randomize(42),
 			],
 		},
-	];
+	]
 	return (
 		<Card stretch>
 			<CardHeader>
@@ -448,7 +448,7 @@ const CommonDashboardSalesByStore = () => {
 				</div>
 			</CardBody>
 		</Card>
-	);
-};
+	)
+}
 
-export default CommonDashboardSalesByStore;
+export default CommonDashboardSalesByStore

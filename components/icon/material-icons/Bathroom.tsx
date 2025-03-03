@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBathroom = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -17,7 +17,7 @@ const SvgBathroom = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={9} cy={14} r={1} />
 			<circle cx={12} cy={17} r={1} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBathroom;
+export default SvgBathroom

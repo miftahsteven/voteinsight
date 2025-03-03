@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgBlurOn = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -26,7 +26,7 @@ const SvgBlurOn = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={10} cy={10} r={1.5} />
 			<circle cx={18} cy={10} r={1} />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgBlurOn;
+export default SvgBlurOn

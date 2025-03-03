@@ -1,40 +1,40 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import Page from '../../../layout/Page/Page';
-import { componentPagesMenu } from '../../../menu';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Chart, { IChartOptions } from '../../../components/extras/Chart';
-import Card, { CardBody } from '../../../components/bootstrap/Card';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import Page from '../../../layout/Page/Page'
+import { componentPagesMenu } from '../../../menu'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Chart, { IChartOptions } from '../../../components/extras/Chart'
+import Card, { CardBody } from '../../../components/bootstrap/Card'
 
 const Index: NextPage = () => {
 	const randomizeArray = (arg: number[]) => {
-		const array = arg.slice();
-		let currentIndex = array.length;
-		let temporaryValue;
-		let randomIndex;
+		const array = arg.slice()
+		let currentIndex = array.length
+		let temporaryValue
+		let randomIndex
 
 		while (currentIndex !== 0) {
-			randomIndex = Math.floor(Math.random() * currentIndex);
-			currentIndex -= 1;
+			randomIndex = Math.floor(Math.random() * currentIndex)
+			currentIndex -= 1
 
-			temporaryValue = array[currentIndex];
-			array[currentIndex] = array[randomIndex];
-			array[randomIndex] = temporaryValue;
+			temporaryValue = array[currentIndex]
+			array[currentIndex] = array[randomIndex]
+			array[randomIndex] = temporaryValue
 		}
 
-		return array;
-	};
+		return array
+	}
 
 	// data for the sparklines that appear below header area
 	const sparklineData = [
 		47, 45, 54, 38, 56, 24, 65, 31, 37, 39, 62, 51, 35, 41, 35, 27, 93, 53, 61, 27, 54, 43, 19,
 		46,
-	];
+	]
 
 	const [state] = useState<IChartOptions>({
 		series: [
@@ -188,7 +188,7 @@ const Index: NextPage = () => {
 				y: {
 					title: {
 						formatter() {
-							return '';
+							return ''
 						},
 					},
 				},
@@ -222,7 +222,7 @@ const Index: NextPage = () => {
 				y: {
 					title: {
 						formatter() {
-							return '';
+							return ''
 						},
 					},
 				},
@@ -307,7 +307,7 @@ const Index: NextPage = () => {
 				y: {
 					title: {
 						formatter() {
-							return '';
+							return ''
 						},
 					},
 				},
@@ -352,7 +352,7 @@ const Index: NextPage = () => {
 				y: {
 					title: {
 						formatter() {
-							return '';
+							return ''
 						},
 					},
 				},
@@ -419,7 +419,7 @@ const Index: NextPage = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<PageWrapper>
 			<Head>
@@ -586,14 +586,14 @@ const Index: NextPage = () => {
 				</Card>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

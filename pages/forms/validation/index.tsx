@@ -1,14 +1,14 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Page from '../../../layout/Page/Page';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft } from '../../../layout/SubHeader/SubHeader'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardBody,
 	CardCodeView,
@@ -19,15 +19,15 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Button from '../../../components/bootstrap/Button';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Input from '../../../components/bootstrap/forms/Input';
-import Label from '../../../components/bootstrap/forms/Label';
-import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup';
-import Textarea from '../../../components/bootstrap/forms/Textarea';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
-import Select from '../../../components/bootstrap/forms/Select';
+} from '../../../components/bootstrap/Card'
+import Button from '../../../components/bootstrap/Button'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Input from '../../../components/bootstrap/forms/Input'
+import Label from '../../../components/bootstrap/forms/Label'
+import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup'
+import Textarea from '../../../components/bootstrap/forms/Textarea'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
+import Select from '../../../components/bootstrap/forms/Select'
 
 const GENERAL_USAGE = `<COMPONENT // Input || Select || Textarea || ChecksGroup || Checks
 	onBlur={ Function } // Example: formik.handleBlur , Only Input, Select and Textarea
@@ -37,7 +37,7 @@ const GENERAL_USAGE = `<COMPONENT // Input || Select || Textarea || ChecksGroup 
 	validFeedback={ String }
 	isValidMessage={ Boolean }
 	isTooltipFeedback={ Boolean }
- 	{...props}/>`;
+ 	{...props}/>`
 
 const SAMPLE_USAGE = `import React from 'react';
 import { useFormik } from 'formik';
@@ -85,7 +85,7 @@ const ExampleForm = () => {
   );
 }
 
-export default ExampleForm`;
+export default ExampleForm`
 
 const Index: NextPage = () => {
 	const formik = useFormik({
@@ -102,70 +102,70 @@ const Index: NextPage = () => {
 		},
 		validate: (values) => {
 			const errors: {
-				validationFirstName?: string;
-				validationLastName?: string;
-				validationCustomUsername?: string;
-				validationCity?: string;
-				validationState?: string;
-				validationZip?: string;
-				validationDesc?: string;
-				validationRadios?: string;
-				validationCheck?: string | boolean;
-			} = {};
+				validationFirstName?: string
+				validationLastName?: string
+				validationCustomUsername?: string
+				validationCity?: string
+				validationState?: string
+				validationZip?: string
+				validationDesc?: string
+				validationRadios?: string
+				validationCheck?: string | boolean
+			} = {}
 			if (!values.validationFirstName) {
-				errors.validationFirstName = 'Required';
+				errors.validationFirstName = 'Required'
 			} else if (values.validationFirstName.length > 15) {
-				errors.validationFirstName = 'Must be 15 characters or less';
+				errors.validationFirstName = 'Must be 15 characters or less'
 			}
 
 			if (!values.validationLastName) {
-				errors.validationLastName = 'Required';
+				errors.validationLastName = 'Required'
 			} else if (values.validationLastName.length > 20) {
-				errors.validationLastName = 'Must be 20 characters or less';
+				errors.validationLastName = 'Must be 20 characters or less'
 			}
 
 			if (!values.validationCustomUsername) {
-				errors.validationCustomUsername = 'Required';
+				errors.validationCustomUsername = 'Required'
 			} else if (
 				!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.validationCustomUsername)
 			) {
-				errors.validationCustomUsername = 'Invalid email address';
+				errors.validationCustomUsername = 'Invalid email address'
 			}
 
 			if (!values.validationCity) {
-				errors.validationCity = 'Please provide a valid city.';
+				errors.validationCity = 'Please provide a valid city.'
 			}
 
 			if (!values.validationState) {
-				errors.validationState = 'Please select a valid state.';
+				errors.validationState = 'Please select a valid state.'
 			}
 
 			if (!values.validationZip) {
-				errors.validationZip = 'Please provide a valid zip.';
+				errors.validationZip = 'Please provide a valid zip.'
 			} else if (values.validationZip.length !== 5) {
-				errors.validationZip = 'Must be 5 characters';
+				errors.validationZip = 'Must be 5 characters'
 			}
 
 			if (!values.validationDesc) {
-				errors.validationDesc = 'Please provide a valid Desc.';
+				errors.validationDesc = 'Please provide a valid Desc.'
 			} else if (values.validationDesc.length < 20) {
-				errors.validationDesc = `Must be 20 characters or more, but currently ${values.validationDesc.length} characters`;
+				errors.validationDesc = `Must be 20 characters or more, but currently ${values.validationDesc.length} characters`
 			}
 
 			if (!values.validationRadios) {
-				errors.validationRadios = 'You must choose one before posting.';
+				errors.validationRadios = 'You must choose one before posting.'
 			}
 
 			if (!values.validationCheck) {
-				errors.validationCheck = 'You must agree before submitting.';
+				errors.validationCheck = 'You must agree before submitting.'
 			}
 
-			return errors;
+			return errors
 		},
 		onSubmit: (values) => {
-			alert(JSON.stringify(values, null, 2));
+			alert(JSON.stringify(values, null, 2))
 		},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -428,14 +428,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

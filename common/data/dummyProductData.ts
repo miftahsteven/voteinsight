@@ -1,27 +1,27 @@
-import BeveledCone from '../../assets/img/abstract/beveled-cone.png';
-import CloudBall from '../../assets/img/abstract/cloud-ball.png';
-import Quadrilateral from '../../assets/img/abstract/quadrilateral.png';
-import HardSharpDonut from '../../assets/img/abstract/hald-sharp-donut.png';
-import BendyRectangle from '../../assets/img/abstract/bendy-rectangle.png';
-import Infinity from '../../assets/img/abstract/infinity.png';
-import Octahedron from '../../assets/img/abstract/octahedron.png';
-import Triangle from '../../assets/img/abstract/triangle.png';
-import SquiglyGlobe from '../../assets/img/abstract/squigly-globe.png';
-import Dodecagon from '../../assets/img/abstract/dodecagon.png';
-import BeveledCube from '../../assets/img/abstract/beveled-cube.png';
-import Cylinder from '../../assets/img/abstract/cylinder.png';
+import BeveledCone from '../../assets/img/abstract/beveled-cone.png'
+import CloudBall from '../../assets/img/abstract/cloud-ball.png'
+import Quadrilateral from '../../assets/img/abstract/quadrilateral.png'
+import HardSharpDonut from '../../assets/img/abstract/hald-sharp-donut.png'
+import BendyRectangle from '../../assets/img/abstract/bendy-rectangle.png'
+import Infinity from '../../assets/img/abstract/infinity.png'
+import Octahedron from '../../assets/img/abstract/octahedron.png'
+import Triangle from '../../assets/img/abstract/triangle.png'
+import SquiglyGlobe from '../../assets/img/abstract/squigly-globe.png'
+import Dodecagon from '../../assets/img/abstract/dodecagon.png'
+import BeveledCube from '../../assets/img/abstract/beveled-cube.png'
+import Cylinder from '../../assets/img/abstract/cylinder.png'
 
 const data: {
-	id: number;
-	image: string;
-	name: string;
-	category: string;
-	series: { data: number[] }[];
-	color: string;
-	stock: number;
-	price: number;
-	store: string;
-	file: string;
+	id: number
+	image: string
+	name: string
+	category: string
+	series: { data: number[] }[]
+	color: string
+	stock: number
+	price: number
+	store: string
+	file: string
 }[] = [
 	{
 		id: 1,
@@ -215,5 +215,5 @@ const data: {
 		store: 'Company B',
 		file: 'Figma',
 	},
-];
-export default data;
+]
+export default data

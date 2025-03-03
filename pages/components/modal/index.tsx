@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import Head from 'next/head';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
-import { componentPagesMenu } from '../../../menu';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader';
-import Breadcrumb from '../../../components/bootstrap/Breadcrumb';
-import Page from '../../../layout/Page/Page';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
+import { componentPagesMenu } from '../../../menu'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../../layout/SubHeader/SubHeader'
+import Breadcrumb from '../../../components/bootstrap/Breadcrumb'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -17,44 +17,44 @@ import Card, {
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn';
-import CommonHowToUse from '../../../common/partial/other/CommonHowToUse';
-import CommonDesc from '../../../common/partial/other/CommonDesc';
+} from '../../../components/bootstrap/Card'
+import CommonStoryBtn from '../../../common/partial/other/CommonStoryBtn'
+import CommonHowToUse from '../../../common/partial/other/CommonHowToUse'
+import CommonDesc from '../../../common/partial/other/CommonDesc'
 import Modal, {
 	ModalBody,
 	ModalFooter,
 	ModalHeader,
 	ModalTitle,
-} from '../../../components/bootstrap/Modal';
-import { TModalFullScreen, TModalSize } from '../../../type/modal-type';
-import Icon from '../../../components/icon/Icon';
-import Button from '../../../components/bootstrap/Button';
+} from '../../../components/bootstrap/Modal'
+import { TModalFullScreen, TModalSize } from '../../../type/modal-type'
+import Icon from '../../../components/icon/Icon'
+import Button from '../../../components/bootstrap/Button'
 
 const Index: NextPage = () => {
-	const [state, setState] = useState(false);
+	const [state, setState] = useState(false)
 
-	const [staticBackdropStatus, setStaticBackdropStatus] = useState(false);
-	const [scrollableStatus, setScrollableStatus] = useState(false);
-	const [centeredStatus, setCenteredStatus] = useState(false);
-	const [sizeStatus, setSizeStatus] = useState<TModalSize>(null);
+	const [staticBackdropStatus, setStaticBackdropStatus] = useState(false)
+	const [scrollableStatus, setScrollableStatus] = useState(false)
+	const [centeredStatus, setCenteredStatus] = useState(false)
+	const [sizeStatus, setSizeStatus] = useState<TModalSize>(null)
 	const [fullScreenStatus, setFullScreenStatus] = useState<TModalFullScreen | undefined>(
 		undefined,
-	);
-	const [animationStatus, setAnimationStatus] = useState(true);
-	const [longContentStatus, setLongContentStatus] = useState(false);
-	const [headerCloseStatus, setHeaderCloseStatus] = useState(true);
+	)
+	const [animationStatus, setAnimationStatus] = useState(true)
+	const [longContentStatus, setLongContentStatus] = useState(false)
+	const [headerCloseStatus, setHeaderCloseStatus] = useState(true)
 
 	const initialStatus = () => {
-		setStaticBackdropStatus(false);
-		setScrollableStatus(false);
-		setCenteredStatus(false);
-		setSizeStatus(null);
-		setFullScreenStatus(undefined);
-		setAnimationStatus(true);
-		setLongContentStatus(false);
-		setHeaderCloseStatus(true);
-	};
+		setStaticBackdropStatus(false)
+		setScrollableStatus(false)
+		setCenteredStatus(false)
+		setSizeStatus(null)
+		setFullScreenStatus(undefined)
+		setAnimationStatus(true)
+		setLongContentStatus(false)
+		setHeaderCloseStatus(true)
+	}
 
 	const CONTENT = longContentStatus ? (
 		<>
@@ -148,9 +148,9 @@ const Index: NextPage = () => {
 			Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis
 			in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
 		</p>
-	);
+	)
 
-	const GENERAL_USAGE = `const [state, setState] = useState(false);`;
+	const GENERAL_USAGE = `const [state, setState] = useState(false);`
 
 	const GENERAL_USAGE_2 = `
 <Button 
@@ -178,7 +178,7 @@ const Index: NextPage = () => {
 	</ModalHeader>
 	<ModalBody className={ String } {...props}>...</ModalBody>
 	<ModalFooter className={ String } {...props}>...</ModalFooter>
-</Modal>`;
+</Modal>`
 
 	return (
 		<PageWrapper>
@@ -243,8 +243,8 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setState(true);
+												initialStatus()
+												setState(true)
 											}}>
 											Open Modal
 										</Button>
@@ -254,8 +254,8 @@ const Index: NextPage = () => {
 											icon='PersonAdd'
 											className='mb-0 text-info h2'
 											onClick={() => {
-												initialStatus();
-												setState(true);
+												initialStatus()
+												setState(true)
 											}}
 										/>
 									</div>
@@ -263,8 +263,8 @@ const Index: NextPage = () => {
 										<span
 											role='presentation'
 											onClick={() => {
-												initialStatus();
-												setState(true);
+												initialStatus()
+												setState(true)
 											}}>
 											Open Modal
 										</span>
@@ -294,9 +294,9 @@ const Index: NextPage = () => {
 									isLight
 									icon='Send'
 									onClick={() => {
-										initialStatus();
-										setStaticBackdropStatus(true);
-										setState(true);
+										initialStatus()
+										setStaticBackdropStatus(true)
+										setState(true)
 									}}>
 									Open Modal
 								</Button>
@@ -333,9 +333,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setLongContentStatus(true);
-												setState(true);
+												initialStatus()
+												setLongContentStatus(true)
+												setState(true)
 											}}>
 											Open Modal (isScrollable is false)
 										</Button>
@@ -346,10 +346,10 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setLongContentStatus(true);
-												setScrollableStatus(true);
-												setState(true);
+												initialStatus()
+												setLongContentStatus(true)
+												setScrollableStatus(true)
+												setState(true)
 											}}>
 											Open Modal (isScrollable is true)
 										</Button>
@@ -387,9 +387,9 @@ const Index: NextPage = () => {
 									isLight
 									icon='Send'
 									onClick={() => {
-										initialStatus();
-										setCenteredStatus(true);
-										setState(true);
+										initialStatus()
+										setCenteredStatus(true)
+										setState(true)
 									}}>
 									Open Modal
 								</Button>
@@ -427,9 +427,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setSizeStatus('sm');
-												setState(true);
+												initialStatus()
+												setSizeStatus('sm')
+												setState(true)
 											}}>
 											Open Modal (size is sm)
 										</Button>
@@ -440,8 +440,8 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setState(true);
+												initialStatus()
+												setState(true)
 											}}>
 											Open Modal
 										</Button>
@@ -452,9 +452,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setSizeStatus('lg');
-												setState(true);
+												initialStatus()
+												setSizeStatus('lg')
+												setState(true)
 											}}>
 											Open Modal (size is lg)
 										</Button>
@@ -465,9 +465,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setSizeStatus('xl');
-												setState(true);
+												initialStatus()
+												setSizeStatus('xl')
+												setState(true)
 											}}>
 											Open Modal (size is xl)
 										</Button>
@@ -510,9 +510,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setFullScreenStatus(true);
-												setState(true);
+												initialStatus()
+												setFullScreenStatus(true)
+												setState(true)
 											}}>
 											Open Modal (fullScreen)
 										</Button>
@@ -524,9 +524,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setFullScreenStatus('sm');
-												setState(true);
+												initialStatus()
+												setFullScreenStatus('sm')
+												setState(true)
 											}}>
 											Open Modal (fullScreen is sm)
 										</Button>
@@ -538,9 +538,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setFullScreenStatus('md');
-												setState(true);
+												initialStatus()
+												setFullScreenStatus('md')
+												setState(true)
 											}}>
 											Open Modal (fullScreen is md)
 										</Button>
@@ -553,9 +553,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setFullScreenStatus('lg');
-												setState(true);
+												initialStatus()
+												setFullScreenStatus('lg')
+												setState(true)
 											}}>
 											Open Modal (fullScreen is lg)
 										</Button>
@@ -567,9 +567,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setFullScreenStatus('xl');
-												setState(true);
+												initialStatus()
+												setFullScreenStatus('xl')
+												setState(true)
 											}}>
 											Open Modal (fullScreen is xl)
 										</Button>
@@ -581,9 +581,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setFullScreenStatus('xxl');
-												setState(true);
+												initialStatus()
+												setFullScreenStatus('xxl')
+												setState(true)
 											}}>
 											Open Modal (fullScreen is xxl)
 										</Button>
@@ -621,9 +621,9 @@ const Index: NextPage = () => {
 									isLight
 									icon='Send'
 									onClick={() => {
-										initialStatus();
-										setAnimationStatus(false);
-										setState(true);
+										initialStatus()
+										setAnimationStatus(false)
+										setState(true)
 									}}>
 									Open Modal
 								</Button>
@@ -657,8 +657,8 @@ const Index: NextPage = () => {
 									<div className='col-auto'>
 										<Button
 											onClick={() => {
-												initialStatus();
-												setState(true);
+												initialStatus()
+												setState(true)
 											}}
 											color='success'
 											isLight
@@ -672,9 +672,9 @@ const Index: NextPage = () => {
 											isLight
 											icon='Send'
 											onClick={() => {
-												initialStatus();
-												setHeaderCloseStatus(false);
-												setState(true);
+												initialStatus()
+												setHeaderCloseStatus(false)
+												setState(true)
 											}}>
 											Open Modal (setIsOpen={`{null}`})
 										</Button>
@@ -714,14 +714,14 @@ const Index: NextPage = () => {
 				</Modal>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

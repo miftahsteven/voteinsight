@@ -1,46 +1,46 @@
-import React, { forwardRef } from 'react';
-import classNames from 'classnames';
-import dayjs from 'dayjs';
-import Checks from '../bootstrap/forms/Checks';
-import Badge from '../bootstrap/Badge';
-import Button from '../bootstrap/Button';
-import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../bootstrap/Dropdown';
-import useDarkMode from '../../hooks/useDarkMode';
-import { TColor } from '../../type/color-type';
+import React, { forwardRef } from 'react'
+import classNames from 'classnames'
+import dayjs from 'dayjs'
+import Checks from '../bootstrap/forms/Checks'
+import Badge from '../bootstrap/Badge'
+import Button from '../bootstrap/Button'
+import Dropdown, { DropdownItem, DropdownMenu, DropdownToggle } from '../bootstrap/Dropdown'
+import useDarkMode from '../../hooks/useDarkMode'
+import { TColor } from '../../type/color-type'
 
 export interface ITodoListItem {
-	id?: string | number;
-	status?: boolean;
-	title?: string | number;
-	date?: dayjs.ConfigType;
+	id?: string | number
+	status?: boolean
+	title?: string | number
+	date?: dayjs.ConfigType
 	badge?: {
-		text?: string;
-		color?: TColor;
-	};
+		text?: string
+		color?: TColor
+	}
 }
 
 interface ITodoItemProps {
-	list: ITodoListItem[];
-	setList(...args: unknown[]): unknown;
-	index: number;
+	list: ITodoListItem[]
+	setList(...args: unknown[]): unknown
+	index: number
 }
 export const TodoItem = forwardRef<HTMLDivElement, ITodoItemProps>(
 	({ index, list, setList, ...props }, ref) => {
-		const itemData = list[index];
+		const itemData = list[index]
 
 		const handleChange = (_index: number) => {
-			const newTodos = [...list];
-			newTodos[_index].status = !newTodos[_index].status;
-			setList(newTodos);
-		};
+			const newTodos = [...list]
+			newTodos[_index].status = !newTodos[_index].status
+			setList(newTodos)
+		}
 
 		const removeTodo = (_index: number) => {
-			const newTodos = [...list];
-			newTodos.splice(_index, 1);
-			setList(newTodos);
-		};
+			const newTodos = [...list]
+			newTodos.splice(_index, 1)
+			setList(newTodos)
+		}
 
-		const { themeStatus } = useDarkMode();
+		const { themeStatus } = useDarkMode()
 
 		return (
 			<div ref={ref} className={classNames('todo-item')} {...props}>
@@ -99,15 +99,15 @@ export const TodoItem = forwardRef<HTMLDivElement, ITodoItemProps>(
 					</span>
 				</div>
 			</div>
-		);
+		)
 	},
-);
-TodoItem.displayName = 'TodoItem';
+)
+TodoItem.displayName = 'TodoItem'
 
 export interface ITodoProps {
-	list: ITodoListItem[];
-	className?: string;
-	setList(...args: unknown[]): unknown;
+	list: ITodoListItem[]
+	className?: string
+	setList(...args: unknown[]): unknown
 }
 const Todo = forwardRef<HTMLDivElement, ITodoProps>(
 	({ className, list, setList, ...props }, ref) => {
@@ -117,9 +117,9 @@ const Todo = forwardRef<HTMLDivElement, ITodoProps>(
 					<TodoItem key={i.id} index={index} list={list} setList={setList} />
 				))}
 			</div>
-		);
+		)
 	},
-);
-Todo.displayName = 'Todo';
+)
+Todo.displayName = 'Todo'
 
-export default Todo;
+export default Todo

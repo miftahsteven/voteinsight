@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgReport = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -12,7 +12,7 @@ const SvgReport = (props: SVGProps<SVGSVGElement>) => {
 			<circle cx={12} cy={16} r={1} />
 			<path d='M11 7h2v7h-2z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgReport;
+export default SvgReport

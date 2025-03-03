@@ -1,31 +1,38 @@
-import React, { useContext, useState } from 'react';
-import { useTranslation } from 'next-i18next';
-import classNames from 'classnames';
-import { useRouter } from 'next/router';
-import { useWindowSize } from 'react-use';
-import { demoPagesMenu } from '../../menu';
-import useDarkMode from '../../hooks/useDarkMode';
-import Collapse from '../../components/bootstrap/Collapse';
-import { NavigationLine } from '../Navigation/Navigation';
-import Icon from '../../components/icon/Icon';
-import useNavigationItemHandle from '../../hooks/useNavigationItemHandle';
-import AuthContext from '../../context/authContext';
+import React, { useContext, useState } from 'react'
+import { useTranslation } from 'next-i18next'
+import classNames from 'classnames'
+import { useRouter } from 'next/router'
+import { useWindowSize } from 'react-use'
+import { demoPagesMenu } from '../../menu'
+import useDarkMode from '../../hooks/useDarkMode'
+import Collapse from '../../components/bootstrap/Collapse'
+import { NavigationLine } from '../Navigation/Navigation'
+import Icon from '../../components/icon/Icon'
+import useNavigationItemHandle from '../../hooks/useNavigationItemHandle'
+import AuthContext from '../../context/authContext'
+import useQueryLogout from './useQueryLogout'
+//import showNotification from '../../../components/extras/showNotification';
+import showNotification from '../../components/extras/showNotification'
 
-import ThemeContext from '../../context/themeContext';
+import ThemeContext from '../../context/themeContext'
 
 const User = () => {
-	const { width } = useWindowSize();
-	const { setAsideStatus } = useContext(ThemeContext);
-	const { userData, setUser } = useContext(AuthContext);
+	const { width } = useWindowSize()
+	const { setAsideStatus } = useContext(ThemeContext)
+	const { userData } = useContext(AuthContext)
 
-	const router = useRouter();
+	const { mutate } = useQueryLogout()
 
-	const handleItem = useNavigationItemHandle();
-	const { darkModeStatus, setDarkModeStatus } = useDarkMode();
+	const router = useRouter()
 
-	const [collapseStatus, setCollapseStatus] = useState<boolean>(false);
+	const dataLogin = JSON.parse(localStorage.getItem('dataLogin'))
+	//console.log(' yhun ', JSON.parse(dataLogin));
+	const handleItem = useNavigationItemHandle()
+	const { darkModeStatus, setDarkModeStatus } = useDarkMode()
 
-	const { t } = useTranslation(['translation', 'menu']);
+	const [collapseStatus, setCollapseStatus] = useState<boolean>(false)
+
+	const { t } = useTranslation(['translation', 'menu'])
 
 	return (
 		<>
@@ -34,13 +41,12 @@ const User = () => {
 				role='presentation'
 				onClick={() => setCollapseStatus(!collapseStatus)}>
 				<div className='user-avatar'>
-					{!!userData?.src && (
-						<img src={userData?.src} alt='Avatar' width={128} height={128} />
-					)}
+					{/* {!!user?.src && <img src={user?.src} alt='Avatar' width={128} height={128} />} */}
 				</div>
 				<div className='user-info'>
 					<div className='user-name d-flex align-items-center'>
-						{`${userData?.name} ${userData?.surname}`}
+						{/* {`${userData?.name} ${userData?.surname}`} */}
+						{`${dataLogin?.data?.user_profile[0]?.user_nama}`}
 						<Icon icon='Verified' className='ms-1' color='info' />
 					</div>
 					<div className='user-sub-title'>{userData?.position}</div>
@@ -67,7 +73,7 @@ const User = () => {
 								</span>
 							</span>
 						</div>
-						<div
+						{/* <div
 							role='presentation'
 							className='navigation-item cursor-pointer'
 							onClick={() => {
@@ -86,7 +92,7 @@ const User = () => {
 									</span>
 								</span>
 							</span>
-						</div>
+						</div> */}
 					</div>
 				</nav>
 				<NavigationLine />
@@ -96,20 +102,49 @@ const User = () => {
 							role='presentation'
 							className='navigation-item cursor-pointer'
 							onClick={() => {
-								if (setUser) {
-									setUser('');
-								}
-								if (
-									width < Number(process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE)
-								) {
-									setAsideStatus(false);
-								}
-								router.push(`/${demoPagesMenu.login.path}`);
+								// if (setUser) {
+								// 	setUser('');
+								// }
+								const user_id = localStorage.getItem('login_id')
+								//console.log("----user", user_id);
+								mutate(
+									{ user_id: user_id },
+									{
+										onSuccess: () => {
+											if (dataLogin) {
+												localStorage.removeItem('dataLogin')
+											}
+											if (
+												width <
+												Number(
+													process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE,
+												)
+											) {
+												setAsideStatus(false)
+											}
+											router.push(`/${demoPagesMenu.login.path}`)
+										},
+										onError: () => {
+											showNotification(
+												<span className='d-flex align-items-center'>
+													<Icon
+														icon='warning'
+														size='lg'
+														className='me-1'
+													/>
+													<span>Gagal</span>
+												</span>,
+												'Gagal Logout',
+											)
+										},
+									},
+								)
 							}}>
 							<span className='navigation-link navigation-link-pill'>
 								<span className='navigation-link-info'>
 									<Icon icon='Logout' className='navigation-icon' />
-									<span className='navigation-text'>{t('menu:Logout')}</span>
+									{/* <span className='navigation-text'>{t('menu:Logout')}</span> */}
+									<span className='navigation-text'>Keluar</span>
 								</span>
 							</span>
 						</div>
@@ -117,7 +152,7 @@ const User = () => {
 				</nav>
 			</Collapse>
 		</>
-	);
-};
+	)
+}
 
-export default User;
+export default User

@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import { series } from '../../../../common/data/chartDummyData';
-import Instagram from '../../../../assets/img/instagram.svg';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import { series } from '../../../../common/data/chartDummyData'
+import Instagram from '../../../../assets/img/instagram.svg'
 
 const LineWithAnnotations = () => {
 	const [state] = useState<IChartOptions>({
@@ -134,7 +134,7 @@ const LineWithAnnotations = () => {
 				type: 'datetime',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -151,7 +151,7 @@ const LineWithAnnotations = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default LineWithAnnotations;
+export default LineWithAnnotations

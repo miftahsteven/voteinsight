@@ -1,35 +1,35 @@
-import React from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import Head from 'next/head';
-import classNames from 'classnames';
-import { useRouter } from 'next/router';
-import useDarkMode from '../../hooks/useDarkMode';
-import { TMenu } from '../../type/menu-type';
-import { componentPagesMenu } from '../../menu';
-import PageWrapper from '../../layout/PageWrapper/PageWrapper';
-import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../layout/SubHeader/SubHeader';
-import Card, { CardBody } from '../../components/bootstrap/Card';
-import CommonStoryBtn from '../../common/partial/other/CommonStoryBtn';
-import Page from '../../layout/Page/Page';
-import Icon from '../../components/icon/Icon';
-import Input from '../../components/bootstrap/forms/Input';
+import React from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import Head from 'next/head'
+import classNames from 'classnames'
+import { useRouter } from 'next/router'
+import useDarkMode from '../../hooks/useDarkMode'
+import { TMenu } from '../../type/menu-type'
+import { componentPagesMenu } from '../../menu'
+import PageWrapper from '../../layout/PageWrapper/PageWrapper'
+import SubHeader, { SubHeaderLeft, SubHeaderRight } from '../../layout/SubHeader/SubHeader'
+import Card, { CardBody } from '../../components/bootstrap/Card'
+import CommonStoryBtn from '../../common/partial/other/CommonStoryBtn'
+import Page from '../../layout/Page/Page'
+import Icon from '../../components/icon/Icon'
+import Input from '../../components/bootstrap/forms/Input'
 
 const Index: NextPage = () => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
-	const contents: TMenu = componentPagesMenu.content.subMenu;
+	const contents: TMenu = componentPagesMenu.content.subMenu
 
-	const router = useRouter();
+	const router = useRouter()
 
 	const formik = useFormik({
 		initialValues: {
 			searchInput: '',
 		},
 		onSubmit: () => {},
-	});
+	})
 
 	return (
 		<PageWrapper>
@@ -107,14 +107,14 @@ const Index: NextPage = () => {
 				</div>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

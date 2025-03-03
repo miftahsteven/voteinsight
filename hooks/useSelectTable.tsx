@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { FormikHelpers, useFormik } from 'formik';
-import Checks from '../components/bootstrap/forms/Checks';
+import React, { useEffect, useRef } from 'react'
+import { FormikHelpers, useFormik } from 'formik'
+import Checks from '../components/bootstrap/forms/Checks'
 
 const useSelectTable = (data: any[]) => {
 	const selectTable = useFormik({
@@ -10,13 +10,13 @@ const useSelectTable = (data: any[]) => {
 			// eslint-disable-next-line @typescript-eslint/no-unused-vars
 			formikHelpers: FormikHelpers<Values>,
 		): void | Promise<any> {
-			return undefined;
+			return undefined
 		},
 		initialValues: {
 			selectAll: false,
 			selectedList: [],
 		},
-	});
+	})
 
 	// Update Select List
 	useEffect(() => {
@@ -25,38 +25,38 @@ const useSelectTable = (data: any[]) => {
 				...selectTable.values,
 				// @ts-ignore
 				selectedList: data.map((d) => d.id.toString()),
-			});
+			})
 		} else {
 			selectTable.setValues({
 				...selectTable.values,
 				selectedList: [],
-			});
+			})
 		}
-		return () => {};
+		return () => {}
 		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [selectTable.values.selectAll]);
+	}, [selectTable.values.selectAll])
 
 	// Select All -- indeterminate
-	const ref = useRef<HTMLInputElement>(null);
+	const ref = useRef<HTMLInputElement>(null)
 	useEffect(() => {
 		if (ref.current) {
 			if (
 				!!selectTable.values.selectedList.length &&
 				selectTable.values.selectedList.length !== data.map((d) => d.id.toString()).length
 			) {
-				ref.current.checked = false;
-				ref.current.indeterminate = true;
+				ref.current.checked = false
+				ref.current.indeterminate = true
 			} else if (
 				selectTable.values.selectedList.length === data.map((d) => d.id.toString()).length
 			) {
-				ref.current.checked = true;
-				ref.current.indeterminate = false;
+				ref.current.checked = true
+				ref.current.indeterminate = false
 			} else if (selectTable.values.selectedList.length === 0) {
-				ref.current.checked = false;
-				ref.current.indeterminate = false;
+				ref.current.checked = false
+				ref.current.indeterminate = false
 			}
 		}
-	}, [selectTable.values.selectAll, selectTable.values.selectedList, data]);
+	}, [selectTable.values.selectAll, selectTable.values.selectedList, data])
 
 	const SelectAllCheck = (
 		<Checks
@@ -65,11 +65,11 @@ const useSelectTable = (data: any[]) => {
 			onChange={selectTable.handleChange}
 			checked={selectTable.values.selectAll}
 		/>
-	);
+	)
 
-	const selectItemHandleChange = selectTable.handleChange;
-	const selectedIdList = selectTable.values.selectedList;
+	const selectItemHandleChange = selectTable.handleChange
+	const selectedIdList = selectTable.values.selectedList
 
-	return { selectTable, selectItemHandleChange, selectedIdList, SelectAllCheck };
-};
-export default useSelectTable;
+	return { selectTable, selectItemHandleChange, selectedIdList, SelectAllCheck }
+}
+export default useSelectTable

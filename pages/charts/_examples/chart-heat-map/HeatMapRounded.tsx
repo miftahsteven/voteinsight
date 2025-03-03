@@ -1,28 +1,28 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const HeatMapRounded = () => {
 	function generateData(count: number, yrange: { min: any; max: any }): any[] {
-		let i = 0;
-		const series = [];
+		let i = 0
+		const series = []
 		while (i < count) {
-			const x = (i + 1).toString();
-			const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min;
+			const x = (i + 1).toString()
+			const y = Math.floor(Math.random() * (yrange.max - yrange.min + 1)) + yrange.min
 
 			series.push({
 				x,
 				y,
-			});
-			i += 1;
+			})
+			i += 1
 		}
-		return series;
+		return series
 	}
 	const [state] = useState<IChartOptions>({
 		series: [
@@ -131,7 +131,7 @@ const HeatMapRounded = () => {
 				text: 'Rounded (Range without Shades)',
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -153,7 +153,7 @@ const HeatMapRounded = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default HeatMapRounded;
+export default HeatMapRounded

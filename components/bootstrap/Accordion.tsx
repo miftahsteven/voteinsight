@@ -6,34 +6,34 @@ import React, {
 	ReactElement,
 	ReactNode,
 	useState,
-} from 'react';
-import classNames from 'classnames';
-import Icon from '../icon/Icon';
-import TagWrapper from '../TagWrapper';
-import Collapse from './Collapse';
-import { TColor } from '../../type/color-type';
-import { TIcons } from '../../type/icons-type';
+} from 'react'
+import classNames from 'classnames'
+import Icon from '../icon/Icon'
+import TagWrapper from '../TagWrapper'
+import Collapse from './Collapse'
+import { TColor } from '../../type/color-type'
+import { TIcons } from '../../type/icons-type'
 
-type TActiveItemId = string | number | boolean | null;
+type TActiveItemId = string | number | boolean | null
 
 interface IAccordionItemProps {
-	id: string | number;
-	icon?: TIcons;
-	title: string;
-	children: ReactNode;
-	tag?: ElementType;
-	headerTag?: ElementType;
-	overWriteColor?: null | TColor;
-	parentId?: string | number | null;
-	activeItem?: TActiveItemId;
-	setActiveItem?: any;
+	id: string | number
+	icon?: TIcons
+	title: string
+	children: ReactNode
+	tag?: ElementType
+	headerTag?: ElementType
+	overWriteColor?: null | TColor
+	parentId?: string | number | null
+	activeItem?: TActiveItemId
+	setActiveItem?: any
 }
 export const AccordionItem = forwardRef<HTMLDivElement, IAccordionItemProps>(
 	(
 		{ id, icon, title, children, tag = 'div', headerTag = 'h2', overWriteColor, ...props },
 		ref,
 	) => {
-		const ACTIVE = props.activeItem === id;
+		const ACTIVE = props.activeItem === id
 
 		return (
 			<TagWrapper tag={tag} ref={ref} className={classNames('accordion-item')}>
@@ -64,20 +64,20 @@ export const AccordionItem = forwardRef<HTMLDivElement, IAccordionItemProps>(
 					<div className={classNames('accordion-body')}>{children}</div>
 				</Collapse>
 			</TagWrapper>
-		);
+		)
 	},
-);
-AccordionItem.displayName = 'AccordionItem';
+)
+AccordionItem.displayName = 'AccordionItem'
 
 interface IAccordionProps {
-	tag?: 'div' | 'section';
-	id: string | number;
-	activeItemId?: TActiveItemId;
-	children: ReactElement<IAccordionItemProps> | ReactElement<IAccordionItemProps>[] | Array<any>;
-	shadow?: null | 'none' | 'sm' | 'default' | 'lg';
-	color?: TColor;
-	isFlush?: boolean;
-	className?: string;
+	tag?: 'div' | 'section'
+	id: string | number
+	activeItemId?: TActiveItemId
+	children: ReactElement<IAccordionItemProps> | ReactElement<IAccordionItemProps>[] | Array<any>
+	shadow?: null | 'none' | 'sm' | 'default' | 'lg'
+	color?: TColor
+	isFlush?: boolean
+	className?: string
 }
 const Accordion = forwardRef<HTMLDivElement | HTMLTableSectionElement, IAccordionProps>(
 	(
@@ -97,7 +97,7 @@ const Accordion = forwardRef<HTMLDivElement | HTMLTableSectionElement, IAccordio
 			activeItemId === false
 				? null
 				: activeItemId || (Array.isArray(children) && children?.flat()[0].props.id),
-		);
+		)
 
 		return (
 			<TagWrapper
@@ -129,9 +129,9 @@ const Accordion = forwardRef<HTMLDivElement | HTMLTableSectionElement, IAccordio
 					),
 				)}
 			</TagWrapper>
-		);
+		)
 	},
-);
-Accordion.displayName = 'Accordion';
+)
+Accordion.displayName = 'Accordion'
 
-export default Accordion;
+export default Accordion

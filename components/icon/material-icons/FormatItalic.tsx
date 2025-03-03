@@ -1,4 +1,4 @@
-import React, { SVGProps } from 'react';
+import React, { SVGProps } from 'react'
 
 const SvgFormatItalic = (props: SVGProps<SVGSVGElement>) => {
 	return (
@@ -6,7 +6,7 @@ const SvgFormatItalic = (props: SVGProps<SVGSVGElement>) => {
 			<path d='M0 0h24v24H0V0z' fill='none' />
 			<path d='M6 15v3h8v-3h-2.21l3.42-8H18V4h-8v3h2.21l-3.42 8z' />
 		</svg>
-	);
-};
+	)
+}
 
-export default SvgFormatItalic;
+export default SvgFormatItalic

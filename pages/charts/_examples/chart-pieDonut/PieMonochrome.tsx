@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
 
 const PieMonochrome = () => {
 	const [state] = useState<IChartOptions>({
@@ -35,15 +35,15 @@ const PieMonochrome = () => {
 			dataLabels: {
 				// @ts-ignore
 				formatter(val, opts) {
-					const name = opts.w.globals.labels[opts.seriesIndex];
-					return [name, `${Number(val).toFixed(1)}%`];
+					const name = opts.w.globals.labels[opts.seriesIndex]
+					return [name, `${Number(val).toFixed(1)}%`]
 				},
 			},
 			legend: {
 				show: false,
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -65,7 +65,7 @@ const PieMonochrome = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default PieMonochrome;
+export default PieMonochrome

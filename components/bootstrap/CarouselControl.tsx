@@ -1,15 +1,15 @@
-import React, { FC } from 'react';
-import classNames from 'classnames';
+import React, { FC } from 'react'
+import classNames from 'classnames'
 
 interface ICarouselControlProps {
-	id?: string;
-	direction: 'prev' | 'next';
-	onClickHandler(...args: unknown[]): unknown;
-	directionText?: string;
-	className?: string;
+	id?: string
+	direction: 'prev' | 'next'
+	onClickHandler(...args: unknown[]): unknown
+	directionText?: string
+	className?: string
 }
 const CarouselControl: FC<ICarouselControlProps> = (props) => {
-	const { id, direction, onClickHandler, directionText, className } = props;
+	const { id, direction, onClickHandler, directionText, className } = props
 
 	return (
 		<button
@@ -18,13 +18,13 @@ const CarouselControl: FC<ICarouselControlProps> = (props) => {
 			data-bs-target={id || 'carousel'}
 			data-bs-slide={direction}
 			onClick={(e) => {
-				e.preventDefault();
-				onClickHandler();
+				e.preventDefault()
+				onClickHandler()
 			}}>
 			<span className={classNames(`carousel-control-${direction}-icon`)} aria-hidden='true' />
 			<span className={classNames('visually-hidden')}>{directionText || direction}</span>
 		</button>
-	);
-};
+	)
+}
 
-export default CarouselControl;
+export default CarouselControl

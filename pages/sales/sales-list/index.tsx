@@ -1,38 +1,38 @@
-import React, { useState } from 'react';
-import type { NextPage } from 'next';
-import { GetStaticProps } from 'next';
-import Head from 'next/head';
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations';
-import { useFormik } from 'formik';
-import classNames from 'classnames';
-import { Calendar as DatePicker } from 'react-date-range';
-import dayjs from 'dayjs';
-import useDarkMode from '../../../hooks/useDarkMode';
-import data from '../../../common/data/dummyProductData';
-import useSelectTable from '../../../hooks/useSelectTable';
-import { demoPagesMenu } from '../../../menu';
-import PageWrapper from '../../../layout/PageWrapper/PageWrapper';
+import React, { useState } from 'react'
+import type { NextPage } from 'next'
+import { GetStaticProps } from 'next'
+import Head from 'next/head'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { useFormik } from 'formik'
+import classNames from 'classnames'
+import { Calendar as DatePicker } from 'react-date-range'
+import dayjs from 'dayjs'
+import useDarkMode from '../../../hooks/useDarkMode'
+import data from '../../../common/data/dummyProductData'
+import useSelectTable from '../../../hooks/useSelectTable'
+import { demoPagesMenu } from '../../../menu'
+import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
 	SubHeaderLeft,
 	SubHeaderRight,
 	SubheaderSeparator,
-} from '../../../layout/SubHeader/SubHeader';
-import CommonFilterTag from '../../../common/partial/CommonFilterTag';
-import Avatar from '../../../components/Avatar';
-import UserImage from '../../../assets/img/wanna/wanna1.png';
+} from '../../../layout/SubHeader/SubHeader'
+import CommonFilterTag from '../../../common/partial/CommonFilterTag'
+import Avatar from '../../../components/Avatar'
+import UserImage from '../../../assets/img/wanna/wanna1.png'
 import Dropdown, {
 	DropdownItem,
 	DropdownMenu,
 	DropdownToggle,
-} from '../../../components/bootstrap/Dropdown';
-import Button from '../../../components/bootstrap/Button';
-import FormGroup from '../../../components/bootstrap/forms/FormGroup';
-import Label from '../../../components/bootstrap/forms/Label';
-import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup';
-import Input from '../../../components/bootstrap/forms/Input';
-import Select from '../../../components/bootstrap/forms/Select';
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks';
-import Page from '../../../layout/Page/Page';
+} from '../../../components/bootstrap/Dropdown'
+import Button from '../../../components/bootstrap/Button'
+import FormGroup from '../../../components/bootstrap/forms/FormGroup'
+import Label from '../../../components/bootstrap/forms/Label'
+import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup'
+import Input from '../../../components/bootstrap/forms/Input'
+import Select from '../../../components/bootstrap/forms/Select'
+import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
+import Page from '../../../layout/Page/Page'
 import Card, {
 	CardActions,
 	CardBody,
@@ -40,16 +40,16 @@ import Card, {
 	CardHeader,
 	CardLabel,
 	CardTitle,
-} from '../../../components/bootstrap/Card';
-import Popovers from '../../../components/bootstrap/Popovers';
-import CommonTableRow from '../../../common/partial/CommonTableRow';
+} from '../../../components/bootstrap/Card'
+import Popovers from '../../../components/bootstrap/Popovers'
+import CommonTableRow from '../../../common/partial/CommonTableRow'
 
 const Index: NextPage = () => {
-	const { themeStatus, darkModeStatus } = useDarkMode();
+	const { themeStatus, darkModeStatus } = useDarkMode()
 
-	const [date, setDate] = useState<Date>(new Date());
+	const [date, setDate] = useState<Date>(new Date())
 
-	const [filterMenu, setFilterMenu] = useState<boolean>(false);
+	const [filterMenu, setFilterMenu] = useState<boolean>(false)
 	const formik = useFormik({
 		initialValues: {
 			minPrice: '',
@@ -61,10 +61,10 @@ const Index: NextPage = () => {
 			companyD: true,
 		},
 		onSubmit: () => {
-			setFilterMenu(false);
+			setFilterMenu(false)
 			// alert(JSON.stringify(values, null, 2));
 		},
-	});
+	})
 
 	const filteredData = data.filter(
 		(f) =>
@@ -78,9 +78,9 @@ const Index: NextPage = () => {
 				(formik.values.companyB ? f.store === 'Company B' : false) ||
 				(formik.values.companyC ? f.store === 'Company C' : false) ||
 				(formik.values.companyD ? f.store === 'Company D' : false)),
-	);
+	)
 
-	const { selectTable, SelectAllCheck } = useSelectTable(filteredData);
+	const { selectTable, SelectAllCheck } = useSelectTable(filteredData)
 
 	return (
 		<PageWrapper>
@@ -356,14 +356,14 @@ const Index: NextPage = () => {
 				</Card>
 			</Page>
 		</PageWrapper>
-	);
-};
+	)
+}
 
 export const getStaticProps: GetStaticProps = async ({ locale }) => ({
 	props: {
 		// @ts-ignore
 		...(await serverSideTranslations(locale, ['common', 'menu'])),
 	},
-});
+})
 
-export default Index;
+export default Index

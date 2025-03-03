@@ -1,27 +1,27 @@
-import React, { FC } from 'react';
-import classNames from 'classnames';
-import Checks from '../../components/bootstrap/forms/Checks';
-import Chart from '../../components/extras/Chart';
-import Badge from '../../components/bootstrap/Badge';
-import Button from '../../components/bootstrap/Button';
-import { demoPagesMenu } from '../../menu';
-import useDarkMode from '../../hooks/useDarkMode';
-import { ApexOptions } from 'apexcharts';
-import Link from 'next/link';
+import React, { FC } from 'react'
+import classNames from 'classnames'
+import Checks from '../../components/bootstrap/forms/Checks'
+import Chart from '../../components/extras/Chart'
+import Badge from '../../components/bootstrap/Badge'
+import Button from '../../components/bootstrap/Button'
+import { demoPagesMenu } from '../../menu'
+import useDarkMode from '../../hooks/useDarkMode'
+import { ApexOptions } from 'apexcharts'
+import Link from 'next/link'
 
 interface ICommonTableRowProps {
-	id: string | number;
-	image: string;
-	name: string;
-	category: string;
-	series: ApexOptions['series'];
-	color: string;
-	stock: string | number;
-	price: number;
-	store: string;
-	selectOnChange: any;
-	selectChecked: any;
-	selectName: string;
+	id: string | number
+	image: string
+	name: string
+	category: string
+	series: ApexOptions['series']
+	color: string
+	stock: string | number
+	price: number
+	store: string
+	selectOnChange: any
+	selectChecked: any
+	selectName: string
 }
 const CommonTableRow: FC<ICommonTableRowProps> = ({
 	id,
@@ -37,7 +37,7 @@ const CommonTableRow: FC<ICommonTableRowProps> = ({
 	selectChecked,
 	selectName,
 }) => {
-	const { darkModeStatus } = useDarkMode();
+	const { darkModeStatus } = useDarkMode()
 
 	const dummyOptions: ApexOptions = {
 		colors: [color],
@@ -61,7 +61,7 @@ const CommonTableRow: FC<ICommonTableRowProps> = ({
 				title: {
 					// eslint-disable-next-line @typescript-eslint/no-unused-vars
 					formatter(seriesName: string) {
-						return '';
+						return ''
 					},
 				},
 			},
@@ -70,7 +70,7 @@ const CommonTableRow: FC<ICommonTableRowProps> = ({
 			curve: 'smooth',
 			width: 2,
 		},
-	};
+	}
 	return (
 		<tr>
 			<th scope='row'>
@@ -144,7 +144,7 @@ const CommonTableRow: FC<ICommonTableRowProps> = ({
 				/>
 			</td>
 		</tr>
-	);
-};
+	)
+}
 
-export default CommonTableRow;
+export default CommonTableRow

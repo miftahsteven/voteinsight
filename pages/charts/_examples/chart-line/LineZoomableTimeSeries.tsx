@@ -1,21 +1,21 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import { dataSeries } from '../../../../common/data/chartDummyData';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import { dataSeries } from '../../../../common/data/chartDummyData'
 
 const LineZoomableTimeSeries = () => {
-	let ts2 = 1484418600000;
-	const dates: any[] = [];
+	let ts2 = 1484418600000
+	const dates: any[] = []
 	for (let i = 0; i < 120; i += 1) {
-		ts2 += 86400000;
-		const innerArr = [ts2, dataSeries[1][i].value];
-		dates.push(innerArr);
+		ts2 += 86400000
+		const innerArr = [ts2, dataSeries[1][i].value]
+		dates.push(innerArr)
 	}
 	const [state] = useState<IChartOptions>({
 		series: [
@@ -61,7 +61,7 @@ const LineZoomableTimeSeries = () => {
 			yaxis: {
 				labels: {
 					formatter(val) {
-						return (val / 1000000).toFixed(0);
+						return (val / 1000000).toFixed(0)
 					},
 				},
 				title: {
@@ -75,12 +75,12 @@ const LineZoomableTimeSeries = () => {
 				shared: false,
 				y: {
 					formatter(val) {
-						return (val / 1000000).toFixed(0);
+						return (val / 1000000).toFixed(0)
 					},
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -102,7 +102,7 @@ const LineZoomableTimeSeries = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default LineZoomableTimeSeries;
+export default LineZoomableTimeSeries

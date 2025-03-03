@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 import Card, {
 	CardBody,
 	CardHeader,
 	CardLabel,
 	CardSubTitle,
 	CardTitle,
-} from '../../../../components/bootstrap/Card';
-import Chart, { IChartOptions } from '../../../../components/extras/Chart';
-import generateDataHeatMap from '../../../../common/function/generateDataHeatMap';
+} from '../../../../components/bootstrap/Card'
+import Chart, { IChartOptions } from '../../../../components/extras/Chart'
+import generateDataHeatMap from '../../../../common/function/generateDataHeatMap'
 
 const HeatMapMultipleColors = () => {
 	const data = [
@@ -116,8 +116,8 @@ const HeatMapMultipleColors = () => {
 				max: 90,
 			}),
 		},
-	];
-	data.reverse();
+	]
+	data.reverse()
 
 	const colors = [
 		'#F3B415',
@@ -135,9 +135,9 @@ const HeatMapMultipleColors = () => {
 		'#33A1FD',
 		'#7A918D',
 		'#BAFF29',
-	];
+	]
 
-	colors.reverse();
+	colors.reverse()
 
 	const [state] = useState<IChartOptions>({
 		series: data,
@@ -172,7 +172,7 @@ const HeatMapMultipleColors = () => {
 				},
 			},
 		},
-	});
+	})
 	return (
 		<div className='col-lg-6'>
 			<Card stretch>
@@ -194,7 +194,7 @@ const HeatMapMultipleColors = () => {
 				</CardBody>
 			</Card>
 		</div>
-	);
-};
+	)
+}
 
-export default HeatMapMultipleColors;
+export default HeatMapMultipleColors

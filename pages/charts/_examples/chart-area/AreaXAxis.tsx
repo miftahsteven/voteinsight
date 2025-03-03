@@ -488,6 +488,6 @@ const AreaXAxis = () => {
 	// 		</Card>
 	// 	</div>
 	// );
-};
+}
 
-export default AreaXAxis;
+export default AreaXAxis
