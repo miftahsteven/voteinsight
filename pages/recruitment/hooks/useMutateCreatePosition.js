@@ -4,40 +4,39 @@ import { useNavigate } from 'react-router-dom'
 import api from '../../utilities/libs/axios'
 
 const register = async ({
-	user_id,
-	username,
-	user_nama,
-	user_email,
-	user_phone,
-	user_type,
-	user_gender,
 	id,
+	position_name,
+	position_code,
+	position_deskripsi,
+	position_grade,
+	dept_id,
+	status,
 }) => {
 	const { data } = await api.request({
 		method: id == 0 ? 'POST' : 'PUT',
-		url: id == 0 ? '/emp/register' : `/auth/updateuser/${id}`,
+		url: id == 0 ? '/recruitment/tambah' : `/recruitment/update/${id}`,
 		data: {
-			user_id,
-			username,
-			user_nama,
-			user_email,
-			user_phone: String(user_phone),
-			user_type,
-			user_gender,
+			id,
+			position_name,
+			position_code,
+			position_deskripsi,
+			position_grade,
+			dept_id,
+			status,
 		},
 	})
 
 	return data
 }
 
-const useMutateCreateUser = () => {
+const useMutateCreatePosition = () => {
 	//const navigate = useNavigate();
 	const queryClient = useQueryClient()
 
 	return useMutation({
 		mutationFn: register,
 		onSuccess: (data) => {
-			queryClient.invalidateQueries('user-created-update')
+			queryClient.invalidateQueries('position-created-update')
 
 			return data
 		},
@@ -48,4 +47,4 @@ const useMutateCreateUser = () => {
 	})
 }
 
-export default useMutateCreateUser
+export default useMutateCreatePosition

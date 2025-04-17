@@ -95,7 +95,7 @@ const Index: NextPage = () => {
 	return (
 		<PageWrapper>
 			<Head>
-				<title>{odSystAdminPagesMenu.menuPages.subMenu.roleUser.text}</title>
+				<title>Role User</title>
 			</Head>
 			<SubHeader>
 				<SubHeaderLeft>

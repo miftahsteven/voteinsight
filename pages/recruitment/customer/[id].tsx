@@ -7,7 +7,6 @@ import dayjs from 'dayjs'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 import useDarkMode from '../../../hooks/useDarkMode'
 import data from '../../../common/data/dummyCustomerData'
-
 import latestSalesData from '../../../common/data/dummySalesData'
 import PaginationButtons, { dataPagination, PER_COUNT } from '../../../components/PaginationButtons'
 import useSortableData from '../../../hooks/useSortableData'
@@ -31,34 +30,11 @@ import Avatar from '../../../components/Avatar'
 import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import Icon from '../../../components/icon/Icon'
 import { priceFormat } from '../../../helpers/helpers'
-import CustomerEditModal from '../_common/CustomerEditModal'
-import useQueryUserAll from '../hooks/useQueryUserAll'
-import useQueryActivity from '../hooks/useQueryActivity'
-import useQueryType from '../hooks/useQueryType'
-import UserImage from '../../../assets/img/wanna/wanna3.png'
+import EditModal from '../_common/EditModal'
 
 const Id: NextPage = () => {
 	const router = useRouter()
 	const { id } = router.query
-	const dataUser = useQueryUserAll()
-	const dataLog = useQueryActivity(id)
-	let dataItemUser = []
-	if (dataUser !== undefined) {
-		const dataQuery = dataUser.data.filter((key: any) => key.id == id)
-		dataItemUser = dataQuery[0]
-		//console.log('---<><><>', JSON.stringify(dataItemUser));
-	}
-
-	let DataActivity = []
-	if (dataLog !== undefined) {
-		DataActivity = dataLog.data
-	}
-
-	const dataType = useQueryType()
-	let dataTypeFinal = []
-	if (dataType !== undefined) {
-		dataTypeFinal = dataType.data
-	}
 
 	const { darkModeStatus } = useDarkMode()
 
@@ -87,25 +63,24 @@ const Id: NextPage = () => {
 						isLink
 						icon='ArrowBack'
 						tag='a'
-						//to={`../../${demoPagesMenu.crm.subMenu.customersList.path}`}
-						to={`../../${demoPagesMenu.userPages.subMenu.listUser.path}`}>
-						Kembali
+						to={`../../${demoPagesMenu.crm.subMenu.customersList.path}`}>
+						Back to List
 					</Button>
 					<SubheaderSeparator />
-					{/* <span className='text-muted fst-italic me-2'>Last update:</span>
-					<span className='fw-bold'>13 hours ago</span> */}
+					<span className='text-muted fst-italic me-2'>Last update:</span>
+					<span className='fw-bold'>13 hours ago</span>
 				</SubHeaderLeft>
 				<SubHeaderRight>
 					<Button icon='Edit' color='primary' isLight onClick={handleClickEdit}>
-						Ubah Data
+						Edit
 					</Button>
 				</SubHeaderRight>
 			</SubHeader>
 			<Page>
 				<div className='pt-3 pb-5 d-flex align-items-center'>
-					<span className='display-4 fw-bold me-3'>{dataItemUser?.name}</span>
+					<span className='display-4 fw-bold me-3'>{item?.name}</span>
 					<span className='border border-success border-2 text-success fw-bold px-3 py-2 rounded'>
-						{dataItemUser?.type}
+						{item?.type}
 					</span>
 				</div>
 				<div className='row'>
@@ -115,30 +90,13 @@ const Id: NextPage = () => {
 								<div className='row g-5 py-3'>
 									<div className='col-12 d-flex justify-content-center'>
 										<Avatar
-											src={UserImage}
+											src={item?.src}
 											color={getColorNameWithIndex(item?.id)}
 											isOnline={item?.isOnline}
 										/>
 									</div>
 									<div className='col-12'>
 										<div className='row g-3'>
-											<div className='col-12'>
-												<div className='d-flex align-items-center'>
-													<div className='flex-shrink-0'>
-														<Icon
-															icon='Grade'
-															size='3x'
-															color='primary'
-														/>
-													</div>
-													<div className='flex-grow-1 ms-3'>
-														<div className='fw-bold fs-5 mb-0'>
-															{dataItemUser?.username}
-														</div>
-														<div className='text-muted'>Username</div>
-													</div>
-												</div>
-											</div>
 											<div className='col-12'>
 												<div className='d-flex align-items-center'>
 													<div className='flex-shrink-0'>
@@ -150,9 +108,11 @@ const Id: NextPage = () => {
 													</div>
 													<div className='flex-grow-1 ms-3'>
 														<div className='fw-bold fs-5 mb-0'>
-															{dataItemUser?.email}
+															{item?.email}
 														</div>
-														<div className='text-muted'>Email</div>
+														<div className='text-muted'>
+															Email Address
+														</div>
 													</div>
 												</div>
 											</div>
@@ -160,18 +120,18 @@ const Id: NextPage = () => {
 												<div className='d-flex align-items-center'>
 													<div className='flex-shrink-0'>
 														<Icon
-															icon='Group'
+															icon='Savings'
 															size='3x'
 															color='primary'
 														/>
 													</div>
 													<div className='flex-grow-1 ms-3'>
 														<div className='fw-bold fs-5 mb-0'>
-															{dataItemUser?.phone == undefined
-																? 'n/a'
-																: dataItemUser.phone}
+															{item?.payout}
 														</div>
-														<div className='text-muted'>Phone</div>
+														<div className='text-muted'>
+															Payout Option
+														</div>
 													</div>
 												</div>
 											</div>
@@ -180,7 +140,7 @@ const Id: NextPage = () => {
 								</div>
 							</CardBody>
 						</Card>
-						{/* <Card>
+						<Card>
 							<CardHeader>
 								<CardLabel icon='StackedLineChart'>
 									<CardTitle>Statics</CardTitle>
@@ -257,13 +217,13 @@ const Id: NextPage = () => {
 									</div>
 								</div>
 							</CardBody>
-						</Card> */}
+						</Card>
 					</div>
 					<div className='col-lg-8'>
 						<Card>
 							<CardHeader>
 								<CardLabel icon='Receipt'>
-									<CardTitle>Aktifitas</CardTitle>
+									<CardTitle>Latest Sales</CardTitle>
 								</CardLabel>
 							</CardHeader>
 							<CardBody>
@@ -273,7 +233,7 @@ const Id: NextPage = () => {
 											<th
 												onClick={() => requestSort('name')}
 												className='cursor-pointer text-decoration-underline'>
-												Activity{' '}
+												Name{' '}
 												<Icon
 													size='lg'
 													className={getClassNamesFor('name')}
@@ -283,7 +243,7 @@ const Id: NextPage = () => {
 											<th
 												onClick={() => requestSort('date')}
 												className='cursor-pointer text-decoration-underline'>
-												Tanggal{' '}
+												Date{' '}
 												<Icon
 													size='lg'
 													className={getClassNamesFor('date')}
@@ -293,36 +253,36 @@ const Id: NextPage = () => {
 											<th
 												onClick={() => requestSort('price')}
 												className='cursor-pointer text-decoration-underline'>
-												Route{' '}
+												Price{' '}
 												<Icon
 													size='lg'
-													className={getClassNamesFor('path')}
+													className={getClassNamesFor('price')}
 													icon='FilterList'
 												/>
 											</th>
 										</tr>
 									</thead>
 									<tbody>
-										{DataActivity.map((i: any) => (
-											<tr key={i.id}>
-												<td>{i.activity}</td>
-												<td>{dayjs(i.datetime).format('lll')}</td>
-												<td>{i.route}</td>
+										{dataPagination(items, currentPage, perPage).map((i) => (
+											<tr key={i.name}>
+												<td>{i.name}</td>
+												<td>{dayjs(i.date).format('ll')}</td>
+												<td>{priceFormat(i.price)}</td>
 											</tr>
 										))}
 									</tbody>
 								</table>
 							</CardBody>
-							{/* <PaginationButtons
+							<PaginationButtons
 								data={items}
 								label='items'
 								setCurrentPage={setCurrentPage}
 								currentPage={currentPage}
 								perPage={perPage}
 								setPerPage={setPerPage}
-							/> */}
+							/>
 						</Card>
-						{/* <Card>
+						<Card>
 							<CardHeader>
 								<CardLabel icon='MapsHomeWork'>
 									<CardTitle>Billing and Delivery Address</CardTitle>
@@ -386,16 +346,14 @@ const Id: NextPage = () => {
 									</div>
 								</div>
 							</CardBody>
-						</Card> */}
+						</Card>
 					</div>
 				</div>
 			</Page>
-			<CustomerEditModal
+			<EditModal
 				setIsOpen={setEditModalStatus}
 				isOpen={editModalStatus}
 				id={String(id) || 'loading'}
-				dataRole={dataTypeFinal}
-				dataUserById={dataItemUser}
 			/>
 		</PageWrapper>
 	)
@@ -412,7 +370,7 @@ export async function getStaticPaths() {
 	return {
 		paths: [
 			// String variant:
-			'/users/view/1',
+			'/crm/customer/1',
 			// Object variant:
 			{ params: { id: '2' } },
 		],

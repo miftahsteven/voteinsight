@@ -22,6 +22,7 @@ import showNotification from '../../../components/extras/showNotification'
 import Icon from '../../../components/icon/Icon'
 import Link from 'next/link'
 import useMutateCreateRole from '../hooks/useMutateCreateRole'
+import * as yup from 'yup'
 
 const FormRole = ({ idRole, roleSelected }) => {
 	const { mutate, isSuccess, isError } = useMutateCreateRole()
@@ -34,11 +35,22 @@ const FormRole = ({ idRole, roleSelected }) => {
 	console.log('id : ', idRole);
 	console.log('name : ', dataRole[0]);
 
+	const RoleNameSchema = yup.object().shape({
+		name: yup
+			.string()
+			.min(3, 'Terlalu Pendek!')
+			.max(20, 'Terlalu Panjang!')
+			.required('Wajib Diisi!'),
+	})
+
 	const formik = useFormik({
 		initialValues: {
 			id: idRole > 0 ? idRole : 0,
 			name: idRole > 0 ? dataRole[0].name : '',
 		},
+		validationSchema: RoleNameSchema,
+		validateOnChange: true,
+		validateOnBlur: true,
 		onSubmit: (values) => {
 			mutate(
 				{
@@ -94,7 +106,13 @@ const FormRole = ({ idRole, roleSelected }) => {
 						type='text'
 						onChange={formik.handleChange}
 						name='name'
+						id='name'
 						value={formik.values.name}
+						isTouched={formik.touched.name}
+						invalidFeedback={formik.errors.name}
+						onFocus={() => {
+							formik.setErrors({})
+						}}
 					/>
 				</FormGroup>
 				<FormGroup>

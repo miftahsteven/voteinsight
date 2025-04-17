@@ -57,11 +57,21 @@ const DefaultAside = () => {
 
 	const dataMenu = useQueryMenuStructure()
 	let dataMenuFinal = []
+	//let dataMenuHRFinal = any[]
 	if (dataMenu !== undefined) {
-		dataMenuFinal = dataMenu.data[0]
+		dataMenuFinal = dataMenu.data.menuAdmin
+		// Object.values(dataMenu.data.menuAdmin).filter(
+		// 	(item: any) => item.category === 0,
+		// ) //dataMenu.data.menuAdmin
+
+		//dataMenuFinal = Object.values(dataMenuFinal).filter((item: any) => item.category === 0)
+		//dataMenuHRFinal = Object.values(dataMenu).filter((item: any) => item.category === 1)
 	}
 
-	console.log('SIBAPAKKK', JSON.stringify(dataMenuFinal))
+	console.log(
+		'SIBAPAKKK',
+		Object.values(dataMenuFinal).filter((item: any) => item.category === 0),
+	)
 
 	useEffect(() => {
 		return redirectSession()

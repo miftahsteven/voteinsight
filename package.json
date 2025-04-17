@@ -10,7 +10,7 @@
 		"lint:fix": "eslint --fix .",
 		"lint:scss": "stylelint **/*.scss",
 		"lint:fix-scss": "stylelint --fix **/*.scss",
-		"icon": "svgr SvgIcons -d components/icon/svg-icons --typescript"		
+		"icon": "svgr SvgIcons -d components/icon/svg-icons --typescript"
 	},
 	"dependencies": {
 		"@hello-pangea/dnd": "^17.0.0",
@@ -52,7 +52,8 @@
 		"react-toastify": "^10.0.6",
 		"react-use": "^17.5.1",
 		"sass": "^1.80.4",
-		"use-clipboard-copy": "^0.2.0"
+		"use-clipboard-copy": "^0.2.0",
+		"yup": "^1.6.1"
 	},
 	"devDependencies": {
 		"@eslint/compat": "^1.2.1",

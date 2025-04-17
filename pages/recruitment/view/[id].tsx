@@ -31,33 +31,21 @@ import Avatar from '../../../components/Avatar'
 import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import Icon from '../../../components/icon/Icon'
 import { priceFormat } from '../../../helpers/helpers'
-import CustomerEditModal from '../_common/CustomerEditModal'
-import useQueryUserAll from '../hooks/useQueryUserAll'
-import useQueryActivity from '../hooks/useQueryActivity'
-import useQueryType from '../hooks/useQueryType'
-import UserImage from '../../../assets/img/wanna/wanna3.png'
+import EditModal from '../_common/EditModal'
+import useQueryPositions from '../hooks/useQueryPositions'
+//import useQueryActivity from '../hooks/useQueryActivity'
+//import useQueryType from '../hooks/useQueryType'
 
 const Id: NextPage = () => {
 	const router = useRouter()
 	const { id } = router.query
-	const dataUser = useQueryUserAll()
-	const dataLog = useQueryActivity(id)
-	let dataItemUser = []
-	if (dataUser !== undefined) {
-		const dataQuery = dataUser.data.filter((key: any) => key.id == id)
-		dataItemUser = dataQuery[0]
-		//console.log('---<><><>', JSON.stringify(dataItemUser));
-	}
-
-	let DataActivity = []
-	if (dataLog !== undefined) {
-		DataActivity = dataLog.data
-	}
-
-	const dataType = useQueryType()
-	let dataTypeFinal = []
-	if (dataType !== undefined) {
-		dataTypeFinal = dataType.data
+	const dataPosition = useQueryPositions()
+	//const dataLog = useQueryActivity(id)
+	let dataItemPosition = []
+	if (dataPosition !== undefined) {
+		const dataQuery = dataPosition.data.filter((key: any) => key.id == id)
+		dataItemPosition = dataQuery[0]
+		console.log('---<><><>', JSON.stringify(dataItemPosition))
 	}
 
 	const { darkModeStatus } = useDarkMode()
@@ -78,7 +66,7 @@ const Id: NextPage = () => {
 	return (
 		<PageWrapper>
 			<Head>
-				<title>{demoPagesMenu.crm.subMenu.customer.text}</title>
+				<title>Lihat Detail Posisi</title>
 			</Head>
 			<SubHeader>
 				<SubHeaderLeft>
@@ -88,7 +76,7 @@ const Id: NextPage = () => {
 						icon='ArrowBack'
 						tag='a'
 						//to={`../../${demoPagesMenu.crm.subMenu.customersList.path}`}
-						to={`../../${demoPagesMenu.userPages.subMenu.listUser.path}`}>
+						to='../../recruitment/list/vacancy'>
 						Kembali
 					</Button>
 					<SubheaderSeparator />
@@ -103,9 +91,11 @@ const Id: NextPage = () => {
 			</SubHeader>
 			<Page>
 				<div className='pt-3 pb-5 d-flex align-items-center'>
-					<span className='display-4 fw-bold me-3'>{dataItemUser?.name}</span>
+					<span className='display-4 fw-bold me-3'>
+						{dataItemPosition?.position_name}
+					</span>
 					<span className='border border-success border-2 text-success fw-bold px-3 py-2 rounded'>
-						{dataItemUser?.type}
+						{dataItemPosition?.position_code}
 					</span>
 				</div>
 				<div className='row'>
@@ -113,13 +103,6 @@ const Id: NextPage = () => {
 						<Card className='shadow-3d-primary'>
 							<CardBody>
 								<div className='row g-5 py-3'>
-									<div className='col-12 d-flex justify-content-center'>
-										<Avatar
-											src={UserImage}
-											color={getColorNameWithIndex(item?.id)}
-											isOnline={item?.isOnline}
-										/>
-									</div>
 									<div className='col-12'>
 										<div className='row g-3'>
 											<div className='col-12'>
@@ -133,13 +116,16 @@ const Id: NextPage = () => {
 													</div>
 													<div className='flex-grow-1 ms-3'>
 														<div className='fw-bold fs-5 mb-0'>
-															{dataItemUser?.username}
+															{
+																dataItemPosition?.departments
+																	?.dept_name
+															}
 														</div>
-														<div className='text-muted'>Username</div>
+														<div className='text-muted'>Departemen</div>
 													</div>
 												</div>
 											</div>
-											<div className='col-12'>
+											{/* <div className='col-12'>
 												<div className='d-flex align-items-center'>
 													<div className='flex-shrink-0'>
 														<Icon
@@ -155,8 +141,8 @@ const Id: NextPage = () => {
 														<div className='text-muted'>Email</div>
 													</div>
 												</div>
-											</div>
-											<div className='col-12'>
+											</div> */}
+											{/* <div className='col-12'>
 												<div className='d-flex align-items-center'>
 													<div className='flex-shrink-0'>
 														<Icon
@@ -174,7 +160,7 @@ const Id: NextPage = () => {
 														<div className='text-muted'>Phone</div>
 													</div>
 												</div>
-											</div>
+											</div> */}
 										</div>
 									</div>
 								</div>
@@ -260,13 +246,13 @@ const Id: NextPage = () => {
 						</Card> */}
 					</div>
 					<div className='col-lg-8'>
-						<Card>
-							<CardHeader>
+						{/* <Card> */}
+						{/* <CardHeader>
 								<CardLabel icon='Receipt'>
 									<CardTitle>Aktifitas</CardTitle>
 								</CardLabel>
-							</CardHeader>
-							<CardBody>
+							</CardHeader> */}
+						{/* <CardBody>
 								<table className='table table-modern table-hover'>
 									<thead>
 										<tr>
@@ -312,8 +298,8 @@ const Id: NextPage = () => {
 										))}
 									</tbody>
 								</table>
-							</CardBody>
-							{/* <PaginationButtons
+							</CardBody> */}
+						{/* <PaginationButtons
 								data={items}
 								label='items'
 								setCurrentPage={setCurrentPage}
@@ -321,7 +307,7 @@ const Id: NextPage = () => {
 								perPage={perPage}
 								setPerPage={setPerPage}
 							/> */}
-						</Card>
+						{/* </Card> */}
 						{/* <Card>
 							<CardHeader>
 								<CardLabel icon='MapsHomeWork'>
@@ -390,12 +376,12 @@ const Id: NextPage = () => {
 					</div>
 				</div>
 			</Page>
-			<CustomerEditModal
+			<EditModal
 				setIsOpen={setEditModalStatus}
 				isOpen={editModalStatus}
 				id={String(id) || 'loading'}
-				dataRole={dataTypeFinal}
-				dataUserById={dataItemUser}
+				//dataRole={dataTypeFinal}
+				//dataUserById={dataItemUser}
 			/>
 		</PageWrapper>
 	)
@@ -412,7 +398,7 @@ export async function getStaticPaths() {
 	return {
 		paths: [
 			// String variant:
-			'/users/view/1',
+			'/recruitment/view/1',
 			// Object variant:
 			{ params: { id: '2' } },
 		],

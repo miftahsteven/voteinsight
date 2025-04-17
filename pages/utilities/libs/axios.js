@@ -16,10 +16,10 @@ api.interceptors.response.use(
 			//alert(error.response.data.message)
 			return (window.location.href = '/auth/login?sessionNull=true')
 		}
-		if (error.response.status === 400) {
-			//alert(error.response.data.message)
-			return (window.location.href = '/auth/login?sessionNull=true')
-		}
+		// if (error.response.status === 400) {
+		// 	//alert(error.response.data.message)
+		// 	return (window.location.href = '/auth/login?sessionNull=true')
+		// }
 		// if (error.response.status === 500) {
 		// 	//return alert(error.response.data.message)
 		// 	//return (window.location.href = '/auth/login?sessionNull=true')

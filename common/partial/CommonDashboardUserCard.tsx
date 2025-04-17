@@ -17,10 +17,10 @@ const CommonDashboardUserCard = () => {
 		<UserContact
 			//name={`${USERS.SAM.name} ${USERS.SAM.surname}`}
 			name={`${datauser?.data?.user_profile[0]?.user_nama} `}
-			position={`${datauser?.data?.user_profile[0].groups.group_name} `}
+			position={`${datauser?.data?.user_profile[0].position?.position_name} `}
 			mail={`${datauser?.data?.user_profile[0].email}`}
 			phone={`${datauser?.data?.user_profile[0].phone}`}
-			division={`${datauser?.data?.user_profile[0].divisions.division_name} `}
+			division={`${datauser?.data?.user_profile[0].position?.departments?.divisions?.division_name} `}
 			onChat={() => router.push(`../${demoPagesMenu.chat.subMenu.withListChat.path}`)}
 			src={USERS.SAM.src}
 			color={USERS.SAM.color}

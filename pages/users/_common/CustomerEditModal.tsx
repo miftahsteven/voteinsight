@@ -24,6 +24,12 @@ import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 //import PAYMENTS from '../../../common/data/enumPaymentMethod';
 import useQueryUserAll from '../hooks/useQueryUserAll'
 import useMutateCreateUser from '../hooks/useMutateCreateUser'
+import Select from '../../../components/bootstrap/forms/Select'
+import * as yup from 'yup'
+export const SELECT_STATUS_OPTIONS = [
+	{ value: 0, text: 'Laki-Laki' },
+	{ value: 1, text: 'Wanita' },
+]
 
 interface ICustomerEditModalProps {
 	id: string
@@ -43,13 +49,24 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 	//const item = id && Array.isArray(itemData) ? itemData : {};
 	const item = id ? itemData : {}
 	console.log(' ---> OK', JSON.stringify(item))
-	// const dataUser = useQueryUserAll();
-
-	//const dataRoleUser = Array.isArray(dataRole) ? dataRole : {};
-
-	//console.log('---lll', JSON.stringify(dataRole));
+	const phoneRegExp = /^(?:\+62|62|0)[2-9][0-9]{7,11}$/ // Regex for Indonesian phone numbers
 
 	const { mutate, isSuccess, isError } = useMutateCreateUser()
+
+	const SignupSchema = yup.object().shape({
+		name: yup
+			.string()
+			.min(3, 'Terlalu Pendek!')
+			.max(25, 'Terlalu Panjang!')
+			.required('Wajib Diisi!'),
+		username: yup
+			.string()
+			.min(5, 'Terlalu Pendek!')
+			.max(8, 'Terlalu Panjang!')
+			.required('Wajib Diisi!'),
+		phone: yup.string().matches(phoneRegExp, 'No. Telp Tidak Valid!'),
+		email: yup.string().email('Email Format Salah').required('Wajib Diisi!'),
+	})
 
 	const formik = useFormik({
 		initialValues: {
@@ -70,12 +87,14 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			payoutType: 1,
 			phone: Number(id) > 0 ? String(item?.phone) : '',
 			user_type: Number(id) > 0 ? item?.type : '',
-			user_type_id: Number(id) > 0 ? item?.type_id : '',
+			user_type_id: Number(id) > 0 ? item?.type_id : 1,
 			check_type: false,
 			username: Number(id) > 0 ? item?.username : '',
 			user_id: Number(id) > 0 ? item?.user_id : '',
+			user_gender: Number(id) > 0 ? item?.user_gender : '',
 			//password: item?.password || '',
 		},
+		validationSchema: SignupSchema,
 		onSubmit: (values) => {
 			console.log(' ---> submit', JSON.stringify(values))
 			mutate(
@@ -86,6 +105,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 					user_email: values.email,
 					user_phone: String(values.phone),
 					user_type: values.user_type_id,
+					user_gender: values.user_gender,
 					id: id ? id : 0,
 				},
 				{
@@ -129,48 +149,6 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 				</ModalHeader>
 				<ModalBody className='px-4'>
 					<div className='row g-4'>
-						{/* <FormGroup id='name' label='Name' className='col-md-6'>
-							<Input onChange={formik.handleChange} value={formik.values.name} />
-						</FormGroup>
-						<FormGroup id='email' label='Email' className='col-md-6'>
-							<Input
-								type='email'
-								onChange={formik.handleChange}
-								value={formik.values.email}
-							/>
-						</FormGroup>
-						<FormGroup id='membershipDate' label='Membership' className='col-md-6'>
-							<Input
-								type='date'
-								onChange={formik.handleChange}
-								value={formik.values.membershipDate}
-								disabled
-							/>
-						</FormGroup> */}
-						{/* <FormGroup id='type' label='Type' className='col-md-6'>
-							<Input
-								onChange={formik.handleChange}
-								value={formik.values.type}
-								disabled
-							/>
-						</FormGroup> */}
-						{/* <FormGroup>
-							<Label htmlFor='ChecksGroup'>Payout Type</Label>
-							<ChecksGroup isInline>
-								{Object.keys(PAYMENTS).map((i) => (
-									<Checks
-										type='radio'
-										key={PAYMENTS[i].name}
-										id={PAYMENTS[i].name}
-										label={PAYMENTS[i].name}
-										name='payoutType'
-										value={PAYMENTS[i].name}
-										onChange={formik.handleChange}
-										checked={formik.values.payoutType}
-									/>
-								))}
-							</ChecksGroup>
-						</FormGroup> */}
 						<div className='col-md-6'>
 							<Card className='rounded-1 mb-0'>
 								<CardHeader>
@@ -184,6 +162,11 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 											<Input
 												onChange={formik.handleChange}
 												value={formik.values.name}
+												isTouched={formik.touched.name}
+												invalidFeedback={formik.errors.name}
+												onFocus={() => {
+													formik.setErrors({})
+												}}
 											/>
 										</FormGroup>
 										<FormGroup id='email' label='Email' className='col-12'>
@@ -192,6 +175,11 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												onChange={formik.handleChange}
 												name='email'
 												value={formik.values.email}
+												isTouched={formik.touched.email}
+												invalidFeedback={formik.errors.email}
+												onFocus={() => {
+													formik.setErrors({})
+												}}
 											/>
 										</FormGroup>
 										<FormGroup
@@ -202,55 +190,27 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												type='tel'
 												onChange={formik.handleChange}
 												value={formik.values.phone}
+												isTouched={formik.touched.phone}
+												invalidFeedback={formik.errors.phone}
+												onFocus={() => {
+													formik.setErrors({})
+												}}
 											/>
 										</FormGroup>
-										{/* <FormGroup>
-											<Label htmlFor='ChecksGroup'>Type User</Label>
-											<ChecksGroup>
-												{dataTypeFinal.map((i: any) => (
-													<Checks
-														type='radio'
-														key={i.type_name}
-														id={i.id}
-														label={i.type_name}
-														name='user_type'
-														value={i.id}
-														onChange={formik.handleChange}
-														checked={Number(formik.values.user_type)}
-													/>
-												))}
-											</ChecksGroup>
-										</FormGroup> */}
-										{/* <FormGroup
-											id='streetAddress2'
-											label='Address Line 2'
+										<FormGroup
+											id='user_gender'
+											label='Jenis Kelamin'
 											className='col-12'>
-											<Input
+											<Select
+												id='user_gender'
+												ariaLabel='Pilih Status'
+												name='user_gender'
 												onChange={formik.handleChange}
-												value={formik.values.streetAddress2}
+												value={formik.values.user_gender}
+												placeholder='Pilih...'
+												list={SELECT_STATUS_OPTIONS}
 											/>
-										</FormGroup> */}
-										{/* <FormGroup id='city' label='City' className='col-md-4'>
-											<Input
-												onChange={formik.handleChange}
-												value={formik.values.city}
-											/>
-										</FormGroup> */}
-										{/* <FormGroup
-											id='stateFull'
-											label='State'
-											className='col-md-4'>
-											<Input
-												onChange={formik.handleChange}
-												value={formik.values.stateFull}
-											/>
-										</FormGroup> */}
-										{/* <FormGroup id='zip' label='Zip' className='col-md-4'>
-											<Input
-												onChange={formik.handleChange}
-												value={formik.values.zip}
-											/>
-										</FormGroup> */}
+										</FormGroup>
 									</div>
 								</CardBody>
 							</Card>
@@ -272,18 +232,13 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												onChange={formik.handleChange}
 												disabled={Number(id) > 0 ? true : false}
 												value={formik.values.username}
+												isTouched={formik.touched.username}
+												invalidFeedback={formik.errors.username}
+												onFocus={() => {
+													formik.setErrors({})
+												}}
 											/>
 										</FormGroup>
-										{/* <FormGroup
-											id='password'
-											label='Password'
-											className='col-12'>
-											<Input
-												type='password'
-												onChange={formik.handleChange}
-												value={formik.values.password}
-											/>
-										</FormGroup> */}
 										<FormGroup>
 											<Label htmlFor='ChecksGroup'>Role User</Label>
 											<ChecksGroup>
@@ -291,7 +246,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 													<Checks
 														type='radio'
 														key={i.type_name}
-														id={i.id}
+														id={`user_type_id${i.id}`}
 														label={i.type_name}
 														name='user_type_id'
 														value={i.id}
@@ -303,38 +258,16 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 																i.id,
 															)
 														}}
+														isTouched={formik.touched.user_type_id}
+														invalidFeedback={formik.errors.user_type_id}
+														onFocus={() => {
+															formik.setErrors({})
+														}}
 														checked={formik.values.user_type_id}
 													/>
 												))}
 											</ChecksGroup>
 										</FormGroup>
-										{/* <FormGroup
-											id='cityDelivery'
-											label='City'
-											className='col-md-4'>
-											<Input
-												onChange={formik.handleChange}
-												value={formik.values.cityDelivery}
-											/>
-										</FormGroup> */}
-										{/* <FormGroup
-											id='stateFullDelivery'
-											label='State'
-											className='col-md-4'>
-											<Input
-												onChange={formik.handleChange}
-												value={formik.values.stateFullDelivery}
-											/>
-										</FormGroup> */}
-										{/* <FormGroup
-											id='zipDelivery'
-											label='Zip'
-											className='col-md-4'>
-											<Input
-												onChange={formik.handleChange}
-												value={formik.values.zipDelivery}
-											/>
-										</FormGroup> */}
 									</div>
 								</CardBody>
 							</Card>
