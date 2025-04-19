@@ -90,7 +90,7 @@ const Index: NextPage = () => {
 	const filteredData = dataFinal.filter(
 		(f: any) =>
 			// Name
-			f.fullname.toLowerCase().includes(formik.values.searchInput.toLowerCase()), //&&
+			f.fullname?.toLowerCase().includes(formik.values.searchInput.toLowerCase()), //&&
 		// // Price
 		// (formik.values.minPrice === '' || f.balance > Number(formik.values.minPrice)) &&
 		// (formik.values.maxPrice === '' || f.balance < Number(formik.values.maxPrice)) &&
