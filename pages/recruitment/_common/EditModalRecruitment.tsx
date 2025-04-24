@@ -1,4 +1,4 @@
-import React, { FC, useCallback, useMemo } from 'react'
+import React, { FC, use, useCallback, useMemo } from 'react'
 import { useFormik } from 'formik'
 import dayjs from 'dayjs'
 import Modal, {
@@ -26,9 +26,11 @@ import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 //import PAYMENTS from '../../../common/data/enumPaymentMethod';
 import useQueryRefDepartments from '../hooks/useQueryRefDepartments'
 import { stat } from 'fs'
-import useMutateCreatePosition from '../hooks/useMutateCreatePosition'
+import useMutateCreateRecruitment from '../hooks/useMutateCreateRecruitment'
 import useQueryPositionsSelect from '../hooks/useQueryPositionsSelect'
 import useQueryProv from '../hooks/useQueryProv'
+import useQueryCities from '../hooks/useQueryCities'
+import useQueryDistricts from '../hooks/useQueryDistricts'
 import useQueryLocs from '../hooks/useQueryLocs'
 import { useRouter } from 'next/router'
 import { Value } from 'sass'
@@ -49,6 +51,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 }) => {
 	const router = useRouter()
 	const [dataCity, setDataCity] = React.useState([])
+	const [dataDistrict, setDataDistrict] = React.useState([])
+	const [dataLoc, setDataLoc] = React.useState([])
 	const jenisKelamin = [
 		{ value: '0', text: 'Laki-laki' },
 		{ value: '1', text: 'Perempuan' },
@@ -77,7 +81,9 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			group_id: items.departments?.divisions?.groups?.group_name,
 		}))
 	}
-
+	const dataCities = useQueryCities()
+	const dataDistricts = useQueryDistricts()
+	const dataLocs = useQueryLocs()
 	const dataProvince = useQueryProv()
 	let dataProvRef = []
 	if (dataProvince !== undefined) {
@@ -86,27 +92,41 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			text: `${items.prov_name}`,
 		}))
 	}
-
-	const dataLocs = useQueryLocs()
-	const dataLocations = useMemo(() => {
-		return dataLocs?.data?.map((items) => ({
-			Value: items.subdis_id,
-			text: `${items.subdis_name}`,
-			city_id: items.districts?.cities?.city_id,
-			city_name: `${items.districts?.cities?.city_name}`,
-			prov_id: items.districts?.cities?.prov_id,
-			district_id: items.districts?.district_id,
-			district_name: `${items.districts?.district_name}`,
-		}))
-	}, [dataLocs])
-	//console.log(' ---> dataProvRef', JSON.stringify(dataLocations))
-
-	//console.log(' ---> OK INI POSITION', JSON.stringify(dataPosition))
+	const dataKota = (prov_id: any) => {
+		setDataCity(
+			dataCities.data
+				?.filter((item: any) => item.prov_id === Number(prov_id))
+				.map((items: any) => ({
+					value: items.city_id,
+					text: `${items.city_name}`,
+				})),
+		)
+	}
+	const dataKecamatan = (city_id: any) => {
+		setDataDistrict(
+			dataDistricts.data
+				?.filter((item: any) => item.city_id === Number(city_id))
+				.map((items: any) => ({
+					value: items.dis_id,
+					text: `${items.dis_name}`,
+				})),
+		)
+	}
+	const dataKelurahan = (dis_id: any) => {
+		setDataLoc(
+			dataLocs.data
+				?.filter((item: any) => item.dis_id === Number(dis_id))
+				.map((items: any) => ({
+					value: items.subdis_id,
+					text: `${items.subdis_name}`,
+				})),
+		)
+	}
 
 	const itemData = {}
 	//const item = id && Array.isArray(itemData) ? itemData : {};
 	const item = id ? itemData : {}
-	//const { mutate, isSuccess, isError } = useMutateCreatePosition()
+	const { mutate, isSuccess, isError } = useMutateCreateRecruitment()
 	const handleOnError = useCallback(() => router.push('/recruitment/list'), [router])
 
 	const formik = useFormik({
@@ -177,17 +197,35 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		},
 		validateOnChange: false,
 		onSubmit: (values) => {
-			console.log(' ---> submit', JSON.stringify(values))
+			const today = new Date(values.birthdate)
+
+			const yyyy = today.getFullYear()
+			const mm = String(today.getMonth() + 1).padStart(2, '0')
+			const dd = String(today.getDate()).padStart(2, '0')
+
+			const formattedDate = `${yyyy}-${mm}-${dd}`
+			//console.log('Data Tanggal Lahir', formattedDate)
+			const formData = new FormData()
+			//console.log(' ---> submit', JSON.stringify(values))
+			formData.append('position_id', values.position_id)
+			formData.append('fullname', values.fullname)
+			formData.append('gender', values.gender)
+			formData.append('birthdate', formattedDate)
+			formData.append('experience', values.experience)
+			formData.append('education', values.education)
+			formData.append('email', values.email)
+			formData.append('phone', values.phone)
+			formData.append('nik', values.nik)
+			formData.append('address', values.address)
+			formData.append('prov_id', values.prov_id)
+			formData.append('city_id', values.city_id)
+			formData.append('district_id', values.district_id)
+			formData.append('subdistrict_id', values.subdistrict_id)
+			formData.append('npwp', values.npwp)
+			formData.append('cv_uploaded', values.cv_uploaded)
+			console.log('---> data append', Object.fromEntries(formData))
 			mutate(
-				{
-					id: values.id,
-					position_name: values.position_name,
-					position_code: values.position_code,
-					position_grade: values.position_grade,
-					position_deskripsi: values.position_deskripsi,
-					dept_id: values.dept_id,
-					status: 0,
-				},
+				{ ...Object.fromEntries(formData) },
 				{
 					onSuccess: (data) => {
 						if (data) {
@@ -240,17 +278,24 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 
 	const getSelectLocation = (e: React.ChangeEvent<HTMLInputElement>) => {
 		const { name, value, id } = e.target
-		//console.log(' ---> getSelectData', JSON.stringify(id))
+		console.log(' ---> getSelectData', JSON.stringify(name))
 		formik.setFieldValue(name, value)
 		let selectedItem = []
-		if (id === 'prov_id') {
-			selectedItem = dataLocs?.data?.map((items) => ({
-				Value: items.distritcs?.cities?.city_id,
-				text: `${items.distritcs?.cities?.city_name}`,
-			}))
-			setDataCity(selectedItem)
+		if (name === 'prov_id') {
+			dataKota(value)
+		} else if (name === 'city_id') {
+			dataKecamatan(value)
+		} else if (name === 'district_id') {
+			dataKelurahan(value)
 		}
 	}
+
+	// const handleCVUploadedChange = (e: any) => {
+	// 	// Extract the file object from the event
+	// 	const cv_uploaded = e.target?.files?.[0]
+
+	// 	formik.setFieldValue('cv_uploaded', cv_uploaded)
+	//}
 
 	if (id || id === '0') {
 		return (
@@ -365,11 +410,6 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 					<div className='row g-4'>
 						<div className='col-md-6'>
 							<Card className='rounded-1 mb-0'>
-								<CardHeader>
-									<CardLabel icon='People'>
-										<CardTitle>Form Rekrut</CardTitle>
-									</CardLabel>
-								</CardHeader>
 								<CardBody>
 									<div className='row g-3'>
 										<FormGroup
@@ -450,7 +490,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 										</FormGroup>
 										<FormGroup id='email' label='Email' className='col-12'>
 											<Input
-												type='text'
+												type='email'
 												onChange={formik.handleChange}
 												name='email'
 												value={formik.values.email}
@@ -463,12 +503,26 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 										</FormGroup>
 										<FormGroup id='phone' label='Telepon' className='col-12'>
 											<Input
-												type='text'
+												type='tel'
 												onChange={formik.handleChange}
 												name='phone'
+												placeholder='0818xxxxxx'
 												value={formik.values.phone}
 												invalidFeedback={formik.errors.phone}
 												isTouched={formik.touched.phone}
+												onFocus={() => {
+													formik.setErrors({})
+												}}
+											/>
+										</FormGroup>
+										<FormGroup id='nik' label='NIK' className='col-12'>
+											<Input
+												type='number'
+												onChange={formik.handleChange}
+												name='nik'
+												value={formik.values.nik}
+												invalidFeedback={formik.errors.nik}
+												isTouched={formik.touched.nik}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -516,10 +570,74 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												id='city_id'
 												ariaLabel='Pilih Kota/Kabupaten'
 												name='city_id'
-												onChange={formik.handleChange}
+												//onChange={formik.handleChange}
+												onChange={getSelectLocation}
 												value={formik.values.city_id}
 												placeholder='Pilih...'
 												list={dataCity}
+											/>
+										</FormGroup>
+										<FormGroup
+											id='district_id'
+											label='Kecamatan'
+											className='col-12'>
+											<Select
+												id='district_id'
+												ariaLabel='Pilih Kecamatan'
+												name='district_id'
+												//onChange={formik.handleChange}
+												onChange={getSelectLocation}
+												value={formik.values.district_id}
+												placeholder='Pilih...'
+												list={dataDistrict}
+											/>
+										</FormGroup>
+										<FormGroup
+											id='subdistrict_id'
+											label='Kelurahan'
+											className='col-12'>
+											<Select
+												id='subdistrict_id'
+												ariaLabel='Pilih Kelurahan'
+												name='subdistrict_id'
+												//onChange={formik.handleChange}
+												onChange={getSelectLocation}
+												value={formik.values.subdistrict_id}
+												placeholder='Pilih...'
+												list={dataLoc}
+											/>
+										</FormGroup>
+										<FormGroup id='npwp' label='NPWP' className='col-12'>
+											<Input
+												type='number'
+												onChange={formik.handleChange}
+												name='npwp'
+												value={formik.values.npwp}
+												invalidFeedback={formik.errors.npwp}
+												isTouched={formik.touched.npwp}
+												onFocus={() => {
+													formik.setErrors({})
+												}}
+											/>
+										</FormGroup>
+										<FormGroup id='filecv' label='File CV' className='col-12'>
+											<Input
+												type='file'
+												//onChange={formik.handleChange}
+												onChange={(event: any) => {
+													formik.setFieldValue(
+														'cv_uploaded',
+														event.currentTarget.files[0],
+													)
+												}}
+												name='cv_uploaded'
+												//value={formik.values.cv_uploaded}
+												invalidFeedback={formik.errors.cv_uploaded}
+												isTouched={formik.touched.cv_uploaded}
+												accept='application/pdf'
+												onFocus={() => {
+													formik.setErrors({})
+												}}
 											/>
 										</FormGroup>
 									</div>

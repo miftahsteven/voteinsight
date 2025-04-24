@@ -209,8 +209,8 @@ const Index: NextPage = () => {
 	const filteredData = dataPosFinal.filter(
 		(f: any) =>
 			// Name
-			f.position_code.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
-			f.position_name.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
+			f.position_code?.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
+			f.position_name?.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
 	)
 
 	const { items, requestSort, getClassNamesFor } = useSortableData(filteredData)
