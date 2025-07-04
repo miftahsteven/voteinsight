@@ -378,7 +378,7 @@ export const demoPagesMenu = {
 	signUp: {
 		id: 'signUp',
 		text: 'Sign Up',
-		path: 'auth-pages/sign-up',
+		path: 'auth/sign-up',
 		icon: 'PersonAdd',
 	},
 

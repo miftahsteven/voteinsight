@@ -21,7 +21,17 @@ const useQueryMenuStructure = (params = {}) => {
 		queryKey: ['data-menus-structure', request(params)],
 		queryFn: () => request(params),
 	})
-	//console.log('0000', JSON.stringify(data));
+	//console.log('0000', JSON.stringify(error));
+	//if error is 500, redirect to login	
+	if (error && error.response && error.response.status === 502) {
+		//alert(error.response.data?.message ?? error?.message)
+		window.location = '/auth/login?sessionNull=true'
+	}
+	//if error not 502 just return alert
+	if (error && error.response && error.response.status !== 502) {
+		alert(error.response.data?.message ?? error?.message)
+	}
+	
 	return data
 }
 

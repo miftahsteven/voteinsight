@@ -48,7 +48,7 @@ import Textarea from '../../../components/bootstrap/forms/Textarea'
 import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
 import EditModal from '../_common/EditModal'
-import useQueryUserAll from '../hooks/useQueryUserAll'
+//import useQueryUserAll from '../hooks/useQueryUserAll'
 //import useMutateActionUser from '../hooks/useMutateActionUser'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
@@ -87,10 +87,12 @@ const Index: NextPage = () => {
 	}
 	const handleOnError = useCallback(() => router.push('/recruitment/list/vacancy'), [router])
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false)
+	const [activeModal, setActiveModal] = useState<"remove" | "change_status" | null>(null);
 	const handleUpcomingEdit = (id) => {
 		setIdSelected(id)
+		setActiveModal('change_status')
 		const dataEditPosition = dataPosFinal.filter((item) => item.id == id)
-		console.log(' ----< Dtu', dataEditPosition)
+		//console.log(' ----< Dtu', dataEditPosition)
 		if (dataEditPosition.length > 0) {
 			formik.setFieldValue('position_name', dataEditPosition[0].position_name)
 			formik.setFieldValue('position_code', dataEditPosition[0].position_code)
@@ -98,12 +100,13 @@ const Index: NextPage = () => {
 			formik.setFieldValue('position_deskripsi', dataEditPosition[0].position_deskripsi)
 			formik.setFieldValue('dept_id', dataEditPosition[0].departments.id)
 			formik.setFieldValue('status', dataEditPosition[0].status)
+			formik.setFieldValue('atasan', dataEditPosition[0].position?.id || '')
 		}
 		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas)
 	}
 	//console.log(' ----< Dtu', dataTypeFinal);
 	//console.log(' ----< Dt', data);
-	const [inActiveModal, setInactiveModal] = useState(false)
+	const [inActiveModal, setInactiveModal] = useState(false)	
 	const [idSelected, setIdSelected] = useState()
 	const [action, setAction] = useState('')
 	const [statusSelected, setStatusSelected] = useState(0)
@@ -112,6 +115,7 @@ const Index: NextPage = () => {
 
 	const inactiveModalOpen = (id: any) => {
 		setInactiveModal(true)
+		setActiveModal('remove')
 		setIdSelected(id)
 	}
 
@@ -147,7 +151,8 @@ const Index: NextPage = () => {
 				},
 			},
 		)
-		setInactiveModal(false)
+		//setInactiveModal(false)
+		setActiveModal(null)
 	}
 
 	const formik = useFormik({
@@ -159,6 +164,7 @@ const Index: NextPage = () => {
 			position_deskripsi: '',
 			dept_id: '',
 			status: '',
+			atasan: '',
 		},
 		onSubmit: (values) => {
 			// alert(JSON.stringify(values, null, 2));
@@ -172,6 +178,7 @@ const Index: NextPage = () => {
 					position_deskripsi: values.position_deskripsi,
 					dept_id: values.dept_id,
 					status: Number(values.status),
+					position_head: values.atasan,
 				},
 				{
 					onSuccess: (data) => {
@@ -233,7 +240,7 @@ const Index: NextPage = () => {
 						id='searchInput'
 						type='search'
 						className='border-0 shadow-none bg-transparent'
-						placeholder='Cari User...'
+						placeholder='Cari Kandidat...'
 						onChange={formik.handleChange}
 						value={formik.values.searchInput}
 					/>
@@ -270,6 +277,7 @@ const Index: NextPage = () => {
 											<th>Kode Posisi</th>
 											<th>Nama Department</th>
 											<th>Position Grade</th>
+											<th>Atasan</th>
 											<th>Status</th>
 											<td />
 										</tr>
@@ -281,6 +289,11 @@ const Index: NextPage = () => {
 												<td>{i.position_code}</td>
 												<td>{i.departments.dept_name}</td>
 												<td>{i.position_grade}</td>
+												<td>
+													{!i.position?.position_name
+														? 'Tidak Memiliki Atasan'
+														: `${i.position?.position_name}`}
+												</td>
 												<td
 													className={
 														i.status == 0
@@ -353,7 +366,7 @@ const Index: NextPage = () => {
 				setIsOpen={setEditModalStatus}
 				isOpen={editModalStatus}
 				id='0'
-				//dataRole={dataPosFinal}
+				dataPos={dataPosFinal}
 				//dataUserById={[]}
 			/>
 			<OffCanvas
@@ -405,6 +418,22 @@ const Index: NextPage = () => {
 							</FormGroup>
 						</div>
 						<div className='col-12'>
+							<FormGroup id='atasan' label='Atasan'>
+								<Select
+									id='atasan'
+									ariaLabel='Pilih Atasan'
+									name='atasan'
+									onChange={formik.handleChange}
+									value={formik.values.atasan}
+									placeholder='Pilih...'
+									list={dataPosFinal.map((item) => ({
+										value: item.id,
+										text: item.position_name,
+									}))}
+								/>
+							</FormGroup>
+						</div>
+						<div className='col-12'>
 							<FormGroup id='position_deskripsi' label='Deskripsi Posisi'>
 								<Textarea
 									onChange={formik.handleChange}
@@ -441,8 +470,9 @@ const Index: NextPage = () => {
 			<Modal
 				id='inactive'
 				titleId='inactive-person'
-				isOpen={inActiveModal} // Example: state
-				setIsOpen={() => setInactiveModal(true)} // Example: setState
+				//isOpen={inActiveModal} // Example: state
+				isOpen={activeModal === "remove"} 
+				setIsOpen={() => setActiveModal(null)} // Example: setState
 				size='sm' // 'sm' || 'lg' || 'xl'
 				isAnimation={true}>
 				<ModalHeader>
@@ -454,7 +484,7 @@ const Index: NextPage = () => {
 						color='info'
 						isOutline
 						className='border-0'
-						onClick={() => setInactiveModal(false)}>
+						onClick={() => setActiveModal(null)}>
 						Tutup
 					</Button>
 					<Button color='info' icon='Save' onClick={() => handleActioneMutate()}>

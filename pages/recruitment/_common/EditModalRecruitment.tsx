@@ -148,7 +148,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			cv_uploaded: Number(id) > 0 ? item?.cv_uploaded : '',
 			npwp: Number(id) > 0 ? item?.npwp : '',
 			nik: Number(id) > 0 ? item?.nik : '',
-			status: Number(id) > 0 ? item?.status : 0,
+			status: Number(id) > 0 ? item?.status : 1,
 		},
 		validate: (values) => {
 			const errors: {
@@ -222,6 +222,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			formData.append('district_id', values.district_id)
 			formData.append('subdistrict_id', values.subdistrict_id)
 			formData.append('npwp', values.npwp)
+			formData.append('status', values.status)
 			formData.append('cv_uploaded', values.cv_uploaded)
 			console.log('---> data append', Object.fromEntries(formData))
 			mutate(

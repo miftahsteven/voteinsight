@@ -20,13 +20,25 @@ const DefaultHeader = () => {
 						deviceScreen.width >= Number(process.env.NEXT_PUBLIC_MOBILE_BREAKPOINT_SIZE)
 					}
 				/> */}
-				<img
+				{/* <img
 					src={LogoLimanara}
 					alt='Limanara Logo'
 					width={256} // TODO auto
 					height={65}
 					style={{ marginLeft: -30, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
-				/>
+				/> */}
+				{/** create text for header logo with background black*/}
+				<span
+					className='fs-4 fw-bold text-primary'
+					style={{
+						backgroundColor: 'black',
+						padding: '0.5rem 1rem',
+						borderRadius: '10px',
+					}}
+				>
+					VOTEINSIGHT
+				</span>
+				
 			</HeaderLeft>
 			<CommonHeaderRight afterChildren={<CommonHeaderChat />} />
 		</Header>

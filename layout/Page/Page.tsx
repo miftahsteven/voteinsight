@@ -7,7 +7,7 @@ export interface IPageProps {
 	className?: string
 }
 const Page = forwardRef<HTMLDivElement, IPageProps>(
-	({ children, className, container = 'xxl', ...props }, ref) => {
+	({ children, className, container = 'fluid', ...props }, ref) => {
 		return (
 			<div
 				ref={ref}

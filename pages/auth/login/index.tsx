@@ -30,9 +30,9 @@ const LoginHeader: FC<ILoginHeaderProps> = ({ isNewUser }) => {
 	if (isNewUser) {
 		return (
 			<>
-				<div className='text-center h1 fw-bold mt-5'>Registrasi Akun,</div>
+				<div className='text-center h1 fw-bold mt-5'>Registrasi Pelamar,</div>
 				<div className='text-center h4 text-muted mb-5'>
-					Daftarkan NIP anda sebagai username!
+					Untuk melanjutkan, silakan isi data berikut!
 				</div>
 			</>
 		)
@@ -194,19 +194,28 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 		}, 1000)
 	}
 
-	return (
+	return (				
 		<PageWrapper
 			isProtected={false}
-			className={classNames({
+			className={classNames('bg-gradient',{
 				// 'bg-dark': !singUpStatus,
-				'bg-light': true,
+				'bg-dark': true,
 			})}>
 			<Head>
-				<title>{singUpStatus ? 'Sign Up' : 'Login'}</title>
+				<title>{singUpStatus ? 'Sign Up' : 'Login'} {process.env.NEXT_PUBLIC_TITLE_PREFIX}</title>
 			</Head>
-			<Page className='p-0'>
-				<div className='row h-100 align-items-center justify-content-center'>
-					<div className='col-xl-4 col-lg-6 col-md-8 shadow-3d-container'>
+			{/** create page with background*/}			
+			<Page className='p-0' container='fluid'>
+				<div className='row h-100 align-items-center justify-content-center'
+				style={{
+					backgroundImage: `url('/voteinsight_bg.jpg')`,
+					backgroundSize: 'cover',
+					backgroundPosition: 'center',
+					backgroundRepeat: 'no-repeat'}}>
+					<div className={classNames('col-lg-6 col-md-8 shadow-3d-container', {
+						'col-xl-4' : !singUpStatus,
+						'col-xl-6': singUpStatus,
+					})}>
 						<Card className='' data-tour='login-page'>
 							<CardBody>
 								<div className='text-center my-5'>
@@ -220,7 +229,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 											},
 										)}>
 										{/* <Logo width={200} /> */}
-										OD-SYST
+										VOTEINSIGHT
 									</Link>
 								</div>
 								<div
@@ -228,7 +237,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 										'bg-l10-dark': !darkModeStatus,
 										'bg-dark': darkModeStatus,
 									})}>
-									<div className='row row-cols-2 g-3 pb-3 px-3 mt-0'>
+									{/* <div className='row row-cols-2 g-3 pb-3 px-3 mt-0'>
 										<div className='col'>
 											<Button
 												color={darkModeStatus ? 'light' : 'dark'}
@@ -255,7 +264,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 												Register
 											</Button>
 										</div>
-									</div>
+									</div> */}
 								</div>
 
 								<LoginHeader isNewUser={singUpStatus} />
@@ -286,11 +295,12 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 								<form className='row g-4'>
 									{singUpStatus ? (
 										<>
-											<div className='col-12'>
+										<div className='row mb-3'>
+											<div className='col-6'>
 												<FormGroup
 													id='regUsername'
 													isFloating
-													label='Username/NIP'>
+													label='Nomor Handphone/Wa'>
 													<Input
 														autoComplete='username'
 														value={register.values.regUsername}
@@ -305,7 +315,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 													/>
 												</FormGroup>
 											</div>
-											<div className='col-12'>
+											<div className='col-6'>
 												<FormGroup id='regEmail' isFloating label='Email'>
 													<Input
 														type='email'
@@ -320,7 +330,9 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 													/>
 												</FormGroup>
 											</div>
-											<div className='col-12'>
+										</div>
+										<div className='row'>
+											<div className='col-6'>
 												<FormGroup
 													id='regName'
 													isFloating
@@ -337,7 +349,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 													/>
 												</FormGroup>
 											</div>
-											<div className='col-12'>
+											<div className='col-6'>
 												<FormGroup id='regPhone' isFloating label='No.Telp'>
 													<Input
 														type='text'
@@ -352,6 +364,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 													/>
 												</FormGroup>
 											</div>
+										</div>
 											<div className='col-12'>
 												<Button
 													color='info'
@@ -367,7 +380,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 												<FormGroup
 													id='loginUsername'
 													isFloating
-													label='Username/NIP'
+													label='Username'
 													className={classNames({
 														'd-none': signInPassword,
 														'mb-3': true,
@@ -416,7 +429,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 											</div>
 											<div className='col-12'>
 												<Button
-													color='warning'
+													color='dark'
 													className='w-100 py-3'
 													onClick={formik.handleSubmit}>
 													Login
@@ -491,7 +504,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 									'link-light': singUpStatus,
 									'link-dark': !singUpStatus,
 								})}>
-								LIMANARA SOLUSI DIGITAL &copy;
+								VOTEINSIGHT INOVATION &copy;2025
 							</Link>
 							{/* <Link
 								href='/'

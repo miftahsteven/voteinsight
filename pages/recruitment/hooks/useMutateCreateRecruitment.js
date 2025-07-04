@@ -19,6 +19,7 @@ const register = async ({
 	district_id,
 	subdistrict_id,
 	npwp,
+	status,
 	cv_uploaded,
 }) => {
 	const { data } = await api.request({
@@ -40,6 +41,7 @@ const register = async ({
 			district_id,
 			subdistrict_id,
 			npwp,
+			status,
 			cv_uploaded,
 		},
 		headers: {
@@ -63,6 +65,12 @@ const useMutateCreateRecruitmen = () => {
 		},
 		onError: (error) => {
 			//console.log(' REORRR ', error)
+			//alert(error.response.data?.message ?? error?.message)
+			//window.location = '/auth/login?sessionNull=true'
+			if (error.response && error.response.status === 502) {
+				window.location = '/auth/login?sessionNull=true'
+				return
+			}
 			alert(error.response.data?.message ?? error?.message)
 		},
 	})

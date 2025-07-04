@@ -29,6 +29,13 @@ const useMutateDeleteRoleMenu = () => {
 		},
 		onError: (error) => {
 			console.log(' ERROR ', error)
+			//alert(error.response.data?.message ?? error?.message)
+			//window.location = '/auth/login?sessionNull=true'
+			if (error.response && error.response.status === 502) {
+				window.location = '/auth/login?sessionNull=true'
+				return
+			}
+			//if error not 502 just return alert
 			alert(error.response.data?.message ?? error?.message)
 		},
 	})

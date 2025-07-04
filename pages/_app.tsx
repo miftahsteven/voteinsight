@@ -18,6 +18,8 @@ import Wrapper from '../layout/Wrapper/Wrapper'
 import App from '../layout/App/App'
 import AsideRoutes from '../layout/Aside/AsideRoutes'
 import { ToastCloseButton } from '../components/bootstrap/Toasts'
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
 
 const queryClient = new QueryClient({
 	defaultOptions: {
@@ -26,6 +28,20 @@ const queryClient = new QueryClient({
 		},
 	},
 })
+
+const firebaseConfig = {
+	apiKey: "AIzaSyC9GEHBhxfYqtGTr9IHicNglYu1AMgOsq8",
+	authDomain: "voteinsight.firebaseapp.com",
+	projectId: "voteinsight",
+	storageBucket: "voteinsight.firebasestorage.app",
+	messagingSenderId: "300693203648",
+	appId: "1:300693203648:web:6864fcc982cb45583d1b25",
+	measurementId: "G-T87QL15VRH"
+  };
+  
+  // Initialize Firebase
+  const app = initializeApp(firebaseConfig);
+  //const analytics = getAnalytics(app);
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
 	getOS()

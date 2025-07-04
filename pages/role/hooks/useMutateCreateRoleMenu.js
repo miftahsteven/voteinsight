@@ -30,6 +30,12 @@ const useMutateCreateRoleMenu = () => {
 		onError: (error) => {
 			//console.log(' REORRR ', error)
 			//alert(error.response.data?.message ?? error?.message)
+			//window.location = '/auth/login?sessionNull=true'
+			if (error.response && error.response.status === 502) {
+				window.location = '/auth/login?sessionNull=true'
+				return
+			}
+			alert(error.response.data?.message ?? error?.message)
 		},
 	})
 }

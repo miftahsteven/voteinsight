@@ -379,7 +379,7 @@ const CommonDashboardSalesByStore = () => {
 						Laporan Transaksi
 					</CardTitle>
 					<CardSubTitle tag='h5' className='h6'>
-						Limanara
+						VOTEINSIGHT
 					</CardSubTitle>
 				</CardLabel>
 				<CardActions>

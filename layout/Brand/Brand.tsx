@@ -14,7 +14,7 @@ const Brand: FC<IBrandProps> = ({ asideStatus, setAsideStatus }) => {
 				<h1 className='brand-title ' style={{ marginLeft: 20, fontFamily: 'monospace' }}>
 					<Link href='../' aria-label='Logo'>
 						{/* <Logo height={32} /> */}
-						OD-SYS
+						{/* <span className='text-primary'>VOTEINSIGHT</span> */}
 					</Link>
 				</h1>
 			</div>

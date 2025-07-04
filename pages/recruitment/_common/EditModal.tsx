@@ -33,14 +33,14 @@ interface ICustomerEditModalProps {
 	id: string
 	isOpen: boolean	
 	setIsOpen(...args: unknown[]): unknown
-	//dataRole: []
+	dataPos: []
 	//dataUserById: []
 }
 const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 	id,
 	isOpen,
 	setIsOpen,
-	//dataRole,
+	dataPos,
 	//dataUserById,
 }) => {
 
@@ -71,6 +71,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			position_deskripsi: Number(id) > 0 ? item?.position_deskripsi : '',
 			dept_id: Number(id) > 0 ? item?.dept_id : '',
 			status: 0,
+			position_head: Number(id) > 0 ? item?.position_head : '',
 		},
 		validate: (values) => {
 			const errors: {
@@ -110,6 +111,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 					position_deskripsi: values.position_deskripsi,
 					dept_id: values.dept_id,
 					status: 0,
+					position_head: values.position_head || '',
 				},
 				{
 					onSuccess: (data) => {
@@ -227,6 +229,23 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												value={formik.values.dept_id}
 												placeholder='Pilih...'
 												list={dataDeptRef}
+											/>
+										</FormGroup>
+										<FormGroup
+											id='position_head'
+											label='Posisi Atasan'
+											className='col-12'>
+											<Select
+												id='position_head'
+												ariaLabel='Pilih Posisi Atasan'
+												name='position_head'
+												onChange={formik.handleChange}
+												value={formik.values.position_head}
+												placeholder='Pilih...'
+												list={dataPos.map((item) => ({
+													value: item.id,
+													text: item.position_name,
+												}))}
 											/>
 										</FormGroup>
 										<FormGroup

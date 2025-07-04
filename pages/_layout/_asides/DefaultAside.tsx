@@ -68,10 +68,10 @@ const DefaultAside = () => {
 		//dataMenuHRFinal = Object.values(dataMenu).filter((item: any) => item.category === 1)
 	}
 
-	console.log(
-		'SIBAPAKKK',
-		Object.values(dataMenuFinal).filter((item: any) => item.category === 0),
-	)
+	// console.log(
+	// 	'SIBAPAKKK',
+	// 	Object.values(dataMenuFinal).filter((item: any) => item.category === 0),
+	// )
 
 	useEffect(() => {
 		return redirectSession()
@@ -98,19 +98,21 @@ const DefaultAside = () => {
 					</>
 				)} */}
 
-				{!doc && (
-					<>
-						<NavigationLine />
-						<Navigation menu={odSystPagesMenu} id='aside-menu-two' />
-						<NavigationLine />
-					</>
-				)}
+				{
+				// !doc && (
+				// 	<>
+				// 		<NavigationLine />
+				// 		<Navigation menu={odSystPagesMenu} id='aside-menu-two' />
+				// 		<NavigationLine />
+				// 	</>
+				// )
+				}
 
-				{!doc && (
+				{/* {!doc && (
 					<>
 						<Navigation menu={odSystFinancePagesMenu} id='aside-menu-two' />
 					</>
-				)}
+				)} */}
 
 				{asideStatus && doc && (
 					<Card className='m-3 '>
