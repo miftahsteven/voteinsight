@@ -27,4 +27,29 @@ const nextConfig = withInterceptStdout(
 	(log) => (hideWarn.some((warn) => log.includes(warn)) ? '' : log),
 );
 
+//add experimental: { allowedDevOrigins: ['https://voteinsight.mscode.id'] } to nextConfig
+nextConfig.experimental = {
+		allowedDevOrigins: ['https://voteinsight.mscode.id'],
+		images: {
+			allowFutureImage: true,
+			allowDangerousRemotePatterns: true,
+			remotePatterns: [
+				{
+					protocol: 'https',		
+					hostname: 'voteinsight.mscode.id',
+					port: '',
+					pathname: '/**',
+				},
+				{
+					protocol: 'https',	
+					hostname: 'voteinsight.mscode.id',
+					port: '',
+					pathname: '/**',	
+				},
+			]
+		}
+	};
+	
+
+
 module.exports = nextConfig;
