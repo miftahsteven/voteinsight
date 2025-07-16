@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect } from 'react'
 import Card, {
 	CardActions,
 	CardBody,
@@ -13,25 +13,63 @@ import useDarkMode from '../../hooks/useDarkMode'
 import { demoPagesMenu } from '../../menu'
 import USERS from '../data/userDummyData'
 import { useRouter } from 'next/router'
+import { initializeApp } from "firebase/app";
+import { getDatabase, ref, onValue, set } from "firebase/database";
+import Icon from '../../components/icon/Icon'
+
 
 const CommonDashboardMarketingTeam = () => {
 	const { darkModeStatus } = useDarkMode()
+	const [initNamaMeeting, setInitNamaMeeting] = React.useState<any>('')
+	const [initDateMeeting, setInitDateMeeting] = React.useState<any>('')
+	const [initLokasiMeeting, setInitLokasiMeeting] = React.useState<any>('')
 
 	const router = useRouter()
 	const handleOnClickToEmployeeListPage = useCallback(
 		() => router.push(`../${demoPagesMenu.appointment.subMenu.employeeList.path}`),
 		[router],
 	)
+	//get realtime database from firebase https://voteinsight-default-rtdb.asia-southeast1.firebasedatabase.app/
+	const firebaseConfig = {				
+		databaseURL: "https://voteinsight-default-rtdb.asia-southeast1.firebasedatabase.app",										
+		apiKey: "AIzaSyC9GEHBhxfYqtGTr9IHicNglYu1AMgOsq8",
+		authDomain: "voteinsight.firebaseapp.com",
+		projectId: "voteinsight",
+		storageBucket: "voteinsight.firebasestorage.app",
+		messagingSenderId: "300693203648",
+		appId: "1:300693203648:web:6864fcc982cb45583d1b25",
+		measurementId: "G-T87QL15VRH"
+	}
+	
+	const app = initializeApp(firebaseConfig);
+	const database = getDatabase(app);
+	useEffect(() => {
+        const scheduleRef = ref(database, 'dashboard/schedule');
 
+        // Attach the listener
+        const unsubscribe = onValue(scheduleRef, (snapshot) => {
+            const data = snapshot.val();
+            if (data?.nextmeeting) {
+                setInitNamaMeeting(data.nextmeeting.name || 'Rapat Marketing');
+                setInitDateMeeting(data.nextmeeting.date || '');
+				setInitLokasiMeeting(data.nextmeeting.Tempat || 'N/a');
+            }
+            console.log('Data from Firebase Realtime Database: ', data?.nextmeeting);
+        });
+
+        // Cleanup listener on unmount
+        return () => unsubscribe();
+    }, [database]);
+	
 	return (
 		<Card stretch>
 			<CardHeader className='bg-transparent'>
 				<CardLabel>
 					<CardTitle tag='h4' className='h5'>
-						Trenwuz Meeting
+						{ initNamaMeeting ? initNamaMeeting : 'Tidak Ada Rapat' }
 					</CardTitle>
 					<CardSubTitle tag='h5' className='h6 text-muted'>
-						Meeting dimulai jam 13.00.
+						{ initDateMeeting ? initDateMeeting : 'Tidak Ada Schedule' }
 					</CardSubTitle>
 				</CardLabel>
 				<CardActions>
@@ -45,39 +83,15 @@ const CommonDashboardMarketingTeam = () => {
 				</CardActions>
 			</CardHeader>
 			<CardBody>
-				<AvatarGroup>
-					<Avatar
-						src={USERS.GRACE.src}
-						userName={`${USERS.GRACE.name} ${USERS.GRACE.surname}`}
-						color={USERS.GRACE.color}
+				{/** show icon place of meeting */}
+				<div className='d-flex align-items-center mb-3'>
+					<Icon
+						icon='Place'
+						className='me-2'
+						style={{ fontSize: '1.5rem', color: '#6c757d' }}
 					/>
-					<Avatar
-						src={USERS.SAM.src}
-						userName={`${USERS.SAM.name} ${USERS.SAM.surname}`}
-						color={USERS.SAM.color}
-					/>
-					<Avatar
-						src={USERS.CHLOE.src}
-						userName={`${USERS.CHLOE.name} ${USERS.CHLOE.surname}`}
-						color={USERS.CHLOE.color}
-					/>
-
-					<Avatar
-						src={USERS.JANE.src}
-						userName={`${USERS.JANE.name} ${USERS.JANE.surname}`}
-						color={USERS.JANE.color}
-					/>
-					<Avatar
-						src={USERS.JOHN.src}
-						userName={`${USERS.JOHN.name} ${USERS.JOHN.surname}`}
-						color={USERS.JOHN.color}
-					/>
-					<Avatar
-						src={USERS.RYAN.src}
-						userName={`${USERS.RYAN.name} ${USERS.RYAN.surname}`}
-						color={USERS.RYAN.color}
-					/>
-				</AvatarGroup>
+					<span className='text-muted'>{initLokasiMeeting}</span>
+				</div>
 			</CardBody>
 		</Card>
 	)

@@ -241,7 +241,7 @@ const Index: NextPage = () => {
 						id='searchInput'
 						type='search'
 						className='border-0 shadow-none bg-transparent'
-						placeholder='Cari Kandidat...'
+						placeholder='Cari Relawan...'
 						onChange={formik.handleChange}
 						value={formik.values.searchInput}
 					/>
@@ -279,9 +279,10 @@ const Index: NextPage = () => {
 											<th>Tgl Lahir</th>
 											<th>Email</th>
 											<th>Phone</th>
-											<th>Posisi</th>
-											<th>Terdaftar</th>
-											<th>Status</th>
+											<th>Kota</th>			
+											<th>Kecamatan</th>											
+											<th>Kelurahan</th>
+											<th>Terdaftar</th>											
 											<td />
 										</tr>
 									</thead>
@@ -328,22 +329,15 @@ const Index: NextPage = () => {
 														{i.email}
 													</Button>
 												</td>
-												<td>{i.phone}</td>
-												<td>{i.position?.position_name}</td>
+												<td>{i.phone}</td>		
+												<td>{i.cities.city_name}</td>										
+												<td>{i.districts.dis_name}</td>										
+												<td>{i.subdistricts.subdis_name}</td>										
 												<td>
 													{i.date_register == null
 														? 'n/a'
 														: i.date_register}
-												</td>
-												<td>
-													{
-														i.status
-														//i.recruitment_status.name == null ? 'n/a' : i.recruitment_status.name
-														// status_label.filter(
-														// 	(f: any) => f.value == i.status,
-														// )[0].label
-													}
-												</td>
+												</td>												
 												<td>
 													<Dropdown>
 														<DropdownToggle hasIcon={false}>
@@ -354,16 +348,7 @@ const Index: NextPage = () => {
 																shadow='sm'
 															/>
 														</DropdownToggle>
-														<DropdownMenu isAlignmentEnd>
-															<DropdownItem>
-																<Button
-																	icon='DeleteForever'
-																	tag='a'
-																	target='_blank'
-																	href={`${process.env.NEXT_PUBLIC_BASEURL}public/uploads/cv/${i.cv_uploaded}`}>
-																	Download CV
-																</Button>
-															</DropdownItem>
+														<DropdownMenu isAlignmentEnd>															
 															<DropdownItem>
 																<Button
 																	isOutline={!darkModeStatus}
@@ -383,7 +368,7 @@ const Index: NextPage = () => {
 																	View Detail
 																</Button>
 															</DropdownItem>
-															<DropdownItem>
+															{/* <DropdownItem>
 																<Button
 																	icon='CheckCircle'
 																	color='warning'																	
@@ -393,16 +378,7 @@ const Index: NextPage = () => {
 																>
 																	Approval
 																</Button>
-															</DropdownItem>																
-															<DropdownItem className={i.approval_process.filter((item: any) => item.approval_type === i.recruitment_status?.id).length >= 2 ? '' : 'd-none'}>																
-																<Button
-																	icon='NavigateNext'
-																	tag='a'
-																	onClick={() => handleOnClickModal(i.id)}																	
-																>
-																	Next Process
-																</Button>
-															</DropdownItem>															
+															</DropdownItem>																																												 */}
 														</DropdownMenu>
 													</Dropdown>
 												</td>

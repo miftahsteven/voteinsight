@@ -50,49 +50,49 @@ const CommonDashboardUserIssue = () => {
 		{
 			id: 1,
 			status: true,
-			title: 'New Products will be added',
+			title: 'Dokumen RUU Komisi 5',
 			date: dayjs().add(0.5, 'day'),
 			badge: TODO_BADGES.NEW,
 		},
 		{
 			id: 2,
 			status: true,
-			title: 'Cover images will be edited',
+			title: 'E-Dokumen RUU Haji',
 			date: dayjs().add(2, 'day'),
 			badge: TODO_BADGES.UPDATE,
 		},
 		{
 			id: 3,
 			status: false,
-			title: 'Preparing for A/B testing',
+			title: 'Draft RUU Komisi 6',
 			date: dayjs().add(2, 'day'),
 			badge: TODO_BADGES.TEST,
 		},
 		{
 			id: 4,
 			status: false,
-			title: 'Google Analytics data will be examined',
+			title: 'Proposal Persediaan RUU Aset Negara',
 			date: dayjs().add(4, 'day'),
 			badge: TODO_BADGES.REPORT,
 		},
 		{
 			id: 5,
 			status: false,
-			title: 'Invoices will be issued',
+			title: 'E-Documen RUU Kementrian Keuangan',
 			date: dayjs().add(9, 'day'),
 			badge: TODO_BADGES.PRINT,
 		},
 		{
 			id: 6,
 			status: false,
-			title: 'Dependencies check and update',
+			title: '15 Lembar Dokumen RUU Komisi 3',
 			date: dayjs().add(15, 'day'),
 			badge: TODO_BADGES.CONTROL,
 		},
 		{
 			id: 7,
 			status: false,
-			title: 'End of month meeting',
+			title: 'E-Dokumen UU Pasca Pemilu',
 			date: dayjs().add(32, 'day'),
 			badge: TODO_BADGES.MEETING,
 		},
@@ -165,7 +165,7 @@ const CommonDashboardUserIssue = () => {
 			<CardHeader>
 				<CardLabel icon='AssignmentTurnedIn' iconColor='danger'>
 					<CardTitle tag='h4' className='h5'>
-						Tiket Support
+						Dokumen
 					</CardTitle>
 					<CardSubTitle>
 						<Progress
@@ -173,7 +173,7 @@ const CommonDashboardUserIssue = () => {
 							max={listLength}
 							value={completeTaskLength}
 							color={completeTaskLength === listLength ? 'success' : 'primary'}
-						/>
+						/> 20GB
 					</CardSubTitle>
 				</CardLabel>
 				<CardActions>

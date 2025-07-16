@@ -43,7 +43,7 @@ const Approval: React.FC<IApprovalProps> = ({
     const dataApprover = useQueryApprover();
     //map dataApprover to dataStatusRef
     if (dataApprover !== undefined) {
-            dataStatusRef = dataApprover.data
+            dataStatusRef = dataApprover?.data
     }
 
     const selectStatus = [                                        

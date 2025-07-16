@@ -18,17 +18,9 @@ const DashboardHeader = () => {
 					style={{ marginLeft: -30, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
 				/> */}
 				{/** create text for header logo */}
-				<span
-					className='fs-4 fw-bold text-white'
-					style={{
-						marginLeft: -15,
-						backgroundColor: '#0d1c51',
-						padding: '1rem 4rem',
-						borderRadius: '10px',
-					}}
-				>
-					VOTEINSIGHT.AI
-				</span>
+				<video autoPlay loop muted className='logo-video' style={{ width: '220px', marginLeft: -10 }}>
+						<source src='/voteinsight.mp4' type='video/mp4' />
+				</video>
 			</HeaderLeft>
 			<CommonHeaderRight afterChildren={<CommonHeaderChat />} />
 		</Header>

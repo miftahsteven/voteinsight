@@ -22,15 +22,15 @@ const CommonDashboardSalesByStore = () => {
 
 	const [year, setYear] = useState(Number(dayjs().format('YYYY')))
 	const companies = [
-		{ name: 'Fidusiaku', img: Company1 },
-		{ name: 'Trenwuz', img: Company2 },
-		{ name: 'Whatsapp API', img: Company3 },
+		{ name: 'Relawan', img: Company1 },
+		{ name: 'Pendukung', img: Company2 },
+		// { name: 'Whatsapp API', img: Company3 },
 		// { name: 'Company 4', img: Company4 },
 	]
 	const COMPANIES_TAB = {
 		COMP1: companies[0].name,
 		COMP2: companies[1].name,
-		COMP3: companies[2].name,
+		//COMP3: companies[2].name,
 		// COMP4: companies[3].name,
 	}
 	const [activeCompanyTab, setActiveCompanyTab] = useState(COMPANIES_TAB.COMP1)
@@ -115,7 +115,7 @@ const CommonDashboardSalesByStore = () => {
 					},
 				},
 				title: {
-					text: 'Income (thousand cores)',
+					text: 'Jumlah Registrasi (ribu orang)',
 					style: {
 						color: process.env.NEXT_PUBLIC_INFO_COLOR,
 					},
@@ -124,50 +124,50 @@ const CommonDashboardSalesByStore = () => {
 					enabled: true,
 				},
 			},
-			{
-				seriesName: 'Income',
-				opposite: true,
-				axisTicks: {
-					show: true,
-				},
-				axisBorder: {
-					show: true,
-					color: process.env.NEXT_PUBLIC_SUCCESS_COLOR,
-				},
-				labels: {
-					style: {
-						colors: process.env.NEXT_PUBLIC_SUCCESS_COLOR,
-					},
-				},
-				title: {
-					text: 'Operating Cash Flow (thousand cores)',
-					style: {
-						color: process.env.NEXT_PUBLIC_SUCCESS_COLOR,
-					},
-				},
-			},
-			{
-				seriesName: 'Revenue',
-				opposite: true,
-				axisTicks: {
-					show: true,
-				},
-				axisBorder: {
-					show: true,
-					color: process.env.NEXT_PUBLIC_WARNING_COLOR,
-				},
-				labels: {
-					style: {
-						colors: process.env.NEXT_PUBLIC_WARNING_COLOR,
-					},
-				},
-				title: {
-					text: 'Revenue (thousand cores)',
-					style: {
-						color: process.env.NEXT_PUBLIC_WARNING_COLOR,
-					},
-				},
-			},
+			// {
+			// 	seriesName: 'Income',
+			// 	opposite: true,
+			// 	axisTicks: {
+			// 		show: true,
+			// 	},
+			// 	axisBorder: {
+			// 		show: true,
+			// 		color: process.env.NEXT_PUBLIC_SUCCESS_COLOR,
+			// 	},
+			// 	labels: {
+			// 		style: {
+			// 			colors: process.env.NEXT_PUBLIC_SUCCESS_COLOR,
+			// 		},
+			// 	},
+			// 	title: {
+			// 		text: 'Operating Cash Flow (thousand cores)',
+			// 		style: {
+			// 			color: process.env.NEXT_PUBLIC_SUCCESS_COLOR,
+			// 		},
+			// 	},
+			// },
+			// {
+			// 	seriesName: 'Revenue',
+			// 	opposite: true,
+			// 	axisTicks: {
+			// 		show: true,
+			// 	},
+			// 	axisBorder: {
+			// 		show: true,
+			// 		color: process.env.NEXT_PUBLIC_WARNING_COLOR,
+			// 	},
+			// 	labels: {
+			// 		style: {
+			// 			colors: process.env.NEXT_PUBLIC_WARNING_COLOR,
+			// 		},
+			// 	},
+			// 	title: {
+			// 		text: 'Revenue (thousand cores)',
+			// 		style: {
+			// 			color: process.env.NEXT_PUBLIC_WARNING_COLOR,
+			// 		},
+			// 	},
+			// },
 		],
 		tooltip: {
 			theme: 'dark',
@@ -186,7 +186,7 @@ const CommonDashboardSalesByStore = () => {
 	const salesByStoreSeries1: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
-			name: 'Income',
+			name: 'Relawan',
 			type: 'column',
 			data: [
 				randomize(1.4),
@@ -201,7 +201,7 @@ const CommonDashboardSalesByStore = () => {
 		},
 		{
 			// @ts-ignore
-			name: 'Cash Flow',
+			name: 'Pendukung',
 			type: 'column',
 			data: [
 				randomize(1.1),
@@ -214,26 +214,26 @@ const CommonDashboardSalesByStore = () => {
 				randomize(8.5),
 			],
 		},
-		{
-			// @ts-ignore
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(20),
-				randomize(29),
-				randomize(37),
-				randomize(36),
-				randomize(44),
-				randomize(45),
-				randomize(50),
-				randomize(58),
-			],
-		},
+		// {
+		// 	// @ts-ignore
+		// 	name: 'Revenue',
+		// 	type: 'line',
+		// 	data: [
+		// 		randomize(20),
+		// 		randomize(29),
+		// 		randomize(37),
+		// 		randomize(36),
+		// 		randomize(44),
+		// 		randomize(45),
+		// 		randomize(50),
+		// 		randomize(58),
+		// 	],
+		// },
 	]
 	const salesByStoreSeries2: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
-			name: 'Income',
+			name: 'Relawan',
 			type: 'column',
 			data: [
 				randomize(4.4),
@@ -248,7 +248,7 @@ const CommonDashboardSalesByStore = () => {
 		},
 		{
 			// @ts-ignore
-			name: 'Cash Flow',
+			name: 'Pendukung',
 			type: 'column',
 			data: [
 				randomize(3),
@@ -261,26 +261,26 @@ const CommonDashboardSalesByStore = () => {
 				randomize(9.5),
 			],
 		},
-		{
-			// @ts-ignore
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(34),
-				randomize(54),
-				randomize(43),
-				randomize(63),
-				randomize(35),
-				randomize(63),
-				randomize(46),
-				randomize(53),
-			],
-		},
+		// {
+		// 	// @ts-ignore
+		// 	name: 'Revenue',
+		// 	type: 'line',
+		// 	data: [
+		// 		randomize(34),
+		// 		randomize(54),
+		// 		randomize(43),
+		// 		randomize(63),
+		// 		randomize(35),
+		// 		randomize(63),
+		// 		randomize(46),
+		// 		randomize(53),
+		// 	],
+		// },
 	]
 	const salesByStoreSeries3: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
-			name: 'Income',
+			name: 'Relawan',
 			type: 'column',
 			data: [
 				randomize(4),
@@ -295,7 +295,7 @@ const CommonDashboardSalesByStore = () => {
 		},
 		{
 			// @ts-ignore
-			name: 'Cash Flow',
+			name: 'Pendukung',
 			type: 'column',
 			data: [
 				randomize(2),
@@ -308,26 +308,26 @@ const CommonDashboardSalesByStore = () => {
 				randomize(8.5),
 			],
 		},
-		{
-			// @ts-ignore
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(34),
-				randomize(21),
-				randomize(54),
-				randomize(56),
-				randomize(34),
-				randomize(43),
-				randomize(37),
-				randomize(43),
-			],
-		},
+		// {
+		// 	// @ts-ignore
+		// 	name: 'Revenue',
+		// 	type: 'line',
+		// 	data: [
+		// 		randomize(34),
+		// 		randomize(21),
+		// 		randomize(54),
+		// 		randomize(56),
+		// 		randomize(34),
+		// 		randomize(43),
+		// 		randomize(37),
+		// 		randomize(43),
+		// 	],
+		// },
 	]
 	const salesByStoreSeries4: ApexOptions['series'][] = [
 		{
 			// @ts-ignore
-			name: 'Income',
+			name: 'Relawan',
 			type: 'column',
 			data: [
 				randomize(3),
@@ -342,7 +342,7 @@ const CommonDashboardSalesByStore = () => {
 		},
 		{
 			// @ts-ignore
-			name: 'Cash Flow',
+			name: 'Pendukung',
 			type: 'column',
 			data: [
 				randomize(3),
@@ -355,28 +355,28 @@ const CommonDashboardSalesByStore = () => {
 				randomize(5.5),
 			],
 		},
-		{
-			// @ts-ignore
-			name: 'Revenue',
-			type: 'line',
-			data: [
-				randomize(30),
-				randomize(43),
-				randomize(51),
-				randomize(19),
-				randomize(32),
-				randomize(25),
-				randomize(39),
-				randomize(42),
-			],
-		},
+		// {
+		// 	// @ts-ignore
+		// 	name: 'Revenue',
+		// 	type: 'line',
+		// 	data: [
+		// 		randomize(30),
+		// 		randomize(43),
+		// 		randomize(51),
+		// 		randomize(19),
+		// 		randomize(32),
+		// 		randomize(25),
+		// 		randomize(39),
+		// 		randomize(42),
+		// 	],
+		// },
 	]
 	return (
 		<Card stretch>
 			<CardHeader>
 				<CardLabel icon='ReceiptLong'>
 					<CardTitle tag='h4' className='h5'>
-						Laporan Transaksi
+						Laporan Dukungan
 					</CardTitle>
 					<CardSubTitle tag='h5' className='h6'>
 						VOTEINSIGHT
@@ -436,8 +436,8 @@ const CommonDashboardSalesByStore = () => {
 							// @ts-ignore
 							series={
 								(activeCompanyTab === COMPANIES_TAB.COMP1 && salesByStoreSeries1) ||
-								(activeCompanyTab === COMPANIES_TAB.COMP2 && salesByStoreSeries2) ||
-								(activeCompanyTab === COMPANIES_TAB.COMP3 && salesByStoreSeries3)
+								(activeCompanyTab === COMPANIES_TAB.COMP2 && salesByStoreSeries2) 
+								// (activeCompanyTab === COMPANIES_TAB.COMP3 && salesByStoreSeries3)
 								//  || salesByStoreSeries4
 							}
 							options={salesByStoreOptions}

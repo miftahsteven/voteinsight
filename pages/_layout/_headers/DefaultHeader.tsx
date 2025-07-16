@@ -28,16 +28,9 @@ const DefaultHeader = () => {
 					style={{ marginLeft: -30, borderTopLeftRadius: 10, borderBottomLeftRadius: 10 }}
 				/> */}
 				{/** create text for header logo with background black*/}
-				<span
-					className='fs-4 fw-bold text-primary'
-					style={{
-						backgroundColor: 'black',
-						padding: '0.5rem 1rem',
-						borderRadius: '10px',
-					}}
-				>
-					VOTEINSIGHT
-				</span>
+				<video autoPlay loop muted className='logo-video' style={{ width: '220px', marginLeft: -10 }}>
+						<source src='/voteinsight.mp4' type='video/mp4' />
+				</video>
 				
 			</HeaderLeft>
 			<CommonHeaderRight afterChildren={<CommonHeaderChat />} />

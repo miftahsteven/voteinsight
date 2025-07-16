@@ -26,9 +26,9 @@ const CommonDashboardRecentActivities = () => {
 			<CardBody isScrollable>
 				<Timeline>
 					<TimelineItem label={dayjs().add(-0.25, 'hours').format('LT')} color='primary'>
-						Extended license purchased from France.
+						Meeting dengan tim pemasaran untuk membahas strategi kampanye baru.
 					</TimelineItem>
-					<TimelineItem label={dayjs().add(-4.54, 'hours').format('LT')} color='success'>
+					{/* <TimelineItem label={dayjs().add(-4.54, 'hours').format('LT')} color='success'>
 						<Popovers desc='5 stars' trigger='hover'>
 							<span>
 								<Icon icon='Star' color='warning' />
@@ -38,16 +38,16 @@ const CommonDashboardRecentActivities = () => {
 								<Icon icon='Star' color='warning' />
 							</span>
 						</Popovers>
-						<b>, a new rating has been received.</b>
-					</TimelineItem>
+						<b>, .</b>
+					</TimelineItem> */}
 					<TimelineItem label={dayjs().add(-9.34, 'hours').format('LT')} color='warning'>
-						Customer's problem solved.
+						Rapat Dengan DPR untuk membahas isu-isu terkini.
 					</TimelineItem>
 					<TimelineItem label={dayjs().add(-1, 'day').fromNow()} color='primary'>
-						Regular license purchased from United Kingdom.
+						Regular Meeting dengan DPP PKS membahas Pilkada susulan 2024.
 					</TimelineItem>
 					<TimelineItem label={dayjs().add(-1, 'day').fromNow()} color='primary'>
-						Regular license purchased from Italy.
+						Bertemu dengan tim presiden untuk membahas strategi ekonomi nasional.
 					</TimelineItem>
 					<TimelineItem label={dayjs().add(-2, 'day').fromNow()} color='info'>
 						<span className='text-muted'>
@@ -58,13 +58,13 @@ const CommonDashboardRecentActivities = () => {
 						</span>
 					</TimelineItem>
 					<TimelineItem label={dayjs().add(-3, 'day').fromNow()} color='danger'>
-						Market research meeting for new product.
+						Menghadiri acara peluncuran buku baru di mall GI Jakarta
 					</TimelineItem>
 					<TimelineItem label={dayjs().add(-7, 'day').fromNow()} color='secondary'>
-						Updating, compiling and going live the product introduction page.
+						Paripurna DPR untuk membahas RUU Haji.
 					</TimelineItem>
 					<TimelineItem label={dayjs().add(-8, 'day').fromNow()} color='primary'>
-						Regular license purchased from Germany.
+						Tim Meeting dengan DPP PKS untuk membahas strategi MUNAS PKS
 					</TimelineItem>
 				</Timeline>
 			</CardBody>

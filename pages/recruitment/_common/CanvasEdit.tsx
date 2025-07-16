@@ -158,10 +158,10 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
             id: canvas?.id || '',
             position_id: canvas?.position?.id || '',
             fullname: canvas?.fullname || '',
-            gender: canvas?.gender || '',
+            gender: canvas?.gender || 0,
             birthdate: canvas?.birthdate || '',
-            experience: canvas?.experience || '',   
-            education: canvas?.education || '',
+            //experience: canvas?.experience || '',   
+            //education: canvas?.education || '',
             email: canvas?.email || '',
             phone: canvas?.phone || '',
             nik: canvas?.nik || '',
@@ -170,8 +170,8 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
             city_id: canvas?.cities?.city_id || '',
             district_id: canvas?.districts?.dis_id || '',
             subdistrict_id: canvas?.subdistricts?.subdis_id || '',
-            npwp: canvas?.npwp || '',
-            cv_uploaded: canvas?.cv_uploaded || '',
+            //npwp: canvas?.npwp || '',
+            //cv_uploaded: canvas?.cv_uploaded || '',
             // position_name: canvas?.position_name || '',
         },
         validate: (values) => {
@@ -181,7 +181,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
                 email?: string
                 phone?: string
                 address?: string
-                npwp?: string
+                //npwp?: string
                 nik?: string
                 searchInput?: string
             } = {}
@@ -204,9 +204,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
             } else if (values.phone.length < 10) {
                 errors.phone = 'Nomor Telepon Tidak Valid'
             }
-            if (!values.npwp) {
-                errors.npwp = 'Wajib Diisi'
-            }
+            
             if (!values.nik) {
                 errors.nik = 'Wajib Diisi'
             } else if (values.nik.length < 16) {
@@ -233,13 +231,12 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
             //console.log('Data Tanggal Lahir', formattedDate)
             const formData = new FormData()
             //console.log(' ---> submit', JSON.stringify(values))
+            const positionId = 1 // Default position ID, can be changed as needed
             formData.append('id', values.id)
-            formData.append('position_id', values.position_id)
+            formData.append('position_id', String(values.position_id || positionId))
             formData.append('fullname', values.fullname)
             formData.append('gender', values.gender)
-            formData.append('birthdate', formattedDate)
-            formData.append('experience', values.experience)
-            formData.append('education', values.education)
+            formData.append('birthdate', formattedDate)            
             formData.append('email', values.email)
             formData.append('phone', values.phone)
             formData.append('nik', values.nik)
@@ -247,10 +244,8 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
             formData.append('prov_id', values.prov_id)
             formData.append('city_id', values.city_id)
             formData.append('district_id', values.district_id)
-            formData.append('subdistrict_id', values.subdistrict_id)
-            formData.append('npwp', values.npwp)
-            formData.append('cv_uploaded', values.cv_uploaded)
-            console.log('---> data append', Object.fromEntries(formData))
+            formData.append('subdistrict_id', values.subdistrict_id)            
+            //console.log('---> data append', Object.fromEntries(formData))
             mutate(
                 { ...Object.fromEntries(formData) },
                 {
@@ -297,19 +292,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
         </OffCanvasHeader>
         <OffCanvasBody>            
             <div className='row g-4'>
-                <div className='col-12'>
-                    <FormGroup id='position_id' label='Posisi' className='col-12'>
-                        <Select
-                            id='position_id'
-                            ariaLabel='Pilih Posisi'
-                            name='position_id'
-                            onChange={formik.handleChange}
-                            //onChange={getSelectData}
-                            value={formik.values.position_id}
-                            placeholder='Pilih...'
-                            list={dataPositionRef}
-                        />
-                    </FormGroup>
+                <div className='col-12'>                    
                     <FormGroup id='position_name' label='Nama Posisi'>
                         <Input
                             onChange={formik.handleChange}
@@ -339,37 +322,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
                                 formik.setErrors({})
                             }}
                         />
-                    </FormGroup>
-                    <FormGroup
-                        id='experience'
-                        label='Pengalaman Kerja (Tahun)'
-                        className='col-12'>
-                        <Input
-                            type='text'
-                            onChange={formik.handleChange}
-                            name='experience'
-                            value={formik.values.experience}
-                            // invalidFeedback={formik.errors.experience}
-                            // isTouched={formik.touched.experience}
-                            onFocus={() => {
-                                formik.setErrors({})
-                            }}
-                        />
-                    </FormGroup>
-                    <FormGroup
-                        id='education'
-                        label='Pendidikan Terakhir'
-                        className='col-12'>
-                        <Select
-                            id='education'
-                            ariaLabel='Pilih Pendidikan'
-                            name='education'
-                            onChange={formik.handleChange}
-                            value={formik.values.education}
-                            placeholder='Pilih...'
-                            list={pendidikan}
-                        />
-                    </FormGroup>
+                    </FormGroup>                    
                     <FormGroup id='email' label='Email' className='col-12'>
                         <Input
                             type='email'
@@ -470,48 +423,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
                             placeholder='Pilih...'
                             list={dataLoc}
                         />
-                    </FormGroup>
-                    <FormGroup id='npwp' label='NPWP' className='col-12'>
-                        <Input
-                            type='number'
-                            onChange={formik.handleChange}
-                            name='npwp'
-                            value={formik.values.npwp}
-                            // invalidFeedback={formik.errors.npwp}
-                            // isTouched={formik.touched.npwp}
-                            onFocus={() => {
-                                formik.setErrors({})
-                            }}
-                        />
-                    </FormGroup>                    
-                    <FormGroup id='filecv' label='File CV' className='col-12'>
-                        <Input
-                            type='file'
-                            //onChange={formik.handleChange}
-                            onChange={(event: any) => {
-                                formik.setFieldValue(
-                                    'cv_uploaded',
-                                    event.currentTarget.files[0],
-                                )
-                            }}
-                            name='cv_uploaded'
-                            //value={formik.values.cv_uploaded}
-                            // invalidFeedback={formik.errors.cv_uploaded}
-                            // isTouched={formik.touched.cv_uploaded}
-                            accept='application/pdf'
-                            onFocus={() => {
-                                formik.setErrors({})
-                            }}
-                        />
-                        { formik.values.cv_uploaded ? (
-                        <a href={`${process.env.NEXT_PUBLIC_BASEURL}public/uploads/cv/${formik.values.cv_uploaded}`} target='_blank' className='btn btn-outline-primary btn-sm m-2'>
-                            <Icon icon='File' className='me-1' />
-                            {'Download'}
-                        </a>
-                        ) : (
-                            <span className='text-muted'>Tidak Ada File CV</span>
-                        )}
-                    </FormGroup>
+                    </FormGroup>                                                       
                 </div>
             </div>
         </OffCanvasBody>

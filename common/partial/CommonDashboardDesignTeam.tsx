@@ -29,10 +29,10 @@ const CommonDashboardDesignTeam = () => {
 			<CardHeader className='bg-transparent'>
 				<CardLabel>
 					<CardTitle tag='h4' className='h5'>
-						Info Absensi
+						Kontituen/Relawan Baru
 					</CardTitle>
 					<CardSubTitle tag='h5' className='h6 text-muted'>
-						<h6 style={{ color: 'red' }}>Terlambat 20 Menit</h6>
+						<h6 style={{ color: 'red' }}>Dari Registrasi</h6>
 					</CardSubTitle>
 				</CardLabel>
 				<CardActions>
@@ -46,7 +46,7 @@ const CommonDashboardDesignTeam = () => {
 				</CardActions>
 			</CardHeader>
 			<CardBody>
-				<h2>08:20 (In)</h2>
+				<h2>20 Orang</h2>
 				{/* <AvatarGroup>
 					<Avatar
 						src={USERS.JANE.src}

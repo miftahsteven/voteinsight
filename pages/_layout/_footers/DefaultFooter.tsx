@@ -20,7 +20,7 @@ const DefaultFooter = () => {
 								'link-dark': !darkModeStatus,
 								'link-light': darkModeStatus,
 							})}>
-							<small className='fw-bold'>Limanara Solusi Digital</small>
+							<small className='fw-bold'>MSCODE INOVASI DIGITAL 2025</small>
 						</a>
 					</div>
 				</div>
