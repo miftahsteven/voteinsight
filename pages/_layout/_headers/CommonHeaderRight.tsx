@@ -66,7 +66,7 @@ const CommonHeaderRight: FC<ICommonHeaderRightProps> = ({ beforeChildren, afterC
 			<div className='row g-3'>
 				{beforeChildren}
 				{/* Tour Modal */}
-				{mounted && localStorage.getItem('tourModalStarted') === 'shown' && (
+				{mounted && typeof window !== 'undefined' && localStorage.getItem('tourModalStarted') === 'shown' && (
 					<div className='col-auto position-relative'>
 						{/* <Popovers trigger='hover' desc='Start the "Facit" tour'>
 							<Button

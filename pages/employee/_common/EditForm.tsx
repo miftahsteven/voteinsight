@@ -154,8 +154,8 @@ const FormModal: FC<IFormModalProps> = ({
 											<Input
 												onChange={formik.handleChange}
 												value={formik.values.contract_number}
-												invalidFeedback={formik.errors?.contract_number}
-												isTouched={formik.touched?.contract_number}
+												invalidFeedback={typeof formik.errors?.contract_number === 'string' ? formik.errors.contract_number : undefined}
+												isTouched={!!formik.touched?.contract_number}
 												onFocus={() => {
 													formik.setErrors({})
 												}}

@@ -43,9 +43,9 @@ import Page from '../../../layout/Page/Page'
 import Card, { CardBody, CardHeader, CardLabel, CardTitle } from '../../../components/bootstrap/Card'
 import Form from '../_common/Form'
 import EditForm from '../_common/EditForm'	
-import useQueryContract from '../hooks/useQueryContract'
+import useQueryContract from '../../../hooks/useQueryContract'
 import showNotification from '../../../components/extras/showNotification'
-import useMutateActionContract from '../hooks/useMutateActionContract'
+import useMutateActionContract from '../../../hooks/useMutateActionContract'
 import FormGroup from '../../../components/bootstrap/forms/FormGroup'
 import Select from '../../../components/bootstrap/forms/Select'
 const SELECT_STATUS_OPTIONS = [
@@ -136,9 +136,9 @@ const Index: NextPage = () => {
 	const handleActioneMutate = (actionParams: string) => {
 		mutate(
 			{
-				id: idSelected,
+				id: String(idSelected),
 				contract_status: formik.values.contract_status,
-				action: actionParams,
+				action: actionParams as 'remove' | 'update',
 			},
 			{
 				onSuccess: data => {

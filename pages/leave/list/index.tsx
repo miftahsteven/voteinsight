@@ -286,8 +286,7 @@ const Index: NextPage = () => {
 			</Page>			
 			<FormLeave				
 				isOpen={tambahModalStatus}
-				setIsOpen={setTambahModalStatus}				
-			/>										
+				setIsOpen={setTambahModalStatus} id={''}/>										
 		</PageWrapper>
 	)
 }

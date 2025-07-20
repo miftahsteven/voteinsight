@@ -45,9 +45,20 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 	dataRole,
 	dataUserById,
 }) => {
-	const itemData = id ? dataUserById : {}
-	//const item = id && Array.isArray(itemData) ? itemData : {};
-	const item = id ? itemData : {}
+	interface ItemData {
+		name?: string
+		email?: string
+		membershipDate?: string
+		type?: string
+		phone?: string
+		username?: string
+		user_id?: string
+		user_gender?: string
+		type_id?: number
+	}
+
+	const itemData: ItemData = id ? (dataUserById as ItemData) : {}
+	const item: ItemData = id ? itemData : {}
 	console.log(' ---> OK', JSON.stringify(item))
 	const phoneRegExp = /^(?:\+62|62|0)[2-9][0-9]{7,11}$/ // Regex for Indonesian phone numbers
 
@@ -263,7 +274,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 														onFocus={() => {
 															formik.setErrors({})
 														}}
-														checked={formik.values.user_type_id}
+														checked={String(formik.values.user_type_id)}
 													/>
 												))}
 											</ChecksGroup>

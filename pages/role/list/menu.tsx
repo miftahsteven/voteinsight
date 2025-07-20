@@ -36,10 +36,10 @@ import Card, { CardBody } from '../../../components/bootstrap/Card'
 import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
 //import CustomerEditModal from '../_common/CustomerEditModal'
-import useQueryRoleMenu from '../hooks/useQueryRoleMenu'
-import useQueryRoles from '../hooks/useQueryRoles'
-import useQueryAllMenu from '../hooks/useQueryAllMenu'
-import useMutateDeleteRoleMenu from '../hooks/useMutateDeleteRoleMenu'
+import useQueryRoleMenu from '../../../hooks/useQueryRoleMenu'
+import useQueryRoles from '../../../hooks/useQueryRoles'
+import useQueryAllMenu from '../../../hooks/useQueryAllMenu'
+import useMutateDeleteRoleMenu from '../../../hooks/useMutateDeleteRoleMenu'
 
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import showNotification from '../../../components/extras/showNotification'
@@ -52,7 +52,7 @@ const Index: NextPage = () => {
 	const [currentPage, setCurrentPage] = useState<number>(1)
 	const [perPage, setPerPage] = useState<number>(PER_COUNT['10'])
 	const [idSelected, setIdSelected] = useState(0)
-	const [roleMenuSelected, setRoleMenuSelected] = useState('')
+	const [roleMenuSelected, setRoleMenuSelected] = useState<{ id: number; menu_id: number; type_id: number }[]>([])
 	const { mutate, isSuccess, isError } = useMutateDeleteRoleMenu()
 	const [editModalStatus, setEditModalStatus] = useState<boolean>(false)
 
@@ -78,7 +78,7 @@ const Index: NextPage = () => {
 		dataAllMenuFinal = dataMenuAll.data
 	}
 
-	const inactiveModalOpen = (id) => {
+	const inactiveModalOpen = (id: any) => {
 		setInactiveModal(true)
 		setIdSelected(id)
 	}
@@ -89,7 +89,7 @@ const Index: NextPage = () => {
 			dataRoleMenuFinal.filter((item: any) => item.id == idRoleMenu),
 		)
 		setIdSelected(idRoleMenu)
-		setRoleMenuSelected(dataRoleMenuFinal.filter((item: any) => item.id == idRoleMenu))
+		setRoleMenuSelected(dataRoleMenuFinal.filter((item: any) => item.id === idRoleMenu) as { id: number; menu_id: number; type_id: number }[])
 		//console.log('-----<<<><><>', idRole)
 	}
 

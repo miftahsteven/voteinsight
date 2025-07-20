@@ -36,7 +36,7 @@ import Card, { CardBody } from '../../../components/bootstrap/Card'
 import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
 //import CustomerEditModal from '../_common/CustomerEditModal'
-import useQueryRoles from '../hooks/useQueryRoles'
+import useQueryRoles from '../../../hooks/useQueryRoles'
 
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import showNotification from '../../../components/extras/showNotification'
@@ -54,15 +54,15 @@ const Index: NextPage = () => {
 	const [currentPage, setCurrentPage] = useState<number>(1)
 	const [perPage, setPerPage] = useState<number>(PER_COUNT['10'])
 	const [idSelected, setIdSelected] = useState(0)
-	const [roleSelected, setRoleSelected] = useState('')
+	const [roleSelected, setRoleSelected] = useState<any[]>([])
 
-	const handleViewData = (idRole) => {
+	const handleViewData = (idRole: any) => {
 		// console.log(
 		// 	'On Click',
 		// 	dataRoleFinal.filter((item: any) => item.id == idRole),
 		// )
 		setIdSelected(idRole)
-		setRoleSelected(dataRoleFinal.filter((item: any) => item.id == idRole))
+		setRoleSelected(dataRoleFinal.filter((item: any) => item.id === idRole) || [])
 		//console.log('-----<<<><><>', idRole)
 	}
 

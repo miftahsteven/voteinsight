@@ -41,6 +41,8 @@ const john: IUserProps = {
 	color: 'primary',
 	services: [SERVICES.SURFING, SERVICES.KITE_SURFING, SERVICES.TENNIS],
 	password: '@ABC123',
+	group: 'Admin',
+	phone: '123-456-7890',
 }
 
 const grace: IUserProps = {
@@ -55,6 +57,8 @@ const grace: IUserProps = {
 	color: 'warning',
 	services: [SERVICES.SNOWBOARDING, SERVICES.ICE_SKATING, SERVICES.KITE_SURFING],
 	password: '@ABC123',
+	group: 'Admin',
+	phone: '123-456-7890',
 }
 
 const jane: IUserProps = {
@@ -69,6 +73,8 @@ const jane: IUserProps = {
 	color: 'secondary',
 	services: [SERVICES.YOGA, SERVICES.HANDBALL, SERVICES.CRICKET],
 	password: '@ABC123',
+	group: 'Admin',
+	phone: '123-456-7890',
 }
 
 const ryan: IUserProps = {
@@ -83,6 +89,8 @@ const ryan: IUserProps = {
 	color: 'info',
 	services: [SERVICES.HIKING, SERVICES.FOOTBALL, SERVICES.HANDBALL],
 	password: '@ABC123',
+	group: 'Admin',
+	phone: '123-456-7890',
 }
 
 const ella: IUserProps = {
@@ -97,6 +105,8 @@ const ella: IUserProps = {
 	color: 'success',
 	services: [SERVICES.ICE_SKATING, SERVICES.TENNIS, SERVICES.SNOWBOARDING, SERVICES.YOGA],
 	password: '@ABC123',
+	group: 'Admin',
+	phone: '123-456-7890',
 }
 
 const chloe: IUserProps = {
@@ -111,6 +121,8 @@ const chloe: IUserProps = {
 	color: 'warning',
 	services: [SERVICES.VOLLEYBALL, SERVICES.CRICKET],
 	password: '@ABC123',
+	group: 'Admin',
+	phone: '123-456-7890',
 }
 
 const sam: IUserProps = {
@@ -125,6 +137,8 @@ const sam: IUserProps = {
 	color: 'danger',
 	fullImage: User7Landing,
 	password: '@ABC123',
+	group: 'Admin',
+	phone: '123-456-7890',
 }
 
 const USERS: { [key: string]: IUserProps } = {

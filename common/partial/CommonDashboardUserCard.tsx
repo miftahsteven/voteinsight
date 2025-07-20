@@ -8,7 +8,11 @@ import AuthContext from '../../context/authContext'
 const CommonDashboardUserCard = () => {
 	const router = useRouter()
 
-	const datauser = JSON.parse(localStorage.getItem('dataLogin'))
+	let token = null;
+	if (typeof window !== 'undefined') {
+		token = localStorage.getItem('dataLogin');
+	}
+	const datauser = JSON.parse(token || '{}')
 
 	//const { userData, setUser } = useContext(AuthContext);
 	console.log(JSON.stringify(datauser))

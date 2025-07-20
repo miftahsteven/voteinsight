@@ -30,9 +30,9 @@ import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
 import EditModal from '../_common/EditModalRecruitment'
 import UpdateRecruitment from '../_common/UpdateRecruitment'
-import useQueryProv from '../hooks/useQueryProv'
-import useQueryPositionsSelect from '../hooks/useQueryPositionsSelect'
-import useQueryRecruitment from '../hooks/useQueryRecruitment'
+import useQueryProv from '../../../hooks/useQueryProv'
+import useQueryPositionsSelect from '../../../hooks/useQueryPositionsSelect'
+import useQueryRecruitment from '../../../hooks/useQueryRecruitment'
 import CanvasEdit from '../_common/CanvasEdit'
 import Approval from '../_common/Approval'
 
@@ -58,7 +58,7 @@ const Index: NextPage = () => {
 	const dataPosition = useQueryPositionsSelect()
 	let dataPositionRef = []
 	if (dataPosition !== undefined) {
-		dataPositionRef = dataPosition.data.map((items) => ({
+		dataPositionRef = dataPosition.data.map((items: any) => ({
 			value: items.id,
 			text: `${items.position_name}`,
 			position_code: items.position_code,
@@ -72,7 +72,7 @@ const Index: NextPage = () => {
 
 	let dataProvRef = []
 	if (dataProvince !== undefined) {
-		dataProvRef = dataProvince.data.map((items) => ({
+		dataProvRef = dataProvince.data.map((items: any) => ({
 			value: items.prov_id,
 			text: `${items.prov_name}`,
 		}))
@@ -194,9 +194,9 @@ const Index: NextPage = () => {
 
 	const handleOnError = useCallback(() => router.push('/recruitment/list'), [router])
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false)
-	const handleUpcomingEdit = (id) => {
+	const handleUpcomingEdit = (id:any) => {
 		setIdSelected(id)
-		const dataEditRekrutment = dataFinal.filter((item) => item.id == id)
+		const dataEditRekrutment = dataFinal.filter((item:any) => item.id == id)
 		//console.log(' ----< Dtu', dataEditRekrutment)
 		setDataRecruitmenSelected(dataEditRekrutment)			
 		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas)

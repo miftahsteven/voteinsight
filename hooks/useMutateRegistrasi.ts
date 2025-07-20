@@ -1,9 +1,17 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
-import api from '../../utilities/libs/axios'
+import api from '../utilities/libs/axios'
 
-const register = async ({ username, user_nama, user_email, user_phone, user_type }) => {
+interface RegisterParams {
+	username: string;
+	user_nama: string;
+	user_email: string;
+	user_phone: string;
+	user_type: string | number;
+}
+
+const register = async ({ username, user_nama, user_email, user_phone, user_type }: RegisterParams) => {
 	const { data } = await api.request({
 		method: 'POST',
 		url: '/auth/register',
@@ -26,13 +34,14 @@ const useMutateRegistrasi = () => {
 	return useMutation({
 		mutationFn: register,
 		onSuccess: (data) => {
-			queryClient.invalidateQueries('user-register')
+			queryClient.invalidateQueries({ queryKey: ['user-register'] })
 
 			return data
 		},
 		onError: (error) => {
 			console.log(error)
-			alert(error.response.data?.message ?? error?.message)
+			const err = error as any;
+			alert(err.response?.data?.message ?? err?.message)
 		},
 	})
 }

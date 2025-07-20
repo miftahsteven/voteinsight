@@ -49,15 +49,24 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 	const dataDept = useQueryRefDepartments()
 	let dataDeptRef = []
 	if (dataDept !== undefined) {
-		dataDeptRef = dataDept.data.map((item) => ({
+		dataDeptRef = dataDept.data.map((item: any) => ({
 			value: item.id,
 			text: `${item.dept_name} - ${item.divisions.division_name} - ${item.divisions.groups.group_name}`,
 		}))
 	}
 
-	const itemData = {}
-	//const item = id && Array.isArray(itemData) ? itemData : {};
-	const item = id ? itemData : {}
+	interface Item {
+		id?: number
+		position_name?: string
+		position_code?: string
+		position_grade?: string
+		position_deskripsi?: string
+		dept_id?: string
+		position_head?: string
+	}
+
+	const itemData: Item = {}
+	const item: Item = id ? itemData : {}
 	console.table(' ---> OK DEPT', dataDeptRef)
 	const { mutate, isSuccess, isError } = useMutateCreatePosition()
 	const handleOnError = useCallback(() => router.push('/recruitment/list/vacancy'), [router])
@@ -242,7 +251,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												onChange={formik.handleChange}
 												value={formik.values.position_head}
 												placeholder='Pilih...'
-												list={dataPos.map((item) => ({
+												list={dataPos.map((item: { id: string; position_name: string }) => ({
 													value: item.id,
 													text: item.position_name,
 												}))}

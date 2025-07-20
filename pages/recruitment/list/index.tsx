@@ -32,9 +32,9 @@ import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
 import EditModal from '../_common/EditModalRecruitment'
 import UpdateRecruitment from '../_common/UpdateRecruitment'
-import useQueryPositionsSelect from '../hooks/useQueryPositionsSelect'
-import useQueryRecruitment from '../hooks/useQueryRecruitment'
-import useMutateUpdateRecruitment from '../hooks/useMutateUpdateRecruitment'
+import useQueryPositionsSelect from '../../../hooks/useQueryPositionsSelect'
+import useQueryRecruitment from '../../../hooks/useQueryRecruitment'
+import useMutateUpdateRecruitment from '../../../hooks/useMutateUpdateRecruitment'
 import Approval from '../_common/Approval'
 import CanvasEdit from '../_common/CanvasEdit'
 
@@ -61,7 +61,7 @@ const Index: NextPage = () => {
 	const dataPosition = useQueryPositionsSelect()
 	let dataPositionRef = []
 	if (dataPosition !== undefined) {
-		dataPositionRef = dataPosition.data.map((items) => ({
+		dataPositionRef = dataPosition.data.map((items: any) => ({
 			value: items.id,
 			text: `${items.position_name}`,
 			position_code: items.position_code,

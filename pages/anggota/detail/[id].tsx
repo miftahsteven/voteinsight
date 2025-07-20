@@ -31,7 +31,8 @@ import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import Icon from '../../../components/icon/Icon'
 import { priceFormat } from '../../../helpers/helpers'
 import CustomerEditModal from '../_common/CustomerEditModal'
-import FollowersPerformance from '../../../common/partial/CRMDashboard/FollowersPerformance copy'
+//import FollowersPerformance from '../../../common/partial/CRMDashboard/FollowersPerformance'
+//import FollowersPerformance from '../../../common/partial/CRMDashboard/FollowersPerformance'
 
 const Id: NextPage = () => {
 	const router = useRouter()
@@ -279,11 +280,11 @@ const Id: NextPage = () => {
 								</div>
 							</CardBody>
 						</Card>
-						<Card>							
+						{/* <Card>							
 							<CardBody>
 								<FollowersPerformance />
 							</CardBody>							
-						</Card>
+						</Card> */}
 					</div>
 				</div>
 			</Page>

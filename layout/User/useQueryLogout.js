@@ -21,10 +21,14 @@ const useQueryLogout = () => {
 	return useMutation({
 		mutationFn: logout,
 		onSuccess: () => {
-			localStorage.setItem('token', '')
-			localStorage.setItem('type', '')
-			localStorage.setItem('name', '')
-			localStorage.setItem('login_id', '')
+			let token = null;
+			if (typeof window !== 'undefined') {
+				//token = localStorage.getItem('token');
+				localStorage.setItem('token', '')
+				localStorage.setItem('type', '')
+				localStorage.setItem('name', '')
+				localStorage.setItem('login_id', '')
+			}			
 
 			return true
 		},

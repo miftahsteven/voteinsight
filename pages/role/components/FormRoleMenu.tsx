@@ -26,7 +26,14 @@ import useMutateCreateRoleMenu from '../hooks/useMutateCreateRoleMenu'
 import Select from '../../../components/bootstrap/forms/Select'
 import Option, { Options } from '../../../components/bootstrap/Option'
 
-const FormRole = ({ idRoleMenu, roleMenuSelected, selectDataRole, selectDataMenu }) => {
+interface FormRoleProps {
+	idRoleMenu: number;
+	roleMenuSelected?: { id: number; menu_id: number; type_id: number }[];
+	selectDataRole?: { id: number; name: string }[];
+	selectDataMenu?: { id: number; parent: string; name: string }[];
+}
+
+const FormRole: React.FC<FormRoleProps> = ({ idRoleMenu, roleMenuSelected, selectDataRole, selectDataMenu }) => {
 	const { mutate, isSuccess, isError } = useMutateCreateRoleMenu()
 	const routes = useRouter()
 
@@ -87,7 +94,7 @@ const FormRole = ({ idRoleMenu, roleMenuSelected, selectDataRole, selectDataMenu
 						// formik.setFieldError('createUserGagal', 'Gagal Membuat User.')
 						//console.log('Error', JSON.stringify(error.response.status));
 
-						if (error.response.status === 405) {
+						if ((error as any)?.response?.status === 405) {
 							showNotification(
 								<span className='d-flex align-items-center'>
 									<Icon icon='danger' size='lg' className='me-1' />
@@ -131,7 +138,7 @@ const FormRole = ({ idRoleMenu, roleMenuSelected, selectDataRole, selectDataMenu
 						value={formik.values.role_id}
 						placeholder='Pilih Role'>
 						<option value={0}>-- Pilih Role --</option>
-						{dataSelectRole.map((i) => (
+						{dataSelectRole.map((i:any) => (
 							<Option key={i.id} value={i.id}>
 								{i.name}
 							</Option>
@@ -147,9 +154,9 @@ const FormRole = ({ idRoleMenu, roleMenuSelected, selectDataRole, selectDataMenu
 						value={formik.values.menu_id}
 						onChange={formik.handleChange}>
 						<option value={0}>-- Pilih Menu --</option>
-						{dataSelectMenu.map((i) => (
+						{dataSelectMenu.map((i:any) => (
 							<Option key={i.id} value={i.id}>
-								{i.parent} : {i.name}
+								{`${i.parent} : ${i.name}`}
 							</Option>
 						))}
 					</Select>

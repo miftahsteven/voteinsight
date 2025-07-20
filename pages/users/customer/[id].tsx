@@ -353,8 +353,7 @@ const Id: NextPage = () => {
 			<CustomerEditModal
 				setIsOpen={setEditModalStatus}
 				isOpen={editModalStatus}
-				id={String(id) || 'loading'}
-			/>
+				id={String(id) || 'loading'} dataRole={[]} dataUserById={[]}			/>
 		</PageWrapper>
 	)
 }
@@ -370,8 +369,9 @@ export async function getStaticPaths() {
 	return {
 		paths: [
 			// String variant:
-			'/crm/customer/1',
+			//'/crm/customer/1',
 			// Object variant:
+			{ params: { id: '1' } },
 			{ params: { id: '2' } },
 		],
 		fallback: true,

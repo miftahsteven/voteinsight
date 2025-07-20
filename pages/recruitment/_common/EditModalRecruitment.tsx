@@ -70,7 +70,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 	const dataPosition = useQueryPositionsSelect()
 	let dataPositionRef = []
 	if (dataPosition !== undefined) {
-		dataPositionRef = dataPosition.data.map((items) => ({
+		dataPositionRef = dataPosition.data.map((items: any) => ({
 			value: items.id,
 			text: `${items.position_name}`,
 			position_code: items.position_code,
@@ -87,7 +87,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 	const dataProvince = useQueryProv()
 	let dataProvRef = []
 	if (dataProvince !== undefined) {
-		dataProvRef = dataProvince.data.map((items) => ({
+		dataProvRef = dataProvince.data.map((items: any) => ({
 			value: items.prov_id,
 			text: `${items.prov_name}`,
 		}))
@@ -123,7 +123,23 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		)
 	}
 
-	const itemData = {}
+	interface ItemData {
+		id?: number
+		fullname?: string
+		gender?: string
+		birthdate?: string
+		email?: string
+		phone?: string
+		address?: string
+		prov_id?: string
+		city_id?: string
+		district_id?: string
+		subdistrict_id?: string
+		nik?: string
+		status?: number
+	}
+
+	const itemData: ItemData = {}
 	//const item = id && Array.isArray(itemData) ? itemData : {};
 	const item = id ? itemData : {}
 	const { mutate, isSuccess, isError } = useMutateCreateRecruitment()
@@ -194,8 +210,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		},
 		validateOnChange: false,
 		onSubmit: (values) => {
-			const today = new Date(values.birthdate)
-
+			//const today = new Date(values.birthdate)
+			const today = new Date(values.birthdate || Date.now())
 			const yyyy = today.getFullYear()
 			const mm = String(today.getMonth() + 1).padStart(2, '0')
 			const dd = String(today.getDate()).padStart(2, '0')
@@ -206,24 +222,38 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			//console.log(' ---> submit', JSON.stringify(values))
 			const positionId = 1;
 			formData.append('position_id', String(positionId))
-			formData.append('fullname', values.fullname)
-			formData.append('gender', values.gender)
-			formData.append('birthdate', formattedDate)
-			//formData.append('experience', values.experience)
-			//formData.append('education', values.education)
-			formData.append('email', values.email)
-			formData.append('phone', values.phone)
-			formData.append('nik', values.nik)
-			formData.append('address', values.address)
-			formData.append('prov_id', values.prov_id)
-			formData.append('city_id', values.city_id)
-			formData.append('district_id', values.district_id)
-			formData.append('subdistrict_id', values.subdistrict_id)
-			//formData.append('npwp', values.npwp)
-			formData.append('status', values.status)
+			formData.append('fullname', values.fullname || '')
+			formData.append('gender', values.gender || '')
+			formData.append('birthdate', formattedDate || '')
+			//formData.append('experience', values.experience || '')
+			//formData.append('education', values.education || '')
+			formData.append('email', values.email || '')
+			formData.append('phone', values.phone || '')
+			formData.append('nik', values.nik || '')
+			formData.append('address', values.address || '')
+			formData.append('prov_id', values.prov_id || '')
+			formData.append('city_id', values.city_id || '')
+			formData.append('district_id', values.district_id || '')
+			formData.append('subdistrict_id', values.subdistrict_id || '')
+			//formData.append('npwp', values.npwp || '')
+			formData.append('status', String(values.status || ''))
 			//formData.append('cv_uploaded', values.cv_uploaded)			
 			mutate(
-				{ ...Object.fromEntries(formData) },
+				{ ...(Object.fromEntries(formData) as { 
+					position_id: any; 
+					fullname: any; 
+					gender: any; 
+					birthdate: any; 
+					email: any; 
+					phone: any; 
+					nik: any; 
+					address: any; 
+					prov_id: any; 
+					city_id: any; 
+					district_id: any; 
+					subdistrict_id: any; 
+					status: any; 
+				}) },
 				{
 					onSuccess: (data) => {
 						if (data) {							
@@ -259,7 +289,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		const { name, value } = e.target
 		//console.log(' ---> getSelectData', JSON.stringify(value))
 		formik.setFieldValue(name, value)
-		const selectedItem = dataPositionRef.find((item) => item.value == Number(value))
+		const selectedItem = dataPositionRef.find((item: any) => item.value == Number(value))
 		//console.log(' ---> selectedItem', JSON.stringify(selectedItem))
 		if (selectedItem) {
 			formik.setFieldValue('position_code', selectedItem.position_code)
@@ -296,7 +326,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		return (
 			<Modal isOpen={isOpen} setIsOpen={setIsOpen} size='xl' titleId={id.toString()}>
 				<ModalHeader setIsOpen={setIsOpen} className='p-4'>
-					<ModalTitle id={id}>{item?.position_name || 'Rekrutan Baru'}</ModalTitle>
+					<ModalTitle id={id}>{'Rekrutan Baru'}</ModalTitle>
 				</ModalHeader>
 				<ModalBody className='px-4'>					
 					<div className='row g-4'>

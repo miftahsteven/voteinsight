@@ -19,8 +19,8 @@ import Alert from '../../../components/bootstrap/Alert'
 import FormGroup from '../../../components/bootstrap/forms/FormGroup'
 import Input from '../../../components/bootstrap/forms/Input'
 import Spinner from '../../../components/bootstrap/Spinner'
-import useMutateLogin from '../hooks/useMutateLogin'
-import useMutateRegistrasi from '../hooks/useMutateRegistrasi'
+import useMutateLogin from '../../../hooks/useMutateLogin'
+import useMutateRegistrasi from '../../../hooks/useMutateRegistrasi'
 import { error } from 'console'
 
 interface ILoginHeaderProps {
@@ -57,7 +57,7 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 	const { setUser, userData } = useContext(AuthContext)
 
 	const { mutate, isSuccess, isError } = useMutateLogin()
-	const { mutateAsync, isSuccess2, isError2 } = useMutateRegistrasi()
+	const { mutateAsync } = useMutateRegistrasi()
 
 	const { darkModeStatus } = useDarkMode()
 
@@ -104,7 +104,12 @@ const Login: NextPage<ILoginProps> = ({ isSignUp }) => {
 						if (data) {
 							//console.log(JSON.stringify(data));
 							//setUser(data);
-							localStorage.setItem('dataLogin', JSON.stringify(data))
+							//let token = null;
+							if (typeof window !== 'undefined') {
+								//token = localStorage.getItem('token');
+								localStorage.setItem('dataLogin', JSON.stringify(data) || '{}')
+							}
+							
 						}
 						handleOnClick()
 					},

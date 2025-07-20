@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useQuerySpeech from '../hooks/useQuerySpeech'; // Adjust the import path as necessary
+import useQuerySpeech from '../../../hooks/useQuerySpeech'; // Adjust the import path as necessary
 import { Style } from '../../../components/icon/material-icons';
 import styles from '../styles/SpeechList.module.css'; // Adjust the import path as necessary
 

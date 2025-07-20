@@ -351,6 +351,7 @@ const Id: NextPage = () => {
 				</div>
 			</Page>
 			<EditModal
+				dataPos={[]}
 				setIsOpen={setEditModalStatus}
 				isOpen={editModalStatus}
 				id={String(id) || 'loading'}
@@ -359,19 +360,39 @@ const Id: NextPage = () => {
 	)
 }
 
-export const getStaticProps: GetStaticProps = async ({ locale }) => ({
-	props: {
-		// @ts-ignore
-		...(await serverSideTranslations(locale, ['common', 'menu'])),
-	},
-})
+// export const getStaticProps: GetStaticProps = async ({ locale }) => ({
+// 	props: {
+// 		// @ts-ignore
+// 		...(await serverSideTranslations(locale, ['common', 'menu'])),
+// 	},
+// })
+export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
+    const { id } = params || {};
+
+    // Fetch data based on the `id`
+	const customerData = data.find((item) => item.id === Number(id));
+
+    if (!customerData) {
+        return {
+            notFound: true,
+        };
+    }
+
+    return {
+        props: {
+            customerData,
+            ...(await serverSideTranslations(locale || 'en', ['common', 'menu'])),
+        },
+    };
+};
 
 export async function getStaticPaths() {
 	return {
 		paths: [
 			// String variant:
-			'/crm/customer/1',
+			//'/crm/customer/1',
 			// Object variant:
+			{ params: { id: '1' } },
 			{ params: { id: '2' } },
 		],
 		fallback: true,

@@ -51,17 +51,17 @@ import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
 import EditModal from '../_common/EditModalRecruitment'
 import UpdateRecruitment from '../_common/UpdateRecruitment'
-import useQueryProv from '../hooks/useQueryProv'
-import useQueryCities from '../hooks/useQueryCities'
-import useQueryDistricts from '../hooks/useQueryDistricts'
-import useQueryPositionsSelect from '../hooks/useQueryPositionsSelect'
-import useQueryAllContracts from '../hooks/useQueryAllContracts'
-import useQueryLocs from '../hooks/useQueryLocs'
-import useMutateCreatePromote from '../hooks/useMutateCreatePromote'
+import useQueryProv from '../../../hooks/useQueryProv'
+import useQueryCities from '../../../hooks/useQueryCities'
+import useQueryDistricts from '../../../hooks/useQueryDistricts'
+import useQueryPositionsSelect from '../../../hooks/useQueryPositionsSelect'
+import useQueryAllContracts from '../../../hooks/useQueryAllContracts'
+import useQueryLocs from '../../../hooks/useQueryLocs'
+import useMutateCreatePromote from '../../../hooks/useMutateCreatePromote'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import useQueryRecruitment from '../hooks/useQueryRecruitment'
+import useQueryRecruitment from '../../../hooks/useQueryRecruitment'
 import showNotification from '../../../components/extras/showNotification'
-import useMutateUpdateRecruitment from '../hooks/useMutateUpdateRecruitment'
+import useMutateUpdateRecruitment from '../../../hooks/useMutateUpdateRecruitment'
 import CanvasEdit from '../_common/CanvasEdit'
 import { on } from 'events'
 
@@ -114,7 +114,7 @@ const Index: NextPage = () => {
 	const dataPosition = useQueryPositionsSelect()
 	let dataPositionRef = []
 	if (dataPosition !== undefined) {
-		dataPositionRef = dataPosition.data.map((items) => ({
+		dataPositionRef = dataPosition.data.map((items: any) => ({
 			value: items.id,
 			text: `${items.position_name}`,
 			position_code: items.position_code,
@@ -135,7 +135,7 @@ const Index: NextPage = () => {
 
 	let dataProvRef = []
 	if (dataProvince !== undefined) {
-		dataProvRef = dataProvince.data.map((items) => ({
+		dataProvRef = dataProvince.data.map((items: any) => ({
 			value: items.prov_id,
 			text: `${items.prov_name}`,
 		}))
@@ -288,7 +288,21 @@ const Index: NextPage = () => {
 			formData.append('cv_uploaded', values.cv_uploaded)
 			console.log('---> data append', Object.fromEntries(formData))
 			mutate(
-				{ ...Object.fromEntries(formData) },
+				{ ...(Object.fromEntries(formData) as { 
+					id: any; 
+					position_id: any; 
+					fullname: any; 
+					gender: any; 
+					birthdate: any; 
+					email: any; 
+					phone: any; 
+					nik: any; 
+					address: any; 
+					prov_id: any; 
+					city_id: any; 
+					district_id: any; 
+					subdistrict_id: any; 
+				}) },
 				{
 					onSuccess: (data) => {
 						if (data) {
@@ -362,9 +376,9 @@ const Index: NextPage = () => {
 
 	const handleOnError = useCallback(() => router.push('/recruitment/list/onboarding'), [router])
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false)
-	const handleUpcomingEdit = (id) => {
+	const handleUpcomingEdit = (id: any) => {
 		setIdSelected(id)
-		const dataEditRekrutment = dataFinal.filter((item) => item.id == id)
+		const dataEditRekrutment = dataFinal.filter((item: any) => item.id == id)
 		//console.log(' ----< Dtu', dataEditRekrutment)
 		setDataRecruitmenSelected(dataEditRekrutment)
 		setUpcomingEventsEditOffcanvas(!upcomingEventsEditOffcanvas)
@@ -395,10 +409,10 @@ const Index: NextPage = () => {
 
 	const handleActioneMutate = () => {
 		mutatePromote(
-			{
-				recruitment_id: idSelected,
+			{				
+				id: idSelected,
 				contract_id: formik.values.contract_id,
-				onboarding_date: formik.values.onboarding_date,
+				permanent_date: formik.values.onboarding_date,
 			},
 			{
 				onSuccess: (data) => {

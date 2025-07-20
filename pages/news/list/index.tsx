@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useQuerySpeech from '../hooks/useQuerySpeech'; // Adjust the import path as necessary
+import useQueryNews from '../../../hooks/useQueryNews'; // Adjust the import path as necessary
 import { Style } from '../../../components/icon/material-icons';
 import styles from '../styles/SpeechList.module.css'; // Adjust the import path as necessary
 
@@ -12,7 +12,7 @@ const SpeechList: React.FC = () => {
     const [recommendation, setRecommendation] = useState<SpeechRecommendation | null>(null);
     const [loading, setLoading] = useState(false);
     //run hooks useQuerySpeech to fetch speech data
-    const dataSpeech = useQuerySpeech();
+    const dataSpeech = useQueryNews();
     let dataFinal = ""
     if (dataSpeech !== undefined) {
             dataFinal = dataSpeech.data

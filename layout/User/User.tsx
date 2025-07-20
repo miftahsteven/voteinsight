@@ -24,8 +24,27 @@ const User = () => {
 	const { mutate } = useQueryLogout()
 
 	const router = useRouter()
+	
+	let dataLogin = {
+		data: {
+			user_profile: [
+				{
+					user_nama: '',
+				},
+			],
+		},
+		id: '',
+		position: '',
+		src: '',
+		// @ts-ignore
+		employeeID: '',
+		// @ts-ignore	
+		employeeIDPath: '',
+	};
 
-	const dataLogin = JSON.parse(localStorage.getItem('dataLogin'))
+	if (typeof window !== 'undefined') {
+		dataLogin = JSON.parse(localStorage.getItem('dataLogin') || '{}');
+	}
 	//console.log(' yhun ', JSON.parse(dataLogin));
 	const handleItem = useNavigationItemHandle()
 	const { darkModeStatus, setDarkModeStatus } = useDarkMode()
@@ -105,7 +124,11 @@ const User = () => {
 								// if (setUser) {
 								// 	setUser('');
 								// }
-								const user_id = localStorage.getItem('login_id')
+								let token = null;
+								if (typeof window !== 'undefined') {
+									token = localStorage.getItem('login_id');
+								}
+								const user_id = token
 								//console.log("----user", user_id);
 								mutate(
 									{ user_id: user_id },

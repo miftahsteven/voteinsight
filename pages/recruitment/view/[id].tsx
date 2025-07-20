@@ -377,6 +377,7 @@ const Id: NextPage = () => {
 				</div>
 			</Page>
 			<EditModal
+				dataPos={dataItemPosition}
 				setIsOpen={setEditModalStatus}
 				isOpen={editModalStatus}
 				id={String(id) || 'loading'}

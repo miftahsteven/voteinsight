@@ -12,6 +12,8 @@ var hideWarn = [
 	"Cannot read properties of null (reading 'length')"
 ];
 
+//const withInterceptStdout = require('next-intercept-stdout');
+
 const nextConfig = withInterceptStdout(
 	withImages({
 		images: {
@@ -24,32 +26,9 @@ const nextConfig = withInterceptStdout(
 			return config
 		}
 	}),
-	(log) => (hideWarn.some((warn) => log.includes(warn)) ? '' : log),
+	//(log) => (hideWarn.some((warn) => log.includes(warn)) ? '' : log),
+	(log) => log.includes('DI HIDE COY') ? '' : log,
 );
-
-//add experimental: { allowedDevOrigins: ['https://voteinsight.mscode.id'] } to nextConfig
-nextConfig.experimental = {
-		allowedDevOrigins: ['https://voteinsight.mscode.id'],
-		images: {
-			allowFutureImage: true,
-			allowDangerousRemotePatterns: true,
-			remotePatterns: [
-				{
-					protocol: 'https',		
-					hostname: 'voteinsight.mscode.id',
-					port: '',
-					pathname: '/**',
-				},
-				{
-					protocol: 'https',	
-					hostname: 'voteinsight.mscode.id',
-					port: '',
-					pathname: '/**',	
-				},
-			]
-		}
-	};
-	
 
 
 module.exports = nextConfig;

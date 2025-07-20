@@ -173,7 +173,9 @@ const Approval: React.FC<IApprovalProps> = ({
                                                     <td className='text-center'>{item.desc}</td>
                                                     <td className='text-center'>
                                                         {/* if session login userId === iduser show the edit icon */}
-                                                        {(item.iduser === Number(localStorage.getItem('login_id')) && item.type === status) ? (
+                                                        
+                                                        {
+                                                        (typeof window !== 'undefined' && item.iduser === Number(localStorage.getItem('login_id')) && item.type === status) ? (
                                                            <Dropdown>
                                                             <DropdownToggle hasIcon={false}>
                                                                 <Button
@@ -263,7 +265,7 @@ const Approval: React.FC<IApprovalProps> = ({
                 {/* <Button color="secondary" onClick={() => setIsOpen(false)} className=''>Close</Button> */}
                 {/* create select status */}
 
-                <Button color="primary" className={ dataStatusRef.filter((itemdata: any) => !submitButton && itemdata.type === status && itemdata.kandidatId === id && itemdata.iduser === Number(localStorage.getItem('login_id'))).length > 0 ? 'disabled': ''} onClick={() => {
+                <Button color="primary" className={ dataStatusRef.filter((itemdata: any) => !submitButton && itemdata.type === status && itemdata.kandidatId === id && typeof window !== 'undefined' && itemdata.iduser === Number(localStorage.getItem('login_id'))).length > 0 ? 'disabled': ''} onClick={() => {
                     //formik.setFieldValue('approval_status', 1) // Set approval status to 1 for approved
                     formik.handleSubmit()
                 }}>Submit</Button>

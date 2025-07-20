@@ -40,10 +40,10 @@ import Card, { CardBody } from '../../../components/bootstrap/Card'
 import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
 import CustomerEditModal from '../_common/CustomerEditModal'
-import useQueryUserInactive from '../hooks/useQueryUserInactive'
-import useMutateActionUser from '../hooks/useMutateActionUser'
+import useQueryUserInactive from '../../../hooks/useQueryUserInactive'
+import useMutateActionUser from '../../../hooks/useMutateActionUser'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
-import useQueryType from '../hooks/useQueryType'
+import useQueryType from '../../../hooks/useQueryType'
 import showNotification from '../../../components/extras/showNotification'
 
 const Index: NextPage = () => {

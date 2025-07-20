@@ -52,11 +52,11 @@ import EditModal from '../_common/EditModal'
 //import useMutateActionUser from '../hooks/useMutateActionUser'
 import { useQuery, useQueryClient } from '@tanstack/react-query'
 import { useRouter } from 'next/router'
-import useQueryPositions from '../hooks/useQueryPositions'
-import useQueryRefDepartments from '../hooks/useQueryRefDepartments'
+import useQueryPositions from '../../../hooks/useQueryPositions'
+import useQueryRefDepartments from '../../../hooks/useQueryRefDepartments'
 import showNotification from '../../../components/extras/showNotification'
-import useMutateCreatePosition from '../hooks/useMutateCreatePosition'
-import useMutateActionVacancy from '../hooks/useMutateActionVacancy'
+import useMutateCreatePosition from '../../../hooks/useMutateCreatePosition'
+import useMutateActionVacancy from '../../../hooks/useMutateActionVacancy'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
@@ -74,7 +74,7 @@ const Index: NextPage = () => {
 	const dataDept = useQueryRefDepartments()
 	let dataDeptRef = []
 	if (dataDept !== undefined) {
-		dataDeptRef = dataDept.data.map((item) => ({
+		dataDeptRef = dataDept.data.map((item: any) => ({
 			value: item.id,
 			text: `${item.dept_name} - ${item.divisions.division_name} - ${item.divisions.groups.group_name}`,
 		}))
@@ -88,10 +88,10 @@ const Index: NextPage = () => {
 	const handleOnError = useCallback(() => router.push('/recruitment/list/vacancy'), [router])
 	const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false)
 	const [activeModal, setActiveModal] = useState<"remove" | "change_status" | null>(null);
-	const handleUpcomingEdit = (id) => {
+	const handleUpcomingEdit = (id : any) => {
 		setIdSelected(id)
 		setActiveModal('change_status')
-		const dataEditPosition = dataPosFinal.filter((item) => item.id == id)
+		const dataEditPosition = dataPosFinal.filter((item: any) => item.id == id)
 		//console.log(' ----< Dtu', dataEditPosition)
 		if (dataEditPosition.length > 0) {
 			formik.setFieldValue('position_name', dataEditPosition[0].position_name)
@@ -426,7 +426,7 @@ const Index: NextPage = () => {
 									onChange={formik.handleChange}
 									value={formik.values.atasan}
 									placeholder='Pilih...'
-									list={dataPosFinal.map((item) => ({
+									list={dataPosFinal.map((item: any) => ({
 										value: item.id,
 										text: item.position_name,
 									}))}

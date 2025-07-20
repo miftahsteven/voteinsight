@@ -8,7 +8,7 @@ import Brand from '../../../layout/Brand/Brand'
 import Navigation, { NavigationLine } from '../../../layout/Navigation/NavigationMenu'
 import User from '../../../layout/User/User'
 import { useRouter } from 'next/navigation'
-import useQueryMenuStructure from '../hooks/useQueryMenuStructure'
+import useQueryMenuStructure from '../../../hooks/useQueryMenuStructure'
 import {
 	componentPagesMenu,
 	dashboardPagesMenu,
@@ -41,6 +41,8 @@ const DefaultAside = () => {
 	const router = useRouter()
 
 	const redirectSession = () => {
+		// @ts-ignore		
+		if (typeof window === 'undefined') return
 		const userLogin = JSON.stringify(localStorage.getItem('dataLogin'))
 		// @ts-ignore
 		try {
@@ -130,7 +132,9 @@ const DefaultAside = () => {
 								isLight
 								className='w-100'
 								onClick={() => {
-									localStorage.setItem('facit_asideDocStatus', 'false')
+									if (typeof window === 'undefined') {
+										localStorage.setItem('facit_asideDocStatus', 'false') 
+									}
 									setDoc(false)
 								}}>
 								{t('Demo Pages')}

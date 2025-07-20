@@ -39,7 +39,7 @@ interface ICustomerEditModalProps {
 	id: number | string
 	isOpen: boolean
 	setIsOpen(...args: unknown[]): unknown
-	dataEmployeeSelected: []
+	dataEmployeeSelected: any[]
 	//dataUserById: []
 }
 const CustomerEditModal: FC<ICustomerEditModalProps> = ({
@@ -159,6 +159,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			employee_number: Number(id) > 0 ? item?.employee_number : '',
 			experience: Number(id) > 0 ? item?.experience : '',
 			position_id: Number(id) > 0 ? item?.position_id : '',
+			position_code: Number(id) > 0 ? item?.position_code : '',
+			position_grade: Number(id) > 0 ? item?.position_grade : '',
 			education: Number(id) > 0 ? item?.education : '',
 			email: Number(id) > 0 ? item?.email : '',
 			phone: Number(id) > 0 ? item?.phone : '',
@@ -172,6 +174,10 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			nik: Number(id) > 0 ? item?.nik : '',
 			status: Number(id) > 0 ? item?.user_status : 0,
 			onboarding_date_text: Number(id) > 0 ? item?.onboarding_date_text : '',
+			position_deskripsi: Number(id) > 0 ? item?.position_deskripsi : '',
+			dept_id: Number(id) > 0 ? item?.dept_id : '',
+			division_id: Number(id) > 0 ? item?.division_id : '',
+			group_id: Number(id) > 0 ? item?.group_id : '',
 		},
 		// validate: (values) => {
 		// 	const errors: {
@@ -289,7 +295,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		const { name, value } = e.target
 		//console.log(' ---> getSelectData', JSON.stringify(value))
 		formik.setFieldValue(name, value)
-		const selectedItem = dataPositionRef.find((item) => item.value == Number(value))
+		const selectedItem = dataPositionRef.find((item: any) => item.value == Number(value))
 		//console.log(' ---> selectedItem', JSON.stringify(selectedItem))
 		if (selectedItem) {
 			formik.setFieldValue('position_code', selectedItem.position_code)
@@ -338,7 +344,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		if (targetTab) {
 			if(targetTab === 'jabatan'){
 				if(item.position_id) {
-					const selectedPosition = dataPositionRef.find((pos) => pos.value === item.position_id)
+					const selectedPosition = dataPositionRef.find((pos: any) => pos.value === item.position_id)
 					if (selectedPosition) {
 						formik.setFieldValue('position_code', selectedPosition.position_code)
 						formik.setFieldValue('position_grade', selectedPosition.position_grade)
@@ -367,7 +373,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		return (
 			<Modal isOpen={isOpen} setIsOpen={setIsOpen} size='xl' titleId={id.toString()}>
 				<ModalHeader setIsOpen={setIsOpen} className='p-4'>
-					<ModalTitle id={id}>{'Detail Karyawan'}</ModalTitle>
+					<ModalTitle id={String(id)}>{'Detail Karyawan'}</ModalTitle>
 				</ModalHeader>
 				<ModalBody className='px-4'>		
 				<Nav design='tabs' isVertical={ false}>
@@ -401,8 +407,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												name='fullname'
 												disabled={Number(id) > 0 ? true : false}
 												value={formik.values.fullname}
-												invalidFeedback={formik.errors.fullname}
-												isTouched={formik.touched.fullname}
+												invalidFeedback={typeof formik.errors.fullname === 'string' ? formik.errors.fullname : undefined}
+												isTouched={!!formik.touched.fullname}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -433,8 +439,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												disabled={Number(id) > 0 ? true : false}
 												name='birthdate'
 												value={formik.values.birthdate}
-												invalidFeedback={formik.errors.birthdate}
-												isTouched={formik.touched.birthdate}
+												invalidFeedback={typeof formik.errors.birthdate === 'string' ? formik.errors.birthdate : undefined}
+												isTouched={!!formik.touched.birthdate}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -450,8 +456,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												disabled={Number(id) > 0 ? true : false}
 												name='employee_number'
 												value={formik.values.employee_number}
-												invalidFeedback={formik.errors.employee_number}
-												isTouched={formik.touched.employee_number}
+												invalidFeedback={typeof formik.errors.employee_number === 'string' ? formik.errors.employee_number : undefined}
+												isTouched={typeof formik.touched.employee_number === 'boolean' ? formik.touched.employee_number : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -478,8 +484,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												disabled={Number(id) > 0 ? true : false}
 												name='email'
 												value={formik.values.email}
-												invalidFeedback={formik.errors.email}
-												isTouched={formik.touched.email}
+												invalidFeedback={typeof formik.errors.email === 'string' ? formik.errors.email : undefined}
+												isTouched={typeof formik.touched.email === 'boolean' ? formik.touched.email : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -493,8 +499,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												name='phone'
 												placeholder='0818xxxxxx'
 												value={formik.values.phone}
-												invalidFeedback={formik.errors.phone}
-												isTouched={formik.touched.phone}
+												invalidFeedback={typeof formik.errors.phone === 'string' ? formik.errors.phone : undefined}
+												isTouched={typeof formik.touched.phone === 'boolean' ? formik.touched.phone : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -507,8 +513,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												disabled={Number(id) > 0 ? true : false}	
 												name='nik'
 												value={formik.values.nik}
-												invalidFeedback={formik.errors.nik}
-												isTouched={formik.touched.nik}
+												invalidFeedback={typeof formik.errors.nik === 'string' ? formik.errors.nik : undefined}
+												isTouched={typeof formik.touched.nik === 'boolean' ? formik.touched.nik : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -529,9 +535,9 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												disabled={Number(id) > 0 ? true : false}
 												onChange={formik.handleChange}
 												value={formik.values.address}
-												isTouched={formik.touched.address}
 												name='address'
-												invalidFeedback={formik.errors.address}
+												isTouched={typeof formik.touched.address === 'boolean' ? formik.touched.address : undefined}												
+												invalidFeedback={typeof formik.errors.address === 'string' ? formik.errors.address : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -605,8 +611,8 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												name='npwp'
 												disabled={Number(id) > 0 ? true : false}
 												value={formik.values.npwp}
-												invalidFeedback={formik.errors.npwp}
-												isTouched={formik.touched.npwp}
+												invalidFeedback={typeof formik.errors.npwp === 'string' ? formik.errors.npwp : undefined}
+												isTouched={typeof formik.touched.npwp === 'boolean' ? formik.touched.npwp : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -673,7 +679,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												onChange={formik.handleChange}
 												name='position_deskripsi'
 												value={formik.values.position_deskripsi}
-												isTouched={formik.touched.position_deskripsi}
+												isTouched={typeof formik.touched.position_deskripsi === 'boolean' ? formik.touched.position_deskripsi : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
@@ -721,32 +727,31 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 												disabled={Number(id) > 0 ? true : false}
 												name='experience'
 												value={formik.values.onboarding_date_text}
-												invalidFeedback={formik.errors.onboarding_date_text}
-												isTouched={formik.touched.onboarding_date_text}
+												invalidFeedback={typeof formik.errors.onboarding_date_text === 'string' ? formik.errors.onboarding_date_text : undefined}
+												isTouched={typeof formik.touched.onboarding_date_text === 'boolean' ? formik.touched.onboarding_date_text : undefined}
 												onFocus={() => {
 													formik.setErrors({})
 												}}
 											/>
 										</FormGroup>
 										<FormGroup id='status' label='Status Karyawan' className='col-12'>
-											<ChecksGroup
-												name='status'
-												value={formik.values.status}
-												disabled={Number(id) > 0 ? true : false}
-												onChange={formik.handleChange}>
+											<ChecksGroup onChange={formik.handleChange}>
 												<Checks
 													id='status_aktif'
 													label='Aktif'
 													value={1}
 													className='me-2'
 													checked={formik.values.status === 1}
+													disabled={Number(id) > 0 ? true : false}
+													onChange={() => formik.setFieldValue('status', 1)}
 												/>
 												<Checks
 													id='status_non_aktif'
 													label='Non Aktif'
 													value={0}
-													className='me-2'
 													checked={formik.values.status === 0}
+													disabled={Number(id) > 0 ? true : false}
+													onChange={() => formik.setFieldValue('status', 0)}
 												/>
 											</ChecksGroup>
 										</FormGroup>

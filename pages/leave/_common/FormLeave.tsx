@@ -17,7 +17,8 @@ import showNotification from '../../../components/extras/showNotification';
 import  useMutateCreateLeave  from '../hooks/useMutateCreateLeave'; 
 import Select from '../../../components/bootstrap/forms/Select'
 
-interface IFormLeaveProps {    
+interface IFormLeaveProps {  
+    id: string;  
     isOpen: boolean;
     setIsOpen: (isOpen: boolean) => void;
 }

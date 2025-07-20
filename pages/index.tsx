@@ -43,7 +43,9 @@ const Index: NextPage = () => {
 		) {
 			setTimeout(() => {
 				setIsOpen(true)
-				localStorage.setItem('tourModalStarted', 'shown')
+				if (typeof window !== 'undefined') {
+					localStorage.setItem('tourModalStarted', 'shown')
+				}
 			}, 3000)
 		}
 

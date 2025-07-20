@@ -73,7 +73,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
     let dataProvRef = []
     let dataCityRef = []
     if (dataProvince !== undefined) {
-        dataProvRef = dataProvince.data.map((items) => ({
+        dataProvRef = dataProvince.data.map((items: any) => ({
             value: items.prov_id,
             text: `${items.prov_name}`,
         }))        
@@ -141,7 +141,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
     const dataPosition = useQueryPositionsSelect()
 	let dataPositionRef = []
 	if (dataPosition !== undefined) {
-		dataPositionRef = dataPosition.data.map((items) => ({
+		dataPositionRef = dataPosition.data.map((items: any) => ({
 			value: items.id,
 			text: `${items.position_name}`,
 			position_code: items.position_code,
@@ -247,7 +247,21 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
             formData.append('subdistrict_id', values.subdistrict_id)            
             //console.log('---> data append', Object.fromEntries(formData))
             mutate(
-                { ...Object.fromEntries(formData) },
+                { 
+                    id: formData.get('id') as string,
+                    position_id: formData.get('position_id') as string,
+                    fullname: formData.get('fullname') as string,
+                    gender: formData.get('gender') as string,
+                    birthdate: formData.get('birthdate') as string,
+                    email: formData.get('email') as string,
+                    phone: formData.get('phone') as string,
+                    nik: formData.get('nik') as string,
+                    address: formData.get('address') as string,
+                    prov_id: formData.get('prov_id') as string,
+                    city_id: formData.get('city_id') as string,
+                    district_id: formData.get('district_id') as string,
+                    subdistrict_id: formData.get('subdistrict_id') as string,
+                },
                 {
                     onSuccess: (data) => {
                         if (data) {

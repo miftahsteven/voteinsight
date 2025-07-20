@@ -24,7 +24,12 @@ import Link from 'next/link'
 import useMutateCreateRole from '../hooks/useMutateCreateRole'
 import * as yup from 'yup'
 
-const FormRole = ({ idRole, roleSelected }) => {
+interface FormRoleProps {
+	idRole: number;
+	roleSelected?: any[];
+}
+
+const FormRole = ({ idRole, roleSelected }: FormRoleProps) => {
 	const { mutate, isSuccess, isError } = useMutateCreateRole()
 
 	//const dataIdRole = Object.values(idRole);
@@ -108,8 +113,8 @@ const FormRole = ({ idRole, roleSelected }) => {
 						name='name'
 						id='name'
 						value={formik.values.name}
-						isTouched={formik.touched.name}
-						invalidFeedback={formik.errors.name}
+						isTouched={!!formik.touched.name}
+						invalidFeedback={typeof formik.errors.name === 'string' ? formik.errors.name : undefined}
 						onFocus={() => {
 							formik.setErrors({})
 						}}

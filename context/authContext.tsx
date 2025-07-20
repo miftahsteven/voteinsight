@@ -30,11 +30,21 @@ export const AuthContextProvider: FC<IAuthContextProviderProps> = ({ children })
 
 	useEffect(() => {
 		//console.log(' --->y ', JSON.stringify(user));
-		localStorage.setItem('user', user)
+		//let token = null;
+        if (typeof window !== 'undefined') {
+            //token = localStorage.getItem('token');
+			localStorage.setItem('user', user || '');
+        }
+		
 	}, [user])
 
 	useEffect(() => {
-		const dataLogin = JSON.parse(localStorage.getItem('dataLogin'))
+		
+		let token = null;
+        if (typeof window !== 'undefined') {
+            token = localStorage.getItem('dataLogin');
+        }
+		const dataLogin = JSON.parse(token || '{}')
 		//if (user !== undefined && user !== '') {
 		if (dataLogin?.length > 0) {
 			//setUserData(getUserDataWithUsername(user));
