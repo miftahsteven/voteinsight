@@ -378,9 +378,14 @@ export const getStaticProps: GetStaticProps = async ({ params, locale }) => {
         };
     }
 
+	const serializedCustomerData = {
+		...customerData,
+		membershipDate: customerData.membershipDate?.toISOString() || null,
+	  };
+
     return {
         props: {
-            customerData,
+            customerData: serializedCustomerData,
             ...(await serverSideTranslations(locale || 'en', ['common', 'menu'])),
         },
     };

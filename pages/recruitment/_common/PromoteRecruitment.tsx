@@ -24,10 +24,10 @@ import Select from '../../../components/bootstrap/forms/Select'
 import Label from '../../../components/bootstrap/forms/Label'
 import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 //import PAYMENTS from '../../../common/data/enumPaymentMethod';
-import useQueryStatusRec from '../hooks/useQueryStatusRec'
-import useQueryInterviewer from '../hooks/useQueryInterviewer'
+import useQueryStatusRec from '../../../hooks/useQueryStatusRec'
+import useQueryInterviewer from '../../../hooks/useQueryInterviewer'
 import { stat } from 'fs'
-import useMutateUpdateStatusRec from '../hooks/useMutateUpdateStatusRec'
+import useMutateUpdateStatusRec from '../../../hooks/useMutateUpdateStatusRec'
 import { useRouter } from 'next/router'
 
 interface ICustomerEditModalProps {

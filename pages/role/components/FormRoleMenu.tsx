@@ -22,7 +22,7 @@ import showNotification from '../../../components/extras/showNotification'
 import Icon from '../../../components/icon/Icon'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
-import useMutateCreateRoleMenu from '../hooks/useMutateCreateRoleMenu'
+import useMutateCreateRoleMenu from '../../../hooks/useMutateCreateRoleMenu'
 import Select from '../../../components/bootstrap/forms/Select'
 import Option, { Options } from '../../../components/bootstrap/Option'
 

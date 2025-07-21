@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import useQueryNews from '../hooks/useQueryNews'; // Adjust the import path as necessary
+import useQueryNews from '../../../hooks/useQueryNews'; // Adjust the import path as necessary
 import { Style } from '../../../components/icon/material-icons';
 import styles from '../styles/SpeechList.module.css'; // Adjust the import path as necessary
 

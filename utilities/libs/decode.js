@@ -1,6 +1,10 @@
 import { Buffer } from 'buffer'
 
 export default function decodeJWT(token) {
+	if (typeof token !== 'string') {
+		console.error('Invalid token:', token);
+		return null; // Return null or handle the error appropriately
+	}
 	const base64Url = token?.split('.')[1] ?? ''
 	const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/')
 	const jsonPayload = decodeURIComponent(

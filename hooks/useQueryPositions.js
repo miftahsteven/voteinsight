@@ -1,6 +1,6 @@
 import { keepPreviousData, useQuery, useMutation } from '@tanstack/react-query'
 
-import api from '../../utilities/libs/axios'
+import api from '../utilities/libs/axios'
 //import { useRouter } from 'next/router'
 
 const request = async (params = {}) => {

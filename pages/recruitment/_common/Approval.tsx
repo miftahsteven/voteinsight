@@ -5,11 +5,11 @@ import Modal, { ModalBody, ModalFooter, ModalHeader, ModalTitle } from '../../..
 import showNotification from '../../../components/extras/showNotification';
 import Button from '../../../components/bootstrap/Button';
 import Select from '../../../components/bootstrap/forms/Select';
-import useQueryStatusRec from '../hooks/useQueryStatusRec';
+//import useQueryStatusRec from '../../../hooks/useQueryStatusRec';
 //import useMutateUpdateStatusRec from '../hooks/useMutateUpdateStatusRec';
-import useMutateApproveRecruitment from '../hooks/useMutateApprovedRecruitment'
-import useMutateUpdateApprovedRecruitment from '../hooks/useMutateUpdateApprovedRecruitment';
-import useQueryApprover from '../hooks/useQueryApprover';
+import useMutateApproveRecruitment from '../../../hooks/useMutateApprovedRecruitment'
+import useMutateUpdateApprovedRecruitment from '../../../hooks/useMutateUpdateApprovedRecruitment';
+import useQueryApprover from '../../../hooks/useQueryApprover';
 import { useRouter } from 'next/router';    
 import Page from '../../../layout/Page/Page'
 import Card, { CardBody, CardTitle, CardHeader, CardLabel } from '../../../components/bootstrap/Card'

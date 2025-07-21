@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query'
 import { useNavigate } from 'react-router-dom'
 
-import api from '../../utilities/libs/axios'
+import api from '../utilities/libs/axios'
 
 const register = async ({
 	user_id,

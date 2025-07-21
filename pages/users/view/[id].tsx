@@ -32,9 +32,9 @@ import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import Icon from '../../../components/icon/Icon'
 import { priceFormat } from '../../../helpers/helpers'
 import CustomerEditModal from '../_common/CustomerEditModal'
-import useQueryUserAll from '../hooks/useQueryUserAll'
-import useQueryActivity from '../hooks/useQueryActivity'
-import useQueryType from '../hooks/useQueryType'
+import useQueryUserAll from '../../../hooks/useQueryUserAll'
+import useQueryActivity from '../../../hooks/useQueryActivity'
+import useQueryType from '../../../hooks/useQueryType'
 import UserImage from '../../../assets/img/wanna/wanna3.png'
 
 const Id: NextPage = () => {

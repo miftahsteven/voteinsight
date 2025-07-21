@@ -22,7 +22,7 @@ import Button from '../../../components/bootstrap/Button'
 import Textarea from '../../../components/bootstrap/forms/Textarea'
 import Select from '../../../components/bootstrap/forms/Select'
 import { stat } from 'fs'
-import useMutateCreateContract from '../hooks/useMutateCreateContract'
+import useMutateCreateContract from '../../../hooks/useMutateCreateContract'
 import { useRouter } from 'next/router'
 
 export const SELECT_TYPE_OPTIONS = [

@@ -5,7 +5,7 @@ import React, { useEffect, useState, useCallback } from 'react';
 // import { useDispatch } from 'react-redux';
 // //import { updateCanvas } from '../../../redux/actions/canvasActions';
 // import { toast } from 'react-toastify';
-import useQueryPositionsSelect from '../hooks/useQueryPositionsSelect'
+import useQueryPositionsSelect from '../../../hooks/useQueryPositionsSelect'
 import OffCanvas, {
 	OffCanvasBody,
 	OffCanvasHeader,
@@ -16,12 +16,12 @@ import FormGroup from '../../../components/bootstrap/forms/FormGroup'
 import Input from '../../../components/bootstrap/forms/Input';
 import Icon from '../../../components/icon/Icon'
 import Select from '../../../components/bootstrap/forms/Select';
-import useQueryProv from '../hooks/useQueryProv'
-import useQueryCities from '../hooks/useQueryCities'
-import useQueryDistricts from '../hooks/useQueryDistricts'
+import useQueryProv from '../../../hooks/useQueryProv'
+import useQueryCities from '../../../hooks/useQueryCities'
+import useQueryDistricts from '../../../hooks/useQueryDistricts'
 //import useQueryPositionsSelect from '../hooks/useQueryPositionsSelect'
-import useMutateUpdateRecruitment from '../hooks/useMutateUpdateRecruitment'
-import useQueryLocs from '../hooks/useQueryLocs'
+import useMutateUpdateRecruitment from '../../../hooks/useMutateUpdateRecruitment'
+import useQueryLocs from '../../../hooks/useQueryLocs'
 import dayjs from 'dayjs'
 import { useRouter } from 'next/router'
 import showNotification from '../../../components/extras/showNotification'
@@ -57,7 +57,7 @@ const CanvasEdit: React.FC<ICustomerEditCanvas> = ({
     dataEdit,
     errorUrl = '/recruitment/list',
 }) => {
-    const canvas = dataEdit.find((item) => item.id === id);
+    const canvas = (dataEdit || []).find((item) => item.id === id);
     const [dataCity, setDataCity] = React.useState([])
 	const [dataDistrict, setDataDistrict] = React.useState([])
 	const [dataLoc, setDataLoc] = React.useState([])

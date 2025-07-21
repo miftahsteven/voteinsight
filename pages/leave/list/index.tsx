@@ -30,7 +30,7 @@ import Page from '../../../layout/Page/Page'
 import Card, { CardBody } from '../../../components/bootstrap/Card'
 import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import { getFirstLetter, priceFormat } from '../../../helpers/helpers'
-import useQueryAllLeaving from '../hooks/useQueryAllLeaving'
+import useQueryAllLeaving from '../../../hooks/useQueryAllLeaving'
 import FormLeave from '../_common/FormLeave'
 
 const Index: NextPage = () => {

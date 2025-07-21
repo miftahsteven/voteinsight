@@ -24,9 +24,9 @@ import Select from '../../../components/bootstrap/forms/Select'
 import Label from '../../../components/bootstrap/forms/Label'
 import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 //import PAYMENTS from '../../../common/data/enumPaymentMethod';
-import useQueryRefDepartments from '../hooks/useQueryRefDepartments'
+import useQueryRefDepartments from '../../../hooks/useQueryRefDepartments'
 import { stat } from 'fs'
-import useMutateCreatePosition from '../hooks/useMutateCreatePosition'
+import useMutateCreatePosition from '../../../hooks/useMutateCreatePosition'
 import { useRouter } from 'next/router'
 
 interface ICustomerEditModalProps {

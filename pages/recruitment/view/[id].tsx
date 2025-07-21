@@ -32,7 +32,7 @@ import { getColorNameWithIndex } from '../../../common/data/enumColors'
 import Icon from '../../../components/icon/Icon'
 import { priceFormat } from '../../../helpers/helpers'
 import EditModal from '../_common/EditModal'
-import useQueryPositions from '../hooks/useQueryPositions'
+import useQueryPositions from '../../../hooks/useQueryPositions'
 //import useQueryActivity from '../hooks/useQueryActivity'
 //import useQueryType from '../hooks/useQueryType'
 
