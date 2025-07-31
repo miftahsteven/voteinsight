@@ -3,6 +3,17 @@ import { useNavigate } from 'react-router-dom'
 
 import api from '../utilities/libs/axios'
 
+interface PositionData {
+	id: number;
+	position_name: string;
+	position_code: string;
+	position_deskripsi: string;
+	position_grade: string;
+	dept_id: number;
+	status: string;
+	position_head: string;
+}
+
 const register = async ({
 	id,
 	position_name,
@@ -12,7 +23,7 @@ const register = async ({
 	dept_id,
 	status,
 	position_head
-}) => {
+}: PositionData) => {
 	const { data } = await api.request({
 		method: id == 0 ? 'POST' : 'PUT',
 		url: id == 0 ? '/recruitment/tambah' : `/recruitment/update/${id}`,
@@ -38,16 +49,16 @@ const useMutateCreatePosition = () => {
 	return useMutation({
 		mutationFn: register,
 		onSuccess: (data) => {
-			queryClient.invalidateQueries('position-created-update')
+			queryClient.invalidateQueries({queryKey: 'position-created-update'})
 
 			return data
 		},
-		onError: (error) => {
+		onError: (error: any) => {
 			//console.log(' REORRR ', error)
 			//alert(error.response.data?.message ?? error?.message)
 			//window.location = '/auth/login?sessionNull=true'
 			if (error.response && error.response.status === 502) {
-				window.location = '/auth/login?sessionNull=true'
+				window.location.href = '/auth/login?sessionNull=true'
 				return
 			}
 			alert(error.response.data?.message ?? error?.message)

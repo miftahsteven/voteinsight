@@ -3,6 +3,25 @@ import { useNavigate } from 'react-router-dom'
 
 import api from '../utilities/libs/axios'
 
+interface recruitmentData {
+	position_id? : number,
+	fullname: string,
+	gender: string,
+	birthdate: string,
+	//experience,
+	//education,
+	email: string,
+	phone: string,
+	nik: string,
+	address: string,
+	prov_id: number,
+	city_id: number,
+	district_id: number,
+	subdistrict_id: number,
+	//npwp,
+	status: string,
+}
+
 const register = async ({
 	position_id,
 	fullname,
@@ -21,7 +40,7 @@ const register = async ({
 	//npwp,
 	status,
 	//cv_uploaded,
-}) => {
+}: recruitmentData) => {
 	const { data } = await api.request({
 		method: 'POST',
 		url: '/recruitment/add',
@@ -59,16 +78,16 @@ const useMutateCreateRecruitmen = () => {
 	return useMutation({
 		mutationFn: register,
 		onSuccess: (data) => {
-			queryClient.invalidateQueries('recruitment-created')
+			queryClient.invalidateQueries({queryKey: 'recruitment-created'})
 
 			return data
 		},
-		onError: (error) => {
+		onError: (error: any) => {
 			//console.log(' REORRR ', error)
 			//alert(error.response.data?.message ?? error?.message)
 			//window.location = '/auth/login?sessionNull=true'
 			if (error.response && error.response.status === 502) {
-				window.location = '/auth/login?sessionNull=true'
+				window.location.href = '/auth/login?sessionNull=true'
 				return
 			}
 			alert(error.response.data?.message ?? error?.message)

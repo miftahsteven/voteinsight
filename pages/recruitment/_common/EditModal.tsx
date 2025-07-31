@@ -63,6 +63,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 		position_deskripsi?: string
 		dept_id?: string
 		position_head?: string
+		status?: number
 	}
 
 	const itemData: Item = {}
@@ -79,7 +80,7 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			position_grade: Number(id) > 0 ? item?.position_grade : '',
 			position_deskripsi: Number(id) > 0 ? item?.position_deskripsi : '',
 			dept_id: Number(id) > 0 ? item?.dept_id : '',
-			status: 0,
+			status: Number(id) > 0 ? item?.status : '',
 			position_head: Number(id) > 0 ? item?.position_head : '',
 		},
 		validate: (values) => {
@@ -113,13 +114,13 @@ const CustomerEditModal: FC<ICustomerEditModalProps> = ({
 			console.log(' ---> submit', JSON.stringify(values))
 			mutate(
 				{
-					id: values.id,
-					position_name: values.position_name,
-					position_code: values.position_code,
-					position_grade: values.position_grade,
-					position_deskripsi: values.position_deskripsi,
-					dept_id: values.dept_id,
-					status: 0,
+					id: values.id || 0,
+					position_name: values.position_name || '',
+					position_code: values.position_code	|| '',
+					position_grade: values.position_grade || '',
+					position_deskripsi: values.position_deskripsi || '',
+					dept_id: Number(values.dept_id) || 0,
+					status: String(values.status) || '0',
 					position_head: values.position_head || '',
 				},
 				{

@@ -124,7 +124,7 @@ const Index: NextPage = () => {
 	const handleActioneMutate = () => {
 		mutateAction(
 			{
-				id: idSelected,
+				id: idSelected || '',
 			},
 			{
 				onSuccess: (data) => {
@@ -171,13 +171,13 @@ const Index: NextPage = () => {
 			console.log(' ---> submit', JSON.stringify(values))
 			mutate(
 				{
-					id: idSelected,
+					id: Number(idSelected),
 					position_name: values.position_name,
 					position_code: values.position_code,
 					position_grade: values.position_grade,
 					position_deskripsi: values.position_deskripsi,
-					dept_id: values.dept_id,
-					status: Number(values.status),
+					dept_id: Number(values.dept_id),
+					status: String(values.status),
 					position_head: values.atasan,
 				},
 				{

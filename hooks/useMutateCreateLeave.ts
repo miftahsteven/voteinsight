@@ -3,43 +3,50 @@ import { useNavigate } from 'react-router-dom'
 
 import api from '../utilities/libs/axios'
 
-const register = async ({ id, statusUser, action }) => {
-	console.log('act :', action)
+const register = async ({	
+	leave_start_date,
+	leave_end_date,
+	leave_reason,
+	leave_status,
+	
+}: { leave_start_date: string, leave_end_date: string, leave_reason: string, leave_status: number }) => {
 	const { data } = await api.request({
-		method: action == 'remove' ? 'DELETE' : 'POST',
-		url: action == 'remove' ? `/emp/delete-contract` : `/auth/inactivated`,
+		method: 'POST',
+		url:  '/leaving/request',
 		data: {
-			id,
-			statusUser,
+			leave_start_date,
+			leave_end_date,
+			leave_reason,
+			leave_status,
 		},
 	})
 
 	return data
 }
 
-const useMutateActionUser = () => {
+const useMutateCreateLeave = () => {
 	//const navigate = useNavigate();
 	const queryClient = useQueryClient()
 
 	return useMutation({
 		mutationFn: register,
 		onSuccess: (data) => {
-			queryClient.invalidateQueries('user-inactivated-remove')
+			queryClient.invalidateQueries({queryKey: 'leave-created'})
 
 			return data
 		},
-		onError: (error) => {
-			console.log(' ERROR ', error)
+		onError: (error: any) => {
+			//console.log(' REORRR ', error)
 			//alert(error.response.data?.message ?? error?.message)
 			//window.location = '/auth/login?sessionNull=true'
 			if (error.response && error.response.status === 502) {
-				window.location = '/auth/login?sessionNull=true'
+				window.location.href = '/auth/login?sessionNull=true'
 				return
 			}
-			//if error not 502 just return alert
 			alert(error.response.data?.message ?? error?.message)
+			//window.location = '/auth/login?sessionNull=true'			
 		},
 	})
 }
 
-export default useMutateActionUser
+export default useMutateCreateLeave

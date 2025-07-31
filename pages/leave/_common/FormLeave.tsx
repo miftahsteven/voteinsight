@@ -120,7 +120,7 @@ const FormLeave: React.FC<IFormLeaveProps> = ({ id, isOpen, setIsOpen }) => {
                 leave_start_date: values.leave_start_date,
                 leave_end_date: values.leave_end_date,
                 leave_reason: values.leave_reason,
-                leave_status: values.leave_status,
+                leave_status: Number(values.leave_status),
             })
                 .then(() => {
                     showNotification('success', 'Cuti berhasil diajukan');

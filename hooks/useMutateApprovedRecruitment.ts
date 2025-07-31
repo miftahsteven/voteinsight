@@ -8,7 +8,7 @@ const register = async ({
 	approval_status,
 	approval_type,
 	approval_desc
-}) => {
+}: {user_candidat_id? : number, approval_status: string, approval_type: number, approval_desc: string}) => {
 	const { data } = await api.request({
 		method: 'POST',
 		url: `/recruitment/approved/${user_candidat_id}`,
@@ -29,16 +29,16 @@ const useMutateApprovedRecruitment = () => {
 	return useMutation({
 		mutationFn: register,
 		onSuccess: (data) => {
-			queryClient.invalidateQueries('approved-recruitment')
+			queryClient.invalidateQueries({ queryKey: 'approved-recruitment'})
 
 			return data
 		},
-		onError: (error) => {
+		onError: (error: any) => {
 			//console.log(' REORRR ', error)
 			//alert(error.response.data?.message ?? error?.message)
 			//window.location = '/auth/login?sessionNull=true'
 			if (error.response && error.response.status === 502) {
-				window.location = '/auth/login?sessionNull=true'
+				window.location.href = '/auth/login?sessionNull=true'
 				return
 			}
 			alert(error.response.data?.message ?? error?.message)
