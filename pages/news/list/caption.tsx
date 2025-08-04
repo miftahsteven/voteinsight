@@ -32,11 +32,6 @@ import Dropdown, {
     DropdownToggle,
 } from '../../../components/bootstrap/Dropdown'
 import Button from '../../../components/bootstrap/Button'
-import Select from '../../../components/bootstrap/forms/Select'
-import Popovers from '../../../components/bootstrap/Popovers'
-import FormGroup from '../../../components/bootstrap/forms/FormGroup'
-import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup'
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 import Page from '../../../layout/Page/Page'
 import Card, {
     CardBody,
@@ -44,18 +39,11 @@ import Card, {
     CardLabel,
     CardTitle,
 } from '../../../components/bootstrap/Card'
-import Textarea from '../../../components/bootstrap/forms/Textarea'
+
 import { useRouter } from 'next/router'
-import useQueryPositions from '../../../hooks/useQueryPositions'
 import useQueryRefDepartments from '../../../hooks/useQueryRefDepartments'
-import showNotification from '../../../components/extras/showNotification'
 import useMutateCreatePosition from '../../../hooks/useMutateCreatePosition'
 import useMutateActionVacancy from '../../../hooks/useMutateActionVacancy'
-import OffCanvas, {
-    OffCanvasBody,
-    OffCanvasHeader,
-    OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas'
 import Detail from '../_common/Detail'
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, set } from "firebase/database";
@@ -85,14 +73,12 @@ const Index: NextPage = () => {
     const router = useRouter()
     const dataDept = useQueryRefDepartments()
     let dataDeptRef = []
-    const handleOnError = useCallback(() => router.push('/speech/list'), [router])
+    const handleOnError = useCallback(() => router.push('/news/list/caption'), [router])
     const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false)
     const [activeModal, setActiveModal] = useState<"remove" | "change_status" | null>(null);
     
     const [inActiveModal, setInactiveModal] = useState(false)	
-    const [idSelected, setIdSelected] = useState(0)
-    const [action, setAction] = useState('')
-    const [statusSelected, setStatusSelected] = useState(0)
+    const [idSelected, setIdSelected] = useState(0) 
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [perPage, setPerPage] = useState<number>(PER_COUNT['10'])
 
@@ -110,16 +96,16 @@ const Index: NextPage = () => {
         }))
     }
 
-    const [dataAISpeech, setDataAISpeech] = useState<Record<string, any> | null>(null)
+    const [dataAICaptions, setDataAICaptions] = useState<Record<string, any> | null>(null)
 
     useEffect(() => {
-        const AISpeech = ref(database, 'AIRecommendation/Speech');
+        const AISpeech = ref(database, 'AIRecommendation/AICaptions/Captions');
         //fetch data from firebase in different path
         onValue(AISpeech, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                //console.log('Data from Firebase Realtime AISpeech: ', data);
-                setDataAISpeech(data);
+                console.log('Data from Firebase Realtime AISpeech: ', data);
+                setDataAICaptions(data);
             }
         });
         return () => {
@@ -129,37 +115,7 @@ const Index: NextPage = () => {
 
     const { mutate, isSuccess, isError } = useMutateCreatePosition()
     const { mutate: mutateAction, isSuccess: isSuccessAction } = useMutateActionVacancy()
-    const handleActioneMutate = () => {
-        // mutateAction(
-        //     {
-        //         id: Number(idSelected) || 0,
-        //     },
-        //     {
-        //         onSuccess: (data) => {
-        //             if (data) {
-        //                 setInactiveModal(false)
-        //                 showNotification(
-        //                     <span className='d-flex align-items-center'>
-        //                         <Icon icon='Info' size='lg' className='me-1' />
-        //                         <span>Berhasil</span>
-        //                     </span>,
-        //                     'Berhasil Menghapus Posisi',
-        //                 )
-        //             }
-        //         },
-        //         onError: (error) => {
-        //             showNotification(
-        //                 <span className='d-flex align-items-center'>
-        //                     <Icon icon='danger' size='lg' className='me-1' />
-        //                     <span>Gagal</span>
-        //                 </span>,
-        //                 'Gagal Menghapus Posisi',
-        //             )
-        //             handleOnError()
-        //         },
-        //     },
-        // )
-        //setInactiveModal(false)
+    const handleActioneMutate = () => {        
         setActiveModal(null)
     }
 
@@ -181,37 +137,49 @@ const Index: NextPage = () => {
 
     //data AI speech convert to dataFinal for table
     let dataFinal = []
-    if (dataAISpeech) {
-        dataFinal = Object.keys(dataAISpeech).map((key) => ({
+    if (dataAICaptions !== null) {
+        dataFinal = Object.keys(dataAICaptions).map((key) => ({
             id: key,
-            ...dataAISpeech[key],
+            ...dataAICaptions[key],
         }))
     }
 
     const items = dataFinal
     const filteredData = items.filter(
         (f: any) =>
-            f.Content?.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
+            //f.Content?.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
             f.Date?.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
     )
 
 
     const [editModalStatus, setEditModalStatus] = useState<boolean>(false)
     const [detail, setDetail] = useState<boolean>(false)
-    const [dataContent, setDataContent] = useState('')
+    const [dataContent, setDataContent] = useState<Array<any>>([])
     const [datadate, setDataDate] = useState('')
 
     const handleDetailModal = (id: number) => {
         setIdSelected(id)
-        setDataContent(items.find((item: any) => item.id === id)?.Content || '')
-        setDataDate(items.find((item: any) => item.id === id)?.Date || '')
-        setDetail(true)
+        const item = items.find((item: any) => item.id === id);
+
+        if (item) {
+            const dataFinalCaption = {
+                Date: item.Date,
+                Facebook: item.Facebook,
+                Instagram: item.Instagram,
+                X: item.X,
+            };
+
+            setDataContent([dataFinalCaption]); // Set the found item as dataContent
+            setDetail(true); // Open the detail modal
+        } else {
+            console.error(`Item with ID ${id} not found.`);
+        }
     }
 
     return (
         <PageWrapper>
             <Head>
-                <title>List Pidato AI</title>
+                <title>List Caption AI</title>
             </Head>
             <SubHeader>
                 <SubHeaderLeft>
@@ -248,8 +216,10 @@ const Index: NextPage = () => {
                                 <table className='table table-modern table-hover'>
                                     <thead>
                                         <tr>                                           
-                                            <th className='w-25'>Tanggal</th>
-                                            <th>Konten</th>                                            
+                                            <th>Tanggal</th>
+                                            <th>Facebook</th>                                            
+                                            <th>Instagram</th>                                            
+                                            <th>X</th>
                                             <td />
                                         </tr>
                                     </thead>
@@ -257,7 +227,9 @@ const Index: NextPage = () => {
                                         {dataPagination(items, currentPage, perPage).map(i => (
                                             <tr key={i.id}>
                                                 <td>{i.Date}</td>
-                                                <td>{i.Content}</td>                                                
+                                                <td>{i.Facebook}</td>                                                
+                                                <td>{i.Instagram}</td>
+                                                <td>{i.X}</td>
                                                 <td>
                                                     <Dropdown>
                                                         <DropdownToggle hasIcon={false}>
@@ -314,8 +286,7 @@ const Index: NextPage = () => {
 				setIsOpen={setDetail}
 				isOpen={detail}
 				id={idSelected || 0}
-				dataContent={dataContent || ''}
-				dataDate={datadate || ''}
+				dataContent={dataContent || []}				
 			/>
             <Modal
                 id='inactive'

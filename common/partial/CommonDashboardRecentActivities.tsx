@@ -19,6 +19,7 @@ import Nav, { NavItem, NavLinkDropdown } from '../../components/bootstrap/Nav'
 import { useRouter } from 'next/router'
 import { on } from 'events';
 import Icon from '../../components/icon/Icon';
+import { get } from 'http';
 
 const firebaseConfig = {				
 	databaseURL: "https://voteinsight-default-rtdb.asia-southeast1.firebasedatabase.app",										
@@ -42,6 +43,7 @@ const CommonDashboardRecentActivities = () => {
 	const  [dataRekomendasi, setDataRekomendasi] = useState<any>(null)
 	const [dataPress, setDataPress] = useState<any>(null)
 	const [dataAICaptions, setDataAICaptions] = useState<any>(null)
+	const [dataAICaptions2, setDataAICaptions2] = useState<any>(null)
 	const [dataAISpeech, setDataAISpeech] = useState<any>(null)
 
 	useEffect(() => {
@@ -49,6 +51,7 @@ const CommonDashboardRecentActivities = () => {
 		const rekomendasi = ref(database, 'AIRecommendation/NewsContent/ContentCaption');
 		const pressRelease = ref(database, 'AIRecommendation/PressRelease');
 		const AICaptions = ref(database, 'AIRecommendation/AICaptions');
+		const AICaptions2 = ref(database, 'AIRecommendation/AICaptions/Captions');
 		const AISpeech = ref(database, 'AIRecommendation/RingkasanPidato');
 		//fetch data from firebase in different path
 		// issue/result and AIRecommendation/newsContent
@@ -78,6 +81,15 @@ const CommonDashboardRecentActivities = () => {
 			if (dataAICaptions) {
 				//console.log('Data from Firebase Realtime AICaptions: ', dataAICaptions);
 				setDataAICaptions(dataAICaptions);
+			}
+		});
+
+		onValue(AICaptions2, (snapshot) => {
+			const dataAICaptions2 = snapshot.val();
+			if (dataAICaptions2) {
+				//console.log('Data from Firebase Realtime AICaptions2: ', dataAICaptions2);
+				const getLastdataAICaptions2 = Object.keys(dataAICaptions2).length - 1;
+				setDataAICaptions2(getLastdataAICaptions2 >= 0 ? dataAICaptions2[getLastdataAICaptions2] : null);
 			}
 		});
 		
@@ -220,7 +232,7 @@ const CommonDashboardRecentActivities = () => {
 					{/* <p>Pidato AI akan ditampilkan di sini.</p> */}
 				</CardBody>
 			) : router.query.tab === 'caption' ? (
-				<CardBody>
+				<CardBody isScrollable>					
 					<table className='table table-striped table-hover table-sm'>
 						<thead>
 							<tr>								
@@ -229,15 +241,19 @@ const CommonDashboardRecentActivities = () => {
 						</thead>
 						<tbody>
 							<tr>
-								<td>Meta</td>
-								<td>{dataAICaptions?.Meta}</td>
+								<td>Facebook</td>
+								<td className='w-75'>{dataAICaptions2.Facebook}</td>
+							</tr>
+							<tr>
+								<td>Instagram</td>
+								<td className='w-75'>{dataAICaptions2.Instagram}</td>
 							</tr>
 							<tr>
 								<td>X</td>
-								<td>{dataAICaptions?.X}</td>
+								<td>{dataAICaptions2?.X}</td>
 							</tr>
 						</tbody>							
-					</table>
+					</table>					
 				</CardBody>
 			) : router.query.tab === 'pidato' ? (
 				<CardBody>

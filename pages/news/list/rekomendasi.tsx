@@ -13,11 +13,6 @@ import Modal, {
     ModalFooter,
     ModalTitle,
 } from '../../../components/bootstrap/Modal'
-import PAYMENTS from '../../../common/data/enumPaymentMethod'
-//import data from '../../../common/data/dummyCustomerData';
-import data from '../../../common/data/usersDummyAllData'
-import useSortableData from '../../../hooks/useSortableData'
-import { demoPagesMenu, odSystAdminPagesMenu } from '../../../menu'
 import PageWrapper from '../../../layout/PageWrapper/PageWrapper'
 import SubHeader, {
     SubHeaderLeft,
@@ -32,11 +27,6 @@ import Dropdown, {
     DropdownToggle,
 } from '../../../components/bootstrap/Dropdown'
 import Button from '../../../components/bootstrap/Button'
-import Select from '../../../components/bootstrap/forms/Select'
-import Popovers from '../../../components/bootstrap/Popovers'
-import FormGroup from '../../../components/bootstrap/forms/FormGroup'
-import InputGroup, { InputGroupText } from '../../../components/bootstrap/forms/InputGroup'
-import Checks, { ChecksGroup } from '../../../components/bootstrap/forms/Checks'
 import Page from '../../../layout/Page/Page'
 import Card, {
     CardBody,
@@ -44,32 +34,27 @@ import Card, {
     CardLabel,
     CardTitle,
 } from '../../../components/bootstrap/Card'
-import Textarea from '../../../components/bootstrap/forms/Textarea'
+
 import { useRouter } from 'next/router'
-import useQueryPositions from '../../../hooks/useQueryPositions'
 import useQueryRefDepartments from '../../../hooks/useQueryRefDepartments'
-import showNotification from '../../../components/extras/showNotification'
 import useMutateCreatePosition from '../../../hooks/useMutateCreatePosition'
 import useMutateActionVacancy from '../../../hooks/useMutateActionVacancy'
-import OffCanvas, {
-    OffCanvasBody,
-    OffCanvasHeader,
-    OffCanvasTitle,
-} from '../../../components/bootstrap/OffCanvas'
-import Detail from '../_common/Detail'
+import useSortableData from '../../../hooks/useSortableData'
+import DetailNews from '../_common/DetailNews' // Adjust the import path as necessary
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, set } from "firebase/database";
+import Content from '../../../layout/Content/Content'
 
 
 const firebaseConfig = {				
-	databaseURL: "https://voteinsight-default-rtdb.asia-southeast1.firebasedatabase.app",										
-	apiKey: "AIzaSyC9GEHBhxfYqtGTr9IHicNglYu1AMgOsq8",
-	authDomain: "voteinsight.firebaseapp.com",
-	projectId: "voteinsight",
-	storageBucket: "voteinsight.firebasestorage.app",
-	messagingSenderId: "300693203648",
-	appId: "1:300693203648:web:6864fcc982cb45583d1b25",
-	measurementId: "G-T87QL15VRH"
+    databaseURL: "https://voteinsight-default-rtdb.asia-southeast1.firebasedatabase.app",										
+    apiKey: "AIzaSyC9GEHBhxfYqtGTr9IHicNglYu1AMgOsq8",
+    authDomain: "voteinsight.firebaseapp.com",
+    projectId: "voteinsight",
+    storageBucket: "voteinsight.firebasestorage.app",
+    messagingSenderId: "300693203648",
+    appId: "1:300693203648:web:6864fcc982cb45583d1b25",
+    measurementId: "G-T87QL15VRH"
 }
 
 const app = initializeApp(firebaseConfig);
@@ -85,14 +70,12 @@ const Index: NextPage = () => {
     const router = useRouter()
     const dataDept = useQueryRefDepartments()
     let dataDeptRef = []
-    const handleOnError = useCallback(() => router.push('/speech/list'), [router])
+    const handleOnError = useCallback(() => router.push('/news/list/caption'), [router])
     const [upcomingEventsEditOffcanvas, setUpcomingEventsEditOffcanvas] = useState(false)
     const [activeModal, setActiveModal] = useState<"remove" | "change_status" | null>(null);
     
     const [inActiveModal, setInactiveModal] = useState(false)	
-    const [idSelected, setIdSelected] = useState(0)
-    const [action, setAction] = useState('')
-    const [statusSelected, setStatusSelected] = useState(0)
+    const [idSelected, setIdSelected] = useState(0) 
     const [currentPage, setCurrentPage] = useState<number>(1)
     const [perPage, setPerPage] = useState<number>(PER_COUNT['10'])
 
@@ -110,56 +93,26 @@ const Index: NextPage = () => {
         }))
     }
 
-    const [dataAISpeech, setDataAISpeech] = useState<Record<string, any> | null>(null)
+    const [dataAICC, setDataAICC] = useState<Record<string, any> | null>(null)
 
     useEffect(() => {
-        const AISpeech = ref(database, 'AIRecommendation/Speech');
+        const AINews = ref(database, 'AIRecommendation/NewsContent/ContentCaption');
         //fetch data from firebase in different path
-        onValue(AISpeech, (snapshot) => {
+        onValue(AINews, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                //console.log('Data from Firebase Realtime AISpeech: ', data);
-                setDataAISpeech(data);
+            console.log('Data from Firebase Realtime AINews: ', data);
+                setDataAICC(data);
             }
         });
         return () => {
-			// Cleanup if necessary
-		}
+            // Cleanup if necessary
+        }
     }, [database]);
 
     const { mutate, isSuccess, isError } = useMutateCreatePosition()
     const { mutate: mutateAction, isSuccess: isSuccessAction } = useMutateActionVacancy()
-    const handleActioneMutate = () => {
-        // mutateAction(
-        //     {
-        //         id: Number(idSelected) || 0,
-        //     },
-        //     {
-        //         onSuccess: (data) => {
-        //             if (data) {
-        //                 setInactiveModal(false)
-        //                 showNotification(
-        //                     <span className='d-flex align-items-center'>
-        //                         <Icon icon='Info' size='lg' className='me-1' />
-        //                         <span>Berhasil</span>
-        //                     </span>,
-        //                     'Berhasil Menghapus Posisi',
-        //                 )
-        //             }
-        //         },
-        //         onError: (error) => {
-        //             showNotification(
-        //                 <span className='d-flex align-items-center'>
-        //                     <Icon icon='danger' size='lg' className='me-1' />
-        //                     <span>Gagal</span>
-        //                 </span>,
-        //                 'Gagal Menghapus Posisi',
-        //             )
-        //             handleOnError()
-        //         },
-        //     },
-        // )
-        //setInactiveModal(false)
+    const handleActioneMutate = () => {        
         setActiveModal(null)
     }
 
@@ -181,37 +134,50 @@ const Index: NextPage = () => {
 
     //data AI speech convert to dataFinal for table
     let dataFinal = []
-    if (dataAISpeech) {
-        dataFinal = Object.keys(dataAISpeech).map((key) => ({
+    if (dataAICC !== null) {
+        dataFinal = Object.keys(dataAICC).map((key) => ({
             id: key,
-            ...dataAISpeech[key],
+            ...dataAICC[key],
         }))
     }
 
-    const items = dataFinal
-    const filteredData = items.filter(
+    const item = dataFinal
+    const filteredData = item.filter(
         (f: any) =>
-            f.Content?.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
-            f.Date?.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
+            f.Judul?.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
+            f.Waktu?.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
     )
 
+    const { items, requestSort, getClassNamesFor } = useSortableData(filteredData)
 
     const [editModalStatus, setEditModalStatus] = useState<boolean>(false)
     const [detail, setDetail] = useState<boolean>(false)
-    const [dataContent, setDataContent] = useState('')
+    const [dataContent, setDataContent] = useState<Array<any>>([])
     const [datadate, setDataDate] = useState('')
 
     const handleDetailModal = (id: number) => {
         setIdSelected(id)
-        setDataContent(items.find((item: any) => item.id === id)?.Content || '')
-        setDataDate(items.find((item: any) => item.id === id)?.Date || '')
-        setDetail(true)
+        const item = items.find((item: any) => item.id === id);
+
+        if (item) {
+            const dataFinalNews = {
+                Date: item.Waktu,
+                Judul: item.Judul,
+                Kategori: item.Kategori,                
+                Content: item.Ringkasan,
+            };
+
+            setDataContent([dataFinalNews]); // Set the found item as dataContent
+            setDetail(true); // Open the detail modal
+        } else {
+            console.error(`Item with ID ${id} not found.`);
+        }
     }
 
     return (
         <PageWrapper>
             <Head>
-                <title>List Pidato AI</title>
+                <title>List Caption Berita AI</title>
             </Head>
             <SubHeader>
                 <SubHeaderLeft>
@@ -224,7 +190,7 @@ const Index: NextPage = () => {
                         id='searchInput'
                         type='search'
                         className='border-0 shadow-none bg-transparent'
-                        placeholder='Cari Pidato...'
+                        placeholder='Cari Berita...'
                         onChange={formik.handleChange}
                         value={formik.values.searchInput}
                     />
@@ -236,7 +202,7 @@ const Index: NextPage = () => {
                         color='primary'
                         isLight
                         onClick={() => setEditModalStatus(true)}>
-                        Pidato Baru
+                        Berita Baru
                     </Button>
                 </SubHeaderRight>
             </SubHeader>
@@ -247,17 +213,24 @@ const Index: NextPage = () => {
                             <CardBody isScrollable className='table-responsive'>
                                 <table className='table table-modern table-hover'>
                                     <thead>
-                                        <tr>                                           
-                                            <th className='w-25'>Tanggal</th>
-                                            <th>Konten</th>                                            
+                                        <tr>                        
+                                            <th>No</th>                   
+                                            <th>Waktu</th>
+                                            <th>Kategori</th>                                            
+                                            <th>Judul</th>                                            
+                                            <th>Ringkasan</th>
                                             <td />
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dataPagination(items, currentPage, perPage).map(i => (
+                                        {dataPagination(items, currentPage, perPage).map((i,index) => (
                                             <tr key={i.id}>
-                                                <td>{i.Date}</td>
-                                                <td>{i.Content}</td>                                                
+                                                {/** number of record increasing, and follow the pagination */}
+                                                <td>{(currentPage - 1) * perPage + index + 1}</td>                                                
+                                                <td>{i.Waktu}</td>
+                                                <td>{i.Kategori}</td>                                                                                            
+                                                <td>{i.Judul}</td>
+                                                <td className='h-50'>{i.Ringkasan.length > 50 ? i.Ringkasan.substring(0, 100) + '...' : i.Ringkasan}</td>                                                
                                                 <td>
                                                     <Dropdown>
                                                         <DropdownToggle hasIcon={false}>
@@ -310,13 +283,12 @@ const Index: NextPage = () => {
                     </div>
                 </div>
             </Page>                    
-            <Detail
-				setIsOpen={setDetail}
-				isOpen={detail}
-				id={idSelected || 0}
-				dataContent={dataContent || ''}
-				dataDate={datadate || ''}
-			/>
+            <DetailNews
+                setIsOpen={setDetail}
+                isOpen={detail}
+                id={idSelected || 0}
+                dataContent={dataContent || []}				
+            />
             <Modal
                 id='inactive'
                 titleId='inactive-person'
