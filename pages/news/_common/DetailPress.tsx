@@ -38,10 +38,9 @@ const Detail: FC<DetailProps> = ({
 
 }) => {
 	interface ItemData {
-		Waktu?: string
-		Kategori?: string		
+		Date?: string		
 		Judul?: string
-		Ringkasan?: string		
+		Content?: string		
 		Sumber?: string
 	}		
 	const item: ItemData = dataContent as ItemData
@@ -52,12 +51,11 @@ const Detail: FC<DetailProps> = ({
 	const { mutate, isSuccess, isError } = useMutateCreateUser()	
 
 	const formik = useFormik({
-		initialValues: {
-			Kategori: Number(id) > 0 ? item?.Kategori : '',		
+		initialValues: {			
 			Judul: Number(id) > 0 ? item?.Judul : '',
-			Ringkasan: Number(id) > 0 ? item?.Ringkasan : '',		
+			Content: Number(id) > 0 ? item?.Content : '',		
 			Sumber: Number(id) > 0 ? item?.Sumber : '',	
-			Waktu: Number(id) > 0 ? item?.Waktu : '',
+			Date: Number(id) > 0 ? item?.Date : '',
 			
 		},
 		//validationSchema: SignupSchema,
@@ -86,11 +84,11 @@ const Detail: FC<DetailProps> = ({
 									<div className='row g-3'>
 										<div className='col-md-12'>
 											<FormGroup>
-												<Label htmlFor='content'>Kategori</Label>
+												<Label htmlFor='content'>Sumber</Label>
 											</FormGroup>
 											{/** Data Konten Is Text not input */}
 											<div className='form-control'>
-												{dataContent[0]?.Kategori}
+												{dataContent[0]?.Sumber}
 											</div>
 										</div>
 										<div className='col-md-12'>
@@ -117,7 +115,7 @@ const Detail: FC<DetailProps> = ({
 												<Label htmlFor='date'>Tanggal Generate</Label>
 											</FormGroup>
 											<div className='form-control h-50 scrollable'>
-												{dataContent[0]?.waktu}
+												{dataContent[0]?.Date}
 											</div>
 										</div>
 									</div>

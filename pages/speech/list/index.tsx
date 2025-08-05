@@ -113,7 +113,7 @@ const Index: NextPage = () => {
     const [dataAISpeech, setDataAISpeech] = useState<Record<string, any> | null>(null)
 
     useEffect(() => {
-        const AISpeech = ref(database, 'AIRecommendation/Speech');
+        const AISpeech = ref(database, '/AIRecommendation/NewData/Speech');
         //fetch data from firebase in different path
         onValue(AISpeech, (snapshot) => {
             const data = snapshot.val();
@@ -200,11 +200,13 @@ const Index: NextPage = () => {
     const [detail, setDetail] = useState<boolean>(false)
     const [dataContent, setDataContent] = useState('')
     const [datadate, setDataDate] = useState('')
+    const [dataBerita, setDataBerita] = useState('')
 
     const handleDetailModal = (id: number) => {
         setIdSelected(id)
-        setDataContent(items.find((item: any) => item.id === id)?.Content || '')
-        setDataDate(items.find((item: any) => item.id === id)?.Date || '')
+        setDataContent(items.find((item: any) => item.id === id)?.Isi || '')
+        //setDataDate(items.find((item: any) => item.id === id)?.Date || '')
+        setDataBerita(items.find((item: any) => item.id === id)?.Berita || '')
         setDetail(true)
     }
 
@@ -247,17 +249,25 @@ const Index: NextPage = () => {
                             <CardBody isScrollable className='table-responsive'>
                                 <table className='table table-modern table-hover'>
                                     <thead>
-                                        <tr>                                           
-                                            <th className='w-25'>Tanggal</th>
-                                            <th>Konten</th>                                            
+                                        <tr>               
+                                            <th>No</th>                                
+                                            <th className='w-25'>Berita</th>
+                                            <th>Konten</th>   
+                                            <th>Sumber</th>                                            
                                             <td />
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dataPagination(items, currentPage, perPage).map(i => (
+                                        {dataPagination(items, currentPage, perPage).map((i,index) => (
                                             <tr key={i.id}>
-                                                <td>{i.Date}</td>
-                                                <td>{i.Content}</td>                                                
+                                                 <td>{(currentPage - 1) * perPage + index + 1}</td>   
+                                                <td>{i.Berita}</td>
+                                                { i.Isi && i.Isi.length > 100 ? (
+                                                    <td>{i.Isi.substring(0, 100)}...</td>
+                                                ) : (
+                                                    <td>{i.Isi}</td>
+                                                )}
+                                                <td>{i.Sumber}</td>                                         
                                                 <td>
                                                     <Dropdown>
                                                         <DropdownToggle hasIcon={false}>
@@ -315,7 +325,7 @@ const Index: NextPage = () => {
 				isOpen={detail}
 				id={idSelected || 0}
 				dataContent={dataContent || ''}
-				dataDate={datadate || ''}
+				dataBerita={dataBerita || ''}
 			/>
             <Modal
                 id='inactive'

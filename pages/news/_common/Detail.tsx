@@ -69,7 +69,7 @@ const Detail: FC<DetailProps> = ({
 		return (
 			<Modal isOpen={isOpen} setIsOpen={setIsOpen} size='lg' titleId={id.toString()}>
 				<ModalHeader setIsOpen={setIsOpen} className='p-4'>
-					<ModalTitle id={id}>{'Detail Pidato'}</ModalTitle>
+					<ModalTitle id={id}>{'Detail Caption'}</ModalTitle>
 				</ModalHeader>
 				<ModalBody className='px-12'>
 					<div className='row g-8'>

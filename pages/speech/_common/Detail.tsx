@@ -29,23 +29,23 @@ interface DetailProps {
 	isOpen: boolean
 	setIsOpen(...args: unknown[]): unknown
 	dataContent: any
-	dataDate: any
+	dataBerita: any
 }
 const Detail: FC<DetailProps> = ({
 	id,
 	isOpen,
 	setIsOpen,
 	dataContent,
-	dataDate = '',
+	dataBerita = '',
 }) => {
 	interface ItemData {
 		Date?: string
 		Content?: string		
 	}	
-	console.log(' ---> Detail dataContent', dataContent, dataDate)
+	console.log(' ---> Detail dataContent', dataContent, dataBerita)
 	const item = {
-		Date: dataDate || '',
-		Content: dataContent || '',
+		Berita: dataBerita || '',
+		Isi: dataContent || '',
 	}
 	//change DataContent to 
 
@@ -53,8 +53,10 @@ const Detail: FC<DetailProps> = ({
 
 	const formik = useFormik({
 		initialValues: {
-			Content: Number(id) > 0 ? item?.Content : '',			
-			Date: Number(id) > 0 ? dayjs(item?.Date).format('YYYY-MM-DD') : '',
+			Content: Number(id) > 0 ? item?.Isi : '',			
+			Berita: Number(id) > 0 ? item?.Berita : '',			
+
+			//Date: Number(id) > 0 ? dayjs(item?.Date).format('YYYY-MM-DD') : '',
 			
 		},
 		//validationSchema: SignupSchema,
@@ -87,17 +89,15 @@ const Detail: FC<DetailProps> = ({
 											</FormGroup>
 											{/** Data Konten Is Text not input */}
 											<div className='form-control'>
-												{item.Content}
+												{item.Isi}
 											</div>
 										</div>
 										<div className='col-md-12'>
 											<FormGroup>
-												<Label htmlFor='date'>Tanggal Generate</Label>
+												<Label htmlFor='date'>Berita</Label>
 											</FormGroup>
 											<div className='form-control h-50 scrollable'>
-												{item.Date
-													? dayjs(item.Date).format('DD MMMM YYYY')
-													: ''}
+												{item.Berita}
 											</div>
 										</div>
 									</div>

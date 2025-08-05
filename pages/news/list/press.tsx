@@ -39,11 +39,11 @@ import { useRouter } from 'next/router'
 import useQueryRefDepartments from '../../../hooks/useQueryRefDepartments'
 import useMutateCreatePosition from '../../../hooks/useMutateCreatePosition'
 import useMutateActionVacancy from '../../../hooks/useMutateActionVacancy'
-import useSortableData from '../../../hooks/useSortableData'
 import DetailNews from '../_common/DetailNews' // Adjust the import path as necessary
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, onValue, set } from "firebase/database";
 import Content from '../../../layout/Content/Content'
+import useSortableData from '../../../hooks/useSortableData'
 
 
 const firebaseConfig = {				
@@ -93,16 +93,16 @@ const Index: NextPage = () => {
         }))
     }
 
-    const [dataAICC, setDataAICC] = useState<Record<string, any> | null>(null)
+    const [dataAINews, setDataAINews] = useState<Record<string, any> | null>(null)
 
     useEffect(() => {
-        const AINews = ref(database, 'AIRecommendation/NewData/Berita');
+        const AINews = ref(database, '/AIRecommendation/NewData/PressRelease');
         //fetch data from firebase in different path
         onValue(AINews, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-            console.log('Data from Firebase Realtime AINews: ', data);
-                setDataAICC(data);
+                console.log('Data from Firebase Realtime AINews: ', data);
+                setDataAINews(data);
             }
         });
         return () => {
@@ -134,22 +134,21 @@ const Index: NextPage = () => {
 
     //data AI speech convert to dataFinal for table
     let dataFinal = []
-    if (dataAICC !== null) {
-        dataFinal = Object.keys(dataAICC).map((key) => ({
+    if (dataAINews !== null) {
+        dataFinal = Object.keys(dataAINews).map((key) => ({
             id: key,
-            ...dataAICC[key],
+            ...dataAINews[key],
         }))
     }
 
     const item = dataFinal
     const filteredData = item.filter(
         (f: any) =>
-            f.judul?.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
-            f.tanggal?.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
+            f.Judul?.toLowerCase().includes(formik.values.searchInput.toLowerCase()) ||
+            f.Date?.toLowerCase().includes(formik.values.searchInput.toLowerCase()),
     )
 
     const { items, requestSort, getClassNamesFor } = useSortableData(filteredData)
-
     const [editModalStatus, setEditModalStatus] = useState<boolean>(false)
     const [detail, setDetail] = useState<boolean>(false)
     const [dataContent, setDataContent] = useState<Array<any>>([])
@@ -161,10 +160,11 @@ const Index: NextPage = () => {
 
         if (item) {
             const dataFinalNews = {
-                Date: item.tanggal,
-                Judul: item.judul,
-                Kategori: item.kategori,                
-                Content: item.ringkasan,
+                Date: item.Data,
+                Judul: item.Judul,
+                //Kategori: item.Kategori,
+                Sumber: item.Sumber,
+                Content: item.Content,
             };
 
             setDataContent([dataFinalNews]); // Set the found item as dataContent
@@ -177,7 +177,7 @@ const Index: NextPage = () => {
     return (
         <PageWrapper>
             <Head>
-                <title>List Caption Berita AI</title>
+                <title>List Berita AI</title>
             </Head>
             <SubHeader>
                 <SubHeaderLeft>
@@ -190,7 +190,7 @@ const Index: NextPage = () => {
                         id='searchInput'
                         type='search'
                         className='border-0 shadow-none bg-transparent'
-                        placeholder='Cari Berita...'
+                        placeholder='Cari Press Release...'
                         onChange={formik.handleChange}
                         value={formik.values.searchInput}
                     />
@@ -202,7 +202,7 @@ const Index: NextPage = () => {
                         color='primary'
                         isLight
                         onClick={() => setEditModalStatus(true)}>
-                        Berita Baru
+                        Press Release Baru
                     </Button>
                 </SubHeaderRight>
             </SubHeader>
@@ -216,7 +216,7 @@ const Index: NextPage = () => {
                                         <tr>                        
                                             <th>No</th>                   
                                             <th>Waktu</th>
-                                            <th>Kategori</th>                                            
+                                            <th>Sumber</th>                                            
                                             <th>Judul</th>                                            
                                             <th>Ringkasan</th>
                                             <td />
@@ -227,10 +227,10 @@ const Index: NextPage = () => {
                                             <tr key={i.id}>
                                                 {/** number of record increasing, and follow the pagination */}
                                                 <td>{(currentPage - 1) * perPage + index + 1}</td>                                                
-                                                <td>{i.tanggal}</td>
-                                                <td>{i.kategori}</td>                                                                                            
-                                                <td>{i.judul}</td>
-                                                <td className='h-50'>{i.ringkasan.length > 50 ? i.ringkasan.substring(0, 100) + '...' : i.ringkasan}</td>                                                
+                                                <td>{i.Date}</td>
+                                                <td>{i.Sumber}</td>                                                                                            
+                                                <td>{i.Judul}</td>
+                                                <td className='h-50'>{i.Content.length > 50 ? i.Content.substring(0, 100) + '...' : i.Content}</td>                                                
                                                 <td>
                                                     <Dropdown>
                                                         <DropdownToggle hasIcon={false}>

@@ -20,6 +20,7 @@ import { useRouter } from 'next/router'
 import { on } from 'events';
 import Icon from '../../components/icon/Icon';
 import { get } from 'http';
+import { data } from 'react-router-dom';
 
 const firebaseConfig = {				
 	databaseURL: "https://voteinsight-default-rtdb.asia-southeast1.firebasedatabase.app",										
@@ -42,17 +43,18 @@ const CommonDashboardRecentActivities = () => {
 	const  [dataIssue, setDataIssue] = useState<any>(null)
 	const  [dataRekomendasi, setDataRekomendasi] = useState<any>(null)
 	const [dataPress, setDataPress] = useState<any>(null)
-	const [dataAICaptions, setDataAICaptions] = useState<any>(null)
+	//const [dataAICaptions, setDataAICaptions] = useState<any>(null)
 	const [dataAICaptions2, setDataAICaptions2] = useState<any>(null)
 	const [dataAISpeech, setDataAISpeech] = useState<any>(null)
 
 	useEffect(() => {
-		const issue = ref(database, 'issue/result');
-		const rekomendasi = ref(database, 'AIRecommendation/NewsContent/ContentCaption');
-		const pressRelease = ref(database, 'AIRecommendation/PressRelease');
-		const AICaptions = ref(database, 'AIRecommendation/AICaptions');
-		const AICaptions2 = ref(database, 'AIRecommendation/AICaptions/Captions');
-		const AISpeech = ref(database, 'AIRecommendation/RingkasanPidato');
+		//const issue = ref(database, 'issue/result');
+		const issue = ref(database, 'AIRecommendation/NewData/News');
+		const rekomendasi = ref(database, 'AIRecommendation/NewData/Berita');
+		const pressRelease = ref(database, '/AIRecommendation/NewData/PressRelease');
+		//const AICaptions = ref(database, 'AIRecommendation/AICaptions');
+		const AICaptions2 = ref(database, 'AIRecommendation/NewData/Sosmed');
+		const AISpeech = ref(database, 'AIRecommendation/NewData/Speech');
 		//fetch data from firebase in different path
 		// issue/result and AIRecommendation/newsContent
 		onValue(issue, (snapshot) => {
@@ -72,24 +74,24 @@ const CommonDashboardRecentActivities = () => {
 		onValue(pressRelease, (snapshot) => {
 			const dataPress = snapshot.val();
 			if (dataPress) {
-				//console.log('Data from Firebase Realtime Press: ', dataPress);
-				setDataPress(dataPress);
+				//console.log('Data from Firebase Realtime Press Release: ', dataPress);
+				//get last data from press release
+				const getLastdataPress = Object.keys(dataPress).length;
+				setDataPress(getLastdataPress >= 0 ? dataPress[getLastdataPress] : null);
+				//console.log('Data from Firebase Realtime Press Release: ', dataPress[getLastdataPress]);
+				//setDataPress(dataPress);
 			}
 		});
-		onValue(AICaptions, (snapshot) => {
-			const dataAICaptions = snapshot.val();
-			if (dataAICaptions) {
-				//console.log('Data from Firebase Realtime AICaptions: ', dataAICaptions);
-				setDataAICaptions(dataAICaptions);
-			}
-		});
-
+		
 		onValue(AICaptions2, (snapshot) => {
 			const dataAICaptions2 = snapshot.val();
 			if (dataAICaptions2) {
 				//console.log('Data from Firebase Realtime AICaptions2: ', dataAICaptions2);
-				const getLastdataAICaptions2 = Object.keys(dataAICaptions2).length - 1;
-				setDataAICaptions2(getLastdataAICaptions2 >= 0 ? dataAICaptions2[getLastdataAICaptions2] : null);
+				//const getLastdataAICaptions2 = Object.keys(dataAICaptions2).length - 1;
+				//setDataAICaptions2(getLastdataAICaptions2 >= 0 ? dataAICaptions2[getLastdataAICaptions2] : null);
+				const getLastdataSosmed = Object.keys(dataAICaptions2).length-1;								
+				setDataAICaptions2(getLastdataSosmed >= 0 ? dataAICaptions2[getLastdataSosmed] : null);
+				//console.log('Data from Firebase Realtime Sosmed: ', dataAICaptions2[getLastdataSosmed]);
 			}
 		});
 		
@@ -97,7 +99,10 @@ const CommonDashboardRecentActivities = () => {
 			const dataAISpeech = snapshot.val();
 			if (dataAISpeech) {
 				//console.log('Data from Firebase Realtime AISpeech: ', dataAISpeech);
-				setDataAISpeech(dataAISpeech);
+				const getLastdataSpeech = Object.keys(dataAISpeech).length-1;								
+				setDataAISpeech(getLastdataSpeech >= 0 ? dataAISpeech[getLastdataSpeech] : null);
+				console.log('Data from Firebase Realtime Speech: ', dataAISpeech[getLastdataSpeech]);
+				//setDataAISpeech(dataAISpeech);
 			}
 		});
 
@@ -206,30 +211,25 @@ const CommonDashboardRecentActivities = () => {
 				</Timeline>
 			</CardBody>
 			) : router.query.tab === 'rekomendasi' ? (
-				<CardBody>					
+				<CardBody isScrollable>					
 					{dataRekomendasi && dataRekomendasi.map((rek: any, index: number) => (						
 						<ul>
 							<li>
-								<strong>{rek.Judul}</strong> - {rek.Ringkasan}
-								<span className='text-muted small'> ({rek.Kategori})</span>
-								<span className='text-muted small'> - {dayjs(rek.Waktu, 'DD/MM/YYYY HH:mm', true).isValid()
-									? dayjs(rek.Waktu, 'DD/MM/YYYY HH:mm').format('HH:mm')
-									: 'Invalid Date'}</span>
+								<strong>{rek.judul}</strong> - {rek.ringkasan}
+								<span className='text-muted small'> ({rek.kategori})</span>
+								<span className='text-muted small'> - {rek.tanggal}</span>
 							</li>
 						</ul>	
 					))}
 				</CardBody>
 			) : router.query.tab === 'press' ? (
 				<CardBody>		
-					<p className='ms-2'>
-						<strong>{dataPress.Judul}</strong>
-					</p>			
-					{dataPress.Isi && dataPress.Isi.map((press: any, index: number) => (
-						<p key={index} className='ms-2'>
-							{press}							
-						</p>
-					))}
-					{/* <p>Pidato AI akan ditampilkan di sini.</p> */}
+					<ul>
+						<li>
+								<strong>{dataPress.Judul}</strong> - {dataPress.Content}								
+								<span className='text-muted small'> - {dataPress.Date}</span>
+						</li>												
+					</ul>
 				</CardBody>
 			) : router.query.tab === 'caption' ? (
 				<CardBody isScrollable>					
@@ -242,24 +242,38 @@ const CommonDashboardRecentActivities = () => {
 						<tbody>
 							<tr>
 								<td>Facebook</td>
-								<td className='w-75'>{dataAICaptions2.Facebook}</td>
+								<td className='w-75'>{dataAICaptions2?.Facebook?.Caption} - <span>-{dataAICaptions2.Facebook.Tanggal}</span></td>
 							</tr>
 							<tr>
 								<td>Instagram</td>
-								<td className='w-75'>{dataAICaptions2.Instagram}</td>
+								<td className='w-75'>{dataAICaptions2?.Instagram?.Caption} - <span>-{dataAICaptions2.Instagram?.Tanggal}</span></td>
 							</tr>
 							<tr>
 								<td>X</td>
-								<td>{dataAICaptions2?.X}</td>
+								<td className='w-75'>{dataAICaptions2.X.Caption} - <span>-{dataAICaptions2.X.Tanggal}</span></td>
 							</tr>
 						</tbody>							
 					</table>					
 				</CardBody>
 			) : router.query.tab === 'pidato' ? (
-				<CardBody>
-						<p>
-							<strong>Berikut Ini Generate Pidato</strong></p>
-						<p>{dataAISpeech}</p>
+				<CardBody isScrollable>
+						<table className='table table-striped table-hover table-sm'>
+						<thead>
+							<tr>								
+								<th colSpan={1}>Isi Pidato</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<td>Berita</td>
+								<td className='w-75'>{dataAISpeech?.Berita}</td>
+							</tr>
+							<tr>
+								<td>Isi Pidato</td>
+								<td className='w-75'>{dataAISpeech?.Isi} - <span>-{dataAISpeech?.Sumber}</span></td>
+							</tr>							
+						</tbody>							
+					</table>	
 				</CardBody>
 			) : (
 				<CardBody>

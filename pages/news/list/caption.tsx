@@ -99,12 +99,12 @@ const Index: NextPage = () => {
     const [dataAICaptions, setDataAICaptions] = useState<Record<string, any> | null>(null)
 
     useEffect(() => {
-        const AISpeech = ref(database, 'AIRecommendation/AICaptions/Captions');
+        const AISpeech = ref(database, 'AIRecommendation/NewData/Sosmed');
         //fetch data from firebase in different path
         onValue(AISpeech, (snapshot) => {
             const data = snapshot.val();
             if (data) {
-                console.log('Data from Firebase Realtime AISpeech: ', data);
+                console.log('Data from Firebase Realtime AICaption: ', data);
                 setDataAICaptions(data);
             }
         });
@@ -136,12 +136,24 @@ const Index: NextPage = () => {
     })
 
     //data AI speech convert to dataFinal for table
-    let dataFinal = []
+    let dataFinal: Array<any> = []
     if (dataAICaptions !== null) {
-        dataFinal = Object.keys(dataAICaptions).map((key) => ({
-            id: key,
-            ...dataAICaptions[key],
-        }))
+        // dataFinal = Object.keys(dataAICaptions).map((key) => ({
+        //     id: key,
+        //     ...dataAICaptions[key],
+        // }))
+        //dataAICaption have structure like this : {Facebook: {Caption: "Caption text", Date: "2023-10-01"}, Instagram: {...}, X: {...}}
+        dataFinal = Object.keys(dataAICaptions).map((key) => {
+            const item = dataAICaptions[key];
+            return {
+                id: key,
+                Date: item.Tanggal || '',
+                Facebook: item.Facebook ? item.Facebook.Caption : '',
+                Instagram: item.Instagram ? item.Instagram.Caption : '',
+                X: item.X ? item.X.Caption : '',
+            }
+        });
+        
     }
 
     const items = dataFinal
@@ -216,7 +228,7 @@ const Index: NextPage = () => {
                                 <table className='table table-modern table-hover'>
                                     <thead>
                                         <tr>                                           
-                                            <th>Tanggal</th>
+                                            <th>No.</th>
                                             <th>Facebook</th>                                            
                                             <th>Instagram</th>                                            
                                             <th>X</th>
@@ -224,12 +236,12 @@ const Index: NextPage = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        {dataPagination(items, currentPage, perPage).map(i => (
+                                        {dataPagination(items, currentPage, perPage).map((i,index) => (
                                             <tr key={i.id}>
-                                                <td>{i.Date}</td>
-                                                <td>{i.Facebook}</td>                                                
-                                                <td>{i.Instagram}</td>
-                                                <td>{i.X}</td>
+                                                 <td>{(currentPage - 1) * perPage + index + 1}</td>      
+                                                <td>{i.Facebook.length > 50 ? i.Facebook.substring(0, 100) + '...' : i.Facebook}</td>                                                
+                                                <td>{i.Instagram.length > 50 ? i.Instagram.substring(0, 100) + '...' : i.Instagram}</td>
+                                                <td>{i.X.length > 50 ? i.X.substring(0, 100) + '...' : i.X}</td>
                                                 <td>
                                                     <Dropdown>
                                                         <DropdownToggle hasIcon={false}>
